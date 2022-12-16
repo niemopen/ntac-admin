@@ -30,7 +30,7 @@ The NTAC is a Technical Steering Committee within the OASIS Open Project known a
 
 ## Meetings
 
-The NTAC currently meets every Tuesday, 1000-1100 Eastern time.  Meeting agenda and minutes are available on the [meeting page](meetings/README.md).  Some of the working notes discussed at NTAC meetings may be found on the [documents](documents/README.md) page.
+The NTAC currently meets every Tuesday, 1000-1100 Eastern time.  Meeting agenda and minutes are available on the [meeting page](meetings.md).  Some of the working notes discussed at NTAC meetings may be found on the [documents](documents.md) page.
 
 ## Other assets
 

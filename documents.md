@@ -4,6 +4,6 @@
 
 These documents are for NTAC discussion.  They are not expected to become project specifications.  
 
-* [Simple content and literal properties (2022-11-24)](Literals-221124.md)
-* [CMF and RDF representation in NIEM 6 [2022-06-10]](NIEM6-RDF-220610.md)
-* [Relationship metadata, revisited [2022-05-09]](RelMetadataAgain-220509.md)
+* [Simple content and literal properties (2022-11-24)](documents/Literals-221124.md)
+* [CMF and RDF representation in NIEM 6 [2022-06-10]](documents/NIEM6-RDF-220610.md)
+* [Relationship metadata, revisited [2022-05-09]](documents/RelMetadataAgain-220509.md)
