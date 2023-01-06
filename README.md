@@ -44,7 +44,7 @@ In addition to this GitHub repository, the [NIEMOpen](https://github.com/niemope
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/niemopen/ntac-admin/blob/main/CONTRIBUTING.md) for details how to join the project, contribute changes to our repositories and communicate with the rest of the project contributors. Please become familiar with and follow the [code of conduct](https://github.com/niemopen/ntac-admin/blob/main/CODE-OF-CONDUCT.md).
+Please read [CONTRIBUTING.md](https://github.com/niemopen/ntac-admin/blob/main/CONTRIBUTING.md) for details how to join the project, contribute changes to our repositories and communicate with the rest of the project contributors. Please become familiar with and follow the [code of conduct](https://www.oasis-open.org/policies-guidelines/oasis-participants-code-of-conduct/).
 
 ## Governance
 
