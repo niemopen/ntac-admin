@@ -2,7 +2,7 @@
 
 ## NTAC meeting minutes
 
-* [2023-01-17 Agenda](2023-01-17-agenda.md)
+* [2023-01-17 (draft)](2023-01-17-minutes.md)
 * [2023-01-10](2023-01-10-minutes.md) -- Repo organization, publication process, NIEM 5.2
 * [2023-01-03](2023-01-03-minutes.md) – NIEM 6.0 process
 * 2022-12-20
