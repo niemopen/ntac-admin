@@ -192,10 +192,10 @@ All major content changes have been submitted.
 
 - [ ] Contributors continue to create pull requests (as above)
 - [ ] TSCs review the designated branch and contribute changes (as needed)
-- [ ] TSCs announce on the [project distribution list](mailto:niemopen@lists.oasis-open.org) their recommendation that the PGB approve the designated branch as a release
+- [ ] TSCs announce on the [project distribution list](mailto:niemopen@lists.oasis-open-projects.org) their recommendation that the PGB approve the designated branch as a release
 - [ ] If the PGB approves the release,
   - [ ] Maintainers add the appropriate tag (e.g., niem-6.0-release1) and publish as a Github release
-  - [ ] TSCs announce release to the [project distribution list](mailto:niemopen@lists.oasis-open.org) for a 14 day review period
+  - [ ] TSCs announce release to the [project distribution list](mailto:niemopen@lists.oasis-open-projects.org) for a 14 day review period <!-- or consider linking to the archhive at https://lists.oasis-open-projects.org/g/niemopen/topics -->
   - [ ] Contributors submit feedback via GitHub issues and pull requests
   - [ ] Maintainers review feedback, continuing to get TSC approval before accepting pull requests
   - [ ] TSCs review the release and request approval of additional releases (as needed)
@@ -204,20 +204,21 @@ All major content changes have been submitted.
 
 All known changes should be submitted for the version.  Should be finalizing the model and doing a final review for issues.
 
-- [ ] Once the TSCs are satisfied with the release, TSCs announce on the [project distribution list](mailto:niemopen@lists.oasis-open.org) their recommendation that the PGB approve the release as a PSD
+- [ ] Once the TSCs are satisfied with the release, TSCs announce on the [project distribution list](mailto:niemopen@lists.oasis-open-projects.org) their recommendation that the PGB approve the release as a PSD
 - [ ] If the PGB approves the PSD,
   - [ ] Maintainers add the appropriate tag (e.g., `niem-6.0-psd1`) and publish as a Github release
-  - [ ] TSCs announce the PSD to the [project distribution list](mailto:niemopen@lists.oasis-open.org) for a 14 day review period
+  - [ ] TSCs announce the PSD to the [project distribution list](mailto:niemopen@lists.oasis-open-projects.org) for a 14 day review period
   - [ ] Contributors submit feedback via GitHub issues and pull requests
   - [ ] Maintainers review feedback, continuing to get TSC approval before accepting pull requests
   - [ ] TSCs review the release and request approval of additional PSDs (as needed)
 
 **Project Specification**
 
-- [ ] Once the TSCs are satisfied with the PSD, TSCs announce on the [project distribution list](mailto:niemopen@lists.oasis-open.org) their recommendation that the PGB approve the PSD as a PS
+- [ ] Once the TSCs are satisfied with the PSD, TSCs announce on the [project distribution list](mailto:niemopen@lists.oasis-open-projects.org) their recommendation that the PGB approve the PSD as a PS
+- [ ] PGB requests OASIS Open Project Administrators hold a [Special Majority Vote](https://www.oasis-open.org/policies-guidelines/oasis-defined-terms-2018-05-22/#dSpecialMajority) using the [ballot request form](https://www.oasis-open.org/project-administration-support-requests/form-request-a-special-majority-vote-to-approve-a-specification/)
 - [ ] If the PGB approves the PS (by Special Majority Vote),
   - [ ] Maintainers add the appropriate tag (e.g., `niem-6.0-ps1`) and publish as a Github release
-  - [ ] TSCs announce the PS to the [project distribution list](mailto:niemopen@lists.oasis-open.org)
+  - [ ] TSCs announce the PS to the [project distribution list](mailto:niemopen@lists.oasis-open-projects.org)
   - [ ] Open Project Administrators publish the PS on https://docs.oasis-open.org/niem
 
 #### NIEM major version process
