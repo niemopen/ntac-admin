@@ -164,7 +164,7 @@ A PGB having at least Project Approval Minimum Membership may act to approve any
 #### Goals
 
 - [ ] Comply with [OP requirements](https://www.oasis-open.org/policies-guidelines/open-projects-process/#progression-of-project-work) (see sections 11-14) including:
-  - [ ] Email the [project distribution list](mailto:niemopen@lists.oasis-open.org) to announce any artifacts that require a vote of the PGB to approve (e.g. release/group releases, PSD, PS) at least 14 days in advance of the vote
+  - [ ] Email the [project distribution list](mailto:niemopen@lists.oasis-open-projects.org) to announce any artifacts that require a vote of the PGB to approve (e.g. release/group releases, PSD, PS) at least 14 days in advance of the vote
   - [ ] Conform PSDs and later to the PS template, which includes methods for indicating the relevant designated branches and applicable licenses
   - [ ] Ensure any code included in a PS is composed only of Releases or Group Releases bearing Implementer-Class Licenses.
   - [ ] Ensure any other content in a PS was contributed to a project repository
