@@ -7,7 +7,7 @@
 
 ## Project Note 01
 
-## 26 January 2023
+## 27 January 2023
 
 &nbsp;
 
@@ -31,7 +31,7 @@ https://docs.oasis-open-projects.org/niem/niem-pubs/v1.0/niem-pubs-v1.0.pdf
 Katherine Escobar (katherine.b.escobar.civ@mail.mil), [Joint Staff J6](https://www.jcs.mil/Directorates/J6-C4-Cyber/)
 
 #### NTAC Committee Chairs:
-Jim Cabral (jim.cabral@infotrack.com), [InfoTrack](https://www.infotrack.com/) \
+Jim Cabral (jim.cabral@infotrack.com), [InfoTrack US](https://www.infotrack.com/) \
 Scott Renner (sar@mitre.org), [MITRE](https://www.mitre.org/)
 
 #### Editors:
@@ -50,7 +50,7 @@ This is a Non-Standards Track Work Product. The patent provisions of the OASIS I
 
 This document was last revised or approved by the Project Governing Board of the OASIS NIEMOpen OP on the above date. The level of approval is also listed above. Check the "Latest stage" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Open Project (OP) are listed at http://www.niemopen.org/.
 
-Comments on this work can be provided by opening issues in the project repository or by sending email to the project’s public comment list: niemopen@lists.oasis-open-projects.org. List information is available at https://lists.oasis-open-projects.org/g/niemopen.
+Comments on this work can be provided by opening issues in the project repository or by sending email to the project's public comment list: niemopen@lists.oasis-open-projects.org. List information is available at https://lists.oasis-open-projects.org/g/niemopen.
 
 #### Citation format:
 When referencing this document the following citation format should be used:
@@ -83,8 +83,9 @@ Introductory material.
 
 ### 1.1.1 Definitions of terms
 
-- **NIEMOpen** (or **NIEM**) refers to a reference data model and related specifications.
-- The NIEM **Core** refers to the content of the referance data model that is not associated with a specific Domain.
+- **NIEMOpen** (or **NIEM**) refers to the NIEM Open Project
+- **NIEM** followed by a version number (e.g., NIEM 6.0) reference data model and related specifications.
+- The NIEM **Core** refers to the content of the reference data model that is not associated with a specific Domain.
 - A NIEM **Domain** refers to content of the reference data model that is associated with a specific segment of government or industry.
 
 ### 1.2.2 Acronyms and abbreviations
@@ -94,7 +95,7 @@ Introductory material.
 - **NMO**: NIEM Management Office TSC
 - **NBAC**: NIEM Business Architecture Committee TSC
 - **NTAC**: NIEM Technical Architecture Committee TSC
-- **PGB**: Project Governance Board
+- **PGB**: Project Governing Board
 - **TSC**: Technical Steering Committee
 
 Note: NIEM is not a acronym
@@ -124,32 +125,36 @@ NIEM versions will typically be published annually on a 3-year cycle.  A NIEM ma
 ## 2.1 Major Versions
 Each NIEM major version:
 - SHOULD include a reference data model, including any changes (additions, deletions, updates) to the model in previous version
-- SHOULD include related specifications (e.g., Code Lists, Common Model Format, Conformance, Conformance Targents Attribute Specification, Message Specification, Naming and Design Rules, JSON binding, XML binding), including any changes (additions, deletions, updates) to the specifications in previous version
+- SHOULD include related specifications (e.g., Code Lists, Common Model Format, Conformance, Conformance Targets Attribute Specification, Message Specification, Naming and Design Rules, JSON binding, XML binding), including any changes (additions, deletions, updates) to the specifications in previous version
 - SHOULD progress to OASIS Project Specification(s) (PS)
 - MAY progress to OASIS Standard(s) and be submitted for ISO standard(s)
 
 ## 2.2 Minor Versions
 Each NIEM minor version:
 - MAY include updates to the reference data model in the previous version, including any changes (additions) to the Core or Domains
-- MAY imclude updates to specifications in previous versions but SHOULD NOT include significant changes to the architecture 
+- MAY include updates to specifications in previous versions but SHOULD NOT include significant changes to the architecture 
 - MAY address any defects in the data model or specifications in errata
 - SHOULD progress to OASIS Project Specification(s) (PS)
+
+**Topics for discussion**:
+1. We should publish an authoritative list of specifications included in NIEM 6.  Should they be listed here or in a separate project note?
+2. Should NIEM versions also include software?
 
 -------
 # 3 Project Artifacts
 
 ## 3.1 Published specifications
-- Public review versions of project specifications MUST BE published at https://docs.oasis-open-projects.org/niem
-- For URI permanency, all NIEMOpen artifacts should use https://docs.oasis-open-projects.org/niem as the root URI (e.g., in XML schema locations)
+- Public review versions of project specifications MUST be published at https://docs.oasis-open-projects.org/niem
+- For URI permanency, all NIEMOpen artifacts SHOULD use https://docs.oasis-open-projects.org/niem as the root URI (e.g., in XML schema locations)
 ## 3.2 Project repositories
-- Github repositories SHOULD be used primarily for sharing working versions of project artifacts with project members.
+- GitHub repositories SHOULD be used primarily for sharing working versions of project artifacts with project members.
 - All project repositories SHOULD reside under https://github.com/niemopen. e.g., 
   - Model repo: https://github.com/niemopen/niem-models
   - CTAS repo: https://github.com/niemopen/niem-conformance-targets
 ### 3.2.1 Branches
-- Github branches SHOULD be used to segregate contributions that are not yet approved. e.g.,
+- GitHub branches SHOULD be used to segregate contributions that are not yet accepted. e.g.,
   - `main`: approved specifications
-  - `dev`: for incremental changes not yet approved
+  - `dev`: for incremental changes not yet accepted
 Temporary branches MAY be created as needed (ad hoc)
 ### 3.2.2 Tags
 - Tags SHOULD be used to identify NIEM version and OASIS deliverable stage, e.g. `niem-6.0-ps` to 
@@ -160,12 +165,12 @@ Temporary branches MAY be created as needed (ad hoc)
 - TSCs SHOULD use permanent links to specific commits for approval by the PGB.
 ## 3.5 Legacy (pre-NIEMOpen) content and repositories      
 - Previous NIEM models not yet contributed to the open project SHOULD continue to reside at https://release.niem.gov
-- NIEM specifications not yet contributed to the open project SHOULD continue to reside at https://reference.niem.gov
-- Pre-NIEMOpen repositories, Github and otherwise, MAY still be available but changes and new issues SHOULD NOT be accepted.
+- Previous NIEM specifications not yet contributed to the open project SHOULD continue to reside at https://reference.niem.gov
+- Pre-NIEMOpen repositories, GitHub and otherwise, MAY still be available but changes and new issues SHOULD NOT be accepted.
 -------
 # 4 Publication Processes
 ## 4.1 Publishing a minor version
-This section describes the stages in publishing a minor version and the steps during each stage of ths process.
+This section describes the stages in publishing a minor version and the steps during each stage of this process.
 ### 4.1.1 Designated Branch
 This process begins the domain and other non-Core-related updates to the model:
 1. Maintainers create a designated branch for a new version
@@ -179,7 +184,7 @@ This process begins the domain and other non-Core-related updates to the model:
 Once all major content changes have been submitted:
 1. Contributors continue to create pull requests (as above)
 2. TSCs review the designated branch and contribute changes (as needed)
-3. Once all TSCs approve the changes, maintainers add the appropriate tag (e.g., `niem-6.0-release1`) and publish as a Github release
+3. Once all TSCs approve the changes, maintainers add the appropriate tag (e.g., `niem-6.0-release1`) and publish as a GitHub release
 4. TSCs announce release to the [project distribution list](mailto:niemopen@lists.oasis-open.org) for a 14 day review period
 5. Contributors submit feedback via GitHub issues and pull requests
 6. Maintainers review feedback, continuing to get TSC approval before accepting pull requests
@@ -188,25 +193,25 @@ Once all major content changes have been submitted:
 Once all known changes have been submitted for the version and the TSCs are satisfied with the release:
 1. TSCs announce on the [project distribution list](mailto:niemopen@lists.oasis-open.org) their recommendation that the PGB approve the release as a PSD
 2. If the PGB approves the PSD,
- a. Maintainers add the appropriate tag (e.g., `niem-6.0-psd1`) and publish as a Github release
+ a. Maintainers add the appropriate tag (e.g., `niem-6.0-psd1`) and publish as a GitHub release
  b. TSCs announce the PSD to the [project distribution list](mailto:niemopen@lists.oasis-open.org) for a 14 day review period
  c. Contributors submit feedback via GitHub issues and pull requests
  d. Maintainers review feedback, continuing to get TSC approval before accepting pull requests
  e. TSCs review the release and request approval of additional PSDs (as needed)
 ### 4.1.4 Project Specification
-Once the TSCs are satisfied with the PSD:
+Once the TSCs resolve all feedback on the PSD:
 1. TSCs announce on the [project distribution list](mailto:niemopen@lists.oasis-open.org) their recommendation that the PGB approve the PSD as a PS
 2. If the PGB approves the PS (by Special Majority Vote),
- a. Maintainers add the appropriate tag (e.g., `niem-6.0-ps1`) and publish as a Github release
+ a. Maintainers add the appropriate tag (e.g., `niem-6.0-ps1`) and publish as a GitHub release
  b. TSCs announce the PS to the [project distribution list](mailto:niemopen@lists.oasis-open.org)
  c. Open Project Administrators publish the PS on https://docs.oasis-open-projects.org/niem
 ## 4.2 Publishing a major version
-The process of publishing a major version will be similar to [4.1 Publishing a NIEM minor versions](#4.1-publishing-minor-version), with the following additional steps to the Designated Branch stage.
+The process of publishing a major version will be similar to [4.1 Publishing a NIEM minor versions](#4.1-publishing-a-minor-version), with the following steps added at the Designated Branch stage.
 ### 4.2.1 Designated Branch
-5. Harmonization Subcommittee reviews Core and Core-related pull requests
-6. NBAC Harmonization Subcommittee meets regularly for harmonization work
-7. NTAC reviews architectural-related pull requests for the model
-8. NTAC updates the related specifications
+5. Harmonization Subcommittee MUST review and MAY accept Core and Core-related pull requests
+6. Harmonization Subcommittee SHOULD identify opportunities for harmonizing between Domains
+7. NTAC MUST review and MAY accept architecture-related pull requests for the model
+8. NTAC MAY update the related specifications
 
 -------
 
@@ -229,12 +234,12 @@ Remove this note before submitting for publication.)
 
 # Appendix B. Acknowledgments
 
-(Note: A Work Product approved by the TC must include a list of people who participated in the development of the Work Product. This is generally done by collecting the list of names in this appendix. This list shall be initially compiled by the Chair, and any Member of the TC may add or remove their names from the list by request.  
+(Note: A Work Product approved by the TSC must include a list of people who participated in the development of the Work Product. This is generally done by collecting the list of names in this appendix. This list shall be initially compiled by the Chair, and any Member of the TC may add or remove their names from the list by request.  
 Remove this note before submitting for publication.)
 
 ## B.1 Special Thanks
 
-<!-- This is an optional subsection to call out contributions from TC members. If a TC wants to thank non-TC members then they should avoid using the term "contribution" and instead thank them for their "expertise" or "assistance". -->
+<!-- This is an optional subsection to call out contributions from TSC members. If a TSC wants to thank non-TSC members then they should avoid using the term "contribution" and instead thank them for their "expertise" or "assistance". -->
 
 Substantial contributions to this document from the following individuals are gratefully acknowledged:
 
@@ -242,11 +247,11 @@ Participant Name, Affiliation or "Individual Member"
 
 ## B.2 Participants
 
-<!-- A TC can determine who they list here, however, TC Observers must not be listed. It is common practice for TCs to list everyone that was part of the TC during the creation of the document, but this is ultimately a TC decision on who they want to list and not list, and in what order. -->
+<!-- A TSC can determine who they list here, however, TSC Observers must not be listed. It is common practice for TCs to list everyone that was part of the TC during the creation of the document, but this is ultimately a TC decision on who they want to list and not list, and in what order. -->
 
 The following individuals have participated in the creation of this document and are gratefully acknowledged:
 
-**tc-full-name TC Members:**
+**NIEM Technical Architecture Committee (NTAC) TSC Members:**
 
 | First Name | Last Name | Company |
 | :--- | :--- | :--- |
@@ -254,6 +259,7 @@ Jim | Cabral | InfoTrack US
 Tom | Carlson | GTRI
 Christina | Medlin | GTRI
 Scott | Renner | MITRE
+
 Update with the full TSC roster before publishing
 
 -------
@@ -262,6 +268,7 @@ Update with the full TSC roster before publishing
 | Revision | Date | Editor | Changes Made |
 | :--- | :--- | :--- | :--- |
 | niem-pubs-v1.0-pn01 | 2023-01-26 | Jim Cabral | Initial working draft |
+| niem-pubs-v1.0-pn01 | 2023-01-27 | Jim Cabral | Fixed typos, revised terms and added topics for discussion based on comments |
 
 ------
 
