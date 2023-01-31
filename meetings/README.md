@@ -2,8 +2,10 @@
 
 ## NTAC meeting minutes
 
-* [2023-01-17 (draft)](2023-01-17-minutes.md)
-* [2023-01-10](2023-01-10-minutes.md) -- Repo organization, publication process, NIEM 5.2
+* [2023-01-31 agenda](2023-01-31-agenda.md)
+* [2023-01-24 (draft)](2023-01-24-minutes.md)
+* [2023-01-17](2023-01-17-minutes.md) – Publication process, NDR 6 planning
+* [2023-01-10](2023-01-10-minutes.md) – Repo organization, publication process, NIEM 5.2
 * [2023-01-03](2023-01-03-minutes.md) – NIEM 6.0 process
 * 2022-12-20
 * [2022-12-13](2022-12-13-minutes.md) – Literals document, OASIS repos, licensing

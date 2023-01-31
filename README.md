@@ -9,24 +9,25 @@ The NTAC is a Technical Steering Committee within the OASIS Open Project known a
 * Jim Cabral
 * Scott Renner
 
-## Members
+## Active Members
 
   - Aubrey Beach
-  - Jim Cabral
   - Tom Carlson
-  - Chuck Chipman
   - Mike Douklias
   - Katherine Escobar
-  - Lavdjola Farrington
-  - Dave Hardy
   - Mike Hulme
   - Eric Jahn
-  - Vamsi Kondannagari
   - Christina Medlin
-  - Carl Nelson
-  - Scott Renner
   - Duncan Sparrell
   - Jennifer Stathakis
+
+## Inactive Members
+
+  - Chuck Chipman
+  - Lavdjola Farrington
+  - Dave Hardy
+  - Vamsi Kondannagari
+  - Carl Nelson
 
 ## Meetings
 
