@@ -7,7 +7,7 @@
 
 ## Project Note 01
 
-## 27 January 2023
+## 28 January 2023
 
 &nbsp;
 
@@ -84,7 +84,7 @@ Introductory material.
 ### 1.1.1 Definitions of terms
 
 - **NIEMOpen** (or **NIEM**) refers to the NIEM Open Project
-- **NIEM** followed by a version number (e.g., NIEM 6.0) reference data model and related specifications.
+- **NIEM** followed by a version number (e.g., NIEM 6.0) refers tp a reference data model and related specifications.
 - The NIEM **Core** refers to the content of the reference data model that is not associated with a specific Domain.
 - A NIEM **Domain** refers to content of the reference data model that is associated with a specific segment of government or industry.
 
@@ -157,7 +157,7 @@ Each NIEM minor version:
   - `dev`: for incremental changes not yet accepted
 Temporary branches MAY be created as needed (ad hoc)
 ### 3.2.2 Tags
-- Tags SHOULD be used to identify NIEM version and OASIS deliverable stage, e.g. `niem-6.0-ps` to 
+- Tags SHOULD be used to identify NIEM version and OASIS deliverable stage, e.g. `6.0-psd1` to 
 ## 3.3 XML Schemas
 - XML schemas associated with the same NIEM version SHOULD use similar location URIs for maintainability
 ## 3.4 Approval of project artifacts
@@ -175,7 +175,7 @@ This section describes the stages in publishing a minor version and the steps du
 This process begins the domain and other non-Core-related updates to the model:
 1. Maintainers create a designated branch for a new version
 2. Contributors create pull requests for each issue
- a. Each Domain Committee accepts changes to changes in their domain
+ a. Each Domain Committee accepts changes in their domain
  b. Harmonization Subcommittee accepts changes to:
    - Non-domain code tables, adapters and external standards, Core supplements, etc.
    - Other content if the authority (e.g. Domain Committee) is unresponsive
@@ -184,7 +184,7 @@ This process begins the domain and other non-Core-related updates to the model:
 Once all major content changes have been submitted:
 1. Contributors continue to create pull requests (as above)
 2. TSCs review the designated branch and contribute changes (as needed)
-3. Once all TSCs approve the changes, maintainers add the appropriate tag (e.g., `niem-6.0-release1`) and publish as a GitHub release
+3. Once all TSCs approve the changes, maintainers add the appropriate tag (e.g., `6.0-release1`) and publish as a GitHub release
 4. TSCs announce release to the [project distribution list](mailto:niemopen@lists.oasis-open.org) for a 14 day review period
 5. Contributors submit feedback via GitHub issues and pull requests
 6. Maintainers review feedback, continuing to get TSC approval before accepting pull requests
@@ -193,7 +193,7 @@ Once all major content changes have been submitted:
 Once all known changes have been submitted for the version and the TSCs are satisfied with the release:
 1. TSCs announce on the [project distribution list](mailto:niemopen@lists.oasis-open.org) their recommendation that the PGB approve the release as a PSD
 2. If the PGB approves the PSD,
- a. Maintainers add the appropriate tag (e.g., `niem-6.0-psd1`) and publish as a GitHub release
+ a. Maintainers add the appropriate tag (e.g., `6.0-psd1`) and publish as a GitHub release
  b. TSCs announce the PSD to the [project distribution list](mailto:niemopen@lists.oasis-open.org) for a 14 day review period
  c. Contributors submit feedback via GitHub issues and pull requests
  d. Maintainers review feedback, continuing to get TSC approval before accepting pull requests
@@ -202,7 +202,7 @@ Once all known changes have been submitted for the version and the TSCs are sati
 Once the TSCs resolve all feedback on the PSD:
 1. TSCs announce on the [project distribution list](mailto:niemopen@lists.oasis-open.org) their recommendation that the PGB approve the PSD as a PS
 2. If the PGB approves the PS (by Special Majority Vote),
- a. Maintainers add the appropriate tag (e.g., `niem-6.0-ps1`) and publish as a GitHub release
+ a. Maintainers add the appropriate tag (e.g., `6.0-ps1`) and publish as a GitHub release
  b. TSCs announce the PS to the [project distribution list](mailto:niemopen@lists.oasis-open.org)
  c. Open Project Administrators publish the PS on https://docs.oasis-open-projects.org/niem
 ## 4.2 Publishing a major version
@@ -212,6 +212,17 @@ The process of publishing a major version will be similar to [4.1 Publishing a N
 6. Harmonization Subcommittee SHOULD identify opportunities for harmonizing between Domains
 7. NTAC MUST review and MAY accept architecture-related pull requests for the model
 8. NTAC MAY update the related specifications
+### 4.3 Publishing a Domain patch
+Domain Committees MAY choose to issue patches to a major or minor version using this process:
+1. Maintainers create a designated branch for the patch
+2. Contributors create pull requests for each issue
+3. Domain Committee accepts changes in their domain
+4. TSCs review the designated branch and contribute changes (as needed)
+5. Once all TSCs approve the changes, maintainers add the appropriate tag (e.g., `6.0-justice-patch1`) and publish as a GitHub release
+6. TSCs announce release to the [project distribution list](mailto:niemopen@lists.oasis-open.org) for a 14 day review period
+7. Contributors submit feedback via GitHub issues and pull requests
+8. Maintainers review feedback, continuing to get TSC approval before accepting pull requests
+9. TSCs review the release and request approval of additional releases (as needed)
 
 -------
 
@@ -255,10 +266,19 @@ The following individuals have participated in the creation of this document and
 
 | First Name | Last Name | Company |
 | :--- | :--- | :--- |
+Aubrey | Beach | Joint Staff J6
 Jim | Cabral | InfoTrack US
 Tom | Carlson | GTRI
+Mike | Douklias | Joint Saff J6
+Katherine | Escobar | Joint Staff J6
+Mike | Hulme | Unisys
+Eric | Jahn | Alexandria Consulting
+Ptere | Madruga | GTRI
 Christina | Medlin | GTRI
 Scott | Renner | MITRE
+Duncan | Sparrell | sFractal Consulting
+Jennifer | Stathakis | FBI
+Stephen | Sullivan | BAH
 
 Update with the full TSC roster before publishing
 
@@ -269,6 +289,7 @@ Update with the full TSC roster before publishing
 | :--- | :--- | :--- | :--- |
 | niem-pubs-v1.0-pn01 | 2023-01-26 | Jim Cabral | Initial working draft |
 | niem-pubs-v1.0-pn01 | 2023-01-27 | Jim Cabral | Fixed typos, revised terms and added topics for discussion based on comments |
+| niem-pubs-v1.0-pn01 | 2023-01-31 | Jim Cabral | Fixed typos, revised tags, updated roster and added domain patch process |
 
 ------
 
