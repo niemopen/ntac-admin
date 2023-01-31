@@ -17,6 +17,8 @@ The NTAC is a Technical Steering Committee within the OASIS Open Project known a
   - Katherine Escobar
   - Mike Hulme
   - Eric Jahn
+  - Dave Kemp
+  - Vamsi Kondannagari
   - Christina Medlin
   - Duncan Sparrell
   - Jennifer Stathakis
@@ -26,7 +28,6 @@ The NTAC is a Technical Steering Committee within the OASIS Open Project known a
   - Chuck Chipman
   - Lavdjola Farrington
   - Dave Hardy
-  - Vamsi Kondannagari
   - Carl Nelson
 
 ## Meetings
