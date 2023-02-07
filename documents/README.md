@@ -4,6 +4,8 @@
 
 These documents are for NTAC discussion.  They are not expected to become project specifications.  
 
+* [Wildcard augmentations in NIEM 6 (2023-02-03)](WildcardAugmentations-230203.md)
+  
 * [Attribute augmentations and IC-ISM in NIEM 6 (2023-01-18)](AttributeAugmentations-230118.md)
   * [2023-01-11](AttributeAugmentations-230105.md)
 
