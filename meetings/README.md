@@ -2,8 +2,9 @@
 
 ## NTAC meeting minutes
 
-* [2023-02-07 agenda](2023-02-07-agenda.md)
-* [2023-01-31 (draft)](2023-01-31-minutes.md) – PGB recap, CMF and JADN, publication process
+* [2023-02-14 agenda](2023-02-14-agenda.md)
+* [2023-02-07 (draft)](2023-02-07-minutes.md)
+* [2023-01-31](2023-01-31-minutes.md) – PGB recap, CMF and JADN, publication process
 * [2023-01-24](2023-01-24-minutes.md) – Publication process, NDR 6 planning, attribute augmentations 
 * [2023-01-17](2023-01-17-minutes.md) – Publication process, NDR 6 planning
 * [2023-01-10](2023-01-10-minutes.md) – Repo organization, publication process, NIEM 5.2
