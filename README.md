@@ -1,8 +1,13 @@
-[![img](https://github.com/niemopen/oasis-open-project/raw/main/artwork/NIEM-NO-Logo-v5.png)](https://github.com/niemopen/oasis-open-project/blob/main/artwork/NIEM-NO-Logo-v5.png)
+[<img src="https://github.com/niemopen/oasis-open-project/raw/main/artwork/NIEM-NO-Logo-v5.png" alt="img" style="zoom:10%;" />](https://github.com/niemopen/oasis-open-project/blob/main/artwork/NIEM-NO-Logo-v5.png)
 
 # NIEM Technical Architecture Committee (NTAC)
 
-The NTAC is a Technical Steering Committee within the OASIS Open Project known as [NIEMOpen](https://github.com/niemopen/oasis-open-project).  The NTAC is responsible for transforming the business requirements of NIEM into its technical architecture.  Our meeting agenda and minutes are available on the [meeting page](meetings/README.md).  Some of the working notes discussed at NTAC meetings may be found on the [documents](documents/README.md) page.
+The NTAC is a Technical Steering Committee within the OASIS Open Project known as [NIEMOpen](https://github.com/niemopen/oasis-open-project).  The NTAC is responsible for transforming the business requirements of NIEM into its technical architecture.  
+
+* Our meeting agenda and minutes are available on the [Meetings page](meetings/README.md).  
+* Some of the working notes discussed at NTAC meetings may be found on the [Documents page](documents/README.md); 
+  NTAC discussions may also be found in the [Discussions tab](https://github.com/niemopen/ntac-admin/discussions).  
+* Documents intended for publication are on the [Project Notes](project-notes/README.md) page.
 
 ## Co-Chairs
 
