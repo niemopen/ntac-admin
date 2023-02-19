@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<my:Message
+ xmlns:em="http://release.niem.gov/niem/domains/emergencyManagement/6.0a/"
+ xmlns:j="http://release.niem.gov/niem/domains/jxdm/8.0a/"
+ xmlns:nc="http://release.niem.gov/niem/niem-core/6.0a/"
+ xmlns:my="http://example.com/WildcardAug/1.0/">
+  <nc:PersonEducation nc:partialIndicator="true">
+    <nc:EducationDescriptionText>Ph.D.</nc:EducationDescriptionText>
+    <nc:EducationAugmentation>
+      <em:EducationMajorText>English</em:EducationMajorText>
+      <em:EducationMinorText>Computer Science</em:EducationMinorText>
+      <j:EducationTotalYearsText>9</j:EducationTotalYearsText>
+      <nc:CommentText>That is a long time!</nc:CommentText>
+    </nc:EducationAugmentation>
+  </nc:PersonEducation>
+</my:Message>

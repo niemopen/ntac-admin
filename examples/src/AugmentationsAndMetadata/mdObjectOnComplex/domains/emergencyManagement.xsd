@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+  targetNamespace="http://release.niem.gov/niem/domains/emergencyManagement/6.0a/"
+  xmlns:appinfo="http://release.niem.gov/niem/appinfo/6.0a/"
+  xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/"
+  xmlns:em="http://release.niem.gov/niem/domains/emergencyManagement/6.0a/"
+  xmlns:nc="http://release.niem.gov/niem/niem-core/6.0a/"
+  xmlns:structures="http://release.niem.gov/niem/structures/6.0a/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/6.0a/#ReferenceSchemaDocument"
+  version="1"
+  xml:lang="en-US">
+  <xs:annotation>
+    <xs:appinfo>
+      <appinfo:Augmentation appinfo:property="em:EducationMajorText" appinfo:type="nc:EducationType"/>
+      <appinfo:Augmentation appinfo:property="em:EducationMinorText" appinfo:type="nc:EducationType"/>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:import namespace="http://release.niem.gov/niem/niem-core/6.0a/" schemaLocation="../niem-core.xsd"/>
+  <xs:import namespace="http://release.niem.gov/niem/structures/6.0a/" schemaLocation="../utility/structures.xsd"/>
+  <xs:element name="EducationMajorText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A textual representation of the Educational Degree Major (i.e. Business Administration)</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EducationMinorText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>
+        A textual representation of the Educational Degree Minor (i.e. Art History)
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+</xs:schema>
