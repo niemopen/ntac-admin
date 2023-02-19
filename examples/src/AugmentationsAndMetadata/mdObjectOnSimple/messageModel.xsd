@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+  targetNamespace="http://example.com/WildcardAug/1.0/"
+  xmlns:appinfo="http://release.niem.gov/niem/appinfo/6.0a/"
+  xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/"
+  xmlns:my="http://example.com/WildcardAug/1.0/"
+  xmlns:nc="http://release.niem.gov/niem/niem-core/6.0a/"
+  xmlns:niem-xs="http://release.niem.gov/niem/proxy/niem-xs/6.0a/"
+  xmlns:structures="http://release.niem.gov/niem/structures/6.0a/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/6.0a/#ReferenceSchemaDocument"
+  version="1"
+  xml:lang="en-US">
+  <xs:import namespace="http://release.niem.gov/niem/niem-core/6.0a/" schemaLocation="niem-core.xsd"/>
+  <xs:import namespace="http://release.niem.gov/niem/proxy/niem-xs/6.0a/" schemaLocation="adapters/niem-xs.xsd"/>
+  <xs:import namespace="http://release.niem.gov/niem/structures/6.0a/" schemaLocation="../utility/structures.xsd"/>
+  <xs:complexType name="CategoryMetadataType">
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="my:CategoryCode"/>
+          <xs:element ref="my:CategorySourceText"/>
+          <xs:element ref="nc:Date"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MessageType">
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="nc:PersonEducation"/>
+          <xs:element ref="my:CategoryMetadata" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CategoryCode" type="niem-xs:token"/>
+  <xs:element name="CategoryMetadata" type="my:CategoryMetadataType"/>
+  <xs:element name="CategorySourceText" type="niem-xs:string"/>
+  <xs:element name="Message" type="my:MessageType"/>
+  <xs:attribute name="categoryMetadataRef" type="xs:IDREFS"/>
+</xs:schema>

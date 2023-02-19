@@ -6,6 +6,7 @@ The NTAC is a Technical Steering Committee within the OASIS Open Project known a
 
 * Our meeting agenda and minutes are available on the [Meetings page](meetings/README.md).  
 * Some of the working notes discussed at NTAC meetings may be found on the [Documents page](documents/README.md); 
+  Large or complex examples for those discussions may be found on the [Examples page](examples/README.md);
   NTAC discussions may also be found in the [Discussions tab](https://github.com/niemopen/ntac-admin/discussions).  
 * Documents intended for publication are on the [Project Notes](project-notes/README.md) page.
 

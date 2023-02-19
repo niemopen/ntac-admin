@@ -1,0 +1,7 @@
+@prefix my: <http://example.com/WildcardAug/1.0/> .
+@prefix nc: <http://release.niem.gov/niem/niem-core/6.0a/> .
+_:n0 a my:MessageType .
+_:n0 nc:PersonEducation _:n1 .
+_:n1 a nc:EducationType .
+_:n1 nc:EducationDescriptionText "Ph.D." .
+_:n1 nc:EducationProgressIndicator "false" {| my:privacyCode "protected" |}

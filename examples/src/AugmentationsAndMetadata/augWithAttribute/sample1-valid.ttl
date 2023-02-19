@@ -1,0 +1,13 @@
+@prefix em: <http://release.niem.gov/niem/domains/emergencyManagement/6.0a/> .
+@prefix j:  <http://release.niem.gov/niem/domains/jxdm/8.0a/> .
+@prefix my: <http://example.com/WildcardAug/1.0/> .
+@prefix nc: <http://release.niem.gov/niem/niem-core/6.0a/> .
+_:n0 a my:MessageType .
+_:n0 nc:PersonEducation _:n1 .
+_:n1 a nc:EducationType .
+_:n1 nc:EducationDescriptionText "Ph.D." .
+_:n1 em:EducationMinorText "Computer Science" .
+_:n1 j:EducationTotalYearsText _:n2 .
+_:n1 nc:CommentText "That is a long time!" .
+_:n2 j:EducationTotalYearsLiteral "9" .
+_:n2 my:kindOfYears "dog" .
