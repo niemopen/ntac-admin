@@ -9,7 +9,7 @@
   xmlns:structures="http://release.niem.gov/niem/structures/6.0a/"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/6.0a/#ReferenceSchemaDocument"
+  ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/6.0a/#MessageSchemaDocument"
   version="1"
   xml:lang="en-US">
   <xs:import namespace="http://release.niem.gov/niem/niem-core/6.0a/" schemaLocation="niem-core.xsd"/>
