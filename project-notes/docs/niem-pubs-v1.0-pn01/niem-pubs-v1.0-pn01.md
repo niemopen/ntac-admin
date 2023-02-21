@@ -112,7 +112,7 @@ Note: NIEM is not a acronym
 - The NIEM Publication Process MUST comply with [OP requirements](https://www.oasis-open.org/policies-guidelines/open-projects-process/#progression-of-project-work) (see sections 11-14) including:
   - Emailing the [project distribution list](mailto:niemopen@lists.oasis-open.org) to announce any artifacts that require a vote of the PGB to approve (e.g. release/group releases, PSD, PS) at least 14 days in advance of the vote
   - Conforming PSDs and later to the PS template, which includes methods for indicating the relevant designated branches and applicable licenses
-  - Ensuring any code included in a PS is composed only of Releases or Group Releases bearing Implementer-Class Licenses.
+  - Ensuring any software code included in a PS is composed only of Releases or Group Releases bearing Implementer-Class Licenses.
   - Ensuring any other content in a PS was contributed to a project repository
 - The PGB SHOULD charter a Harmonization Subcommittee under the NBAC to review and recommend content changes to the model.
 
@@ -126,19 +126,19 @@ NIEM versions will typically be published annually on a 3-year cycle.  A NIEM ma
 Each NIEM major version:
 - SHOULD include a reference data model, including any changes (additions, deletions, updates) to the model in previous version
 - SHOULD include related specifications (e.g., Code Lists, Common Model Format, Conformance, Conformance Targets Attribute Specification, Message Specification, Naming and Design Rules, JSON binding, XML binding), including any changes (additions, deletions, updates) to the specifications in previous version
+- SHOULD include any normative software code, that is code required for conforming or verifying conformance with the model or specifications
+- MAY include non-normative software code, that is code useful to implementers but not required for conformance  
 - SHOULD progress to OASIS Project Specification(s) (PS)
 - MAY progress to OASIS Standard(s) and be submitted for ISO standard(s)
 
 ## 2.2 Minor Versions
 Each NIEM minor version:
 - MAY include updates to the reference data model in the previous version, including any changes (additions) to the Core or Domains
-- MAY include updates to specifications in previous versions but SHOULD NOT include significant changes to the architecture 
+- MAY include updates to specifications in previous versions but SHOULD NOT include significant changes to the architecture
+- MAY include updates to the normative or non-normative software code in previous version 
 - MAY address any defects in the data model or specifications in errata
 - SHOULD progress to OASIS Project Specification(s) (PS)
 
-**Topics for discussion**:
-1. We should publish an authoritative list of specifications included in NIEM 6.  Should they be listed here or in a separate project note?
-2. Should NIEM versions also include software?
 
 -------
 # 3 Project Artifacts
@@ -245,8 +245,6 @@ Remove this note before submitting for publication.)
 
 # Appendix B. Acknowledgments
 
-(Note: A Work Product approved by the TSC must include a list of people who participated in the development of the Work Product. This is generally done by collecting the list of names in this appendix. This list shall be initially compiled by the Chair, and any Member of the TC may add or remove their names from the list by request.  
-Remove this note before submitting for publication.)
 
 ## B.1 Special Thanks
 
@@ -254,7 +252,13 @@ Remove this note before submitting for publication.)
 
 Substantial contributions to this document from the following individuals are gratefully acknowledged:
 
-Participant Name, Affiliation or "Individual Member"
+| First Name | Last Name | Company |
+| :--- | :--- | :--- |
+Jim | Cabral | InfoTrack US
+Tom | Carlson | GTRI
+Christina | Medlin | GTRI
+Scott | Renner | MITRE
+Duncan | Sparrell | sFractal Consulting
 
 ## B.2 Participants
 
@@ -269,18 +273,18 @@ The following individuals have participated in the creation of this document and
 Aubrey | Beach | Joint Staff J6
 Jim | Cabral | InfoTrack US
 Tom | Carlson | GTRI
-Mike | Douklias | Joint Saff J6
+Mike | Douklias | Joint Staff J6
 Katherine | Escobar | Joint Staff J6
 Mike | Hulme | Unisys
 Eric | Jahn | Alexandria Consulting
-Ptere | Madruga | GTRI
+Peter | Madruga | GTRI
 Christina | Medlin | GTRI
+Joe | Mierwa | Mission Critical Partners
 Scott | Renner | MITRE
+Beth | Smalley | Joint Staff J6
 Duncan | Sparrell | sFractal Consulting
 Jennifer | Stathakis | FBI
 Stephen | Sullivan | BAH
-
-Update with the full TSC roster before publishing
 
 -------
 
@@ -290,6 +294,7 @@ Update with the full TSC roster before publishing
 | niem-pubs-v1.0-pn01 | 2023-01-26 | Jim Cabral | Initial working draft |
 | niem-pubs-v1.0-pn01 | 2023-01-27 | Jim Cabral | Fixed typos, revised terms and added topics for discussion based on comments |
 | niem-pubs-v1.0-pn01 | 2023-01-31 | Jim Cabral | Fixed typos, revised tags, updated roster and added domain patch process |
+| niem-pubs-v1.0-pn01 | 2023-02-21 | Jim Cabral | Incorporated feedback on the scope of artifacts in each publication |
 
 ------
 

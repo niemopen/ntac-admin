@@ -27,6 +27,8 @@ The NTAC is a Technical Steering Committee within the OASIS Open Project known a
   - Vamsi Kondannagari
   - Peter Madruga
   - Christina Medlin
+  - Joe Mierwa
+  - Beth Smalley
   - Duncan Sparrell
   - Jennifer Stathakis
   - Stephen Sullivan
