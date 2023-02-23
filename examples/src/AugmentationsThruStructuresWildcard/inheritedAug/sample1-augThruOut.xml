@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   - Augmentation elements appear throughout the element in inheritance order.
+   - This message is valid against the message schema, but not the reference schema.
+  -->
+<my:Message
+ xmlns:em="http://release.niem.gov/niem/domains/emergencyManagement/6.0a/"
+ xmlns:j="http://release.niem.gov/niem/domains/jxdm/8.0a/"
+ xmlns:nc="http://release.niem.gov/niem/niem-core/6.0a/"
+ xmlns:my="http://example.com/WildcardAug/1.0/">
+  <nc:Vehicle>
+    <j:ItemMerchandiseIndicator>false</j:ItemMerchandiseIndicator>
+    <em:ItemExpirationDate>
+      <nc:YearDate>2022</nc:YearDate>
+    </em:ItemExpirationDate>
+    <nc:ItemDescriptionText>Large</nc:ItemDescriptionText>
+    <nc:ItemModelYearDate>2015</nc:ItemModelYearDate>
+    <j:ConveyanceJointlyRegisteredIndicator>true</j:ConveyanceJointlyRegisteredIndicator>
+    <nc:ConveyanceEngineQuantity>2</nc:ConveyanceEngineQuantity>
+    <j:VehicleGarageIndicator>true</j:VehicleGarageIndicator>
+    <nc:VehicleDoorQuantity>4</nc:VehicleDoorQuantity>
+    <nc:VehicleSeatingQuantity>8</nc:VehicleSeatingQuantity>
+  </nc:Vehicle>
+</my:Message>
