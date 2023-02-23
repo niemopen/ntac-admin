@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+  targetNamespace="http://release.niem.gov/niem/niem-core/6.0a/"
+  xmlns:appinfo="http://release.niem.gov/niem/appinfo/6.0a/"
+  xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/"
+  xmlns:em="http://release.niem.gov/niem/domains/emergencyManagement/6.0a/"
+  xmlns:j="http://release.niem.gov/niem/domains/jxdm/8.0a/"
+  xmlns:nc="http://release.niem.gov/niem/niem-core/6.0a/"
+  xmlns:niem-xs="http://release.niem.gov/niem/proxy/niem-xs/6.0a/"
+  xmlns:structures="http://release.niem.gov/niem/structures/6.0a/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/6.0a/#ReferenceSchemaDocument"
+  version="1"
+  xml:lang="en-US">
+  <xs:import namespace="http://release.niem.gov/niem/domains/emergencyManagement/6.0a/" schemaLocation="domains/emergencyManagement.xsd"/>
+  <xs:import namespace="http://release.niem.gov/niem/domains/jxdm/8.0a/" schemaLocation="domains/jxdm.xsd"/>
+  <xs:import namespace="http://release.niem.gov/niem/proxy/niem-xs/6.0a/" schemaLocation="adapters/niem-xs.xsd"/>
+  <xs:import namespace="http://release.niem.gov/niem/structures/6.0a/" schemaLocation="utility/structures.xsd"/>
+  <xs:complexType name="ConveyanceType">
+    <xs:complexContent>
+      <xs:extension base="nc:ItemType">
+        <xs:sequence>
+          <xs:element ref="nc:ConveyanceEngineQuantity"/>
+          <xs:element ref="nc:ConveyanceAugmentation" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DateType">
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="nc:DateRepresentation"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ItemType">
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="nc:ItemDescriptionText"/>
+          <xs:element ref="nc:ItemModelYearDate"/>
+          <xs:element ref="nc:ItemAugmentation" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TextType">
+    <xs:simpleContent>
+      <xs:extension base="niem-xs:string"/>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="VehicleType">
+    <xs:complexContent>
+      <xs:extension base="nc:ConveyanceType">
+        <xs:sequence>
+          <xs:element ref="nc:VehicleDoorQuantity"/>
+          <xs:element ref="nc:VehicleSeatingQuantity"/>
+          <xs:element ref="nc:VehicleAugmentation" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConveyanceAugmentation" type="structures:AugmentationType"/>
+  <xs:element name="ConveyanceEngineQuantity" type="niem-xs:nonNegativeInteger" nillable="true"/> 
+  <xs:element name="DateRepresentation" abstract="true"/>
+  <xs:element name="ItemAugmentation" type="structures:AugmentationType"/>
+  <xs:element name="ItemDescriptionText" type="nc:TextType" nillable="true"/>
+  <xs:element name="ItemModelYearDate" type="niem-xs:gYear" nillable="true"/>
+  <xs:element name="Vehicle" type="nc:VehicleType" nillable="true"/>
+  <xs:element name="VehicleAugmentation" type="structures:AugmentationType"/>
+  <xs:element name="VehicleDoorQuantity" type="niem-xs:nonNegativeInteger" nillable="true"/>
+  <xs:element name="VehicleSeatingQuantity" type="niem-xs:nonNegativeInteger" nillable="true"/>
+  <xs:element name="YearDate" type="niem-xs:gYear" substitutionGroup="nc:DateRepresentation"/>
+</xs:schema>
