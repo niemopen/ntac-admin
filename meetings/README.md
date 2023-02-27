@@ -4,8 +4,9 @@
 
 ## Meeting minutes
 
-* [2023-02-21 agenda](docs/2023-02-21-agenda.md)
-* [2023-02-14 (draft)](docs/2023-02-14-minutes.md) – CTAS, wildcard augmentations, NIEMOpen Publication Process
+* [2023-02-28 agenda](docs/2023-02-28-agenda.md)
+* [2023-02-21 (draft)](docs/2023-02-21-minutes.md) -- NIEMOpen Publication Process, wildcard augmentation, NTAC process
+* [2023-02-14](docs/2023-02-14-minutes.md) – CTAS, wildcard augmentations, NIEMOpen Publication Process
 * [2023-02-07](docs/2023-02-07-minutes.md) – Wildcard augmentations, NIEM 6 publication timeline
 * [2023-01-31](docs/2023-01-31-minutes.md) – PGB recap, CMF and JADN, publication process
 * [2023-01-24](docs/2023-01-24-minutes.md) – Publication process, NDR 6 planning, attribute augmentations 
