@@ -129,6 +129,7 @@ The NBAC manages the content of the NIEM reference data model, which is made up 
 - **PSD**: Project Specification Draft
 - **PS**: Project Specification
 - **TSC**: Technical Steering Committee
+- **WD**: Working Draft
 
 Note: NIEM is no longer an acronym.
 
@@ -155,7 +156,7 @@ The NIEM data model follows a variation to semantic versioning practices.  This 
 
 - Domains carry content to represent their own communities of interest.  Domain subcommittees are responsible for the needs of their communities, are closer to their user base, and are given greater flexibility in managing their content.
 
-As such, the versioning strategy that the NIEM model employs is:
+As such, the versioning strategy that the NIEM model employs is that only the Core namespace follows semantic versioning:
 
 - Major versions MAY include breaking changes to any content (including Core and domains) and the architecture (defined by the technical specifications).
 
@@ -216,15 +217,15 @@ Each NIEM minor version:
 
 Each NIEM patch version:
 
+- MUST increment the third digit in the version number.
+
 - MAY include only non-breaking updates to the model, with changes published in the original or in new namespaces as appropriate.
 
 - MAY include only non-breaking updates to the technical specifications, with changes that do not affect the conformance of the model or of NIEM community message specifications.
 
 - MAY include changes such as bug fixes, new domains or new content for existing domains or Core, and alternate representations of existing content as a means of making updates without affecting backwards compatibility.
 
-- MUST be published to GitHub as a release.
-
-- MAY be nominated by a TSC to the PGB as a subsequent revision of an approved PS.
+- SHOULD progress to OASIS Project Specification.
 
 ## 2.4 Versioning Strategy
 
@@ -246,7 +247,7 @@ Namespace version numbers in the model:
 
 ## 3.1 Artifact identifiers
 
-- NIEM artifacts with identifiers (e.g., model schemas, specifications) SHOULD use https://docs.oasis-open.org/ns/niem as the root URI for resolvability.
+- NIEM artifacts with identifiers (e.g., model schemas, specifications) SHOULD use https://docs.oasis-open.org/ns/niemopen as the root URI for resolvability.
 
 ## 3.2 NIEM model artifacts
 
@@ -292,7 +293,7 @@ Change comparison documents:
 
 ## 4.1 Official Publication Site
 
-Approved project work products MUST be published at https://docs.oasis-open.org/niem, including:
+Approved project work products MUST be published at https://docs.oasis-open.org/niemopen, including:
 
 - Project Specifications and Project Specification Drafts
 - Project Notes and Project Note Drafts
@@ -300,10 +301,13 @@ Approved project work products MUST be published at https://docs.oasis-open.org/
 
 ## 4.2 GitHub Repositories
 
-GitHub repositories:
+NIEMOpen GitHub repositories:
 
 - SHOULD be used as the primary means for sharing working versions of technical specification and model project artifacts with project members.
 - SHOULD reside under https://github.com/niemopen.
+- SHOULD provide an approved PSD as a draft GitHub release.
+- SHOULD provide an approved PS as a GitHub release.
+- SHOULD be leveraged for tracking issues that affect the model and specifications.
 
 The model specification and technical specification repositories are listed below:
 
@@ -355,9 +359,9 @@ The following is general information that will apply during the development and 
 For each major or minor version, the NTAC, NBAC, and PGB SHOULD coordinate and prepare a schedule at the beginning of the year to include:
 
 - Deadline for major content submissions from the domains and community
-- Deadline to recommend approval of PSD 01 by PGB
+- Deadline to recommend approval of PSD 01 by the PGB
 - Option for a public review of PSD 01
-- Deadline to request a Special Majority Vote to approve PS by PGB
+- Deadline to request a Special Majority Vote to approve PS by the PGB
 
 The schedule MAY continue to be adjusted throughout the year as needed.
 
@@ -368,8 +372,7 @@ The schedule MAY continue to be adjusted throughout the year as needed.
 - All issues SHOULD be addressed during the development process of a NIEM version.
   - Some issues MAY NOT be able to be resolved.
   - It is the responsibility of the TSCs to decide which issues are out of scope, will not be able to meet the schedule, may have negative effects on the community, or otherwise cannot or should not be resolved as requested.
-- Public review comments from the community MUST be sent by the original reviewer to the [NIEMOpen Project Feedback List](https://lists.oasis-open-projects.org/g/niemopen-comment) or otherwise cannot be accepted.
-- Public review comments from TSC members MUST be set to the appropriate TSC distribution list.
+- Public review comments from the community MUST be posted by the original reviewer to either the [NIEMOpen Project Feedback List](https://lists.oasis-open-projects.org/g/niemopen-comment) or a NIEMOpen GitHub issue;  otherwise, the feedback cannot be accepted.
 
 ## 5.3 Updating model and technical specification artifacts
 
@@ -385,24 +388,23 @@ Data stewards SHOULD also be appointed for code set namespaces and any other nam
 Before becoming approved by the NBAC, data stewards:
 
 - SHOULD have a signed iCLA and eCLA so that contributions can be accepted.
-- SHOULD have a GitHub user account so issues can be opened or responded to and pull requests can be made or assigned.
+- SHOULD have a GitHub user account so issues can be opened or responded to and pull requests can be made or assigned for review.
 
 ## 5.5 Public Reviews
 
 Public reviews are optional for OASIS Open Projects before the OASIS Standard approval stage.
 
-OASIS requirements for a Public Review include:
+Requirements for a Public Review of a NIEMOpen PSD include:
 
-- Initial public reviews are minimum 30 days.
-- Subsequent public reviews are required for any material changes that result from an initial public review.
-- Subsequent public reviews are a minimum of 15 days and are restricted in scope to only the new changes since the previous review.
-- An initial public review for a Project Specification must be held on a PGB-approved Project Specification Draft.
+- Initial public reviews MUST be held for a minimum of 15 days.
+- Subsequent public reviews MAY be held for any material changes that result from an initial public review.
+- Subsequent public reviews MUST be held a minimum of 7 days and are restricted in scope to only the new changes since the previous review.
 
 The following are the steps for a NIEM PSD Public Review:
 
 ### 5.5.1 Decision to hold a public review
 
-- The NBAC or NTAC SHOULD hold a Simple Majority Vote to recommend a public review for a draft being submitted to the PGB for approval as a PSD.
+- The NBAC or NTAC SHOULD decide via lazy consensus whether to recommend a public review for an upcoming PSD.
 - The NBAC or NTAC MUST record the draft title, version number, and commit link or tag in meeting minutes.
 - The NBAC or NTAC MAY capture additional emails for public review notification beyond the OASIS membership.
 - If the PSD and public review are approved by the PGB, the PGB MUST submit a combined request for [publishing a draft and first public review](https://www.oasis-open.org/project-administration-support-requests/form-request-a-first-public-review/) to OASIS admin.
@@ -412,38 +414,30 @@ The following are the steps for a NIEM PSD Public Review:
 - OASIS admin MUST announce the public review to the OASIS membership and any external stakeholders identified by the PGB.
 - OASIS admin MAY also announce the public review to other public mailing lists or venues.
 
-### 5.5.3 Call for IPR disclosure
+### 5.5.3 Feedback
 
-- TSC issues a call for IPR disclosure for the draft
-
-### 5.5.4 Feedback
-
-- Non-project members MUST send any comments to the [NIEMOpen Project Feedback List](https://lists.oasis-open-projects.org/g/niemopen-comment) or otherwise the feedback cannot be not accepted.
-- NIEMOpen members must post comments to the [NIEMOpen general mailing list](https://lists.oasis-open-projects.org/g/niemopen).
-
-### 5.5.5 Handling feedback
-
+- Non-project members MUST post any comments to the [NIEMOpen Project Feedback List](https://lists.oasis-open-projects.org/g/niemopen-comment) or to NIEMOpen GitHub issues; otherwise, the feedback cannot be not accepted.
 - NIEMOpen MUST acknowledge the receipt of each comment.
 - NIEMOpen MUST maintain a [comment resolution log](#34-comment-resolution-logs) (CSV) for all public review feedback.
 - NIEMOpen MUST post the disposition of each comment to its mailing list at the end of the review period.
 
-### 5.5.6 Material changes resulting from a public review
+### 5.5.4 Material changes resulting from a public review
 
 If material changes result from a public review, then:
 
 - The NTAC or NBAC MUST clearly identify changes to the draft via a [change comparison document](#35-change-comparison-documents).
 - The PGB MUST hold a Full Majority Vote to approve revisions as the next version of the PSD, e.g., PSD 02.
-- NIEM MUST hold a subsequent 15-day minimum public review (limited in scope to only the new changes) by submitting a request to [publish a draft with subsequent public review](https://www.oasis-open.org/project-administration-support-requests/form-request-a-second-or-subsequent-public-review/) to OASIS admin.
-- NIEM MUST continue the public review cycle until only non-material remain or all issues have been otherwise addressed.
+- NIEM MAY hold a subsequent 7-day minimum public review limited in scope to only the new changes by submitting a request to [publish a draft with subsequent public review](https://www.oasis-open.org/project-administration-support-requests/form-request-a-second-or-subsequent-public-review/) to OASIS admin.
+- NIEM MAY continue the public review cycle until only non-material remain or all issues have been otherwise addressed.
 
-### 5.5.7 Only non-material changes resulting from a public review
+### 5.5.5 Only non-material changes resulting from a public review
 
 If only non-material changes results from a public review, then:
 
-- NIEM MUST provide a [change comparison document](#35-change-comparison-documents) identifying all non-material changes
-- NIEM MAY proceed with approval of draft as Project Note or Project Specification
+- NIEM MUST provide a [change comparison document](#35-change-comparison-documents) identifying all non-material changes.
+- NIEM MAY proceed with approval of the draft as a PS.
 
-## 5.6 Submitting a draft for approval to the PGB
+## 5.6 Submitting a Working Draft for approval to the PGB
 
 When submitting a draft to the PGB for approval as a PSD or PS:
 
@@ -458,29 +452,29 @@ Once issues targeted for the current version have been resolved or the schedule 
 
 ### 5.7.1 Recommendation for approval
 
-- The NBAC or NTAC, and the repository maintainers, SHOULD review the designated branch and make final adjustments as needed.
-- The NBAC or NTAC SHOULD decide via lazy consensus when the designated branch is ready to recommend to the PGB as a Project Specification Draft.
-- The NBAC or NTAC SHOULD decide via a Full Majority Vote if they wish to hold a public review of the draft once approved.
-- The NBAC or NTAC SHOULD notify the PGB on the [PGB mailing list](mailto:niemopen-pgb@lists.oasis-open.org) of their recommendations for a PSD and, if applicable, a public review.  This should include:
+- The NBAC or NTAC, and the repository maintainers, SHOULD review the WD and make final adjustments as needed.
+- The NBAC or NTAC SHOULD decide via lazy consensus when the WD is ready to recommend to the PGB as a Project Specification Draft.
+- The NBAC or NTAC SHOULD decide via lazy consensus if they wish to hold a public review of the draft once approved.
+- The NBAC or NTAC SHOULD notify the PGB on the [PGB mailing list](mailto:niemopen-pgb@lists.oasis-open.org) of their recommendations for a PSD and, if applicable, a public review.  This notification should include:
   - title, version, and GitHub "Download ZIP" link
-  - comment resolution log CSV if applicable (a public review has already been held)
+  - comment resolution log CSV if applicable (if a public review has already been held)
 
 ### 5.7.2 Approval process
 
 - The PGB SHOULD notify the NIEMOpen community via the [project mailing list](mailto:niemopen@lists.oasis-open.org) at least 14 days in advance once they have decided to are ready to initiate a PGB vote or consensus call on the nominated PSD.
-- The PGB SHOULD meet or hold a call for objections to approve the recommendation for PSD.
+- The PGB SHOULD meet or hold a call for objections via a [poll](https://lists.oasis-open-projects.org/g/niemopen-pgb/addpoll) to approve the recommendation for PSD.
 - Once approved, the PGB SHOULD submit a request to an OASIS admin to [publish the PSD](https://www.oasis-open.org/form-publish-a-draft-document/) or, if applicable, to [publish the PSD with a first public review](https://www.oasis-open.org/form-request-a-first-public-review/).
 
 ### 5.7.3 Follow-up responsibilities
 
-- Maintainers SHOULD add the appropriate tag (e.g., `6.0-psd01`) to the commit once the draft has been finalized and published to ensure there are no non-material changes required during the publication.
+- Maintainers SHOULD add the appropriate tag (e.g., `6.0-psd01`) to the commit once the draft has been finalized and published by OASIS admin to ensure there are no non-material changes required during the publication.
 - Maintainers SHOULD publish the commit on the `dev` branch as a GitHub draft release.
 
 The PSD approval process will iterate until there are no further material changes left to be made to the draft.
 
 ## 5.8 Approving a Project Specification
 
-Once the TSCs resolved feedback on the PSD and prepared the necessary artifacts:
+Once the TSCs have resolved feedback on the PSD and have prepared the necessary artifacts:
 
 ### 5.8.1 Recommendation for approval
 
@@ -497,7 +491,7 @@ Once the TSCs resolved feedback on the PSD and prepared the necessary artifacts:
 - The PGB SHOULD submit to OASIS Admin either:
   - a [request for a Special Majority Vote to approve a Specification](https://www.oasis-open.org/project-administration-support-requests/form-request-a-special-majority-vote-to-approve-a-specification/)
   - a [request for a Special Majority Vote to approve a Specification with non-material changes](https://www.oasis-open.org/project-administration-support-requests/form-request-a-special-majority-vote-to-approve-a-specification-with-non-material-changes/)
-- A Special Majority Vote MUST be open for at least 7 days, and the voting window may be extended.
+- A Special Majority Vote MUST be open for at least 7 days.
 
 Note that the date an approved vote closes is considered the specification publication date.
 
@@ -533,12 +527,12 @@ Domain data stewards wishing to update their content SHOULD prepare changes in o
 
 #### 6.1.1.2 Review
 
-A maintainer SHOULD review the submitted changes and perform quality assurance (QA) checks, which include:
+A maintainer SHOULD review the submitted changes and perform quality assurance (QA) checks and other model updates, which include:
 
 - Ensuring that the data steward has not modified content outside of the domain's control.
 - Ensuring that the submitted changes conform to NDR reference schema document (REF) rules.
 - Checking that the changes follow standard NIEM practices and conventions.
-- Bumping version numbers of other domains or namespaces as necessary due to resolve dependency issues.
+- Bumping version numbers of other domains or namespaces as necessary to resolve dependency issues.
 - Identifying and coordinating efforts to address impacts to other domains or namespaces, other than required version number bumps.
 - Looking for obvious cases of overlap with existing content.
 
@@ -556,12 +550,13 @@ For approved change requests submitted as a change request spreadsheet:
 - A maintainer SHOULD generate updated XML schemas and submit a pull request.
 - A maintainer SHOULD request a pull request review from the data steward to verify that the schema updates are correct.
 - A maintainer SHOULD accept the pull request once approved by the data steward.
+- A maintainer SHOULD post the final updated version of the change request spreadsheet to the file repository in the NBAC mailing list group resources.
 
 #### 6.1.1.4 Approval
 
 Once changes are accepted, a maintainer SHOULD update the content in any tools needed to build reference schemas, subset schemas, and artifacts for the version.
 
-Domain data stewards MAY repeat the process as needed within the allowed time frame for updates.
+Domain data stewards MAY repeat the process as needed within the permitted time frame for updates.
 
 ### 6.1.2 Other non-Core namespace content updates (breaking)
 
@@ -598,6 +593,7 @@ Breaking changes, which are not permitted, include:
 - Removing properties and types
 - Renaming properties and types
 - Removing a property from a type
+- Changing the sequence of a property in a type
 - Changing the type or substitution group of a property
 - Changing the parent or base type of a type
 - Changing or removing enumeration or other facet values on a type
@@ -607,19 +603,26 @@ Breaking changes, which are not permitted, include:
 
 Maintainers and the Harmonization Subcommittee SHOULD fulfill similar roles defined in [6.1.2 Other non-Core namespace content updates (breaking)](#612-other-non-core-namespace-content-updates-breaking) for content managed by the NBAC.  Both will have the additional responsibility of ensuring that the content changes are non-breaking.
 
+Non-breaking changes MAY be made directly in the Core namespace instead of a new additive-only namespace for Core changes.  Note:
+
+- If there are non-breaking changes to Core, the Core version number MUST be bumped to the appropriate minor version.
+- If Core is bumped in a minor version, many of the other namespaces in the model will need to have their versions bumped as well due to dependency issues.
+- This is a key change to the NIEM versioning strategy prior to OASIS in which any change to Core outside of major versions were automatically published to a separate Core Supplement namespace.  Updating Core directly allows immediate integration of changes and requires less migration work in the future for message specification designers.
+
 ## 6.2 Publishing a major version
 
 The process of publishing a major version of the data model follow many of the same processes as in [6.1 Publishing a NIEM minor versions](#61-publishing-a-minor-version).  Additions or differences to the process include:
 
 ### 6.2.1 Core content changes (breaking)
 
-The NBAC and the Harmonization Subcommittee (HSC) will also need to manage additional issues related to Core:
+The NBAC, the Harmonization Subcommittee (HSC), and the NTAC will also need to manage additional issues related to Core:
 
 - The maintainer SHOULD prepare submitted content issues in the model repository for discussion.
 - The HSC SHOULD meet regularly to address Core and cross-domain issues.
 - The HSC SHOULD review Core-related pull requests.
 - The HSC SHOULD make recommendations to the NBAC via the [NBAC mailing list](mailto:niemopen-nbactsc@lists.oasis-open-projects.org), with recommendations becoming approved after the given period of time if no concerns were raised.
 - The NTAC SHOULD review architecture-related pull requests for the model.
+- The NTAC SHOULD submit pull requests to make changes to utility schemas in the model based on changes to the NDR or other technical specifications.
 
 ### 6.2.2 NTAC specification changes (breaking)
 
@@ -629,7 +632,7 @@ The NTAC will manage updates to technical specifications primarily during major 
 - MAY include changes to normative rules
 - MAY include changes to Schematron or other validation languages or code to check for model and message specification conformance to the technical specification
 - SHOULD include sample test cases when updating Schematron rules to support testing
-- MAY require changes to the model to remain in conformance
+- MAY require related changes to the model to remain in conformance
 
 Major specification changes:
 
@@ -641,10 +644,9 @@ Major specification changes:
 The NBAC, NTAC, or domain subcommittees MAY choose to issue patches to a major or minor version following the processes above, with the following adjustments:
 
 - Maintainers SHOULD create a designated branch for the patch.
-- Patches SHOULD add a third digit place to the version number, starting at 1, e.g., `6.0.1`.
-- Patch versions that call for special recognition (e.g., a new domain or very significant bug fixes) MAY be nominated to the PGB for publication as an OASIS release.
-- Other patch versions do not need PGB approval and SHOULD finish progression as a GitHub release (only requires TSC approval).
-- NMO SHOULD announce the finalized patch version as an OASIS or GitHub release to the [project distribution list](mailto:niemopen@lists.oasis-open.org)
+- Patch versions SHOULD add a third digit place to the version number, starting at 1, e.g., `6.0.1`.
+- Patch versions SHOULD be submitted to the PGB for approval as a new PS.
+- Patch versions SHOULD be reviewed by the original content submitters before publication but do not require public review.
 
 -------
 
@@ -701,9 +703,9 @@ The following individuals have participated in the creation of this document and
 
 # Appendix C. Revision History
 
-| Revision            | Date | Editor     | Changes Made    |
-| :------------------ | :--- | :--------- | :-------------- |
-| niem-pubs-v1.0-pn01 | TBD  | Jim Cabral and Christina Medlin | Initial version |
+| Revision | Date | Editor | Changes Made |
+| :------- | :--- | :----- | :----------- |
+| niem-pubs-v1.0-pn01 | 2023-03-28  | Jim Cabral and Christina Medlin | Initial version |
 
 -------
 
