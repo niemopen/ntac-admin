@@ -1,6 +1,6 @@
-# Message Specifications Project Note 6.0
+# Message Specifications Project Note 1.0
 
-- Version 6.0
+- Version 1.0
 - April 10, 2023
 - NIEM Technical Architecture Committee (NTAC)
 
