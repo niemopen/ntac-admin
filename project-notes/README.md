@@ -6,6 +6,6 @@
 
 These documents are intended to be published as Project Notes.
 
-* [Understanding the NIEM Technical Architecture](docs/tech-arch-v1.0-pn02/tech-arch-v1.0-pn02.md)
-
-* [NIEMOpen Publication Process Version 1.0](docs/niem-pubs-v1.0-pn01/niem-pubs-v1.0-pn01.md)
+- [Understanding the NIEM Technical Architecture](docs/tech-arch-v1.0-pn02/tech-arch-v1.0-pn02.md)
+- [NIEMOpen Publication Process Version 1.0](docs/niem-pubs-v1.0-pn01/niem-pubs-v1.0-pn01.md)
+- [NIEM Message Specifications Project Note 1.0](docs/message-specifications-v1.0-pn01/message-specifications-v1.0-pn01.md)
