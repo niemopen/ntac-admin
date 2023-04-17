@@ -502,6 +502,12 @@ Note that the date an approved vote closes is considered the specification publi
   - SHOULD add the appropriate tag (e.g., `6.0-ps01`) to the new commit.
   - SHOULD publish the new commit as a GitHub release.
 
+## 5.9 Submitting a Project Specification for approval as an OASIS Standard
+
+- The PGB MAY decide to submit a Project Specification for approval as an OASIS Standard according to the conditions documented under OASIS Open Projects [OASIS Standard Approval and External Submissions](https://www.oasis-open.org/policies-guidelines/open-projects-process/#oasis-standard-approval-external-submissions).  These conditions include:
+  - Three Statements of Use referencing the Project Specification.
+  - A 60-day Public Review and follow-up subsequent reviews if material changes are required.
+
 -------
 
 # 6 Publication Processes
