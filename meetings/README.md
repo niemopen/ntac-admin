@@ -4,8 +4,9 @@
 
 ## Meeting minutes
 
-* [2023-04-25 agenda](docs/2023-04-25-agenda.md)
-* [2023-04-18 (draft)](docs/2023-04-18-minutes.md) – Publication process, NDR overhaul, related specifications, CMFTool, simplicity
+* [2023-05-02 agenda](docs/2023-05-02-agenda.md)
+* [2023-04-25 (draft)](docs/2023-04-25-minutes.md)
+* [2023-04-18](docs/2023-04-18-minutes.md) – Publication process, NDR overhaul, related specifications, CMFTool, simplicity
 * [2023-04-11](docs/2023-04-11-minutes.md) – Publication process, NDR overhaul, related specifications, CMFTool, funding
 * [2023-04-04](docs/2023-04-04-minutes.md) – Publication process, technical architecture PN, NDR overhaul, related specifications
 * [2023-03-28](docs/2023-03-28-minutes.md) – Publication process, wildcard augmentations, technical architecture PN, NDR overhaul
