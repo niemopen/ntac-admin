@@ -478,7 +478,7 @@ Once the TSCs have resolved feedback on the PSD and have prepared the necessary 
 
 ### 5.8.1 Recommendation for approval
 
-- NIEM SHOULD confirm all public review comments have been appropriately processed.
+- The NBAC or NTAC SHOULD confirm all public review comments have been appropriately processed.
 - The NBAC or NTAC SHOULD decide via lazy consensus when to nominate the designated branch to the PGB as a PS.
 - The NBAC or NTAC SHOULD submit their nomination to the PGB by posting to the [PGB mailing list](mailto:niemopen-pgb@lists.oasis-open-projects.org), including
   - title, version, and GitHub download zip link
