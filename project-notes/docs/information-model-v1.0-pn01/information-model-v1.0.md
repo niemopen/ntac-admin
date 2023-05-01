@@ -102,7 +102,7 @@ Note: NIEM is not an acronym
 
 -----
 
-![Interoperability](interoperability.png)
+![Interoperability](interoperability.jpg)
 
 Source: http://niem.github.io/reference/iepd/
 
@@ -323,7 +323,7 @@ equivalent to NIEM XSD.
 The first step was to create an abstract model of the information captured in NIEM XSD.
 This model of NIEM models is the *NIEM metamodel*, depicted below as a UML diagram:
 
-![NIEM Metamodel](Understanding-Metamodel.svg)
+![NIEM Metamodel](../tech-arch-v1.0-pn02/Understanding-Metamodel.svg)
 
 An alternate approach to designing a technology-neutral modeling formalism is to
 model the information used by applications to satisfy user requirements,
@@ -355,7 +355,7 @@ the minimum *information* necessary for applications to understand and display t
 * a track point is a set of latitude, longitude, elevation and time
 (assume for illustration that elevation is not always available)
 
-![Serialization](serialization-asg.jpg)
+![Serialization](asg-serialization.jpg)
 
 ```
 Trk = Record                        // GPS Track
@@ -444,11 +444,11 @@ The RDF interpretation of the attribute `my:secret` attribute as an ordinary pro
 
 But that's wrong.  We don't want to say that the *name* "Superman" is secret.  The secret is the *relationship* between the name "Superman" and the person who is also named "Clark Kent".  So we want to make a statement about a statement; we need a RDF triple about a triple.  As a diagram, we want
 
-   <img src="Understanding-RDFfigure-2.jpg" alt="Understanding-RDFfigure-2" style="zoom:80%;" />
+   <img src="../tech-arch-v1.0-pn02/Understanding-RDFfigure-2.jpg" alt="Understanding-RDFfigure-2" style="zoom:80%;" />
 
    instead of 
 
-   <img src="Understanding-RDFfigure-3.jpg" alt="Understanding-RDFfigure-3" style="zoom:80%;" />
+   <img src="../tech-arch-v1.0-pn02/Understanding-RDFfigure-3.jpg" alt="Understanding-RDFfigure-3" style="zoom:80%;" />
 
 [RDF-star]([RDF-star and SPARQL-star (w3.org)](https://www.w3.org/2021/12/rdf-star.html)) (or RDF*) is a specification published by the W3C's *RDF-DEV Community Group* that provides better support for *reification;* that is, RDF triples about triples.  NIEM 6 uses RDF-star to represent relationship properties. In NIEM 6, the RDF-star interpretation of the NIEM XML above looks like:
 
