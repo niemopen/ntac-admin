@@ -483,7 +483,7 @@ Once the TSCs have resolved feedback on the PSD and have prepared the necessary 
 - The NBAC or NTAC SHOULD submit their nomination to the PGB by posting to the [PGB mailing list](mailto:niemopen-pgb@lists.oasis-open-projects.org), including
   - title, version, and GitHub download zip link
   - comment resolution log CSV if a public review was held
-  - list of non-material changes, if the submission is not already an approved PSD
+  - list of non-material changes made since the last approved PSD, along with an affirmation from the TSC that they judge the changes non-material
 
 ### 5.8.2 Approval process
 
