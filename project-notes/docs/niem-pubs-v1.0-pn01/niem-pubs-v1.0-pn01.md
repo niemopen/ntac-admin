@@ -507,6 +507,7 @@ Note that the date an approved vote closes is considered the specification publi
 - The PGB MAY decide to submit a Project Specification for approval as an OASIS Standard according to the conditions documented under OASIS Open Projects [OASIS Standard Approval and External Submissions](https://www.oasis-open.org/policies-guidelines/open-projects-process/#oasis-standard-approval-external-submissions).  These conditions include:
   - Three Statements of Use referencing the Project Specification.
   - A 60-day Public Review and follow-up subsequent reviews if material changes are required.
+  - Submission to OASIS Members with a 14-day call for consent as an OASIS Standard.
 
 -------
 
