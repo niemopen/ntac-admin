@@ -247,7 +247,7 @@ Namespace version numbers in the model:
 
 ## 3.1 Artifact identifiers
 
-- NIEM artifacts with identifiers (e.g., model schemas, specifications) SHOULD use https://docs.oasis-open.org/ns/niemopen as the root URI for resolvability.
+- NIEM artifacts with identifiers (e.g., model schemas, specifications) SHOULD use https://docs.oasis-open.org/niemopen/ns as the root URI for resolvability.
 
 ## 3.2 NIEM model artifacts
 
