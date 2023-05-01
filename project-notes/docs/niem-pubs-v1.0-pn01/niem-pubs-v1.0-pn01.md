@@ -461,7 +461,7 @@ Once issues targeted for the current version have been resolved or the schedule 
 
 ### 5.7.2 Approval process
 
-- The PGB SHOULD notify the NIEMOpen community via the [project mailing list](mailto:niemopen@lists.oasis-open.org) at least 14 days in advance once they have decided to are ready to initiate a PGB vote or consensus call on the nominated PSD.
+- The PGB SHOULD notify the NIEMOpen community via the [project mailing list](mailto:niemopen@lists.oasis-open.org) at least 14 days in advance once they are ready to initiate a PGB vote or consensus call on the nominated PSD.
 - The PGB SHOULD meet or hold a call for objections via a [poll](https://lists.oasis-open-projects.org/g/niemopen-pgb/addpoll) to approve the recommendation for PSD.
 - Once approved, the PGB SHOULD submit a request to an OASIS admin to [publish the PSD](https://www.oasis-open.org/form-publish-a-draft-document/) or, if applicable, to [publish the PSD with a first public review](https://www.oasis-open.org/form-request-a-first-public-review/).
 
