@@ -488,7 +488,7 @@ Once the TSCs have resolved feedback on the PSD and have prepared the necessary 
 ### 5.8.2 Approval process
 
 - Once the PGB is ready to hold a [Special Majority Vote](https://www.oasis-open.org/policies-guidelines/oasis-defined-terms-2018-05-22/#dSpecialMajority), the PGB MUST make an announcement to the [NIEMOpen Project mailing list](mailto:niemopen@lists.oasis-open-projects.org) at least 14 days in advance.
-- The PGB SHOULD submit to OASIS Admin either:
+- The PGB MUST submit to OASIS Admin either:
   - a [request for a Special Majority Vote to approve a Specification](https://www.oasis-open.org/project-administration-support-requests/form-request-a-special-majority-vote-to-approve-a-specification/)
   - a [request for a Special Majority Vote to approve a Specification with non-material changes](https://www.oasis-open.org/project-administration-support-requests/form-request-a-special-majority-vote-to-approve-a-specification-with-non-material-changes/)
 - A Special Majority Vote MUST be open for at least 7 days.
