@@ -102,14 +102,6 @@ Note: NIEM is not an acronym
 
 -----
 
-![Interoperability](interoperability.jpg)
-
-Source: http://niem.github.io/reference/iepd/
-
-
-
------
-
 # 2 NIEM technical architecture through version 5
 
 These are the assumptions and goals of the NIEM technical architecture through NIEM 5.0.
@@ -325,9 +317,35 @@ This model of NIEM models is the *NIEM metamodel*, depicted below as a UML diagr
 
 ![NIEM Metamodel](../tech-arch-v1.0-pn02/Understanding-Metamodel.svg)
 
+## 3.2 Information Model
+
 An alternate approach to designing a technology-neutral modeling formalism is to
 model the information used by applications to satisfy user requirements,
-as opposed to modeling NIEM XSD in a way that can be translated to other data formats.
+as opposed to modeling NIEM XSD and translating that to other data formats.
+
+![Interoperability](interoperability.jpg)
+
+As the NIEM interoperability diagram illustrates, messages (IEPs) are exchanged between
+applications running on systems. Source and consumer users interact with applications through
+user interfaces, not directly with message data. Information models directly define
+the application state required to support the required user interfaces, and only indirectly
+the messages used to communicate that state. An IM supports messages in any data format
+that can represent a small set of information types, including unnamed data formats such
+as "bits in boxes" diagrams used to define the TCP/IP packets that carry all Internet
+communication.
+
+Application state defined by an information model is independent of the data formats
+used to communicate it, and thus information can be losslessly converted across
+all supported data formats. This allows a message to be displayed in verbose formats
+familiar to developers such as XML and JSON, but transmitted using formats such as
+CBOR, Avro, Protobuf or Thrift that are optimized for performance, once
+serialization rules for the core information types are defined for each format.
+
+![Serialization](asg-serialization.jpg)
+
+## 3.3 Information Metamodel
+
+![JADN Metamodel](jadn-metamodel.jpg)
 
 To illustrate the difference, consider a data sample from the (non-NIEM)
 [GPS Exchange Format](https://en.wikipedia.org/wiki/GPS_Exchange_Format):
@@ -355,7 +373,6 @@ the minimum *information* necessary for applications to understand and display t
 * a track point is a set of latitude, longitude, elevation and time
 (assume for illustration that elevation is not always available)
 
-![Serialization](asg-serialization.jpg)
 
 ```
 Trk = Record                        // GPS Track
@@ -375,7 +392,7 @@ Longitude = Number{-180..180}
 Time = Integer /time                // Seconds since midnight before Jan 1, 1970
 ```
 
-![JADN Metamodel](jadn-metamodel.jpg)
+
 
 The second step was to design a NIEM data exchange specification for the metamodel.  The result is the *Common Model Format*, a NIEM message specification for NIEM models.  A model in CMF is a NIEM message.  It has an exact equivalent in NIEM XSD, and can be serialized as NIEM XML or NIEM JSON.  For example, the XSD schema fragment for `nc:PersonName` above looks like this in CMF XML
 ```
