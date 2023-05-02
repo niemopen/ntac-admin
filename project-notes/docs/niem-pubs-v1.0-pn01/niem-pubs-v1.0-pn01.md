@@ -247,7 +247,7 @@ Namespace version numbers in the model:
 
 ## 3.1 Artifact identifiers
 
-- NIEM artifacts with identifiers (e.g., model schemas, specifications) SHOULD use https://docs.oasis-open.org/ns/niemopen as the root URI for resolvability.
+- NIEM artifacts with identifiers (e.g., model schemas, specifications) SHOULD use https://docs.oasis-open.org/niemopen/ns as the root URI for resolvability.
 
 ## 3.2 NIEM model artifacts
 
@@ -461,7 +461,7 @@ Once issues targeted for the current version have been resolved or the schedule 
 
 ### 5.7.2 Approval process
 
-- The PGB SHOULD notify the NIEMOpen community via the [project mailing list](mailto:niemopen@lists.oasis-open.org) at least 14 days in advance once they have decided to are ready to initiate a PGB vote or consensus call on the nominated PSD.
+- The PGB MUST notify the NIEMOpen community via the [project mailing list](mailto:niemopen@lists.oasis-open.org) at least 14 days in advance once they are ready to initiate a PGB vote or consensus call on the nominated PSD.
 - The PGB SHOULD meet or hold a call for objections via a [poll](https://lists.oasis-open-projects.org/g/niemopen-pgb/addpoll) to approve the recommendation for PSD.
 - Once approved, the PGB SHOULD submit a request to an OASIS admin to [publish the PSD](https://www.oasis-open.org/form-publish-a-draft-document/) or, if applicable, to [publish the PSD with a first public review](https://www.oasis-open.org/form-request-a-first-public-review/).
 
@@ -478,17 +478,17 @@ Once the TSCs have resolved feedback on the PSD and have prepared the necessary 
 
 ### 5.8.1 Recommendation for approval
 
-- NIEM SHOULD confirm all public review comments have been appropriately processed.
+- The NBAC or NTAC SHOULD confirm all public review comments have been appropriately processed.
 - The NBAC or NTAC SHOULD decide via lazy consensus when to nominate the designated branch to the PGB as a PS.
 - The NBAC or NTAC SHOULD submit their nomination to the PGB by posting to the [PGB mailing list](mailto:niemopen-pgb@lists.oasis-open-projects.org), including
   - title, version, and GitHub download zip link
   - comment resolution log CSV if a public review was held
-  - list of non-material changes, if the submission is not already an approved PSD
+  - list of non-material changes made since the last approved PSD, along with an affirmation from the TSC that they judge the changes non-material
 
 ### 5.8.2 Approval process
 
-- Once the PGB is ready to hold a Special Majority Vote, the PGB MUST make an announcement to the [NIEMOpen Project mailing list](mailto:niemopen@lists.oasis-open-projects.org) at least 14 days in advance.
-- The PGB SHOULD submit to OASIS Admin either:
+- Once the PGB is ready to hold a [Special Majority Vote](https://www.oasis-open.org/policies-guidelines/oasis-defined-terms-2018-05-22/#dSpecialMajority), the PGB MUST make an announcement to the [NIEMOpen Project mailing list](mailto:niemopen@lists.oasis-open-projects.org) at least 14 days in advance.
+- The PGB MUST submit to OASIS Admin either:
   - a [request for a Special Majority Vote to approve a Specification](https://www.oasis-open.org/project-administration-support-requests/form-request-a-special-majority-vote-to-approve-a-specification/)
   - a [request for a Special Majority Vote to approve a Specification with non-material changes](https://www.oasis-open.org/project-administration-support-requests/form-request-a-special-majority-vote-to-approve-a-specification-with-non-material-changes/)
 - A Special Majority Vote MUST be open for at least 7 days.
@@ -507,6 +507,7 @@ Note that the date an approved vote closes is considered the specification publi
 - The PGB MAY decide to submit a Project Specification for approval as an OASIS Standard according to the conditions documented under OASIS Open Projects [OASIS Standard Approval and External Submissions](https://www.oasis-open.org/policies-guidelines/open-projects-process/#oasis-standard-approval-external-submissions).  These conditions include:
   - Three Statements of Use referencing the Project Specification.
   - A 60-day Public Review and follow-up subsequent reviews if material changes are required.
+  - Submission to OASIS Members with a 14-day call for consent as an OASIS Standard.
 
 -------
 
