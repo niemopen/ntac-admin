@@ -1,0 +1,6 @@
+<xs:complexType name="CrashDriverType">
+  <xs:complexContent>
+    <xs:extension base="nc:PersonType">
+      <xs:sequence>
+        <xs:element ref="j:DriverLicense" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>

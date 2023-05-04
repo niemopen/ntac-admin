@@ -1,0 +1,108 @@
+im:RoleOfAlienAbstract (abstract)
+  in class scr:ScreenedAlienType
+it:RoleOfOrganizationCategory (type: it:RoleOfOrganizationCategoryType)
+  in class it:RoleOfOrganizationCategoryType
+it:RoleOfOrganizationCategoryDescriptionText (type: nc:TextType)
+  in class it:RoleOfOrganizationCategoryType
+it:RoleOfParty (type: it:PartyType)
+  in class it:AgentType
+  in class it:BrokerType
+  in class it:BuyerType
+  in class it:CarrierType
+  in class it:ConsigneeType
+  in class it:ConsignorType
+  in class it:ConsolidatorType
+  in class it:ConsortiumCarrierType
+  in class it:ContainerTerminalOperatorType
+  in class it:DeconsolidatorType
+  in class it:ExporterType
+  in class it:ImporterType
+  in class it:IntermediateCarrierType
+  in class it:IntermediateConsigneeType
+  in class it:ManufacturerType
+  in class it:MasterType  (base nc:OrganizationType)
+  in class it:NonVesselOperatingCarrierType
+  in class it:NotifyPartyType
+  in class it:ProcessingEstablishmentType  (base nc:OrganizationType)
+  in class it:SellerType
+  in class it:StevedoreType
+  in class it:StuffingEstablishmentType
+  in class it:UNDGContactType
+it:RoleOfPartyCategory (type: it:PartyIDCategoryType)
+  in class it:PartyIDCategoryType
+it:RoleOfPartyCategoryDescriptionText (type: nc:TextType)
+  in class it:PartyIDCategoryType
+j:RoleOfBinary (type: nc:BinaryType)
+  in class j:EvidenceType
+j:RoleOfBiometric (type: biom:BiometricDataType)
+  in class j:EvidenceType
+mo:RoleOfFacility (type: nc:FacilityType)
+  in class mo:TargetType
+mo:RoleOfUnit (type: mo:UnitType)
+  in class mo:TargetType
+nc:RoleOfDocument (type: nc:DocumentType)
+  in class nc:PublicationType
+  in class nc:ReportType
+nc:RoleOfItem (type: nc:ItemType)
+  in class j:CrashVehicleType
+  in class j:EvidenceType
+  in class j:ToolType
+  in class j:VictimType
+  in class nc:EquipmentType
+  in class nc:WeaponType
+nc:RoleOfOrganization (type: nc:OrganizationType)
+  in class j:CriminalOrganizationType
+  in class j:LesseeType
+  in class j:LessorType
+  in class j:LienHolderType
+  in class j:PawnBrokerType
+  in class j:SubjectType
+  in class j:VehicleBranderType
+  in class j:VictimType
+nc:RoleOfPerson (type: nc:PersonType)
+  in class cyber:UserType
+  in class em:FirstResponderType
+  in class em:PatientType
+  in class em:ResponderType
+  in class em:ServiceCallOriginatorType
+  in class hs:CaseParticipantType
+  in class hs:CaseworkerType
+  in class hs:ChildType
+  in class hs:ChildVictimType
+  in class hs:CourtEventAttendeeType
+  in class hs:JuvenileType
+  in class hs:MissingChildRelatedPersonType
+  in class hs:PatientType
+  in class hs:PetitionerType
+  in class hs:PharmacistType
+  in class hs:RequiredPartyType
+  in class hs:SeriousHabitualOffenderType
+  in class hs:StudentType
+  in class im:ICEEmployeeType
+  in class im:ICEOfficerType
+  in class j:CrashDriverType
+  in class j:CrashNonMotoristType
+  in class j:CrashPassengerType
+  in class j:CrashPersonType
+  in class j:CrashVehicleOccupantType
+  in class j:DeporteeType
+  in class j:EnforcementOfficialType
+  in class j:HearingInvestigatorType
+  in class j:JudicialOfficialType
+  in class j:JurorType
+  in class j:LesseeType
+  in class j:LessorType
+  in class j:LienHolderType
+  in class j:MissingPersonType
+  in class j:OtherInvolvedPersonType
+  in class j:PanelMemberType
+  in class j:ParticipantType
+  in class j:PawnBrokerType
+  in class j:RegisteredOffenderType
+  in class j:StaffMemberType
+  in class j:SubjectType
+  in class j:VictimType
+  in class j:WitnessType
+  in class lrn-dev:StudentType
+  in class mo:TargetType
+  in class scr:ScreeningPersonType
