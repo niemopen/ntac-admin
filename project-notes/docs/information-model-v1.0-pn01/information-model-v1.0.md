@@ -39,9 +39,12 @@ David Kemp (d.kemp@cyber.nsa.gov), [NSA-CCC](https://www.nsa.gov/About/Cybersecu
 *Is there any??*
 
 #### Abstract:
-This document explains the objectives and assumptions of the technical architecture in NIEM 5,
-and describes the NTAC's progress through the end of 2022.
-It is intended to express the consensus of the NTAC on past decisions and future direction.
+This document extends ["Understanding the NIEM Technical Architecture"](../tech-arch-v1.0-pn02/tech-arch-v1.0-pn02.md)
+describing a new modeling approach, comparing and contrasting it with the objectives and assumptions
+of the technical architecture in NIEM 5, and proposing it as a supplement to the NTAC's future direction.
+In contrast to the XSD and CMF approach of directly defining message data, an information model
+defines the state used by NIEM applications separately from a set of domain-independent mechanisms for
+communicating state between applications.
 
 #### Status:
 This is a Non-Standards Track Work Product. The patent provisions of the OASIS IPR Policy do not apply.
@@ -92,9 +95,11 @@ The second section describes the NTAC's progress through the end of 2022.
 
 - **CMF**: Common Model Format
 - **CTAS**: Conformance Target Attribute Specification
+- **JADN**: JSON Abstract Data Notation
 - **NMO**: NIEM Management Office TSC
 - **NBAC**: NIEM Business Architecture Committee TSC
 - **NTAC**: NIEM Technical Architecture Committee TSC
+- **NTA**: NIEM Technical Architecture Project Note
 - **PGB**: Project Governing Board
 - **TSC**: Technical Steering Committee
 
@@ -102,200 +107,42 @@ Note: NIEM is not an acronym
 
 -----
 
-# 2 NIEM technical architecture through version 5
+# 2 NIEM technical architecture
 
-These are the assumptions and goals of the NIEM technical architecture through NIEM 5.0.
+These are the assumptions and goals of the NIEM technical architecture through NIEM 5.0, along with differences
+encountered when using an information model:
 
-## 2.1 Contract-based machine-to-machine data interoperability
-
-NIEM provides a framework for designing data exchange specifications.
-These specifications – which are built *using* NIEM and in *conformance* to NIEM,
-but are not themselves a *part* of NIEM – are a contract between the developers of
-producing and consuming systems.  This contract provides a data model that specifies
-the mandatory and optional content of the exchanged data and defines the meaning of that content.
-The primary purpose is to establish a common understanding among developers,
-who write software that must correctly handle the exchanged data, hence "machine-to-machine".  
-
-A NIEM-based data exchange specification is known as a *message specification*,
-and NIEM data (that is, data which conforms to a NIEM-based data exchange specification)
-exchanged at runtime is known as a *message*.  Use of NIEM is not, however, restricted
-to an enterprise service bus or other message-passing architecture.
-NIEM can also be used to define the content of an information resource retrieved
-from the web (and in that context, *resource* is a synonym for *message*),
-the content passed through an API, etc.
-
-   > A NIEM message was originally known as an *information exchange package (IEP)*,
-   > a term derived from the Federal Enterprise Architecture (2005).
-   > A message specification was originally known as an *information exchange package documentation (IEPD).*
-   > These terms are still in widespread use within the NIEM community today, and will not go away soon (if ever).  
-
-The content of a NIEM message may also be directly presented to human consumers,
-but this is not the main purpose of NIEM.
-
-## 2.2 Reuse of definitions from community-agreed data models
-
-NIEM also provides a framework for communities to create data models for concepts that are useful
-in many data exchange specifications. These community models are typically not *complete* for any exchange.
-Instead, they reflect the community's judgement on which defintions are *worth the trouble of agreement*.
-The NIEM core model contains definitions found useful by the NIEM community as a whole.
-NIEM domain models reuse the core, extending it with defintions found useful by the domain community.
-The core model plus the domain models comprise the "NIEM model".  Data exchange designers reuse
-definitions from the core and domain models, adding such definitions as are required for their exchanges
-but not (so far!) found worthy of inclusion in the NIEM model.  
-
-Additional communities (subdomains?) between NIEM domains and data exchange specifications are possible.
-These are not presently part of NIEM governance, and indeed could form and publish community models
-without participating in NIEM governance.
-
-NIEM conformance rules state that no domain may needlessly replicate a definition found in the core,
-and no data exchange designer may needlessly replicate a definition found in the NIEM model.
-If it's in the model and satisfies your business need, you must use it, instead of inventing
-your own component with your own name.
-
-## 2.3 XSD as a data model formalism
-
-XML Schema is the modeling formalism for all existing versions of NIEM.
-The NIEM Naming and Design Rules (NDR) amplify and constrain this use of XSD, for three reasons:
-
-   1. For reuse:  To permit XML schema documents created by independent communities to be composed
-into a single data exchange specification, and to forbid schema constructs that needlessly limit such reuse. 
-   2. For semantics:  To impose meaning on the definitions and declarations in a NIEM XML schema document,
-and on the elements and attributes in a NIEM XML message.  NIEM has always defined the meaning of XSD and XML in terms of the RDF conceptual model.  The most recent versions of the NDR also specify the RDF entailed by NIEM XSD and XML in a way that enables machine conversion to RDF (see #10 below).
-   3. For developer convenience:  To forbid, where consistent with #1 and #2, constructs in XSD
-that cause difficulties with COTS XML tooling.
-
-## 2.4 One modeling formalism, two kinds of data model
-
-All existing NIEM models have a normative form that is represented in XSD.  Each model is formed by assembling a set of XML schema documents into a schema.  There are two kinds of model, with important differences.
-
-   1. The NIEM core and domain data models are *reference models*.  They are formed by assembling a *reference schema document set* into a *reference schema*.  Reference models provide names and definitions for concepts, and relations among them.  They are characterized by "optionality and over-inclusiveness".  That is, they define more concepts than needed for any particular data exchange specification, without cardinalty constraints, so it is easy to select the concepts that are needed and omit the rest.  For example, here is the XSD for `PersonType` in the NIEM core.  (In all examples, closing tags are sometimes truncated or omitted for clarity.)
-
-      ```
-      <xs:complexType name="PersonType">
-        <xs:annotation>
-          <xs:documentation>A data type for a human being.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-          <xs:extension base="structures:ObjectType">
-            <xs:sequence>
-              <xs:element ref="nc:PersonAccentText" minOccurs="0" maxOccurs="unbounded"/>
-              <xs:element ref="nc:PersonAgeDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
-              <xs:element ref="nc:PersonAgeMeasure" minOccurs="0" maxOccurs="unbounded"/>
-              <xs:element ref="nc:PersonBirthDate" minOccurs="0" maxOccurs="unbounded"/>
-              <!-- 78 properties omitted -- explore them at https://niem.github.io/model/5.0/nc/PersonType/ -->
-              <xs:element ref="nc:PersonHomeContactInformation" minOccurs="0" maxOccurs="unbounded"/>
-      ```
-
-      Reference models also omit unnecessary range or length constraints on property datatypes. For example, longitude in degrees is restricted to the range (-180,180], but many other properties are unconstrained decimals, strings, etc. 
-
-      A reference model provides concept definitions in some domain of discourse.  In this way it fulfils some of the roles of an ontology.  It has an equivalent representation in RDF using owl:Class, owl:DataProperty, owl:ObjectProperty, rdfs:Datatype, rdfs:comment, rdfs:range, rdfs:subClassOf, and rdfs:subPropertyOf.  (See #10, below.)  At present, reference models are not derived from upper ontologies (such as BFO), and do not include axioms with properties like owl:inverseOf, but such things are possible and there is work proposed in that direction (NSF Open Knowledge Network).
-
-   2. The data model in a data exchange specification is a *message model.*  These models include cardinality constraints and datatype restrictions to define the content of a particular data exchange.  They are formed by assembling *subsets* of the reference schema documents that define the NIEM model, plus one or more *extension schema documents* that contain any exchange-specific definitions.   For example, the XSD for `PersonType` in a message model might look like this:
-
-      ```
-      <xs:complexType name="PersonType">
-        <xs:annotation>
-          <xs:documentation>A data type for a human being.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-          <xs:extension base="structures:ObjectType">
-            <xs:sequence>
-              <xs:element ref="nc:PersonAgeMeasure" minOccurs="1" maxOccurs="1"/>
-              <xs:element ref="nc:PersonName" minOccurs="1" maxOccurs="1"/>
-      ```
-
-      By creating this subset of the reference schema, the designer of the message model omitted 81 of the 83 properties for PersonType, and specified that the two selected properties must each appear exactly once.
-
-## 2.5 Automated validation of NIEM XSD and XML
-
-Many of the rules in the NDR are expressed in Schematron.  This supports partial automated conformance validation of the schema documents used in NIEM reference and message models.  (Evaluation of other rules, such as the *no-replication* rule mentioned in #2 above, require human judgement.)
-
-The schema documents comprising a message model can be used to assess the validity of a NIEM XML message during testing or at runtime.  The *schema subset rule* – any XML that is valid against a subset schema must also be valid against the complete reference schema – assures congruence between message and reference models.
-
-## 2.6 NIEM data is self-describing
-
-Every element and attribute in NIEM XML data can be interpreted as a URI for the XSD definition of that component.  For example, given a NIEM message like this:
-
-   ```
-   <my:Message
-     xmlns:my="http://example.com/MyMessageType/"
-     xmlns:nc="http://release.niem.gov/niem/niem-core/5.0/">
-     <nc:Person>
-       <nc:PersonName>
-         <nc:PersonFullName>John Doe</nc:PersonFullName>
-   ```
-
-the URI for `nc:PersonName` is composed of the namespace URI plus the element QName:  `http://release.niem.gov/niem/niem-core/5.0/#PersonName`.  That resource is available via HTTP GET, and the specified fragment in the resource returned is:
-
-   ```
-   <xs:element name="PersonName" type="nc:PersonNameType" nillable="true">
-     <xs:annotation>
-       <xs:documentation>A combination of names and/or titles by which a person is known.</xs:documentation>
-     </xs:annotation>
-   </xs:element>
-   ```
-
-Extension schema documents (which are not part of the NIEM model) are often not directly available via HTTP GET.  However, data exchange designers are encouraged to publish these schema documents in a [public repository](https://www.niem.gov/about-niem/message-exchange-package-mep-registry-repository) or an access-controlled repository of message specifications (also known as IEPDs).  In addition, the namespace identifier of a schema document offers a starting point for finding its author (when the rules of URI ownership are followed).  As a result, anyone in possession of a NIEM message can always retrieve defintions for part of the content (that defined by the NIEM model), and can usually at least discover a point of contact to ask for the remaining definitions.
-
-## 2.7 Developers have the data exchange specification
-
-While NIEM data is self-describing, the developers of producing and consuming applications are still presumed to have the entire data exchange specification, including all schema documents for the message model.  Consuming applications may ignore data they don't care about, but should not need to ignore data they don't understand.
-
-## 2.8 Compact serialization is supported
-
-NIEM XML is fully compatible with the W3C's *Efficient Extensible Interchange (EXI)* recommendtion.  EXI exploits the message schema (known by producers and consumers in advance) to produce bitstreams very near the information-theoretic minimum for the information content.  Other compact serializations may be supported through a two-way transform between a particular message in the new format and in the canonical, self-describing NIEM XML format.  Through this approach we may in the future see a NIEM Protobuf, NIEM CBOR, etc.
-
-## 2.9 Version architecture supports independent change
-
-The schema documents comprising a reference or message model, once published, may not be changed.  Any revision becomes a new schema document with a distinct namespace identifier.  As a result, a model change by one group never forces a change by any other group.  
-
-## 2.10 NIEM XSD and XML has an RDF expression
-
-NIEM provides a mappng from NIEM XSD to RDF.  For example, the above schema fragment for `nc:PersonName` maps to the following RDF:
-```
-@prefix nc <http://release.niem.gov/niem/niem-core/5.0/> .
-nc:PersonName
-    a owl:ObjectProperty ;
-    rdfs:range nc:PersonNameType ;
-    rdfs:comment "A combination of names and/or titles by which a person is known." .
-```
-NIEM also provides a mapping from NIEM XML to RDF.  For example, the above message fragment beginning with `<my:Message>` maps to the following RDF:
-```
-@prefix my <http://example.com/MyMessageType/> .
-@prefix nc <http://release.niem.gov/niem/niem-core/5.0/> .
-_:n0 a my:MessageType .
-_:n0 nc:Person _:n1 .
-_:n1 a nc:PersonType .
-_:n1 nc:PersonName :_n2 .
-_:n2 a nc:PersonNameType .
-_:n2 nc:PersonFullName "John Doe" .
-```
-The RDF for the model and the RDF for the message together form the *knowledge graph representation* of NIEM data, which can be depicted like this:
-<img src="Understanding-RDFfigure-1.jpg" alt="Understanding-RDFfigure" style="zoom:80%;" />
-
-## 2.11 NIEM JSON also has an RDF expression
-
-NIEM 5 includes a specification for NIEM JSON.  NIEM JSON data is also self-describing, has an RDF expression, and can be converted to and from the equivalent NIEM XML.  NIEM 5 uses the JSON-LD specification to accomplish those goals.  The message fragment beginning with `<my:Message>`, expressed as NIEM JSON, looks like
-```
-{
- "@context": {
-  "my": "http://example.com/MyMessageType/#",
-  "nc": "http://release.niem.gov/niem/niem-core/5.0/#"
- },
- "my:Message": {
-  "nc:Person": {
-   "nc:PersonName": {
-    "nc:PersonFullName": "John Doe"
-   }
-  }
- }
-}
-```
-The `@context` object can be replaced with a URI.  The `@context` pair may also be omitted entirely if it is known through the communications channel (for instance, via a HTTP link header).
-
-NIEM 5 uses message models in XSD to specify the meaning of NIEM JSON data.  For example, the compact IRI `nc:PersonName`expands to `http://release.niem.gov/niem/niem-core/5.0/#PersonName`, which as we have seen is the identifier for the XSD or RDF fragment defining that component.  NIEM 5 also uses message models in XSD to validate NIEM JSON data.  A NIEM JSON message is valid if the equivalent NIEM XML message is valid when assessed against the message schema.
-
-Like all JSON-LD data, NIEM JSON messages may be processed as plain JSON.  An important goal is to avoid constructs that would appear alien to a "plain JSON" developer.
+1. **Contract-based machine-to-machine data interoperability**: as described in the NTA.
+2. **Reuse of definitions from community-agreed data models**: as described in the NTA,
+substituting *information models* for *data models*.
+3. **XSD as a data model formalism**: JADN is an information model formalism intended to capture all the XSD
+constraints necessary for applications achieve their goals and requirements, but not necessarily replicate the
+exact data objects defined by XSD. JADN can support both multiple "styles" of XML and type-specific serialization
+options, but the latter is in general contrary to the goal of abstraction. Where byte-for-byte backward compatibility
+with NIEM 5.0 XML data is a requirement, an XSD data model may be needed in addition to a format-agnostic information model.
+4. **One modeling formalism, two kinds of data model**: as described in the NTA. Both permissive (reference)
+and restrictive (message) information models can be defined, and an information model can be defined as the
+intersection of two sub-models to assist developers in ensuring a strict subset relationship between them.
+5. **Automated validation of NIEM XSD and XML**: The JADN language natively supports validation of type and 
+property names. NDR requirements beyond that may require additional tool development. 
+6. **NIEM data is self-describing**: An information model formally defines equivalence between multiple data models,
+some of which may be self-describing. This allows information to be optimized for machine-to-machine performance
+while also being represented in a readable format for human consumption. The information model can include links
+to XSD component definition URIs in type definitions without including those URIs in message data.
+7. **Developers have the data exchange specification**: as described in the NTA.
+8. **Compact serialization is supported**: The purpose of information modeling is to support equivalence between
+multiple data representations. Both uncompressed XML and EXI representations are possible, as are purpose-built
+machine-optimized formats such as CBOR, Thrift, Protobuf, and Avro. JADN currently defines both verbose and concise
+JSON formats, though the latter may be applied more as an illustration of machine optimization principles than
+as an operational message format.
+9. **Version architecture supports independent change**: as described in the NTA.
+10. **NIEM XSD and XML has an RDF expression**: as in bullet 6, information type definitions can include URI links
+to [ontology nodes](https://www.w3.org/TR/2012/REC-owl2-overview-20121211/), whether the triples are represented
+in XML-RDF, JSON-LD, Turtle, or another syntax.
+11. **NIEM JSON also has an RDF expression**: the information modeling approach explicitly isolates message data
+from ontology by keeping the linkage in the reference model.
+In this way it applies to all data formats, not just those with a specific "linked data" dialect.
+But a JSON-LD message format could be defined along with simple JSON and machine-optimized JSON if desired.
 
 -----
 
@@ -304,7 +151,6 @@ Like all JSON-LD data, NIEM JSON messages may be processed as plain JSON.  An im
 The next section describes the work of the NTAC after the publication of NIEM 5 and before the formation of the OASIS NIEMOpen project.
 
 ## 3.1 Metamodel and Common Model Format (CMF)
-
 
 The existing NIEM community is accustomed to working with NIEM models in XSD.
 They will need XSD modeling in NIEM 6.  However, XSD is not a natural modeling
@@ -319,27 +165,23 @@ This model of NIEM models is the *NIEM metamodel*, depicted below as a UML diagr
 
 ## 3.2 Information Model
 
-An alternate approach to designing a technology-neutral modeling formalism is to
-model the information used by applications to satisfy user requirements,
-as opposed to modeling NIEM XSD and translating that to other data formats.
+Another technology-neutral modeling approach is to model the information used
+by applications rather than generalizing NIEM XSD to additional data formats.
+The distinction is illustrated in the NIEM interoperability diagram --
+XSD and CMF model the IEPs exchanged between applications while an information model
+defines application state independently of IEPs.
 
 ![Interoperability](interoperability.jpg)
 
-As the NIEM interoperability diagram illustrates, messages (IEPs) are exchanged between
-applications running on systems. Source and consumer users interact with applications through
-user interfaces, not directly with message data. Information models directly define
-the application state required to support the required user interfaces, and only indirectly
-the messages used to communicate that state. An IM supports messages in any data format
-that can represent a small set of information types, including unnamed data formats such
-as "bits in boxes" diagrams used to define the TCP/IP packets that carry all Internet
-communication.
-
-Application state defined by an information model is independent of the data formats
-used to communicate it, and thus information can be losslessly converted across
-all supported data formats. This allows a message to be displayed in verbose formats
-familiar to developers such as XML and JSON, but transmitted using formats such as
-CBOR, Avro, Protobuf or Thrift that are optimized for performance, once
-serialization rules for the core information types are defined for each format.
+As the diagram shows, messages are exchanged between applications running on systems.
+Users interact with applications through user interfaces, not through IEP data.
+Information models define the application state required to support the required user
+interfaces, and messages are serialized representations of that state.
+Application state is independent of the data formats used to communicate it, which
+is equivalent to saying that messages can be losslessly converted among all supported
+data formats. This allows a message to be displayed in a verbose format such as
+XML or JSON that is meaningful to developers but communicated using using a
+performance-optimized format such as CBOR, Avro, Protobuf or Thrift.
 
 ![Serialization](asg-serialization.jpg)
 
