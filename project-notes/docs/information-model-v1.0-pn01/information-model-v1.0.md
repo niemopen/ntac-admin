@@ -40,11 +40,10 @@ David Kemp (d.kemp@cyber.nsa.gov), [NSA-CCC](https://www.nsa.gov/About/Cybersecu
 
 #### Abstract:
 This document extends ["Understanding the NIEM Technical Architecture"](../tech-arch-v1.0-pn02/tech-arch-v1.0-pn02.md)
-describing a new modeling approach, comparing and contrasting it with the objectives and assumptions
-of the technical architecture in NIEM 5, and proposing it as a supplement to the NTAC's future direction.
-In contrast to the XSD and CMF approach of directly defining message data, an information model
-defines the state used by NIEM applications separately from a set of domain-independent mechanisms for
-communicating state between applications.
+by describing information modeling, comparing it with the objectives and assumptions of the 
+technical architecture in NIEM 5 and proposing it to supplement the NTAC's future direction.
+An information model defines the state used by NIEM applications accompanied by a set of
+business-domain-independent mechanisms for communicating state between applications.
 
 #### Status:
 This is a Non-Standards Track Work Product. The patent provisions of the OASIS IPR Policy do not apply.
@@ -79,8 +78,6 @@ For complete copyright information please see the full Notices section in an App
 
 # 1 Introduction
 
-The first section of this paper explains the objectives and assumptions of the technical architecture in NIEM 5.
-The second section describes the NTAC's progress through the end of 2022.
 
 ## 1.1 Glossary
 
@@ -105,25 +102,47 @@ The second section describes the NTAC's progress through the end of 2022.
 
 Note: NIEM is not an acronym
 
+## 1.2 Information Modeling
+
+The NIEM interoperability diagram provides the context for distinguishing
+between data and information modeling:
+
+![Interoperability](interoperability.jpg)
+
+As the diagram shows, users accomplish their mission by interacting with applications
+through user interfaces, while applications communicate with other applications
+by exchanging messages. Data models define the content of messages while information
+models define the application state (information) needed to support user interface
+requirements.
+
+![Information-reqts](information-reqts.jpg)
+
+Application information is independent of the data formats used to communicate it;
+messages are serialized representations of that information. This is equivalent
+to saying that messages can be losslessly converted among all supported
+data formats, which allows a message to be displayed in a verbose format such as
+XML or JSON that is meaningful to developers but communicated among applications
+using using a performance-optimized format such as CBOR, Avro, Protobuf or Thrift.
+
 -----
 
 # 2 NIEM technical architecture
 
-These are the assumptions and goals of the NIEM technical architecture through NIEM 5.0, along with differences
-encountered when using an information model:
+These are the assumptions and goals of the NIEM technical architecture through NIEM 5.0,
+along with the differences that arise when using an information model:
 
 1. **Contract-based machine-to-machine data interoperability**: as described in the NTA.
 2. **Reuse of definitions from community-agreed data models**: as described in the NTA,
 substituting *information models* for *data models*.
-3. **XSD as a data model formalism**: JADN is an information model formalism intended to capture all the XSD
-constraints necessary for applications achieve their goals and requirements, but not necessarily replicate the
+3. **XSD as a data model formalism**: the JADN information model formalism captures all the XSD
+constraints necessary for applications achieve their goals and requirements but does not necessarily replicate the
 exact data objects defined by XSD. JADN can support both multiple "styles" of XML and type-specific serialization
 options, but the latter is in general contrary to the goal of abstraction. Where byte-for-byte backward compatibility
 with NIEM 5.0 XML data is a requirement, an XSD data model may be needed in addition to a format-agnostic information model.
 4. **One modeling formalism, two kinds of data model**: as described in the NTA. Both permissive (reference)
 and restrictive (message) information models can be defined, and an information model can be defined as the
 intersection of two sub-models to assist developers in ensuring a strict subset relationship between them.
-5. **Automated validation of NIEM XSD and XML**: The JADN language natively supports validation of type and 
+5. **Automated validation of NIEM XSD and XML**: the JADN language natively supports validation of type and 
 property names. NDR requirements beyond that may require additional tool development. 
 6. **NIEM data is self-describing**: An information model formally defines equivalence between multiple data models,
 some of which may be self-describing. This allows information to be optimized for machine-to-machine performance
@@ -132,21 +151,23 @@ to XSD component definition URIs in type definitions without including those URI
 7. **Developers have the data exchange specification**: as described in the NTA.
 8. **Compact serialization is supported**: The purpose of information modeling is to support equivalence between
 multiple data representations. Both uncompressed XML and EXI representations are possible, as are purpose-built
-machine-optimized formats such as CBOR, Thrift, Protobuf, and Avro. JADN currently defines both verbose and concise
-JSON formats, though the latter may be applied more as an illustration of machine optimization principles than
-as an operational message format.
+machine-optimized formats which are intended to be more efficiently processed as well as more compact.
+JADN currently defines both verbose and concise JSON formats, though the latter may be applied more
+as an illustration of machine optimization principles than as a production message format.
 9. **Version architecture supports independent change**: as described in the NTA.
 10. **NIEM XSD and XML has an RDF expression**: as in bullet 6, information type definitions can include URI links
 to [ontology nodes](https://www.w3.org/TR/2012/REC-owl2-overview-20121211/), whether the triples are represented
-in XML-RDF, JSON-LD, Turtle, or another syntax.
+in XML/RDF, JSON-LD, Turtle, or another ontology syntax.
 11. **NIEM JSON also has an RDF expression**: the information modeling approach explicitly isolates message data
 from ontology by keeping the linkage in the reference model.
 In this way it applies to all data formats, not just those with a specific "linked data" dialect.
-But a JSON-LD message format could be defined along with simple JSON and machine-optimized JSON if desired.
+But a JSON-LD message format can be defined along with simple JSON and machine-optimized JSON if desired.
 
 -----
 
 # 3 **NTAC progress after NIEM 5**
+
+![Serialization](asg-serialization.jpg)
 
 The next section describes the work of the NTAC after the publication of NIEM 5 and before the formation of the OASIS NIEMOpen project.
 
@@ -167,27 +188,22 @@ This model of NIEM models is the *NIEM metamodel*, depicted below as a UML diagr
 
 Another technology-neutral modeling approach is to model the information used
 by applications rather than generalizing NIEM XSD to additional data formats.
-The distinction is illustrated in the NIEM interoperability diagram --
-XSD and CMF model the IEPs exchanged between applications while an information model
-defines application state independently of IEPs.
 
-![Interoperability](interoperability.jpg)
 
-As the diagram shows, messages are exchanged between applications running on systems.
-Users interact with applications through user interfaces, not through IEP data.
-Information models define the application state required to support the required user
-interfaces, and messages are serialized representations of that state.
-Application state is independent of the data formats used to communicate it, which
-is equivalent to saying that messages can be losslessly converted among all supported
-data formats. This allows a message to be displayed in a verbose format such as
-XML or JSON that is meaningful to developers but communicated using using a
-performance-optimized format such as CBOR, Avro, Protobuf or Thrift.
 
-![Serialization](asg-serialization.jpg)
+
 
 ## 3.3 Information Metamodel
 
 ![JADN Metamodel](jadn-metamodel.jpg)
+
+| JADN Type          | Metamodel Type      |
+|--------------------|---------------------|
+| ArrayOf            | ListType            |
+| MapOf              | MapType             |
+| Array, Map, Choice | DataType, ClassType |
+| Choice             | UnionType           |
+
 
 To illustrate the difference, consider a data sample from the (non-NIEM)
 [GPS Exchange Format](https://en.wikipedia.org/wiki/GPS_Exchange_Format):
