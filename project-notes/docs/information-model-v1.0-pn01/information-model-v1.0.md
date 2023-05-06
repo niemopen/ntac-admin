@@ -161,11 +161,9 @@ But a JSON-LD message format can be defined along with simple JSON and machine-o
 
 -----
 
-# 3 **NTAC progress after NIEM 5**
+# 3 NIEM and Information Metamodels
 
-The next section describes the work of the NTAC after the publication of NIEM 5 and before the formation of the OASIS NIEMOpen project.
-
-## 3.1 Metamodel and Common Model Format (CMF)
+## 3.1 NIEM Metamodel and Common Model Format (CMF)
 
 The existing NIEM community is accustomed to working with NIEM models in XSD.
 They will need XSD modeling in NIEM 6.  However, XSD is not a natural modeling
@@ -180,16 +178,16 @@ This model of NIEM models is the *NIEM metamodel*, depicted below as a UML diagr
 
 ## 3.2 Information Metamodel
 
-The JADN metamodel is shown in [Appendix X](#x), but it can be expressed in
-a form similar to the NIEM metamodel to facilitate comparison.
+The JADN metamodel is contained in [Appendix X](#x), but it can be expressed in
+a form similar to the NIEM metamodel to facilitate comparison:
 
 ![JADN Metamodel](jadn-metamodel.jpg)
 
 The organizing construct of an information model is the Type. While models for realistic
 applications are composed of multiple type definitions organized into one or more namespaces,
 a minimal functioning (but not re-usable) IM consists of one or more type definitions with no
-namespace. The JADN language has several built-in constraint defaults that apply to all
-type definitions if not overridden in a namespace or an individual type definition.
+namespace. The JADN language has several built-in default constraints that apply to all
+type definitions if not overridden by a namespace or an individual type definition.
 
 The namespace defines its own URI and optionally any URI prefixes used to shorten
 references to other namespaces. References within a namespace have no prefix. A namespace
@@ -239,9 +237,6 @@ information model itself from functions used to ease its integration with other 
 methodologies.
 
 ## 3.2 Information Model
-
-Another technology-neutral modeling approach is to model the information used
-by applications rather than generalizing NIEM XSD to additional data formats.
 
 As discussed in the introduction, application information is independent of the data formats
 used to communicate it.
