@@ -111,18 +111,14 @@ between data and information modeling:
 
 As the diagram shows, users accomplish their mission by interacting with applications
 through user interfaces, while applications communicate with other applications
-by exchanging messages. Data models define the content of messages while information
+by exchanging messages. Data models define the content of messages directly while information
 models define the application state (information) needed to support user interface
-requirements.
+requirements. Thus the focus of an information model is to support business logic and user
+needs; messages are a means to that end. Once an information model and serialization rules
+are defined, message coding becomes a business-independent commodity service
+like compression or encryption.
 
 ![Information-reqts](information-reqts.jpg)
-
-Application information is independent of the data formats used to communicate it;
-messages are serialized representations of that information. This is equivalent
-to saying that messages can be losslessly converted among all supported
-data formats, which allows a message to be displayed in a verbose format such as
-XML or JSON that is meaningful to developers but communicated among applications
-using using a performance-optimized format such as CBOR, Avro, Protobuf or Thrift.
 
 -----
 
@@ -167,8 +163,6 @@ But a JSON-LD message format can be defined along with simple JSON and machine-o
 
 # 3 **NTAC progress after NIEM 5**
 
-![Serialization](asg-serialization.jpg)
-
 The next section describes the work of the NTAC after the publication of NIEM 5 and before the formation of the OASIS NIEMOpen project.
 
 ## 3.1 Metamodel and Common Model Format (CMF)
@@ -184,26 +178,94 @@ This model of NIEM models is the *NIEM metamodel*, depicted below as a UML diagr
 
 ![NIEM Metamodel](../tech-arch-v1.0-pn02/Understanding-Metamodel.svg)
 
+## 3.2 Information Metamodel
+
+The JADN metamodel is shown in [Appendix X](#x), but it can be expressed in
+a form similar to the NIEM metamodel to facilitate comparison.
+
+![JADN Metamodel](jadn-metamodel.jpg)
+
+The organizing construct of an information model is the Type. While models for realistic
+applications are composed of multiple type definitions organized into one or more namespaces,
+a minimal functioning (but not re-usable) IM consists of one or more type definitions with no
+namespace. The JADN language has several built-in constraint defaults that apply to all
+type definitions if not overridden in a namespace or an individual type definition.
+
+The namespace defines its own URI and optionally any URI prefixes used to shorten
+references to other namespaces. References within a namespace have no prefix. A namespace
+can specify constraints for the format of type and property names, and default size constraints
+that can be overridden by type definitions. A namespace has optional descriptive information
+such as title, description, license, a one-up version number, etc.
+
+All type definitions have the same structure, inherited from the (abstract) Type.
+All properties exist only within types, unlike the NIEM metamodel where properties are
+components with an independent existence. All property definitions have the same structure,
+with both an integer identifier and name allowing one or the other to be used in message
+data depending on the design goals of the data format
+
+Items exist only within the Enumerated type. Like properties, items have both integer
+identifier and string value, allowing either to be used in messages.
+
+ListType is a collection of values of the same type.
+MapType is a collection of key:value pairs where both key and value
+can be any type but all pairs have the same key and value types.
+ListType and MapType have the UML multiplicity constraints:
+isOrdered, isUnique, lower (minOccurs) and upper (maxOccurs).
+
+The DataType is either a primitive type (Binary, Boolean, Integer, Number, String)
+with no properties or a compound type (Array, Map, Record) with properties.
+The UnionType is a compound DataType with exactly one property.
+The ClassType is a compound DataType with at least one key property and
+at least one non-key property.
+
+The correspondence between JADN types and the metamodel types shown in the diagram is:
+
+| Metamodel Type      | JADN Type                                | 
+|---------------------|------------------------------------------|
+| ListType            | ArrayOf                                  | 
+| MapType             | MapOf                                    |
+| DataType            | Binary, Boolean, Integer, Number, String |
+| DataType, ClassType | Array, Map, Record                       |
+| UnionType           | Choice                                   |
+| EnumerationType     | Enumerated                               |
+
+The primary differences between the NIEM and JADN metamodels are:
+1. Properties are local to the type in which they are defined
+2. Properties have both numeric and string identifiers, allowing flexible message formats
+3. Some constraints such as multiplicity notation, anonymous property types and type inheritance
+are syntactic sugar "extensions" that are pre-processed into core definitions.  This both
+simplifies the message processing needed at runtime and clearly distinguishes the
+information model itself from functions used to ease its integration with other design
+methodologies.
+
 ## 3.2 Information Model
 
 Another technology-neutral modeling approach is to model the information used
 by applications rather than generalizing NIEM XSD to additional data formats.
 
+As discussed in the introduction, application information is independent of the data formats
+used to communicate it.
+Within applications information instances are the values of variables with the required
+structure and behavior. Those values can be serialized into message data, and message
+data can be parsed into information instances. Data that does not represent information
+(e.g., whitespace) is considered "insignificant" and ignored when parsing. For example a
+Boolean information instance has only two values: true and false.
+The serialized representation of a Boolean (e.g., Strings "true" and "false",
+"True" and "False", or Integers 1 and 0) is not preserved within applications or when
+the information is serialized to message data.
 
+This is equivalent to saying that messages can be losslessly converted among all supported
+data formats, which allows a message to be displayed in a verbose format such as
+XML or JSON that is meaningful to developers but communicated among applications
+using using a performance-optimized format such as CBOR, Avro, Protobuf or Thrift.
+Applications that receive a message in optimized format can serialize it into verbose
+format to be displayed.
 
+![Serialization](asg-serialization.jpg)
 
+## 3.3 Information Examples
 
-## 3.3 Information Metamodel
-
-![JADN Metamodel](jadn-metamodel.jpg)
-
-| JADN Type          | Metamodel Type      |
-|--------------------|---------------------|
-| ArrayOf            | ListType            |
-| MapOf              | MapType             |
-| Array, Map, Choice | DataType, ClassType |
-| Choice             | UnionType           |
-
+### 3.3.1 GPS Track
 
 To illustrate the difference, consider a data sample from the (non-NIEM)
 [GPS Exchange Format](https://en.wikipedia.org/wiki/GPS_Exchange_Format):
@@ -250,9 +312,14 @@ Longitude = Number{-180..180}
 Time = Integer /time                // Seconds since midnight before Jan 1, 1970
 ```
 
+### 3.3.2 Property Names
 
+The second step was to design a NIEM data exchange specification for the metamodel.
+The result is the *Common Model Format*, a NIEM message specification for NIEM models.
+A model in CMF is a NIEM message.  It has an exact equivalent in NIEM XSD,
+and can be serialized as NIEM XML or NIEM JSON.
+For example, the XSD schema fragment for `nc:PersonName` above looks like this in CMF XML
 
-The second step was to design a NIEM data exchange specification for the metamodel.  The result is the *Common Model Format*, a NIEM message specification for NIEM models.  A model in CMF is a NIEM message.  It has an exact equivalent in NIEM XSD, and can be serialized as NIEM XML or NIEM JSON.  For example, the XSD schema fragment for `nc:PersonName` above looks like this in CMF XML
 ```
 <Property s:id="nc.PersonNamee">
   <Name>PersonNamee</Name>
@@ -263,11 +330,22 @@ The second step was to design a NIEM data exchange specification for the metamod
 ```
 There is a [more detailed description of CMF and the metamodel](https://www.niem.gov/strategic-initiatives/niem-metamodel-and-common-model-format) at the niem.gov site.
 
-## 3.2 Simplified property names
+Component names in NIEM data models SHOULD follow the example of ISO 11179-5, Annex A,
+and all of the names in the NIEM model do so.
+Names such as `PersonFullName` and `AircraftFuselageColorCode` are suitable when forming
+a shared understanding within a large community.  However, software developers working
+on a particular project will often prefer simpler names, such as `pname` or `ACcolor`.
+NIEM 6 may permit a message specification designer to provide a mapping between simple
+and canonical property names, and with this mapping, to specify a simple message format
+having the same RDF interpretation as the equivalent canonical message format.
+NIEM tools would then generate translation software from the mapping plus the CMF message model,
+with no bespoke programming required.  In this way NIEM may satsify developer desires for
+simpler messages while still satisfying the goals of self-describing data and RDF equivalence.
 
-Component names in NIEM data models SHOULD follow the example of ISO 11179-5, Annex A, and all of the names in the NIEM model do so.  Names such as `PersonFullName` and `AircraftFuselageColorCode` are suitable when forming a shared understanding within a large community.  However, software developers working on a particular project will often prefer simpler names, such as `pname` or `ACcolor`.  NIEM 6 may permit a message specification designer to provide a mapping between simple and canonical property names, and with this mapping, to specify a simple message format having the same RDF interpretation as the equivalent canonical message format.  NIEM tools would then generate translation software from the mapping plus the CMF message model, with no bespoke programming required.  In this way NIEM may satsify developer desires for simpler messages while still satisfying the goals of self-describing data and RDF equivalence.
-
-Something like this is already possible (after a fashion) with NIEM 5 JSON.  By supplying mappings in the `@context` element, the following simple and canonical NIEM JSON messages have the same RDF interpretation.  (Remember, the `@context` object does not have to be part of the message at runtime, and usually isn't.)
+Something like this is already possible (after a fashion) with NIEM 5 JSON.
+By supplying mappings in the `@context` element, the following simple and canonical
+NIEM JSON messages have the same RDF interpretation.  (Remember, the `@context` object
+does not have to be part of the message at runtime, and usually isn't.)
 
    ```
    {                                              | {                                 
@@ -287,9 +365,11 @@ Something like this is already possible (after a fashion) with NIEM 5 JSON.  By 
 
 More work is required for NIEM XML and any other supported message serialization.
 
-## 3.3. RDF-star for relationship metadata
+### 3.3.3 RDF-star for relationship metadata
 
-NIEM supports metadata in messages, both as ordinary properties and through a special metadata mechanism.  This metadata sometimes applies not to an object, but rather to the relationship between objects.  For example:
+NIEM supports metadata in messages, both as ordinary properties and through a special metadata mechanism.
+This metadata sometimes applies not to an object, but rather to the relationship between objects.
+For example:
 
    ```
    <my:NewspaperEmployees>
@@ -317,7 +397,9 @@ The RDF interpretation of the attribute `my:secret` attribute as an ordinary pro
    _:n3 my:secret "true" .
    ```
 
-But that's wrong.  We don't want to say that the *name* "Superman" is secret.  The secret is the *relationship* between the name "Superman" and the person who is also named "Clark Kent".  So we want to make a statement about a statement; we need a RDF triple about a triple.  As a diagram, we want
+But that's wrong.  We don't want to say that the *name* "Superman" is secret.
+The secret is the *relationship* between the name "Superman" and the person who is also named "Clark Kent".
+So we want to make a statement about a statement; we need a RDF triple about a triple.  As a diagram, we want
 
    <img src="../tech-arch-v1.0-pn02/Understanding-RDFfigure-2.jpg" alt="Understanding-RDFfigure-2" style="zoom:80%;" />
 
@@ -325,7 +407,11 @@ But that's wrong.  We don't want to say that the *name* "Superman" is secret.  T
 
    <img src="../tech-arch-v1.0-pn02/Understanding-RDFfigure-3.jpg" alt="Understanding-RDFfigure-3" style="zoom:80%;" />
 
-[RDF-star]([RDF-star and SPARQL-star (w3.org)](https://www.w3.org/2021/12/rdf-star.html)) (or RDF*) is a specification published by the W3C's *RDF-DEV Community Group* that provides better support for *reification;* that is, RDF triples about triples.  NIEM 6 uses RDF-star to represent relationship properties. In NIEM 6, the RDF-star interpretation of the NIEM XML above looks like:
+[RDF-star]([RDF-star and SPARQL-star (w3.org)](https://www.w3.org/2021/12/rdf-star.html)) (or RDF*)
+is a specification published by the W3C's *RDF-DEV Community Group* that provides better support
+for *reification;* that is, RDF triples about triples.
+NIEM 6 uses RDF-star to represent relationship properties. In NIEM 6, the RDF-star interpretation
+of the NIEM XML above looks like:
 
    ```
    _:n1 a nc:PersonType .
