@@ -164,7 +164,7 @@ A JSON-LD message format can be defined along with simple JSON and machine-optim
 **Status:**
 
 This section describes the characteristics and goals of the information modeling approach,
-not a mature solution. Significant development will be needed to demonstrate how domain information
+not a mature solution. Significant development will be needed to demonstrate how information
 models can satisfy all NIEM messaging requirements. That effort should proceed in parallel with the
 existing development roadmap.
 
