@@ -320,7 +320,7 @@ always valid. An organization may impose additional naming guidelines if desired
 6. Assume that there is nothing unusual about a PersonBirthDate, it is the same type as a Date used for
 other purposes. If it does have some unique properties, a PersonBirthDate type can be defined.
 7. The JADN IM language is opinionated - it has built-in fixed type and property documentation fields. This is
-both simpler and less flexible than allowing multiple <documentation> elements enclosed in <annotation>
+both simpler and less flexible than allowing multiple \<documentation> elements enclosed in \<annotation>
 elements enclosed anywhere in an outer element.
 
 **PersonType XSD Message Model**:
@@ -416,7 +416,7 @@ but that Relationship type would need to be defined within the core (or a domain
 ## A.1 JADN Metamodel Definition
 ```
        title: "JADN Metaschema"
-     package: "http://oasis-open.org/jadn/v1.0/schema"
+     package: "http://docs.oasis-open.org/openc2/ns/jadn/v1.0/"
  description: "Syntax of a JSON Abstract Data Notation (JADN) package."
      license: "CC0-1.0"
      exports: ["Schema"]
