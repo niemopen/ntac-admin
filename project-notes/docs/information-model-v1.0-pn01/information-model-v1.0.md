@@ -432,15 +432,32 @@ A local property cannot be reused outside of the one type in which it is defined
 
 This principle is stated as self-evident, but it does not follow that defining properties globally
 maximizes reuse. Type also represents a concept, idea, or thing.
-If the type is "Person", one of its properties will be birth date, and the type including local property
+If the type is "Person", one of its properties will be birth date and the type including local property
 name is what gives this date its meaning and distinguishes it from other kinds of dates.
 
 A "DriversLicense" type will have an expiration date property. And if an agriculture domain includes
 livestock it would, following this principle, need an AnimalBirthDate global property rather
 than simply defining a birth date property within the Animal type.
 
-It is not clear that defining global PersonBirthDate, AnimalBirthDate, and DriversLicenseExpirationDate
-properties represents any kind of reuse. Types on the other hand represent concepts and can always be reused.
+It is not clear that defining global properties for:
+- PersonBirthDate
+- PersonDeathDate
+- AnimalBirthDate
+- AnimalDeathDate
+- DriversLicenseExpirationDate
+- HuntingLicenseExpirationDate
+- BuildingPermitExpirationDate
+
+represents any kind of reuse. On the other hand, re-using the same name for the same concept, idea, or thing
+is desirable. Because Type represents a concept, idea, or thing, the alternate approach is to define Types
+for properties that are actually being re-used:
+- BirthDate
+- DeathDate
+- ExpirationDate
+
+and use birthDate, deathDate and expirationDate property names in the Person, Animal, License and Permit
+types that use them. Type definitions can include suggested aliases, such as dob for BirthDate, where
+appropriate.
 
 # Appendix A. JADN Metamodel
 
