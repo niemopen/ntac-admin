@@ -411,6 +411,37 @@ with properties that include references (foreign keys) to ClassType instances id
 but that Relationship type would need to be defined within the core (or a domain) reference model.
 
 -----
+
+## 3.4 Properties Discussion
+
+*"A property represents a concept, idea, or thing. It defines specific semantics and appears
+in exchanges as the tag or label for a field.
+Properties may be more commonly known as as elements, attributes, fields, tags, keys, or keywords.*
+
+*One of the properties defined in Core is PersonBirthDate. It represents a person’s birthday
+and will carry that value in an exchange.*
+
+- *The type of the property will define the value’s structure (e.g., free text or a specific date format).*
+- *The property itself is what gives this date value its meaning and distinguishes it from other
+kinds of dates that might appear, such as a driver license expiration date.*
+
+*All properties must be declared globally as top-level elements in a schema. 
+One of the key principles of NIEM is to maximize reuse.
+A local property cannot be reused outside of the one type in which it is defined."* ---
+[NIEM Reference](https://niem.github.io/reference/concepts/property/#naming)
+
+This principle is stated as self-evident, but it does not follow that defining properties globally
+maximizes reuse. Type also represents a concept, idea, or thing.
+If the type is "Person", one of its properties will be birth date, and the type including local property
+name is what gives this date its meaning and distinguishes it from other kinds of dates.
+
+A "DriversLicense" type will have an expiration date property. And if an agriculture domain includes
+livestock it would, following this principle, need an AnimalBirthDate global property rather
+than simply defining a birth date property within the Animal type.
+
+It is not clear that defining global PersonBirthDate, AnimalBirthDate, and DriversLicenseExpirationDate
+properties represents any kind of reuse. Types on the other hand represent concepts and can always be reused.
+
 # Appendix A. JADN Metamodel
 
 ## A.1 JADN Metamodel Definition
