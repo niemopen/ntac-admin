@@ -6,6 +6,7 @@
 
 These are artifacts intended as examples in NTAC discussions.  Usually they are too large or complex to be inserted into a [discussion paper](../documents/README.md) or a note in the [discussions tab](https://github.com/niemopen/ntac-admin/discussions).
 
+* [RoleOf (2023-05-04)](src/RoleOf)
 * [AugmentationsThruStructuresWildcard](src/AugmentationsThruStructuresWildcard)
 * [AugmentedInheritance](src/AugmentedInheritance)
 * [Augmentations and Metadata](src/AugmentationsAndMetadata)
