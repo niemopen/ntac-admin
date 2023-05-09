@@ -4,8 +4,9 @@
 
 ## Meeting minutes
 
-* [2023-05-02 agenda](docs/2023-05-02-agenda.md)
-* [2023-04-25 (draft)](docs/2023-04-25-minutes.md)
+* [2023-05-09 agenda](docs/2023-05-09-agenda.md)
+* [2023-05-02 (draft)](docs/2023-05-02-minutes.md)
+* [2023-04-25](docs/2023-04-25-minutes.md) – Publication process PN approved, NDR overhaul, CMFTool, NIEM 5.2 release
 * [2023-04-18](docs/2023-04-18-minutes.md) – Publication process, NDR overhaul, related specifications, CMFTool, simplicity
 * [2023-04-11](docs/2023-04-11-minutes.md) – Publication process, NDR overhaul, related specifications, CMFTool, funding
 * [2023-04-04](docs/2023-04-04-minutes.md) – Publication process, technical architecture PN, NDR overhaul, related specifications
