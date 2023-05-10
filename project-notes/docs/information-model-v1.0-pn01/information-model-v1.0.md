@@ -120,9 +120,9 @@ or session management, allowing model developers to focus on information require
 
 The RDF approach assumes that NIEM developers' primary motivation is to create an
 ontology. Information modeling assumes that applications can satisfy all
-requirements without an ontology, but can reference one if it exists.
-A knowledge graph can be used for application enrichment but is not needed
-for NIEM message definition.
+requirements without a knowledge model, but can reference one if it exists.
+Application developers can use a knowledge graph for enrichment, but IM
+designers and developers are not required to either create or understand ontologies.
 
 ![Information-reqts](information-reqts.jpg)
 
