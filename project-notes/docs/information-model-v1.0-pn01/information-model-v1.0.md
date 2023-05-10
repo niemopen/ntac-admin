@@ -118,6 +118,12 @@ needs; messages are a means to that end. Once serialization rules are defined,
 message coding becomes a domain-independent commodity service like compression, encryption,
 or session management, allowing model developers to focus on information requirements.
 
+The RDF approach assumes that NIEM developers' primary motivation is to create an
+ontology. Information modeling assumes that applications can satisfy all
+requirements without an ontology, but can reference one if it exists.
+A knowledge graph can be used for application enrichment but is not needed
+for NIEM message definition.
+
 ![Information-reqts](information-reqts.jpg)
 
 -----
@@ -140,15 +146,17 @@ format-agnostic information model.
 and restrictive (message) information models can be defined, and an information model can be defined as the
 intersection of two sub-models to assist developers in ensuring a strict subset relationship between them.
 5. **Automated validation of NIEM XSD and XML**: the JADN language natively supports validation of type and 
-property names. NDR requirements beyond that may require additional constraint definition and tool development. 
+property names. Naming and Design Rules (NDR) requirements beyond that may require additional constraint
+definition and tool development. 
 6. **NIEM data is self-describing**: An information model formally defines equivalence between multiple data models,
 some of which may be self-describing. This allows information to be optimized for machine-to-machine performance
 while also being represented in a readable format for human consumption. The information model can include links
 to XSD component definition URIs in type definitions without transmitting those URIs in message data.
 7. **Developers have the data exchange specification**: as described in the NTA.
 8. **Compact serialization is supported**: The purpose of information modeling is to support equivalence between
-multiple data representations. Both uncompressed XML and EXI representations are possible, as are purpose-built
-machine-optimized formats which are designed to be both efficiently processed and concise.
+multiple data representations. Both uncompressed XML and Efficient Extensible Interchange (EXI) representations
+are possible, as are purpose-built machine-optimized formats which are designed to be both efficiently processed
+and concise.
 JADN currently defines both verbose and concise JSON formats, though the latter due to its textual nature
 may be applied more as an illustration of machine optimization principles than as a production message format.
 9. **Version architecture supports independent change**: as described in the NTA.
@@ -172,7 +180,9 @@ existing development roadmap.
 
 # 3 NIEM and Information Metamodels
 
-## 3.1 NIEM Metamodel and Common Model Format (CMF)
+## 3.1 Metamodels
+
+### 3.1.1 NIEM Metamodel and Common Model Format (CMF)
 
 The existing NIEM community is accustomed to working with NIEM models in XSD.
 They will need XSD modeling in NIEM 6.  However, XSD is not a natural modeling
@@ -185,7 +195,7 @@ This model of NIEM models is the *NIEM metamodel*, depicted below as a UML diagr
 
 ![NIEM Metamodel](../tech-arch-v1.0-pn02/Understanding-Metamodel.svg)
 
-## 3.2 Information Metamodel
+### 3.1.2 Information Metamodel
 
 The JADN metamodel is contained in [Appendix A](#appendix-a-jadn-metamodel), but it can be expressed in
 a form similar to the NIEM metamodel to facilitate comparison:
@@ -193,18 +203,18 @@ a form similar to the NIEM metamodel to facilitate comparison:
 ![JADN Metamodel](jadn-metamodel.jpg)
 
 The organizing construct of an information model is the Type. While models for realistic
-applications are composed of multiple type definitions organized into one or more namespaces,
+applications are composed of multiple type definitions organized into one or more packages,
 a minimal functioning (but not re-usable) IM consists of one or more type definitions with no
-namespace. The JADN language has several built-in default constraints that apply to all
+package. The JADN language has several built-in default constraints that apply to all
 type definitions if not overridden by a namespace or an individual type definition.
 
-The namespace defines its own URI and optionally any URI prefixes used to shorten
-references to other namespaces. References within a namespace have no prefix. A namespace
+Each package defines its own URI and optionally any URI prefixes used to shorten
+references to other namespaces. References within a package have no prefix. A package
 can specify constraints for the format of type and property names, and default size constraints
-that can be overridden by type definitions. A namespace has optional descriptive information
+that can be overridden by type definitions. A package has optional descriptive information
 such as title, description, license, a one-up version number, etc.
 
-All type definitions have the same structure, inherited from the (abstract) Type.
+All type definitions have the same structure, inherited from the abstract ***Type***.
 All properties exist only within types, unlike the NIEM metamodel where properties are
 components with an independent existence. All property definitions have the same structure,
 with both an integer identifier and name allowing one or the other to be used in message
@@ -410,9 +420,9 @@ An information model defines types with properties. It is possible to define a "
 with properties that include references (foreign keys) to ClassType instances identified by primary keys,
 but that Relationship type would need to be defined within the core (or a domain) reference model.
 
------
+# 4 Discussion
 
-## 3.4 Properties Discussion
+## 4.1 Properties
 
 *"A property represents a concept, idea, or thing. It defines specific semantics and appears
 in exchanges as the tag or label for a field.
@@ -448,7 +458,7 @@ It is not clear that defining global properties for:
 - HuntingLicenseExpirationDate
 - BuildingPermitExpirationDate
 
-represents any kind of reuse. On the other hand, re-using the same name for the same concept, idea, or thing
+promotes any kind of reuse. On the other hand, re-using the same name for the same concept, idea, or thing
 is desirable. Because Type represents a concept, idea, or thing, the alternate approach is to define Types
 for properties that are actually being re-used:
 - BirthDate
@@ -456,8 +466,14 @@ for properties that are actually being re-used:
 - ExpirationDate
 
 and use birthDate, deathDate and expirationDate property names in the Person, Animal, License and Permit
-types that use them. Type definitions can include suggested aliases, such as dob for BirthDate, where
+types that use them. Type definitions may include suggested aliases, such as dob for BirthDate, where
 appropriate.
+
+## 4.2 Class Extension and Augmentation
+
+## 4.3 Composition
+
+*(biometric domain example)
 
 # Appendix A. JADN Metamodel
 
