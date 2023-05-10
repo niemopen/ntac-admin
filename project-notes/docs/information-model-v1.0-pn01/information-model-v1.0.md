@@ -119,7 +119,7 @@ message coding becomes a domain-independent commodity service like compression, 
 or session management, allowing model developers to focus on information requirements.
 
 The RDF approach assumes that NIEM developers' primary motivation is to create an ontology and define
-NIEM messages to be an [ontology serialization](#owl) using XML/RDF, JSON-LD, or Turtle.
+NIEM messages to be an [ontology serialization (OWL)](#owl) using XML/RDF, JSON-LD, or Turtle.
 Information modeling assumes that applications can satisfy all requirements without needing
 an ontology but can reference one if it exists.
 Application developers can use a knowledge graph for enrichment of message data defined by an IM,
@@ -625,19 +625,6 @@ https://www.w3.org/TR/2012/REC-owl2-overview-20121211
 ###### [UML]
 "Unified Modeling Language", Version 2.5.1, December 2017.  
 https://www.omg.org/spec/UML/2.5.1/About-UML/
-
-<!-- Required section -->
-
-This appendix contains the informative references that are used in this document.
-
-While any hyperlinks included in this appendix were valid at the time of publication, OASIS cannot guarantee their long-term validity.
-
-(Reference sources:
-For references to IETF RFCs, use the approved citation formats at: \
-https://docs.oasis-open.org/templates/ietf-rfc-list/ietf-rfc-list.html. \
-For references to W3C Recommendations, use the approved citation formats at: \
-https://docs.oasis-open.org/templates/w3c-recommendations-list/w3c-recommendations-list.html. \
-Remove this note before submitting for publication.)
 
 -------
 
