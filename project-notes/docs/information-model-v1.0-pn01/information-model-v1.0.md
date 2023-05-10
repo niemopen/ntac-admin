@@ -118,12 +118,14 @@ needs; messages are a means to that end. Once serialization rules are defined,
 message coding becomes a domain-independent commodity service like compression, encryption,
 or session management, allowing model developers to focus on information requirements.
 
-The RDF approach assumes that NIEM developers' primary motivation is to create an
-ontology. Information modeling assumes that applications can satisfy all
-requirements without a knowledge model but can reference one if it exists.
-Application developers can use a knowledge graph for enrichment of data obtained
-using NIEM messages, but NIEM IM designers and developers are not required to either
-create or understand ontologies.
+The RDF approach assumes that NIEM developers' primary motivation is to create an ontology and define
+NIEM messages to be an [ontology serialization](#owl) using XML/RDF, JSON-LD, or Turtle.
+Information modeling assumes that applications can satisfy all requirements without needing
+an ontology but can reference one if it exists.
+Application developers can use a knowledge graph for enrichment of message data defined by an IM,
+but NIEM IM designers and developers are not required to create or understand ontologies.
+This separation of responsibilities simplifies the creation of new domain content; design simplicity
+is the primary motivation for using an information model rather than an ontology.
 
 ![Information-reqts](information-reqts.jpg)
 
@@ -614,6 +616,11 @@ https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.md
 "Understanding the NIEM Technical Architecture", Version 1.0, 20 February 2023.  
 OASIS Project Note 02.
 https://github.com/niemopen/ntac-admin/blob/main/project-notes/docs/tech-arch-v1.0-pn02/tech-arch-v1.0-pn02.md
+
+###### [OWL]
+"OWL 2 Web Ontology Language", Second Edition
+W3C Recommendation, 11 December 2012
+https://www.w3.org/TR/2012/REC-owl2-overview-20121211
 
 ###### [UML]
 "Unified Modeling Language", Version 2.5.1, December 2017.  
