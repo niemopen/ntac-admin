@@ -39,7 +39,7 @@ David Kemp (d.kemp@cyber.nsa.gov), [NSA-CCC](https://www.nsa.gov/About/Cybersecu
 *Is there any??*
 
 #### Abstract:
-This document extends ["Understanding the NIEM Technical Architecture"](../tech-arch-v1.0-pn02/tech-arch-v1.0-pn02.md)
+This document extends ["Understanding the NIEM Technical Architecture"](#nta)
 by describing information modeling, comparing it with the objectives and assumptions of the 
 technical architecture in NIEM 5 and proposing it to supplement the NTAC's future direction.
 An information model defines the state used by NIEM applications accompanied by a set of
@@ -140,7 +140,7 @@ along with the differences that arise when using an information model:
 1. **Contract-based machine-to-machine data interoperability**: as described in the NTA.
 2. **Reuse of definitions from community-agreed data models**: as described in the NTA,
 substituting *information models* for *data models*.
-3. **XSD as a data model formalism**: the JSON Abstract Data Notation[JADN](#jadn) information model formalism
+3. **XSD as a data model formalism**: the JSON Abstract Data Notation ([JADN](#jadn)) information model formalism
 captures the XSD constraints needed for applications to satisfy their requirements but does not necessarily
 replicate the data objects defined by XSD.
 JADN can support both multiple styles of XML and type-specific serialization options, but the latter
@@ -166,8 +166,7 @@ JADN currently defines both verbose and concise JSON formats, though the latter 
 may be applied more as an illustration of machine optimization principles than as a production message format.
 9. **Version architecture supports independent change**: as described in the NTA.
 10. **NIEM XSD and XML has an RDF expression**: as in bullet 6, information type definitions can include URI links
-to [ontology nodes](https://www.w3.org/TR/2012/REC-owl2-overview-20121211/), whether the triples are represented
-in XML/RDF, JSON-LD, Turtle, or another ontology syntax.
+to [RDF components](#owl).
 11. **NIEM JSON also has an RDF expression**: the information modeling approach explicitly isolates message data
 from ontology by keeping the linkage in the reference model.
 This automatically applies to all data formats, not just those with a specific "linked data" dialect with its
@@ -212,10 +211,10 @@ The organizing construct of an information model is the Type. While models for r
 applications are composed of multiple type definitions organized into one or more packages,
 a minimal functioning (but not re-usable) IM consists of one or more type definitions with no
 package. The JADN language has several built-in default constraints that apply to all
-type definitions if not overridden by a namespace or an individual type definition.
+type definitions if not overridden by a package or an individual type definition.
 
-Each package defines its own URI and optionally any URI prefixes used to shorten
-references to other namespaces. References within a package have no prefix. A package
+Each package defines its own base namespace URI and optionally any URI prefixes used to shorten
+references to other namespaces. References within a package need no prefix. A package
 can specify constraints for the format of type and property names, and default size constraints
 that can be overridden by type definitions. A package has optional descriptive information
 such as title, description, license, a one-up version number, etc.
@@ -475,13 +474,30 @@ and use birthDate, deathDate and expirationDate property names in the Person, An
 types that use them. Type definitions may include suggested aliases, such as dob for BirthDate, where
 appropriate.
 
-## 4.2 Class Extension and Augmentation
+## 4.2 Formats
+The property description says:
+- *The type of the property will define the value’s structure (e.g., free text or a specific date format).*
 
-## 4.3 Composition
+An information value is the essential content of a property. In the case of time, the information
+is POSIX time, defined as the number of seconds that have elapsed since
+00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January 1970. All text representations of a
+time are equivalent, and the text is discarded when a time value is read from a message into an application.
+The following values are equivalent:
+- information: 1683776635
+- UTC: "05/11/2023 @ 3:43am"
+- RFC 822: "Thu, 11 May 2023 03:43:55 +0000"
+- ISO 8601, RFC 3339: "2023-05-11T03:43:55+00:00"
+
+Format options for several kinds of information, for example IP address, MAC address, UUID, etc. can
+specify a verbose text value to use in messages instead of the concise information value.
+
+## 4.3 Class Extension and Augmentation
+
+## 4.4 Composition
 
 *(biometric domain example)*
 
-## 4.4 Data Formats and Serialization Styles
+## 4.5 Data Formats and Serialization Styles
 
 # Appendix A. JADN Metamodel
 
