@@ -474,7 +474,7 @@ and use birthDate, deathDate and expirationDate property names in the Person, An
 types that use them. Type definitions may include suggested aliases, such as dob for BirthDate, where
 appropriate.
 
-## 4.2 Formats
+## 4.2 Data Formats
 The property description says:
 - *The type of the property will define the value’s structure (e.g., free text or a specific date format).*
 
@@ -495,9 +495,17 @@ specify a verbose text value to use in messages instead of the concise informati
 
 ## 4.4 Composition
 
-*(biometric domain example)*
+*biometric domain example*
 
-## 4.5 Data Formats and Serialization Styles
+## 4.5 Serialization Styles
+
+## 4.6 Application Schema Resolution
+
+* *domain creates one or more reference schemas*
+* *an application supports a single message schema*
+* *application designers create a message schema by:*
+  * *constraining reference types down to message types*
+  * *resolving message types from multiple schemas into the single message schema*
 
 # Appendix A. JADN Metamodel
 
