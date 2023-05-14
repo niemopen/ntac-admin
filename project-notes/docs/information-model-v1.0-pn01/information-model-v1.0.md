@@ -462,6 +462,7 @@ It is not clear that defining global properties for:
 - DriversLicenseExpirationDate
 - HuntingLicenseExpirationDate
 - BuildingPermitExpirationDate
+- GroceryExpirationDate
 
 promotes any kind of reuse. On the other hand, re-using the same name for the same concept, idea, or thing
 is desirable. Because Type represents a concept, idea, or thing, the alternate approach is to define Types
@@ -470,9 +471,11 @@ for properties that are actually being re-used:
 - DeathDate
 - ExpirationDate
 
-and use birthDate, deathDate and expirationDate property names in the Person, Animal, License and Permit
-types that use them. Type definitions may include suggested aliases, such as dob for BirthDate, where
-appropriate.
+and use birthDate, deathDate and expirationDate (or birth, death, expires) property names in the
+Person, Animal, License and Permit types that use them.
+Type definitions may include suggested aliases such as dob for birthDate if desired, but local
+numeric property IDs are more concise in transmission than short property names and can be displayed
+as long names for readability.
 
 ## 4.2 Data Formats
 The property description says:
@@ -501,7 +504,7 @@ specify a verbose text value to use in messages instead of the concise informati
 
 ## 4.6 Application Schema Resolution
 
-* *domain creates one or more reference schemas*
+* *each domain creates one or more reference schemas*
 * *an application supports a single message schema*
 * *application designers create a message schema by:*
   * *constraining reference types down to message types*
