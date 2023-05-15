@@ -213,8 +213,8 @@ a minimal functioning (but not re-usable) IM consists of one or more type defini
 package. The JADN language has several built-in default constraints that apply to all
 type definitions if not overridden by a package or an individual type definition.
 
-Each package defines its own base namespace URI and optionally any URI prefixes used to shorten
-references to other namespaces. References within a package need no prefix. A package
+Each package defines its own base namespace and optionally any URI prefixes used to shorten
+references to other packages. References within a package need no prefix. A package
 can specify constraints for the format of type and property names, and default size constraints
 that can be overridden by type definitions. A package has optional descriptive information
 such as title, description, license, a one-up version number, etc.
@@ -256,11 +256,13 @@ The correspondence between JADN types and the metamodel types shown in the diagr
 The primary differences between the NIEM and JADN metamodels are:
 1. All properties are local to the type in which they are defined
 2. All properties have both numeric and string identifiers, allowing flexible message formats
-3. Some constraints such as multiplicity notation, anonymous property types and type inheritance
+3. JADN is truly technology-agnostic, supporting messages in any data format.  NIEM 5 and CMF
+are RDF-based and support only RDF data formats (XML/RDF and JSON-LD).
+4. Some constraints such as multiplicity notation, anonymous property types and type inheritance
 are syntactic sugar "extensions" that are pre-processed into core definitions.  This both
 simplifies the message processing needed at runtime and clearly distinguishes the
-information model itself from functions used to ease its integration with other design
-methodologies.
+information model itself from features used to ease integration with other design
+methods and tools. NIEM does not define a "minimum viable" XSD feature set that must be supported.
 
 ## 3.2 Information Model
 
@@ -306,7 +308,7 @@ here for ease of comparison with the corresponding Information Model definitions
         <!-- 78 properties omitted - explore them at https://niem.github.io/model/5.0/nc/PersonType/ -->
         <xs:element ref="nc:PersonHomeContactInformation" minOccurs="0" maxOccurs="unbounded"/>
 ```
-**PersonType JADN Reference Model**:
+**Person type JADN Reference Model**:
 ```
 Person = Record                                     // A data type for a human being
   1 accent      PersonAccentText [0..*]
@@ -322,7 +324,7 @@ Notes:
 omitted. Prefixes are needed only when referencing types defined in other namespaces.
 The nc: prefix is permitted in type references from the nc: namespace for stylistic reasons,
 but type definitions cannot have prefixes.
-3. Properties are enclosed in <xs:sequence> indicating that they are an ordered list. The IM "Record" type
+3. Properties are enclosed in \<xs:sequence> indicating that they are an ordered list. The IM "Record" type
 is a list where properties have fixed ordinal positions. This is a reminder that inserting items anywhere
 other than at the end is a breaking change requiring a new model version. If the items are a set rather
 than a list, the IM type would be "Map", existing items can be reordered, and new items can be inserted
@@ -353,7 +355,7 @@ properties for PersonType, and specified that the two selected properties must e
         <xs:element ref="nc:PersonAgeMeasure" minOccurs="1" maxOccurs="1"/>
         <xs:element ref="nc:PersonName" minOccurs="1" maxOccurs="1"/>
 ```
-**PersonType JADN Message Model**:
+**Person type JADN Message Model**:
 ```
 Person = Record                             // A data type for a human being.
    1 name         PersonName
@@ -392,7 +394,7 @@ An information model in JADN format is also a NIEM message that can be serialize
 other format. The Person reference and message examples shown above are serialized as IDL (text) data.
 The JSON equivalent is:
 
-**Person message information model serialized as JSON data:**
+**Person type JADN message model, JSON serialized:**
 
 ```json
 {
