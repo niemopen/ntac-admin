@@ -276,8 +276,8 @@ The first step was to create an abstract model of the information captured in NI
 
 The second step was to design a NIEM data exchange specification for the metamodel.  The result is the *Common Model Format*, a NIEM message specification for NIEM models.  A model in CMF is a NIEM message.  It has an exact equivalent in NIEM XSD, and can be serialized as NIEM XML or NIEM JSON.  For example, the XSD schema fragment for `nc:PersonName` above looks like this in CMF XML
 ```
-<Property s:id="nc.PersonNamee">
-  <Name>PersonNamee</Name>
+<Property s:id="nc.PersonName">
+  <Name>PersonName</Name>
   <Namespace s:ref="nc" xsi:nil="true"/>
   <DefinitionText>A combination of names and/or titles by which a person is known.</DefinitionText>
   <Class s:ref="nc.PersonNameType" xsi:nil="true"/>
