@@ -56,7 +56,7 @@
 	- `ism`
 - Add NDR _instance_ rule saying you can only have one copy of an augmentation object per namespace
 	- Can have just one `j:PersonAugmentation`, but could also have a `j:CitationAugmentation` and/or an `hs:PersonAugmentation`
-- Make changes per [[2022-07-12 metadata-adjustments-2]]
+- Make changes per [2022-07-12 metadata-adjustments-2](2022-07-12-metadata-adjustments-2.md)
 
 ## Representation Terms
 
