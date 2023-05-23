@@ -5,7 +5,7 @@
 
 # Understanding the NIEM Technical Architecture
 
-## Project Note 02
+## Project Note 01
 
 ## 20 February 2023
 

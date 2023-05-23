@@ -4,8 +4,9 @@
 
 ## Meeting minutes
 
-* [2023-05-16 agenda](docs/2023-05-16-agenda.md)
-* [2023-05-09 (draft)](docs/2023-05-09-minutes.md)
+* [2023-05-23 agenda](docs/2023-05-23-agenda.md)
+* [2023-05-16 (draft)](docs/2023-05-16-minutes.md)
+* [2023-05-09](docs/2023-05-09-minutes.md) – Role properties
 * [2023-05-02](docs/2023-05-02-minutes.md) – CMFTool, 5.2 OASIS release, role properties
 * [2023-04-25](docs/2023-04-25-minutes.md) – Publication process PN approved, NDR overhaul, CMFTool, NIEM 5.2 release
 * [2023-04-18](docs/2023-04-18-minutes.md) – Publication process, NDR overhaul, related specifications, CMFTool, simplicity
