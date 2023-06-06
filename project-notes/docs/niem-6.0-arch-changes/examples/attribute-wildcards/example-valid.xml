@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ext:Message 
+  xmlns:ext="http://www.example.com/wildcard-attributes/extension"
+  xmlns:attr='http://www.example.com/wildcard-attributes/attributes'
+  xmlns:nc='http://release.niem.gov/niem/niem-core/5.0/'
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+    http://www.example.com/wildcard-attributes/extension ./example.xsd 
+    http://www.example.com/wildcard-attributes/attributes ./attributes.xsd">
+  <nc:Person> 
+    <nc:PersonName>
+      <nc:PersonGivenName attr:transliterationText="...">...</nc:PersonGivenName>
+      <nc:PersonSurName attr:transliterationText="...">...</nc:PersonSurName>
+    </nc:PersonName>
+  </nc:Person>
+  <nc:Address>
+    <nc:AddressFullText attr:transliterationText="...">...</nc:AddressFullText>
+    <nc:AddressCityName attr:transliterationText="...">...</nc:AddressCityName>
+  </nc:Address>
+</ext:Message>
