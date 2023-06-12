@@ -44,6 +44,7 @@ Scott Renner (sar@mitre.org), [MITRE](https://www.mitre.org/)
 This document is related to:
 * Related specifications (include hyperlink, preferably to HTML format) \
 `(remove "Related work" section if no entries)`
+<!-- TODO: Remove related work?  NDR not yet an OASIS product. -->
 
 #### Abstract:
 This document describes the major architectural changes planned for the NIEM Naming and Design Rules specification for version 6.0.
@@ -84,16 +85,14 @@ This document describes the major architectural changes planned for the NIEM Nam
 
 ## 1.2 Glossary
 
-<!-- Optional section with suggested subsections -->
-
 ### 1.2.1 Definitions of terms
 
 | Term | Description |
 |:---- |:----------- |
 | Class | A type that contains properties
-| Object property | A property that has a class type
+| Object property | A property that has a class type (contains properties)
 | Datatype | A type that contains attribute properties and carries a value (e.g., a string, number, boolean, etc.)
-| Data property | A property that has a datatype.
+| Data property | A property that has a datatype (contains a value, plus optional attribute properties).
 
 ### 1.2.2 Acronyms and abbreviations
 
@@ -103,6 +102,8 @@ This document describes the major architectural changes planned for the NIEM Nam
 | EXT | NDR conformance target for Extension Schema Document (less strict rule set for message extension schemas) |
 | IC-ISM | Intelligence Community Information Security Markings |
 | IC-NTK | Intelligence Community Need-to-Know |
+| NBAC | NIEM Business Architecture Committee Technical Steering Committee |
+| NTAC | NIEM Technical Architecture Committee Technical Steering Committee |
 | NDR | Naming and Design Rules |
 | REF | NDR conformance target for Reference Schema Document (stricter rule set for reusable reference schemas) |
 
@@ -120,45 +121,87 @@ In addition to being used by the NDR for NIEM 6.0 to describe concepts and rules
 
 More information about CMF is available at https://github.com/niemopen/common-model-format.
 
+## 2.2 Assign NIEM subset schemas the EXT conformance target
+
+[niemopen/niem-naming-design-rules#10](https://github.com/niemopen/niem-naming-design-rules/issues/10)
+
+The NTAC proposes to use the ExtensionSchemaDocument (EXT) NDR conformance target for subset schemas instead of the original ReferenceSchemaDocument (REF) target.
+
+### 2.2.1 Background
+
+Subset schemas from the NIEM data model can contain conformance errors because subsets are not required to follow all of the rules required for reference schema documents.
+
+The following issues are known to be incorrectly raised from NDR conformance tests on subset schemas:
+
+- Missing augmentation points on types
+- Missing definitions
+
+### 2.2.2 Proposal
+
+The NTAC proposes to generate NIEM subset schemas from NIEM-supported tooling with the EXT conformance target.  The EXT target is a better match for subsets anyway since it is meant for schemas customized for specific messages.  This will prevent missing augmentation points from being flagged, since they are not required for EXT types.
+
+The EXT conformance target will not, however, fix the error message for missing definitions.  The NTAC believes this to be a much-less used subset feature and can be documented as being allowed in IEPD / message specification conformance assertions.
+
 -------
 
-# Property changes
+# 3 Property changes
 
+## 3.1 Do not allow elements and attributes with the same uncased name
+
+[niemopen/niem-naming-design-rules#21](https://github.com/niemopen/niem-naming-design-rules/issues/11)
+
+Do not allow elements and attributes in the same namespace to share the same name with the only difference being the capitalization.
+
+### 3.1.1 Background
+
+NDR rules require element names to be upper camel case (e.g., UpperCamelCase) and attribute names to be lower camel case (e.g., lowerCamelCase). In some prior versions of NIEM, elements and attributes shared the same name in the same namespace with the only difference being the capitalization of the first letter.  For example, NIEM Core 4.0 contained both element `nc:ConfidencePercent` and attribute `nc:confidencePercent`.  This can present issues in case-insensitive environments.
+
+### 3.1.2 Impact
+
+The impact of this change should be low.  The model does not currently have any properties with overlapping names.  Properties in IEPDs / message specifications may be affected.  This would however require that semantically-equivalent elements and attributes be given unique names.
+
+## 3.2 Disallow direct use of structures typing for property types
+
+[niemopen/niem-naming-design-rules#29](https://github.com/niemopen/niem-naming-design-rules/issues/29)
+
+Prohibit properties in content namespaces (e.g., Core, domains, code sets, etc.) from having types from the `structures` namespace.
+
+### 3.2.1 Background
+
+Types in the `structures` namespace provide NIEM infrastructure support but do not define actual content.  These types:
+
+- typically define attributes supporting ids and referencing, linked data, metadata, and security markup.
+- typically define generic augmentation points
+
+### 3.2.2 Proposal
+
+The NTAC proposes a new rule to prohibit NIEM-conformant properties from having a type from the `structures` namespace.  This is meant to ensure that NIEM properties are capable of carrying data content.
+
+### 3.2.2 Impact
+
+[niemopen/niem-model#24](https://github.com/niemopen/niem-model/issues/24)
+
+The impact of this change should be low.  Within the data model, properties `cbrn:CaseMetadata` and `cbrn:DataFileMetadata` are currently of type `structures:MetadataType`.  These two properties would need to be removed or updated, perhaps to be of type `nc:MetadataType`.
 
 -------
 
-# Type changes
+# 4 Type changes
 
-## nc:ObjectType
-
-https://github.com/niemopen/ntac-admin/discussions/58
-
-<!-- TODO: Determine nc:ObjectType recommendation -->
-
-CMF either needs to be aware of some parts of the `structures` namespace, or we need a `nc:ObjectType` in the model because domains and messages should be allowed to augment the root-level `ObjectType`.
-
-Notes:
-
-- NIEM 1.0 had a similar `u:SuperType`.
-- `nc:CodeType` contains three attributes from the code-lists-instance utility namespace
-- A new rule is being proposed to prevent properties with types from the `structures` namespace
-  - https://github.com/niemopen/niem-naming-design-rules/issues/29
-- If CMF was aware of `structures`, then we could say that `nc:PersonType` or `j:PersonEyeColorCode` contains `structures:metadata`.
-- If CMF is updated to support customized profiles of objects and was `structures`-aware, we could say:
-  - `nc:Person` contains `structures:id` and `hs:Caregiver` contains `structures:ref`.
-  - `nc:PersonType` contains `structures:uri` as required and not have `structures:uri` appear elsewhere.
-
-## Allow facets on EXT complex value types
+## 4.1 Allow facets on EXT complex value types
 
 [niemopen/niem-naming-design-rules#9](https://github.com/niemopen/niem-naming-design-rules/issues/9)
 
 Support the declaration of facets on EXT complex value types to prevent the need for message designers to define two corresponding types (one complex, one simple) for each code set.
 
-### Background
+An [example schema](./examples/complex-code-types/example.xsd) demonstrating the proposal is available under the [examples/complex-code-types](./examples/complex-code-types/) subdirectory.
+
+<!-- TODO: What's the right name to use for complex value types? -->
+
+### 4.1.1 Background
 
 NIEM requires that enumerations must be defined on simple types in REF schemas.  As all NIEM property elements are required to have complex types, this means that code sets and types with other kinds of facets are typically defined in pairs - a simple code type with enumerations, and a corresponding complex code type that extends the simple code type and adds the NIEM-required `structures:SimpleObjectAttributeGroup`.
 
-#### Example: XML Schema simple and complex code types
+#### 4.1.1.1 Example: XML Schema simple and complex code types
 
 The example below shows how code sets are typically defined in NIEM.
 
@@ -213,25 +256,29 @@ Notes:
 </xs:complexType>
 ```
 
-#### Benefits
+#### 4.1.1.2 Benefits of the current approach
 
 These requirements provide three benefits:
 
-1. All conformant elements in NIEM provide the ability to support ids and referencing, linked data, metadata, and security markup.
+1. All conformant object, association, and data property elements in NIEM provide the ability to support ids and referencing, linked data, metadata, and security markup.
 2. Facets on simple types allow those types to be used as attribute types (XML Schema does not permit attributes with complex types).
-3. XML Schema supports unions of simple types, which allows a new simple type to be created as a composite of its member simple types.  This allows NIEM domains and message designers to create unions from existing code sets, or to "extend" a NIEM code set by creating a union from a NIEM simple type and an extension simple type that only contains additions to the code set (eliminates the need to duplicate existing codes in order to add additional values).
+3. XML Schema supports unions of simple types, which allow a new simple type to be created as a composite of its member simple types.  This allows NIEM domains and message designers to create unions from existing code sets, or to "extend" a NIEM code set by creating a union from a NIEM simple type and an extension simple type that only contains additions to the code set.  This eliminates the need to duplicate existing codes in order to add additional values.
 
-#### Drawbacks
+#### 4.1.1.3 Drawbacks of the current approach
 
 1. The major drawback to this approach is the additional complexity it requires.  It can be cumbersome to create and maintain two types for each code set instead of a single type.
 
-### Proposal
+### 4.1.2 Proposal
 
-For message designers who do not need to create attributes or unions off of their code sets, the NTAC proposes to simplify requirements and support the declaration of facets directly on complex value types in message schemas with an EXT conformance target.
+For message designers who do not need to create attributes or unions off of their code sets, the NTAC proposes to explicitly support the declaration of facets directly on complex value types in message schemas with an EXT conformance target.
 
 This still supports reusability in reference schemas (REF), while making message extension schemas (EXT) easier to build and maintain.
 
-#### Example: XML Schema complex code type
+#### 4.1.2.1 Example: XML Schema single complex code type
+
+Notes:
+
+- In the example below, the complex type restricts `niem-xs:token`, which already contains `structure:SimpleObjectAttributeGroup`.  Other types from the `niem-xs` namespace could be used if needed to support numeric or other types.
 
 ```xml
   <xs:complexType name='AddressCategoryCodeType'>
@@ -270,17 +317,17 @@ This still supports reusability in reference schemas (REF), while making message
   </xs:complexType>
 ```
 
-#### See more
+### 4.1.3 Impact
 
-See the [example schema](./examples/complex-code-types/example.xsd) under the [complex-code-types](./examples/complex-code-types/) directory for more.
+This is currently supported by the NDR and requires no changes, but has never been explicitly covered as an available option in NIEM IEPD developer resources or training.  This scenario should be covered in NDR tests to ensure it remains valid for EXT schemas.
 
-## Require unique enumerations
+## 4.2 Require unique enumerations
 
 [niemopen/niem-naming-design-rules#30](https://github.com/niemopen/niem-naming-design-rules/issues/30)
 
 There are some code types in NIEM that repeat the same enumeration with different definitions.  A new rule is being proposed to require that enumerations are unique within a type.  For code sources outside of NIEM where duplication cannot be resolved, definitions of overlapping codes will be concatenated.
 
-### NIEM 5.2 Example
+### 4.2.1 NIEM 5.2 Example
 
 | Type                            | FacetValue | Definition |
 |---------------------------------|------------|------------|
@@ -289,15 +336,15 @@ There are some code types in NIEM that repeat the same enumeration with differen
 | usps:StreetSuffixCodeSimpleType | PARK       | PARKS      |
 | usps:StreetSuffixCodeSimpleType | PASS       | PASS       |
 
-### NIEM 6.0 Proposal
+### 4.2.2 NIEM 6.0 Proposal
 
-| Type                            | FacetValue | Definition |
-|---------------------------------|------------|------------|
-| usps:StreetSuffixCodeSimpleType | OVAL       | OVAL       |
-| usps:StreetSuffixCodeSimpleType | PARK       | PARK or PARKS |
-| usps:StreetSuffixCodeSimpleType | PASS       | PASS       |
+| Type                            | FacetValue | Definition  |
+|---------------------------------|------------|-------------|
+| usps:StreetSuffixCodeSimpleType | OVAL       | OVAL        |
+| usps:StreetSuffixCodeSimpleType | PARK       | PARK; PARKS |
+| usps:StreetSuffixCodeSimpleType | PASS       | PASS        |
 
-### Impact
+### 4.2.3 Impact
 
 There are 16 types in NIEM 5.2 that do not have unique enumerations:
 
@@ -318,21 +365,27 @@ There are 16 types in NIEM 5.2 that do not have unique enumerations:
 - usmtf:RFPowerUnitDecibelsCodeSimpleType
 - usps:StreetSuffixCodeSimpleType
 
+Canada Post and United States Postal Service street codes, DEA drug codes, FIPS county codes, and hazmat codes cannot be modified at the source and will either need to have concatenated definitions or other workarounds.  The other codes may be able to be adjusted to remove the overlapping code definitions directly.
+
 See comments on the GitHub issue (link above) for more details on the affected types and codes.
 
-### Special considerations
+### 4.2.4 Special considerations
 
 Canada Post street direction codes provide two definitions per enumerations: one definition in English and one definition in French.
 
-## Require definitions for patterns
+## 4.3 Require definitions for patterns
 
 [niemopen/niem-naming-design-rules#12](https://github.com/niemopen/niem-naming-design-rules/issues/12)
 
+The NTAC proposes to make definitions required for all pattern facets.
+
+### 4.3.1 Background
+
 NIEM currently requires definitions for enumeration facets only.  Definitions for pattern facets should provide extra human-readable documentation to make the regular expressions easier to interpret.
 
-### Impact
+### 4.3.2 Impact
 
-There are 438 patterns in NIEM 5.2:
+The impact to the data model would be low.  There are 438 patterns in NIEM 5.2:
 
 - 433 patterns have definitions
 - 5 patterns do not have definitions
@@ -345,17 +398,40 @@ biom:LipPatternSimpleType | `<>`
 mo:MILSTD2525-C-SIDC-SimpleType | `[A-Z0-9\-]{15}`
 mo:MILSTD2525-B-SIDC-SimpleType | `[A-Z0-9\-]{15}`
 
+## 4.4 nc:ObjectType
+
+https://github.com/niemopen/ntac-admin/discussions/58
+
+<!-- TODO: Determine nc:ObjectType recommendation -->
+
+CMF either needs to be aware of some parts of the `structures` namespace, or we need a `nc:ObjectType` in the model because domains and messages should be allowed to augment the root-level `ObjectType`.
+
+Notes:
+
+- NIEM 1.0 had a similar `u:SuperType`.
+- `nc:CodeType` contains three attributes from the code-lists-instance utility namespace
+- A new rule is being proposed to prevent properties with types from the `structures` namespace
+  - https://github.com/niemopen/niem-naming-design-rules/issues/29
+- If CMF was aware of `structures`, then we could say that `nc:PersonType` or `j:PersonEyeColorCode` contains `structures:metadata`.
+- If CMF is updated to support customized profiles of objects and was `structures`-aware, we could say:
+  - `nc:Person` contains `structures:id` and `hs:Caregiver` contains `structures:ref`.
+  - `nc:PersonType` contains `structures:uri` as required and not have `structures:uri` appear elsewhere.
+
 -------
 
-# Adapter changes
+# 5 Adapter changes
 
-## Add representation term "Adapter"
+## 5.1 Add representation term "Adapter"
 
 [niemopen/niem-naming-design-rules#5](https://github.com/niemopen/niem-naming-design-rules/issues/5)
 
+The NTAC proposes to require that the representation term "Adapter" appear at the end of all adapter property and type names.
+
+### 5.1.1 Background
+
 NIEM already has representation terms for associations, augmentations, and metadata.  Adding representation term "Adapter" for properties and types would make it clear which components contain non-conformant content from external standards.  A few properties and types currently in NIEM already follow this convention.
 
-### Impact
+### 5.1.2 Impact
 
 The following is a list of adapter properties and types from NIEM 5.2.  These names, unless otherwise noted, would be updated.  Property names would end in "Adapter"; type names would end in "AdapterType".
 
@@ -386,13 +462,15 @@ The following is a list of adapter properties and types from NIEM 5.2.  These na
 | mo:WGS84LocationLineString         | mo:WGS84LineStringType |
 | mo:WGS84LocationPoint              | mo:WGS84LocationPointType |
 
-## Create new type `structures:AdapterType`
+## 5.2 Create new type `structures:AdapterType`
 
 [niemopen/niem-naming-design-rules#4](https://github.com/niemopen/niem-naming-design-rules/issues/4)
 
-Types in the structures namespace are generally used to identify what kind of type something is (an object type, an association type, a metadata type, etc.).  Adapter types do not follow the same pattern.  They require the use of a special attribute to identify themselves as adapters.
+The NTAC proposes to create new type `AdapterType` in the `structures` namespace to serve as the parent type for all adapter types in NIEM.
 
-### Background
+### 5.2.1 Background
+
+Types in the structures namespace can typically bew used to identify what basic kind of type something is (an object type, an association type, a metadata type, etc.).  Adapter types do not follow the same pattern.  They require the use of a special attribute to identify themselves as adapters.
 
 The basic category of NIEM classes can currently be identified as described in the table below:
 
@@ -404,12 +482,12 @@ The basic category of NIEM classes can currently be identified as described in t
 | object types       | Extend structures:ObjectType or a derivative      |
 | adapter types      | Extend **structures:ObjectType** and use **appinfo:externalAdapterTypeIndicator="true"** |
 
-### Proposal
+### 5.2.2 Proposal
 
 - Add a new `structures:AdapterType` to serve as the parent type for all adapter types defined in NIEM.
 - Remove attribute `appinfo:externalAdapterTypeIndicator` from the appinfo utility namespace.
 
-#### Example declaration of an adapter type
+#### 5.2.2.1 Example declaration of an adapter type
 
 ```diff
 - <xs:complexType name="GeometryType" appinfo:externalAdapterTypeIndicator="true">
@@ -425,19 +503,121 @@ The basic category of NIEM classes can currently be identified as described in t
  </xs:complexType>
 ```
 
+### 5.2.3 Impact
+
+Low.  The declaration of 20 types currently in NIEM would need to be adjusted, which would be handled by model maintainers.
+
 -------
 
-# Metadata Changes
+# 6 Augmentation Changes
 
-## Simplify metadata
+## 6.1 Do not allow multiple augmentations from the same namespace on the same object
+
+[niemopen/niem-naming-design-rules#35](https://github.com/niemopen/niem-naming-design-rules/issues/35)
+
+The NTAC is proposing to prohibit multiple augmentations from the same namespace on the same object in message instances.
+
+### 6.1.1 Background
+
+An augmentation is a container that lets us plug additional properties into existing types from other namespaces - types that we cannot modify ourselves. These containers on their own have no meaning, and they do not appear in the NIEM RDF or NIEM JSON-LD representations.
+
+### 6.1.2 Proposal
+
+Because augmentation containers have no meaning on their own and because it would not be possible to reconstruct multiple containers correctly when transforming from NIEM RDF or NIEM JSON to NIEM XML, the NTAC proposes to prohibit multiple augmentations from the same namespace on the same object.
+
+#### 6.1.2.1 Valid example
+
+Notes:
+
+- In the example below, nc:Person contains augmentations from Justice and Human Services.
+- The Justice person augmentation contains two instances of `j:DriverLicense` (valid)
+- The Human Services person augmentation contains two instance of `hs:HealthInsurance` (valid)
+
+```xml
+<ext:Message>
+  <nc:Person>
+    <nc:PersonFullName>Alice Smith</nc:PersonFullName>
+  </nc:PersonName>
+  <j:PersonAugmentation>
+    <j:DriverLicense>
+      <!-- ... -->
+    </j:DriverLicense>
+    <j:DriverLicense>
+      <!-- ... -->
+    </j:DriverLicense>
+  </j:PersonAugmentation>
+  <hs:PersonAugmentation>
+    <hc:HealthInsurance>
+      <!-- ... -->
+    </hc:HealthInsurance>
+    <hc:HealthInsurance>
+      <!-- ... -->
+    </hc:HealthInsurance>
+  </hs:PersonAugmentation>
+</ext:Message>
+```
+
+#### 6.1.2.2 Invalid example
+
+Notes:
+
+- In the example below, nc:Person contains two augmentations from Justice (invalid) and an augmentation from Human Services (valid).
+
+```xml
+<ext:Message>
+  <nc:Person>
+    <nc:PersonFullName>Alice Smith</nc:PersonFullName>
+  </nc:PersonName>
+  <j:PersonAugmentation>
+    <j:DriverLicense>
+      <!-- ... -->
+    </j:DriverLicense>
+  </j:PersonAugmentation>
+  <j:PersonAugmentation>   <!-- Invalid: j:PersonAugmentation should not appear twice -->
+    <j:DriverLicense>
+      <!-- ... -->
+    </j:DriverLicense>
+  </j:PersonAugmentation>
+  <hs:PersonAugmentation>
+    <hc:HealthInsurance>
+      <!-- ... -->
+    </hc:HealthInsurance>
+  </hs:PersonAugmentation>
+</ext:Message>
+```
+
+To correct this example, the second `j:DriverLicense` object should be moved under the first `j:PersonAugmentation` container and the second `j:PersonAugmentation` container should be removed.
+
+### 6.1.3 Impact
+
+This change is expected to have low impact.  It does not affect the data model, and it is not expected to be a meaningful or frequently-used feature in instance messages.  Augmentations can contain multiple instances of properties, so they can be consolidated if needed.
+
+-------
+
+# 7 Metadata Changes
+
+## 7.1 Simplify metadata
 
 [niem-open/niem-naming-design-rules#8](https://github.com/niemopen/niem-naming-design-rules/issues/8)
 
 NIEM currently requires the use of ids and special metadata reference attributes to link metadata and the objects to which they apply.  While this will continue to be necessary to link metadata consisting of elements to NIEM data properties (elements that carry attributes and a value), it is not necessary for object properties, which can contain the metadata directly or via augmentation.
 
-### Background
+The NTAC proposes to allow metadata contained in an object to be applicable to that object without the need for references.  The NTAC also proposes to support metadata specialization and augmentation, treating metadata types more like regular object types.
 
-**Current example**
+### 7.1.1 Background
+
+NIEM currently requires that object properties and data properties use the `structures:metadata` or `structures:relationshipMetadata` attributes in order to create a relationship between those properties and their applicable metadata.
+
+According to the NDR, adding metadata directly to a type creates no special meaning or relationship to the metadata.  For example, adding `nc:Metadata` to `nc:PersonType` does not mean that the metadata actually applies to the person that contains it; only the use of one of the `structures` metadata attributes would make that metadata applicable to that person.
+
+Metadata types are also required to extend `structures:MetadataType`.  This prevent specialization and does not allow one metadata type to build off of another via derivation.  Metadata types are also prohibited from creating augmentation points.  Brand new metadata types must be created even if there are no special semantics required.
+
+#### 7.1.1.1 Current metadata example
+
+Notes:
+
+1. The Justice domain has additional data requirements for generic metadata.  NIEM requires that it be captured via its own separate metadata type vs an extension or augmentation of `nc:MetadataType`.
+2. To apply the Core and Justice metadata objects to the `nc:Person` property in the message, `nc:Person` is required to use the `structures:metadata` attribute (or the `structures:relationshipMetadata` attribute) and reference the ids of any applicable metadata objects in the message.
 
 ```xml
 <ext:Message>
@@ -463,30 +643,34 @@ NIEM currently requires the use of ids and special metadata reference attributes
 </ext:Message>
 ```
 
-Notes:
-
-1. NIEM currently requires metadata types to only extend `structures:MetadataType`.  It is not possible to extend `j:MetadataType` from `nc:MetadataType` so that metadata that is related but defined in separate namespaces can appear in the same metadata object.
-2. To apply the two metadata objects to the `nc:Person` property in the message, `nc:Person` is required to use the `structures:metadata` attribute (or the `structures:relationshipMetadata` attribute) and reference the ids of any applicable metadata objects in the message.
-
-### Proposal
+### 7.1.2 Proposal
 
 The NTAC proposes the following changes to simplify the use of metadata in messages:
 
-1. Allow metadata within a type or augmentation to apply
-2. Allow metadata types to extend and augment other metadata types
-3. Remove the `appinfo:appliesToProperties` and `appinfo:appliesToTypes` attributes on metadata, as these are rarely use and applicability can be provided by adding metadata to the types.
+1. Allow metadata contained by an object or augmentation of that object to apply to that object, without the need for references via the `structures:metadata` attribute.
+2. Allow metadata types to extend other metadata types
+3. Allow metadata augmentations
+4. Remove the `appinfo:appliesToProperties` and `appinfo:appliesToTypes` attributes on metadata, as these are rarely use and applicability can be provided by adding metadata to the types.
+5. Continue supporting the `structures:relationshipMetadata` attribute on object properties.
+6. Continue supporting the `structures:metadata` and `structures:relationshipMetadata` attributes on data properties.
+7. Create an applicability exception for objects that contain a metadata property that carries attribute `structures:id`.  The root of a message may need to carry metadata objects that are linked to via ids / references but are not applicable to the message itself.
+
+<!-- TODO: Metadata applicability exception -->
 
 Under the new proposal, metadata can be added directly to types just like other kinds of properties.  To add metadata to a type in another namespace, extension or augmentation may be used.
 
-#### Inline metadata
+#### 7.1.2.1 Inline metadata
 
-The following example shows metadata attached to a person via augmentation:
+The following example shows metadata attached to a person via augmentation.
 
-##### Updated inline example
+Notes:
+
+1. The Justice domain augments `nc:MetadataType` rather than creating its own independent `j:MetadataType`.
+2. The message designer created an augmentation for `nc:PersonType` to add `nc:Metadata`.  This metadata now applies to the person object in which it is contained without the need for ids or references.
 
 ```xml
 <ext:Message>
-  <nc:Person structures:metadata="m1 m2">
+  <nc:Person>
     <nc:PersonBirthDate>
       <nc:Date>1945-12-01</nc:Date>
     </nc:PersonBirthDate>
@@ -494,30 +678,31 @@ The following example shows metadata attached to a person via augmentation:
       <nc:PersonFullName>John Doe</nc:PersonFullName>
     </nc:PersonName>
     <ext:PersonAugmentation>
-      <j:Metadata>
+      <nc:Metadata>
         <nc:SourceText>Adam Barber</nc:SourceText>
         <nc:ReportedDate>
           <nc:Date>2005-04-26</nc:Date>
         </nc:ReportedDate>
-        <j:CriminalInformationIndicator>true</j:CriminalInformationIndicator>
-      </j:Metadata>
+        <j:MetadataAugmentation>
+          <j:CriminalInformationIndicator>true</j:CriminalInformationIndicator>
+        </j:MetadataAugmentation>
+      </nc:Metadata>
     </ext:PersonAugmentation>
   </nc:Person>
 </ext:Message>
 ```
 
-Notes:
-
-1. In the example, the Justice domain's `MetadataType` extends the `MetadataType` from Core, so there is no longer a need to maintain two separate metadata objects in the instance.
-2. The message designer created an augmentation for `nc:PersonType` to add the Justice Metadata property.  This metadata now applies to the person object in which it is contained without the need for special ids or references.
-
-#### Reference metadata
+#### 7.1.2.2 Reference metadata
 
 The proposal updates metadata in NIEM so that they are treated much more similarly to regular objects.  Referencing via `structures:id` and `structures:ref` is supported for objects and would now also be supported for metadata.
 
-##### Updated reference example
-
 The following example adds a second person to the message.  In order to have the same metadata apply to both people without duplicating information, a reference to the metadata object can be added to each person:
+
+Notes:
+
+- `nc:Metadata` is placed under the message root and contains attribute `structures:id`
+- The two person objects in the message still use augmentation to attach the metadata object, but they now use the `structures:ref` attribute instead of the `structures:metadata` attribute to link to the applicable metadata.
+- Because `nc:Metadata` contains `structures:id` (indicates that it is being used via references), it is not applicable to the root of the message.
 
 ```xml
 <ext:Message>
@@ -540,24 +725,30 @@ The following example adds a second person to the message.  In order to have the
       <j:Metadata structures:ref="m3">
     </ext:PersonAugmentation>
   </nc:Person>
-  <j:Metadata structures:id="m3">
+  <nc:Metadata structures:id="m3">
     <nc:SourceText>Adam Barber</nc:SourceText>
     <nc:ReportedDate>
       <nc:Date>2005-04-26</nc:Date>
     </nc:ReportedDate>
-    <j:CriminalInformationIndicator>true</j:CriminalInformationIndicator>
-  </j:Metadata>
+    <j:MetadataAugmentation>
+      <j:CriminalInformationIndicator>true</j:CriminalInformationIndicator>
+    </j:MetadataAugmentation>
+  </nc:Metadata>
 </ext:Message>
 ```
 
-#### Metadata for data properties
+#### 7.1.2.3 Data property metadata
 
-While metadata objects can be added to class types (types that contain properties), the same is not true for datatypes (types that contain a value and attributes).  While the [Attribute Wildcards](#attribute-wildcards) proposal in this document enables adding new attributes to existing object and data properties, attaching metadata consisting of object properties (elements) still requires special handling.  NIEM datatypes will continue to carry the `structures:metadata` and `structures:relationshipMetadata` attributes to that data properties can link to applicable metadata.
-
-##### Example
+While metadata objects can be added to class types (types that contain properties), the same is not true for datatypes (types that contain a value and attributes).  While the [Attribute Wildcards](#attribute-wildcards) proposal in this document enables adding new attributes to existing object and data properties, attaching metadata consisting of object properties (elements) still requires special handling.  NIEM datatypes will continue to carry the `structures:metadata` and `structures:relationshipMetadata` attributes so that data properties can link to applicable metadata.
 
 The example below shows how to use references to apply metadata to a mix of object and data properties.
 
+Notes:
+
+- Object properties link to the metadata via typical NIEM mechanisms (augmentation and `structures:ref`)
+- Data property `nc:PersonFullName` continues to use attribute `structures:metadata` to link to the metadata.
+- Metadata object `nc:Metadata` does not apply to the root of the message since it contains attribute `structures:id` (indicates it is being included there for the purposes of referencing)
+
 ```xml
 <ext:Message>
   <nc:Person>
@@ -565,7 +756,7 @@ The example below shows how to use references to apply metadata to a mix of obje
       <nc:Date>1945-12-01</nc:Date>
     </nc:PersonBirthDate>
     <nc:PersonName>
-      <nc:PersonFullName>John Doe</nc:PersonFullName>
+      <nc:PersonFullName structures:metadata="m3">John Doe</nc:PersonFullName>
     </nc:PersonName>
     <ext:PersonAugmentation>
       <j:Metadata structures:ref="m3">
@@ -579,50 +770,184 @@ The example below shows how to use references to apply metadata to a mix of obje
       <j:Metadata structures:ref="m3">
     </ext:PersonAugmentation>
   </nc:Person>
-  <j:Metadata structures:id="m3">
+  <nc:Metadata structures:id="m3">
     <nc:SourceText>Adam Barber</nc:SourceText>
     <nc:ReportedDate>
       <nc:Date>2005-04-26</nc:Date>
     </nc:ReportedDate>
-    <j:CriminalInformationIndicator>true</j:CriminalInformationIndicator>
-  </j:Metadata>
+    <j:MetadataAugmentation>
+      <j:CriminalInformationIndicator>true</j:CriminalInformationIndicator>
+    </j:MetadataAugmentation>
+  </nc:Metadata>
 </ext:Message>
 ```
 
-#### Benefits
+#### 7.1.2.4 Benefits
 
 - Drops the learning curve for new users.  Message designers can treat metadata like regular objects.
 - Simple use cases require no special syntax or constructs.  Metadata can be treated like regular data.
 - Advanced use cases are still possible.  References can be used to avoid duplication of data and to link metadata objects to data properties.
 
-#### Drawbacks
+#### 7.1.2.5 Drawbacks
 
 - Introduces changes to the way metadata is defined and processed.
 - Requires special handling to specify that the metadata does not apply to its container in the case where references are being used.
 
-## Represent relationshipMetadata via RDF-star and JSON-LD-star
+### 7.1.3 Impact
+
+NIEM currently contains 11 metadata types which would need to reviewed and potentially refactored.
+
+The NBAC may want to add `nc:Metadata` to certain common objects like `nc:PersonType` and `nc:ActivityType`.
+
+Message designers would need to treat metadata differently in messages starting with 6.0  These changes would make metadata handling much more similar to other kinds of data, but that would be a change from previous requirements.
+
+## 7.2 Represent relationshipMetadata via RDF-star and JSON-LD-star
 
 [niem-open/niem-naming-design-rules#21](https://github.com/niemopen/niem-naming-design-rules/issues/21)
 
-<!-- TODO: Relationship Metadata -->
+The NTAC proposes to leverage the [RDF-star](#rdf-star) and [JSON-LD-star](#json-ld-star) specifications in order to simplify the representation of relationship metadata in NIEM RDF and NIEM JSON.
 
-- No metadata types or attributes
-- Augmentation replacing metadata attributes
-- Applying metadata to simple content will require the user to create the appropriate object
-	- Simple content no longer has attributes unless you put them there on purpose
-	- which is discouraged, because it makes NIEM JSON more complicated.
+### 7.2.1 Background
+
+RDF triples consist of statements with a subject, predicate, and object.
+
+- Subjects and objects in NIEM RDF messages are specific instances of a type.
+- Predicates in NIEM RDF messages are NIEM properties, which provide the semantics that relate the subject to the object.
+- Subjects are nodes.
+- Objects may be nodes or literals.
+
+Example:
+
+```text
+@prefix nc: <http://release.niem.gov/niem/niem-core/5.0> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema> .
+
+# Person node 0 has a birth date, with value Date node 0.
+_:P0 nc:PersonBirthDate _:D0 .
+
+# Person node 0 also has a name, with value Name node 0.
+_:P0 nc:PersonName      _:N0 .
+
+# Date node 0 has a date with literal value "1950-01-01".
+_:D0 nc:Date            "1950-01-01"^^xs:date .
+
+# Name node 0 has a given name, with literal value "Alice".
+_:N0 nc:PersonGivenName "Alice" .
+
+# Name node 0 also has a surname, with literal value "Smith".
+_:N0 nc:PersonSurName  "Smith" .
+```
+
+The example above may be shortened as follows, with semicolons used to concatenate statements with the same subject:
+
+```text
+@prefix nc: <http://release.niem.gov/niem/niem-core/5.0> ;
+        xs: <http://www.w3.org/2001/XMLSchema> .
+
+# Person node 0 has a birth date (with value Date node 0) and a name (with value Name node 0).
+_:P0 nc:PersonBirthDate _:D0 ;
+     nc:PersonName      _:N0 .
+
+# Date node 0 has a date with literal value "1950-01-01".
+_:D0 nc:Date            "1950-01-01"^^xs:date .
+
+# Name node 0 has a given name (with literal value "Alice") and a surname (with literal value "Smith").
+_:N0 nc:PersonGivenName "Alice" ;
+     nc:PersonSurName   "Smith" .
+```
+
+Triples work to represent most NIEM data but cannot by themselves represent relationship metadata. The NDR currently uses the N-Quads notation (N-Triples plus graphs) to represent relationship metadata.  N-Quads allow one or more triples to be named together as a graph.  The graph (consisting of multiple tripes) may then serve as a subject of another triple.
+
+```text
+@prefix nc: <http://release.niem.gov/niem/niem-core/5.0> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema> .
+
+# These two statements about Person Node 0 have collectively been given the graph name "G0".
+_:P0 nc:PersonBirthDate _:D0 ;
+     nc:PersonName      _:N0 G0.
+
+_:D0 nc:Date            "1950-01-01"^^xs:date .
+
+_:N0 nc:PersonGivenName "Alice" ;
+     nc:PersonSurName   "Smith" .
+
+# Reported date (with value "2023-06-01") is metadata that applies to the triples defined by graph G0.
+_:G0 nc:ReportedDate    "2023-06-01"^^xs:date .
+```
+
+### 7.2.2 Proposal
+
+The NTAC proposes to leverage RDF-star (and its JSON-LD-star counterpart) to support applying metadata to statements directly, without the need to create named graphs to identify one or more sets of statements.  This can be used on statements with node objects and with literal objects, so it works in NIEM for both object properties and data properties.
+
+RDF-star introduces the following concepts:
+
+- **quoted triple**: A triple used as the subject or object of another triple.
+- **asserted triple**:  Any element in the set of triples that make up an RDF graph (the triple may be a standard subject-predicate-object triple or may contain one more quoted triples).
+
+A quoted triple wraps a triple in double angle brackets:
+
+```text
+<<_:P0 nc:PersonBirthDate _:D0 >> nc:ReportedDate "2023-06-01"^^xs:date .
+```
+
+This statement contains the following triples:
+
+- quoted triple: `_:P0 nc:PersonBirthDate _:D0`
+- asserted triple: `<<_:P0 nc:PersonBirthDate _:D0 >> nc:ReportedDate "2023-06-01"^^xs:date .`
+
+Note that the RDF does not assert that the birth date of the person represented by node P0 is the value represented by node D0.  The RDF only asserts that the information was reported on 2023-06-01.  In order to assert that this (1) is the birth date of the person and (2) that the information ws reported on 2023-06-01, it is necessary to explicitly represent #1 as its own triple:
+
+```text
+_:P0 nc:PersonBirthDate _:D0  .
+<<_:P0 nc:PersonBirthDate _:D0 >> nc:ReportedDate "2023-06-01"^^xs:date .
+```
+
+This updated statement contains the following triples:
+
+- asserted triple: `_:P0 nc:PersonBirthDate _:D0` (from line 1)
+- quoted triple: `_:P0 nc:PersonBirthDate _:D0` (from line 2)
+- asserted triple: `<<_:P0 nc:PersonBirthDate _:D0 >> nc:ReportedDate "2023-06-01"^^xs:date .` (from line 2)
+
+RDF-star provides **annotation syntax** as a shorthand to eliminate the need to duplicate statement information so that the original statement and the metadata about the statement may be asserted.
+
+The following asserts both the birth date of the person and the reported date of the birth date of the person:
+
+```text
+_:P0 nc:PersonBirthDate _:D0 {| nc:ReportedDate "2023-06-01"^^xs:date |} .
+```
+
+In NIEM JSON-LD, annotation metadata would be represented via a new `@annotation` property:
+
+```json
+{
+  "nc:PersonBirthDate": {
+    "nc:Date": "1950-01-01"
+  },
+  "nc:PersonName": {
+    "nc:PersonGivenName": "Alice",
+    "nc:PersonSurName": "Smith"
+  },
+  "@annotation": {
+    "nc:ReportedDate": "2023-06-01"
+  }
+}
+```
+
+### 7.2.3 Impact
+
+The impact is expected to be low.  This does not affect content within the data model, only how relationship metadata is to be represented in NIEM RDF and NIEM JSON.  Tool support for RDF-star includes Apache Jena and Eclipse RDF4J.
 
 -------
 
-# Role changes
+# 8 Role changes
 
-## Simplified Roles
+## 8.1 Simplified Roles
 
 [niemopen/niem-naming-design-rules#6](https://github.com/niemopen/niem-naming-design-rules/issues/6)
 
 The NTAC is considering a proposal to simplify roles within NIEM.  The proposal will remove the special syntax and rules related to roles.  Rather than requiring special `RoleOf` properties to be contained within role types, roles would be implemented via specialization and the use of the existing `structures:uri` attribute to link related objects to the same entity.
 
-### Background
+### 8.1.1 Background
 
 Roles are used in NIEM to represent a non-exclusive function or part played by an object. An object may have one or more roles.  For example, victim, witness, and officer can all be roles of a person.  One person may end up playing each of these roles within the same message.
 
@@ -630,24 +955,24 @@ Roles differ from specialization in NIEM, which is reserved for typically-exclus
 
 Exclusivity is the key difference between roles and specialization.  One person might end up participating in multiple roles within the same message (e.g., victim, witness, and officer), while a vehicle is a specialization because it is typically not also a plane, train, firearm, or cellphone at the same time.
 
-There is some special syntax used for roles that allow us to link related occurrences together in messages so that it is clear they each represent the same entity.
+There is some special syntax in NIEM used for roles that allow us to link related occurrences together in messages so that it is clear they each represent the same entity.
 
 The following are the main techniques in NIEM for creating new classes based on existing classes.
 
-Technique | Use case | Schema
---------- | -------- | ------
-Roles | Non-exclusive function of an object. <br/><br/> Example: Victim, witness, officer, teacher, parent, child are all roles of a person object. | Extend `structures:ObjectType` and use one or more `RoleOf` properties
-Augmentation | Mechanism used to "drop in" additional content into an existing type from another namespace without actually making changes to it. <br/><br/> Example: Justice, Emergency Management, Biometrics, and other NIEM domains each define their own augmentation for nc:PersonType with common person-related properties within their subject area. | Substitution groups
+Technique | Use case | Schema mechanism
+--------- | -------- | ----------------
+Roles | Non-exclusive function of an object. <br/><br/> Example: Victim, witness, officer, teacher, parent, child are all roles of a person object. | Extend `structures:ObjectType` and add one or more `RoleOf` properties
+Augmentation | Mechanism used to "drop in" additional content into an existing type from another namespace without actually making changes to the original. <br/><br/> Example: Justice, Emergency Management, Biometrics, and other NIEM domains each define their own augmentation for nc:PersonType with common person-related properties within their subject area. | Substitution groups
 Specialization | Exclusive special function of an object. <br/><br/> Example: A vehicle (car) is a  specialization of conveyance, which is a specialization of item. | Type extension
 
-#### Requirements
+#### 8.1.1.1 Requirements
 
 The rules and syntax for the current role mechanism fulfills two requirements:
 
 1. Support explicitly identifying occurrences in a message where multiple properties refer back to the same entity.
 2. Support referencing to avoid the need to duplicate data in messages.  For example, a person name and birthday could be defined once in a message and referenced multiple times.
 
-### Proposal
+### 8.1.2 Proposal
 
 - Eliminate roles as a special technique.
 - Use specialization for both exclusive and non-exclusive special functions of an object.
@@ -655,11 +980,9 @@ The rules and syntax for the current role mechanism fulfills two requirements:
 
 The syntax for roles was developed as part of NIEM 1.0.  The `structures:uri` attribute was not added until NIEM 4.0.  This attribute can be leveraged to meet the same requirements without the special role rules or syntax.
 
-#### Examples
+#### 8.1.2.1 Updated role schema example
 
-These examples are based on the Crash Driver IEPD using in NIEM training.  Role types are modified to extend `nc:PersonType` and to remove the `nc:RoleOfPerson` property.
-
-##### Schema example
+This example is based on the Crash Driver IEPD using in NIEM training.  Role types are modified to extend `nc:PersonType` and to remove the `nc:RoleOfPerson` property.
 
 Notes:
 
@@ -685,7 +1008,7 @@ Notes:
   </xs:complexType>
 ```
 
-##### Message example 1, without repeating data
+#### 8.1.2.2 Updated role message example 1, without repeating data
 
 Notes:
 
@@ -694,8 +1017,8 @@ Notes:
 
 ```diff
 <exch:CrashDriverInfo>
-+ <nc:Person structures:uri="P01">
 - <nc:Person structures:id="P01">
++ <nc:Person structures:uri="P01">
     <nc:PersonBirthDate>
       <nc:Date>1890-05-04</nc:Date>
     </nc:PersonBirthDate>
@@ -708,9 +1031,9 @@ Notes:
   </nc:Person>
   <j:Crash>
     <j:CrashVehicle>
-+     <j:CrashDriver structures:uri="P01">
 -     <j:CrashDriver>
 -       <nc:RoleOfPerson structures:ref="P01" xsi:nil="true"/>
++     <j:CrashDriver structures:uri="P01">
         <j:DriverLicense>
           <j:DriverLicenseCardIdentification>
             <nc:IdentificationID>A1234567</nc:IdentificationID>
@@ -718,9 +1041,9 @@ Notes:
         </j:DriverLicense>
       </j:CrashDriver>
     </j:CrashVehicle>
-+   <j:CrashPerson structures:uri="P01">
 -   <j:CrashPerson>
 -     <nc:RoleOfPerson structures:ref="P01" xsi:nil="true"/>
++   <j:CrashPerson structures:uri="P01">
       <j:CrashPersonInjury>
         <nc:InjuryDescriptionText>Broken Arm</nc:InjuryDescriptionText>
       </j:CrashPersonInjury>
@@ -731,14 +1054,14 @@ Notes:
     <j:ChargeFelonyIndicator>false</j:ChargeFelonyIndicator>
   </j:Charge>
   <j:PersonChargeAssociation>
-+   <nc:Person structures:uri="P01" xsi:nil="true"/>
 -   <nc:Person structures:ref="P01" xsi:nil="true"/>
++   <nc:Person structures:uri="P01" xsi:nil="true"/>
     <j:Charge structures:ref="CH01" xsi:nil="true"/>
   </j:PersonChargeAssociation>
 </exch:CrashDriverInfo>
 ```
 
-##### Message example 2, with duplicated data
+#### 8.1.2.3 Updated role message example 2, with duplicated data
 
 Notes:
 
@@ -806,7 +1129,7 @@ Notes:
 </exch:CrashDriverInfo>
 ```
 
-#### Benefits
+#### 8.1.2.4 Benefits
 
 1. Roles are part of the learning curve for new users.  They require special instruction not only when new users are building their own schemas, but also when they are just browsing the content of NIEM.  Users can look at roles like witness or student and not know that person properties are already available.
 
@@ -820,14 +1143,14 @@ Notes:
 
     This makes the representation of people within the model inconsistent.  You have to look at the declaration of the type to determine if an entity is-a person, or has-a role-of-person.  This can make it more difficult to process and query data:
 
-    `hs:Student` -> `nc:RoleOfPerson` -> `nc:PersonName`
-    `hs:Caregiver` -> `nc:PersonName`
+    - `hs:Student` -> `nc:RoleOfPerson` -> `nc:PersonName`
+    - `hs:Caregiver` -> `nc:PersonName`
 
     Without looking at the schema or memorizing the model, it's almost impossible to know if `j:Counselor` is defined as a person or as a role of a person.
 
 5. The custom role rules and syntax may no longer provide enough benefit to justify the complexities now that the `structures:uri` attribute is available.  This attribute can be leveraged already to link related properties together, whether or not the role syntax remains in place.
 
-#### Drawbacks
+#### 8.1.2.5 Drawbacks
 
 1. Almost 100 types in NIEM 5.2 contain a RoleOf property and would need to be adjusted.  This would likely affect many migrated message schemas and their instances.
 
@@ -841,33 +1164,25 @@ Notes:
 
 -------
 
-# Utility schema changes
+# 9 Utility schema changes
 
-## Remove structures:sequenceID
-
-[niemopen/niem-naming-design-rules#19](https://github.com/niemopen/niem-naming-design-rules/issues/19)
-
-<!-- TODO: structures:sequenceID -->
-
-- Replace with indicator that order matters
-- new `appinfo:orderedPropertyIndicator` (or perhaps `appinfo:isOrdered`?)
-- Appears in schemas?  In messages?
-
-## Attribute wildcards
+## 9.1 Attribute wildcards
 
 [niemopen/niem-naming-design-rules#20](https://github.com/niemopen/niem-naming-design-rules/issues/20)
 
-The NTAC proposes to expand the use of attribute wildcards, currently used in NIEM to support security markup (IC-ISM and IC-NTK), to all NIEM-conformant and external attributes.  This would allow any schema-resolvable attribute to be attached to any NIEM property element in messages.  Message designers would have the ability to subset the wildcards down to only attributes within specific namespaces, or to remove the wildcard entirely if they wish to prevent the use of attributes in messages that are not declared in the message schemas.
+The NTAC proposes to expand the use of attribute wildcards, currently used in NIEM to support security markup (IC-ISM and IC-NTK), to all NIEM-conformant and external attributes.  This would allow any schema-resolvable attribute to be attached to almost any NIEM element property in messages.  Message designers would have the ability to subset the wildcards down to only attributes within specific namespaces, or to remove the wildcard entirely if they wish to prevent the use of attributes in messages that are not declared in the message schemas.
 
 While attributes can be added to existing types via augmentation or extension, attribute wildcards provide an easy means to extend existing data properties and datatypes with new attributes, which is otherwise not easy to do.
 
-### Background
+See the [examples/attribute-wildcards](examples/attribute-wildcards/) subfolder for the wildcard example extension schema, the modified structures schema (`structures-modified.xsd`), the NIEM subset schemas updated to refer to the modified structures schema, and a valid and an invalid sample message.
+
+### 9.1.1 Background
 
 NIEM supports extensibility for objects via type extension, [augmentation](https://niem.github.io/reference/concepts/augmentation/), and [adapters](https://niem.github.io/reference/concepts/adapter/).  None of these solutions, however, work very well to support attaching additional NIEM-conformant or external attributes to existing NIEM data properties (properties that carry a value, like a string or a number or a boolean).
 
 The NIEM [metadata](https://niem.github.io/reference/concepts/metadata/) mechanism can be used to link NIEM data properties to metadata objects that contain new attributes, but this can be a very cumbersome approach in message instances as it could require a metadata property counterpart for each NIEM data property that needs to carry custom attribute information.
 
-#### Message example using metadata
+#### 9.1.1.1 Message example using metadata
 
 ```xml
 <ext:Message
@@ -893,7 +1208,7 @@ The NIEM [metadata](https://niem.github.io/reference/concepts/metadata/) mechani
 </ext:Message>
 ```
 
-#### Current NIEM attribute wildcards for security markup
+#### 9.1.1.2 Current NIEM attribute wildcards for security markup
 
 NIEM currently leverages attribute wildcards from XML Schema to support the use of Intelligence Community Information Security Marking (ISM) and Need-to-Know (NTK) metadata attributes on any NIEM-conformant element.  These wildcards take the form of the `xs:anyAttribute` element on the following types and attribute group in `structures.xsd`:
 
@@ -903,7 +1218,7 @@ NIEM currently leverages attribute wildcards from XML Schema to support the use 
 - `structures:AugmentationType`
 - `structures:SimpleObjectAttributeGroup`
 
-##### Schema example: Attribute wildcards via xs:anyAttribute
+##### 9.1.1.3 Schema example: Attribute wildcards via xs:anyAttribute
 
 The following is an extract from `structures.xsd`, showing the declaration of attribute wildcards on `structures:SimpleObjectAttributeGroup` and `structures:ObjectType`:
 
@@ -938,7 +1253,7 @@ The following is an extract from `structures.xsd`, showing the declaration of at
 </xs:complexType>
 ```
 
-### Proposal
+### 9.1.2 Proposal
 
 The NTAC proposes to expand the use of attribute wildcards to any defined schema source.  The value of the `processContents` attribute will be required to be "strict", meaning that a schema definition for the attributes must be resolvable and the attributes in messages must validate against the schema.
 
@@ -960,9 +1275,9 @@ The NTAC proposes to expand the use of attribute wildcards to any defined schema
 Notes:
 
 - The value of the `namespace="##other"` attribute on `xs:anyAttribute` means that any attribute is allowed from any other namespace than the current one, in this case `structures.xsd`.
-- The value of the `processContents="strict"` attribute on `xs:anyAttribute` means that the XML processor must be able to resolve the schema identified by the namespace URI and the attributes must be valid against that schema
+- The value of the `processContents="strict"` attribute on `xs:anyAttribute` means that the XML processor must be able to resolve the schema identified by the namespace URI and the attributes must be valid against that schema.
 
-#### Updated message example with attribute wildcards
+#### 9.1.2.1 Updated message example with attribute wildcards
 
 ```xml
 <ext:Message
@@ -975,8 +1290,6 @@ Notes:
     http://www.example.com/wildcard-attributes/attributes ./attributes.xsd">
   <nc:Person>
     <nc:PersonName>
-      <nc:PersonGivenName attr:transliterationText="...">...</nc:PersonGivenName>
-      <nc:PersonSurName attr:transliterationText="...">...</nc:PersonSurName>
     </nc:PersonName>
   </nc:Person>
   <nc:Address>
@@ -994,62 +1307,103 @@ Attribute `attr:transliterationText` is allowed to appear in the message because
 2. The location of the attribute schema is provided via `xsi:schemaLocation`, which accepts one or more pairs of schema target namespace URIs and relative or absolute schema paths, each value and pair separated by whitespace.
 3. The `transliterationText` attribute actual exists at the provided schema location.
 
-#### Preventing unexpected or unwanted attributes in messages
+This updated example is shown again below, with the differences highlighted from the current approach of using NIEM metadata:
+
+```diff
+<ext:Message
+  xmlns:ext="http://www.example.com/wildcard-attributes/extension"
+  xmlns:nc='http://release.niem.gov/niem/niem-core/5.0/'
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.example.com/wildcard-attributes/extension ./example.xsd">
+  <nc:Person>
+    <nc:PersonName>
+-     <nc:PersonGivenName structures:metadata="M1">...</nc:PersonGivenName>
+-     <nc:PersonSurName structures:metadata="M2">...</nc:PersonSurName>
++     <nc:PersonGivenName attr:transliterationText="...">...</nc:PersonGivenName>
++     <nc:PersonSurName attr:transliterationText="...">...</nc:PersonSurName>
+    </nc:PersonName>
+  </nc:Person>
+  <nc:Address>
+-   <nc:AddressFullText structures:metadata="M3">...</nc:AddressFullText>
+-   <nc:AddressCityName structures:metadata="M4">...</nc:AddressCityName>
++   <nc:AddressFullText attr:transliterationText="...">...</nc:AddressFullText>
++   <nc:AddressCityName attr:transliterationText="...">...</nc:AddressCityName>
+  </nc:Address>
+
+- <nc:Metadata structures:id="M1" ext:transliterationText="..."/>
+- <nc:Metadata structures:id="M2" ext:transliterationText="..."/>
+- <nc:Metadata structures:id="M3" ext:transliterationText="..."/>
+- <nc:Metadata structures:id="M4" ext:transliterationText="..."/>
+</ext:Message>
+```
+
+#### 9.1.2.2 Preventing unexpected or unwanted attributes in messages
 
 The proposal with the attribute wildcard permits any attribute from any namespace other than structures to appear on any NIEM-conformant element.  Message designers may want to restrict the set of attributes that appear, or prevent them entirely.  This can be done by modifying the value of the `namespace` attribute on the `xs:anyAttribute` element in `structures.xsd` from "##other" to one or more space-delimited namespace URIs, or removing the `xs:anyAttribute` element entirely.
 
-#### See more
+## 9.2 Drop attributes from structures:SimpleObjectAttributeGroup
 
-See the [examples/attribute-wildcards](examples/attribute-wildcards/) subfolder for the wildcard example extension schema, the modified structures schema (`structures-modified.xsd`), the NIEM subset schemas updated to refer to the modified structures schema, and a valid and an invalid sample message.
+[niemopen/niem-naming-design-rules#33](https://github.com/niemopen/niem-naming-design-rules/issues/33)
 
-## Disallow Direct Use of Structures Typing
+The NTAC has proposed to drop the following attributes from `structure:SimpleObjectAttributeGroup` as they are typically used on objects, not literals:
 
-[niemopen/niem-naming-design-rules#29](https://github.com/niemopen/niem-naming-design-rules/issues/29)
+| Attribute | Reason |
+|:--------- |:------ |
+| `structures:id` | IDs and references are typically used for objects, not literals
+| `structures:ref` | (see above)
+| `structures:uri` | Linked data is for object resources, not literals
+| `structures:relationshipMetadata` | Use `structures:metadata` or attribute wildcards instead
 
-Disallow making elements directly from types defined in `structures`.
+### 9.2.1 Background
 
-<!-- TODO: Add more text for disallow structures typing -->
+Attribute group `structures:SimpleObjectAttributeGroup` is required to be define on or inherited by every NIEM-conformant complex value type in NIEM.  This ensures that NIEM data properties have available the mechanisms used by NIEM to support such things as metadata and security markup.
 
-### Impact
+### 9.2.2 Proposal
 
-https://github.com/niemopen/niem-model/issues/24
+The NTAC proposes to drop attributes that are meant to be used for objects rather than for data values, such as strings and numbers.  IDs and references, linked data, and relationship metadata are intended for object data rather than literal values.
 
-`cbrn:CaseMetadata` and `cbrn:DataFileMetadata` are currently of type `structures:MetadataType`.  These two properties would need to be updated, perhaps to be of type `nc:MetadataType`.
+### 9.2.3 Impact
+
+These changes will have low impact on the model itself, but may affect message designers if they currently use these attributes.
+
+## 9.3 Drop attributes from structures:AugmentationType
+
+[niemopen/niem-naming-design-rules#34](https://github.com/niemopen/niem-naming-design-rules/issues/34)
+
+The NTAC has proposed to drop the following attributes from `structures:AugmentationType`, as these attributes are meant to apply to objects, not to containers of additional properties to apply to an object:
+
+- `structures:id`
+- `structures:ref`
+- `structures:uri`
+- IC-ISM and NTK security markup
+
+### 9.3.1 Background
+
+Augmentations in NIEM are used to attach additional properties to types defined in another namespace that cannot be modified.  Augmentations are used when the semantics of the object are sufficient, but the additional data requirements are needed. For example, augmentations are used by multiple NIEM domains and by IEPD developers to attach additional domain-specific properties to the generic nc:PersonType.
+
+### 9.3.2 Proposal
+
+As augmentations are fairly meaningless containers on their own and must be used to attach extra properties to existing types defined in other namespaces, NIEM does not consider them to be independent objects.  IDs and references, linked data, and security markup do not apply to these containers; they should be used directly on the base objects themselves.
+
+### 9.3.3 Impact
+
+The impact of this change should be low.  It affects the declaration of `AugmentationType` in the `structures` namespace.  It is not expected to affect many, if any, IEPDs in practice.
+
+## 9.4 Remove structures:sequenceID
+
+[niemopen/niem-naming-design-rules#19](https://github.com/niemopen/niem-naming-design-rules/issues/19)
+
+<!-- TODO: structures:sequenceID -->
+
+- Replace with indicator that order matters
+- new `appinfo:orderedPropertyIndicator` (or perhaps `appinfo:isOrdered`?)
+- Appears in schemas?  In messages?
 
 -------
 
 # TODO
 
 Integrate the following notes into the document:
-
-## Details from 2022-08-15 Face-to-Face
-
-<!-- TODO: Face-to-Face details -->
-
-- Metadata objects can now be included directly in the objects to which they apply
-	- Referencing no longer _required_
-	- Referencing still _allowed_ if needed
-- Clarified scope rules, two alternatives here:
-	1. Better definitions about which metadata objects apply where
-		- Metadata applies to enclosing object, unless...
-		- If the metadata has an `id` or `uri` it doesn't apply to the enclosing object
-			- So it can be a target
-	2. `@structures:onlyRef="true"` on elements that do not apply to their parent
-- Allow augmentations in metadata
-	- Treat metadata objects more like normal objects
-- Drop several things from `SimpleObjectAttributeGroup`
-	- `relationshipMetadata` (but otherwise keep)
-	- `id`
-	- `ref`
-	- `uri`
-- Drop several things from `AugmentationType`
-	- `id`
-	- `ref`
-	- `uri`
-	- `ism`
-- Add NDR _instance_ rule saying you can only have one copy of an augmentation object per namespace
-	- Can have just one `j:PersonAugmentation`, but could also have a `j:CitationAugmentation` and/or an `hs:PersonAugmentation`
-- Make changes per [2022-07-12 metadata-adjustments-2](2022-07-12-metadata-adjustments-2.md)
 
 ## XSD Conformance Targets
 
@@ -1074,26 +1428,11 @@ Integrate the following notes into the document:
 		- new `appinfo:relationshipPropertyIndicator` (or perhaps `appinfo:isRelationshipProperty`?)
 		- new `appinfo:referenceableIndicator` (or perhaps `isReferenceable`?)
 		- new `appinfo:referenceAttributeIndicator` (or perhaps `isReference`?)
-	- Subtractions:
-		- no `appinfo:appliesToElements`
-		- no `appinfo:appliesToTypes`
 
 - `structures.xsd`
 	- Additions:
 		- new attribute `@structures:onlyRef` (True for an XML element that does not apply to its parent.)
 		- new attribute `@structures:qname` (like URI)
-	- `ObjectType` contains an attribute wildcard (only in reference schemas)
-	- `AssociationType` contains an attribute wildcard (only in reference schemas)
- - Subtractions
-	- no `MetadataType`
-	- no attributes on `AugmentationType`
-	- no `@metadata` attribute
-	- no `@relationshipMetadata` attribute
-	- no `@sequenceID` attribute
-	- no `SimpleObjectAttributeGroup`
-	- no attribute wildcard for ISM, NTK namespaces
-
-<!-- TODO: Utility namespace changes -->
 
 ## Other
 
@@ -1102,66 +1441,59 @@ Integrate the following notes into the document:
 - Relative URIs are blank nodes in messages with no base URI.
 
 - `@xml:lang` only applies to elements with a string-valued CSC that includes `@xml:lang`
-	- Doesn't apply to attribute values at all.
+  - Doesn't apply to attribute values at all.
 
 -------
 
 # Appendix A. Informative References
 
-<!-- Required section -->
-
 This appendix contains the informative references that are used in this document.
 
 While any hyperlinks included in this appendix were valid at the time of publication, OASIS cannot guarantee their long-term validity.
 
-(Reference sources:
-For references to IETF RFCs, use the approved citation formats at: \
-https://docs.oasis-open.org/templates/ietf-rfc-list/ietf-rfc-list.html. \
-For references to W3C Recommendations, use the approved citation formats at: \
-https://docs.oasis-open.org/templates/w3c-recommendations-list/w3c-recommendations-list.html. \
-Remove this note and the example reference below before submitting for publication.)
+###### [JSON-LD-star]
 
-###### [CSAF-v2.0]
-_Common Security Advisory Framework Version 2.0_. Edited by Langley Rock, Stefan Hagen, and Thomas Schmidt. Latest stage: https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html
+_JSON-LD-star, 12 April 2023_. Edited by Gregg Kellogg and Pierre-Antoine Champin.  Latest editor's draft: https://json-ld.github.io/json-ld-star/.  Latest published version: https://json-ld.github.io/json-ld-star/publications/2021-02-18.html
+
+###### [RDF-star]
+
+_RDF-star and SPARQL-star_.  Dörthe Arndt, Jeen Broekstra, Bob DuCharme, Ora Lassila, Peter F. Patel-Schneider, Eric Prud'hommeaux, Ted Thibodeau, Jr., and Bryan Thompson (Amazon), Authors.  Olaf Hartig, Pierre-Antoine Champin, Gregg Kellogg, and Andy Seaborne, Editors.  Draft Community GroupReport, 08 December 2022, Latest editor's draft available at https://w3c.github.io/rdf-star/cg-spec/editors_draft.html.
 
 -------
 
 # Appendix B. Acknowledgments
 
-(Note: A Work Product approved by the TC must include a list of people who participated in the development of the Work Product. This is generally done by collecting the list of names in this appendix. This list shall be initially compiled by the Chair, and any Member of the TC may add or remove their names from the list by request.
-Remove this note before submitting for publication.)
-
-## B.1 Special Thanks
-
-<!-- This is an optional subsection to call out contributions from TC members. If a TC wants to thank non-TC members then they should avoid using the term "contribution" and instead thank them for their "expertise" or "assistance". -->
-
-Substantial contributions to this document from the following individuals are gratefully acknowledged:
-
-Participant Name, Affiliation or "Individual Member"
-
-## B.2 Participants
-
-<!-- A TC can determine who they list here, however, TC Observers must not be listed. It is common practice for TCs to list everyone that was part of the TC during the creation of the document, but this is ultimately a TC decision on who they want to list and not list, and in what order. -->
+## B.1 Participants
 
 The following individuals have participated in the creation of this document and are gratefully acknowledged:
 
-**tc-full-name TC Members:**
-
 | First Name | Last Name | Company |
 | :--- | :--- | :--- |
-Philippe | Alcon | Marvelous Networks
-Alex | Amir | Viacat
-Kris | Anders | Trend Mission
-Darren | Anysteel | Macro Networks
+| Aubrey       | Beach        | Joint Staff J6            |
+| Jim          | Cabral       | InfoTrack US              |
+| Tom          | Carlson      | GTRI                      |
+| Mike         | Douklias     | Joint Staff J6            |
+| Katherine    | Escobar      | Joint Staff J6            |
+| Mike         | Hulme        | Unisys                    |
+| Eric         | Jahn         | Alexandria Consulting     |
+| Dave         | Kemp         | NSA                       |
+| Vamsikrishna | Kondannagari | DHS                       |
+| Peter        | Madruga      | GTRI                      |
+| Christina    | Medlin       | GTRI                      |
+| Joe          | Mierwa       | Mission Critical Partners |
+| Scott        | Renner       | MITRE                     |
+| Duncan       | Sparrell     | sFractal Consulting       |
+| Jennifer     | Stathakis    | FBI                       |
+| Stephen      | Sullivan     | BAH                       |
 
 -------
 
 # Appendix C. Revision History
 | Revision | Date | Editor | Changes Made |
 | :--- | :--- | :--- | :--- |
-| filename-v1.0-wd01 | yyyy-mm-dd | Editor Name | Initial working draft |
+| niem-6.0-arch-changes-v1.0-pn01.md | 2023-06-12 | Carlson, Medlin, Dr. Renner | Initial working draft |
 
-------
+-------
 
 # Appendix D. Notices
 
