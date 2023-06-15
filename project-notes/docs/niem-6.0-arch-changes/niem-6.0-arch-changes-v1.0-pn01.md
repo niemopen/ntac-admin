@@ -81,7 +81,7 @@ For complete copyright information please see the full Notices section in an App
 
 # 1 Introduction
 
-This document describes the major architectural changes planned for the NIEM Naming and Design Rules specification for version 6.0.
+This document describes the major architectural changes planned for the NIEM Naming and Design Rules specification for version 6.0.  It is a working document, and may change several times before the NIEM 6 publication is complete.  The document contains phrases such as "NIEM 6 will… " and "NIEM 6 does not…", but in this draft these describe current intentions, not final decisions.  Comments, criticism, and questions are welcome.
 
 ## 1.2 Glossary
 
@@ -108,6 +108,264 @@ This document describes the major architectural changes planned for the NIEM Nam
 | REF | NDR conformance target for Reference Schema Document (stricter rule set for reusable reference schemas) |
 
 -------
+
+# 2. Overview of major changes
+
+The following architecture changes are briefly described here; details appear in later sections of this project note as needed.
+
+1. Relaxed conformance rules for message schemas
+2. Common Model Format (CMF) and the NIEM metamodel
+3. Object properties and data properties
+4. No identifiers for data properties
+5. Optional identifiers for object properties
+6. Augmentation enhancements
+7. No wildcards for IC ISM and NTK
+8. New base types in NIEM Core
+9. No metadata types or attributes in structures namespace
+10. No `sequenceID` attribute in structures namespace
+11. No `roleOf` properties in models
+12. Additional RDF entailments
+13. Relationship properties and RDF-star
+
+## 2.1 Relaxed conformance rules for message schemas
+
+There are two kinds of data model in NIEM:  *reference models* and *message models*.  These models are represented in XSD as *reference schemas* and *message schemas*. 
+
+The NIEM core and domain models are reference models.  These models express semantics, providing names and definitions for concepts, and relationships among concepts.  They are characterized by "optionality and over-inclusiveness". That is, they define more concepts than needed for any particular data exchange specification, without cardinalty constraints, so it is easy to select the concepts that are needed and omit the rest.
+
+The data model in a message specification (or IEPD) is a message model.  These models include cardinality constraints and datatype restrictions to define the mandatory and optional content of a particular message format in a data exchange. They are formed by assembling subsets of the reference schema documents that define the NIEM model, plus one or more extension schema documents that contain any exchange-specific definitions.
+
+NIEM 6 introduces a new conformance target for *message schema documents* that omits many of the conformance rules for *reference schema documents* and *extension schema documents*.  For example, a message schema may use `xs:choice` instead of element subsitution.  In NIEM 6, a message schema is focused on validation and code binding, and need not follow all the rules that promote reuse and impose semantics on XSD constructs.  As a result, software which produces and consumes NIEM data will be easier to implement.  (Semantics and reuse are still available and supported through the reference model.)
+
+The *subset schema rule* continues to apply in NIEM 6.  Any XML that is valid when assessed against a message schema must also be valid against the reference schema.
+
+## 2.2 Common Model Format (CMF) and the NIEM metamodel
+
+NIEM 6 introduces the *Common Model Format*, a technology-neutral data modeling formalism equivalent to NIEM XSD,  CMF and NIEM XSD are both fully supported in NIEM 6.
+
+CMF is a NIEM-conforming message specification (or IEPD) for the information in a NIEM data model.  A CMF document is a message (or IEP) representing one particular data model, and is equivalent to the XSD schema document set for that model.
+
+CMF was designed in the same way as any other NIEM message specification.  The first step was to describe the information requirements.  What are the facts that make up a NIEM data model?  The result is the NIEM *metamodel*, an abstract model for NIEM data models, depicted below as a UML diagram.
+
+<img src="figures/metamodel.svg" alt="metamodel" style="zoom:50%;" />
+
+The [CMF specification](https://github.com/niemopen/common-model-format) instantiates that abstract model for models as a message schema in NIEM XSD.  It may be examined at its NIEMOpen github repo.  A more [detailed description of CMF and the metamodel](https://www.niem.gov/strategic-initiatives/niem-metamodel-and-common-model-format) is available at the niem.gov site.
+
+A CMF model may be transformed into developer artifacts for many technologies.  For example, NIEMOpen provides free and open-source software to transform CMF into JSON Schema, suitable for validating NIEM JSON data.  (Transforming CMF is *much* easier than transforming the equivalent NIEM XSD.)  Many other transformations are possible; some are imagined in the diagram below.
+
+<img src="figures/toolpath.png" alt="toolpath" style="zoom:80%;" />
+
+The NIEMOpen project includes [CMFTool](https://github.com/niemopen/cmftool), which is free and open-source software capable of translating a CMF model to the equivalent NIEM XSD schema, and vice versa.  Developers can therefore work with either formalism and still take advantage of the tooling for both.    
+
+## 2.3 Object properties and data properties
+
+NIEM XML elements with simple content and attributes are not easily represented in NIEM JSON.  NIEM 6 resolves this difficulty by creating new data properties in CMF models.  The change is invisible in NIEM XSD and XML, but apparent in CMF and in any serialization that does not have XML's distinction between elements and attributes – which is probably all of them.
+
+In NIEM 6, an XML element of complex content is an object property and has a class.  Here is an example of the `PersonName` object property in NIEM XML and NIEM JSON:
+
+```
+<nc:PersonName>                                      | "nc:PersonName": {
+  <nc:PersonGivenName>Tommy</nc:PersonGivenName>     |   "nc:PersonGivenName": "Tommy",
+  <nc:PersonSurName>Atkins</nc:PersonSurName>        |   "nc:PersonSurName": "Atkins"
+</nc:PersonName>                                     | }
+```
+
+A simple content element with no attributes is a data property and has a datatype.
+
+```
+<nc:PersonGivenName>Tommy</nc:PersonGivenName>       | "nc:PersonGivenName": "Tommy"
+```
+
+But what to do for a simple content element with attributes?   There is no good JSON key for the simple content value.
+
+```
+<nc:PersonMiddleName @nc:partialIndicator="true">    | "nc:PersonMiddleName": {
+  Bartholomew                                        |   "nc:partialIndicator": true,
+</nc:PersonMiddleName>                               |   ????? : "Bartholmew"
+                                                     | }
+```
+
+In NIEM 6, a simple content element with attributes is an object property.  When translating from XSD to CMF, a new data property is created for the CMF model – `nc:PersonMiddleNameLiteral` – which appears in the JSON serialization, like this:
+
+```
+<nc:PersonMiddleName @nc:partialIndicator="true">    | "nc:PersonMiddleName": {
+  Bartholomew                                        |   "nc:partialIndicator": true,
+</nc:PersonMiddleName>                               |   "nc:PersonMiddleNameLiteral" : "Bartholmew"
+                                                     | }
+```
+
+Most simple content elements do not have attributes from the NIEM model or extension schemas.  Other sections of this project note explain why none of the attributes in the structures namespace routinely appear on simple content elements.  Almost all simple content elements will therefore be data properties.  If a simple content element does have attributes, that will be a choice made by a data modeler, and it will be an object property.
+
+## 2.4 No identifiers for data properties
+
+NIEM has always defined semantics in terms of RDF equivalents.  This means an element that can have a referencing attribute (`id`, `ref`,  or `uri` in the structures namespace) must be an object property, because literal values do not have identifiers in RDF.  
+
+Referencing simple content is rare in NIEM XML  It is unusual to see something like
+
+```
+<nc:PersonName s:id="link">Tommy</nc:PersonName>
+<nc:PersonName s:ref="link"/>
+```
+
+NIEM 6 therefore assumes that an element declaration of simple content without attributes is a data property and cannot have any of the referencing attributes.  This keeps the common case simple.  NIEM 6 provides new appinfo for the unusual case.  For an XML message to include something like
+
+```
+<my:SimpleContent s:id="link">FOO</my:SimpleContent>
+```
+
+the corresponding model in XSD must include that appinfo, like this:
+
+```
+<xs:element name="SimpleContent" type="xs:token" appinfo:isObjectProperty="true" ...
+```
+
+An element of simple content with attributes is always an object property and does not require this appinfo in the schema.
+
+## 2.5 Optional identifiers for object properties
+
+Sometimes a message designer wants to avoid the complexity of references to an element that will always appear inline.  At present, NIEM 5 allows the designer to remove the referencing attributes from *every* element declaration.  NIEM 6 introduces a way to remove the reference properties from *particular* element declarations, while leaving them on others.
+
+## 2.6 Augmentation enhancements
+
+Augmentation allows a data modeler to add elements to a type with complex content in a namespace that belongs to another.  For example, the NIEM Justice domain uses augmentation to add `j:PersonHasChildrenIndicator` (and 97 other elements) to `nc:PersonType`.
+
+In NIEM 6, augmentation is enhanced in two ways:  The component that is added can be an attribute as well as an element, and the component being augmented can be a type with simple content as well as complex content.
+
+## 2.7 No wildcards for ISM and NTK
+
+NIEM 3 added support for the US Intelligence Community's *Information Security Marking* and *Need To Know* standards, by adding `xs:anyAttribute` elements to several types in the structures namespace.  That was a hack, but it satisfied a large user community and,  since a message specifcation could always remove the attribute wildcards, didn't offend anyone very much.  We can achieve the same result in NIEM 6 with attribute augmentations, so we have removed the hack.
+
+## 2.8 New base types in NIEM Core
+
+In order to apply an augmentation to every element in a model (for instance, to support ISM and NTK), the model must have a base type from which all types are derived.  In NIEM 5 those base types are defined in the structures namespace.  In NIEM 6, the structures namespace applies only to NIEM XML – it has nothing to do with models in CMF, or messages in JSON – and so it is not properly part of any NIEM model.  The base types for a NIEM model belong in the NIEM Core, and so NIEM 6 adds `nc:ObjectType` and `nc:AssociationType` to the core, and derives all other types from those base types.  NIEMOpen has FOSS tools to assist migration by modifying existing NIEM XSD to use these new base types.
+
+## 2.9 No metadata types or attributes in structures namespace
+
+The metadata mechanism in NIEM allows a message designer to add elements to any simple or complex content in a message.  (Those added elements may or may not represent "data about data".)  Message designers can accomplish the same thing with the enhanced augmentation in NIEM 6.  The metadata mechanism is therefore no longer required, and is removed from NIEM 6 for simplicity.
+
+## 2.10 No `sequenceID` attribute in structures namespace
+
+By default there is no meaning ascribed to the order of a repeated element in NIEM XSD.  In NIEM 5 a message could use `structures:sequenceID` to indicate a meaningful order.  For example, a Track comprised of a sequence of Positions might look like this:
+
+```
+<my;Track>
+  <my:Position structures:sequenceID="01"> ...
+  <my:Position structures:sequenceID="02"> ...
+</my:Track>
+```
+
+In NIEM 6, meaningful order is asserted in the model, not the message.  NIEM 6 removes `sequenceID` from the structures namespace, and adds a new `appinfo:orderedPropertyIndicator` for use in NIEM XSD.  The message model for the example above would look like
+
+```
+<xs:complexType name="TrackType">
+  <xs:complexContent>
+    <xs:extension base="nc:ObjectType">
+      <xs:sequence>
+        <xs:element ref="my:Position" maxOccurs="unbounded" appinfo:orderedPropertyIndicator="true"/>
+```
+
+## 2.11 No `RoleOf` properties in models
+
+Existing versions of NIEM include a number of *role properties* and *role types*.  
+
+> Role types were introduced into NIEM after XML Schema extension proved to be insufficient in certain situations. An object may have multiple functions in the same instance document, each with associated data. For example, a person might be both a j:CrashDriver and a j:ArrestSubject. Without roles, information about the person would be duplicated in extensions, or would be left ambiguously blank in some places. [NDR 10.2.2]
+
+For example, a NIEM 5 message might look like this:
+
+```
+ 1 <my:Message>
+ 2   <j:Crash>
+ 3     <j:CrashVehicle>
+ 4       <j:CrashDriver>
+ 5         <nc:RoleOfPerson structures:id="P01">
+ 6           <nc:PersonFullName>Peter Wimsey</nc:PersonFullName>
+ 7         </nc:RoleOfPerson>
+ 8         <j:DriverLicense>
+ 9           <j:DriverLicenseCardIdentification>
+10             <nc:IdentificationID>A1234567</nc:IdentificationID>
+11           </j:DriverLicenseCardIdentification>
+12         </j:DriverLicense>
+13       </j:CrashDriver>
+14     </j:CrashVehicle>
+15     <j:CrashPerson>
+16       <nc:RoleOfPerson structures:ref="P01" xsi:nil="true"/>
+17       <j:CrashPersonInjury>
+18         <nc:InjuryDescriptionText>Broken Arm</nc:InjuryDescriptionText>
+19       </j:CrashPersonInjury>
+20     </j:CrashPerson>
+21   </j:Crash>
+22 </my:Message>
+```
+
+In this example the `CrashDriver` element on line 4 and the `CrashPerson` element on line 15 are describing the same real-world entity:  one person, named Peter Wimsey, with license A1234567 and a broken arm.  Role properties allow different elements to describe the same entity without duplicating data in the message.  We can simplify NIEM 6 by removing role properties and using the `structures:uri` attribute instead, like this:
+
+```
+ 1 <my:Message>
+ 2   <j:Crash>
+ 3     <j:CrashVehicle>
+ 4       <j:CrashDriver structures:uri="P01">
+ 5         <nc:PersonFullName>Peter Wimsey</nc:PersonFullName>
+ 6         <j:DriverLicense>
+ 7           <j:DriverLicenseCardIdentification>
+ 8             <nc:IdentificationID>A1234567</nc:IdentificationID>
+ 9           </j:DriverLicenseCardIdentification>
+10         </j:DriverLicense>
+11       </j:CrashDriver>
+12     </j:CrashVehicle>
+13     <j:CrashPerson structures:uri="P01">
+14       <j:CrashPersonInjury>
+15         <nc:InjuryDescriptionText>Broken Arm</nc:InjuryDescriptionText>
+16       </j:CrashPersonInjury>
+17     </j:CrashPerson>
+18   </j:Crash>
+19 </my:Message>
+```
+
+## 2.12 Additional RDF entailments
+
+NIEM has always defined the semantics of NIEM in terms of the RDF conceptual model.  In NIEM 4 and NIEM 5 that definition was enhanced by defining the RDF triples that are entailed by NIEM XSD and XML.  NIEM 6 improves its formal semantics with additional RDF entailments, making use of OWL, SHACL, and other ontology vocabularies.  It may then be possible to represent all aspects of a NIEM model in RDF.  It will be possible to convert NIEM data to RDF, for use as a a knowlede graph.
+
+## 2.13 Relationship properties and RDF-star
+
+Sometimes a NIEM XML element needs to modify the relationship expressed by its parent instead of the parent object itself.  For example:
+
+```
+<nc:Person>
+  <nc:PersonName>
+    <nc:PersonFullName>Clark Kent</nc:PersonFullName>
+  </nc:PersonName>
+  <nc:PersonName>
+    <nc:PersonFullName>Superman</nc:PersonFullName>
+    <my:PersonNameAugmentation>
+      <my:Classification>Secret</my:Classification>
+    </my:PersonNameAugmentation>
+  </nc:PersonName>
+</nc:Person>
+```
+
+The author of this message does not mean to say that the name `Superman` is itself a secret.  Everybody knows that name.  The author is saying that the *relationship* between the `nc:Person` object and that name is a secret.  The `my:Classification` element modifies that relationship; it is a *relationship property.*
+
+NIEM 6 uses RDF-star, an extension of RDF, to represent relationship properties.  For example, the NIEM XML above is equivalent to this RDF:
+
+```
+_:n0 a nc:PersonType .
+_:n0 nc:PersonName _:n1 .
+_:n0 nc:PersonName _:n2 {| my:Classification "Secret" |} .
+_:n1 a nc:PersonNameType .
+_:n1 nc:PersonFullName "Clark Kent" .
+_:n2 a nc:PersonNameType .
+_:n2 nc:PersonFullName "Superman" .
+```
+
+NIEM 6 has new appinfo to mark relationship properties in NIEM XSD.  The message schema for the above message would include
+
+```
+<xs:element name="Classification" appinfo:relationshipPropertyIndicator="true" ...
+```
+
+<!--No changes beyond this point-->
+
+---
 
 # 2 General changes
 
@@ -1270,7 +1528,7 @@ The NTAC proposes to expand the use of attribute wildcards to any defined schema
     <xs:attribute ref="structures:sequenceID"/>
     <xs:anyAttribute namespace="##other" processContents="strict"/>
   </xs:complexType>
-  ```
+```
 
 Notes:
 
