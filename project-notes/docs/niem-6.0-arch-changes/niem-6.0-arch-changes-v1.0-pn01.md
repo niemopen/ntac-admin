@@ -99,7 +99,7 @@ This document describes the major architectural changes planned for the NIEM Nam
 | Term | Description |
 |:---- |:----------- |
 | CMF | Common Model Format |
-| EXT | NDR conformance target for Extension Schema Document (less strict rule set for message extension schemas) |
+| EXT | NDR conformance target for Extension Schema Document |
 | IC-ISM | Intelligence Community Information Security Markings |
 | IC-NTK | Intelligence Community Need-to-Know |
 | NBAC | NIEM Business Architecture Committee Technical Steering Committee |
@@ -379,11 +379,11 @@ In addition to being used by the NDR for NIEM 6.0 to describe concepts and rules
 
 More information about CMF is available at https://github.com/niemopen/common-model-format.
 
-## 2.2 Assign NIEM subset schemas the EXT conformance target
+## 2.2 Assign NIEM subset schemas a new conformance target
 
 [niemopen/niem-naming-design-rules#10](https://github.com/niemopen/niem-naming-design-rules/issues/10)
 
-The NTAC proposes to use the ExtensionSchemaDocument (EXT) NDR conformance target for subset schemas instead of the original ReferenceSchemaDocument (REF) target.
+The NTAC proposess to use a new NDR conformance target for subset schemas instead of the original ReferenceSchemaDocument (REF) target.
 
 ### 2.2.1 Background
 
@@ -396,9 +396,8 @@ The following issues are known to be incorrectly raised from NDR conformance tes
 
 ### 2.2.2 Proposal
 
-The NTAC proposes to generate NIEM subset schemas from NIEM-supported tooling with the EXT conformance target.  The EXT target is a better match for subsets anyway since it is meant for schemas customized for specific messages.  This will prevent missing augmentation points from being flagged, since they are not required for EXT types.
-
-The EXT conformance target will not, however, fix the error message for missing definitions.  The NTAC believes this to be a much-less used subset feature and can be documented as being allowed in IEPD / message specification conformance assertions.
+The NTAC proposes to generate NIEM subset schemas from NIEM-supported tooling with a new conformance target (TBD).
+The NDR rules for this new conformance target will resemble the rules for the REF conformance target with exceptions for the above rules known to be incorrectly raised during conformance testing.
 
 -------
 
@@ -1668,7 +1667,7 @@ Integrate the following notes into the document:
 <!-- TODO: Conformance targets -->
 
 - ReferenceSchema - has open content (attribute wildcards in structures, for augmentations)
-- SubsetSchema - now marked with EXT conformance target to minimize conformance issues
+- SubsetSchema - like ReferenceSchema but augmentation points and definitions can be missing.
 - ExtensionSchema - like ReferenceSchema but `xs:any` is OK
 - MessageSchema - for validation & binding, not for model semantics
 	- Closed content (no attribute wildcards)
