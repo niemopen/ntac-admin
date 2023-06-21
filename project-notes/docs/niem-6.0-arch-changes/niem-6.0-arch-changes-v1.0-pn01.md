@@ -74,123 +74,122 @@ For complete copyright information please see the full Notices section in an App
 
 # Table of Contents
 
-- 1 Introduction 
-	- 1.2 Glossary 
-		- 1.2.1 Definitions of terms 
-		- 1.2.2 Acronyms and abbreviations 
-- 2. Overview of major changes 
-	- 2.1 Relaxed conformance rules for message schemas 
-	- 2.2 Common Model Format (CMF) and the NIEM metamodel 
-	- 2.3 Object properties and data properties 
-	- 2.4 No identifiers for data properties 
-	- 2.5 Optional identifiers for object properties 
-	- 2.6 Augmentation enhancements 
-	- 2.7 No wildcards for ISM and NTK 
-	- 2.8 New base types in NIEM Core 
-	- 2.9 No metadata types or attributes in structures namespace 
-	- 2.10 No `sequenceID` attribute in structures namespace 
-	- 2.11 No `RoleOf` properties in models 
-	- 2.12 Additional RDF entailments 
-	- 2.13 Relationship properties and RDF-star 
-- 3 General changes 
-	- 3.1 Common Model Format (CMF) 
-	- 3.2 Assign NIEM subset schemas a new conformance target 
-		- 3.2.1 Background 
-		- 3.2.2 Proposal 
-- 4 Property changes 
-	- 4.1 Do not allow elements and attributes with the same uncased name 
-		- 4.1.1 Background 
-		- 4.1.2 Impact 
-	- 4.2 Disallow direct use of structures typing for property types 
-		- 4.2.1 Background 
-		- 4.2.2 Proposal 
-		- 4.2.3 Impact 
-- 5 Type changes 
-	- 5.1 Allow facets on EXT complex value types 
-		- 5.1.1 Background 
-			- 5.1.1.1 Example: XML Schema simple and complex code types 
-			- 5.1.1.2 Benefits of the current approach 
-			- 5.1.1.3 Drawbacks of the current approach 
-		- 5.1.2 Proposal 
-			- 5.1.2.1 Example: XML Schema single complex code type 
-		- 5.1.3 Impact 
-	- 5.2 Require unique enumerations 
-		- 5.2.1 NIEM 5.2 Example 
-		- 5.2.2 NIEM 6.0 Proposal 
-		- 5.2.3 Impact 
-		- 5.2.4 Special considerations 
-	- 5.3 Require definitions for patterns 
-		- 5.3.1 Background 
-		- 5.3.2 Impact 
-	- 5.4 nc:ObjectType 
-- 6 Adapter changes 
-	- 6.1 Add representation term "Adapter" 
-		- 6.1.1 Background 
-		- 6.1.2 Impact 
-	- 6.2 Create new type `structures:AdapterType` 
-		- 6.2.1 Background 
-		- 6.2.2 Proposal 
-			- 6.2.2.1 Example declaration of an adapter type 
-		- 6.2.3 Impact 
-- 7 Augmentation Changes 
-	- 7.1 Do not allow multiple augmentations from the same namespace on the same object 
-		- 7.1.1 Background 
-		- 7.1.2 Proposal 
-			- 7.1.2.1 Valid example 
-			- 7.1.2.2 Invalid example 
-		- 7.1.3 Impact 
-- 8 Metadata Changes 
-	- 8.1 Simplify metadata 
-		- 8.1.1 Background 
-			- 8.1.1.1 Current metadata example 
-		- 8.1.2 Proposal 
-			- 8.1.2.1 Inline metadata 
-			- 8.1.2.2 Reference metadata 
-			- 8.1.2.3 Data property metadata 
-			- 8.1.2.4 Benefits 
-			- 8.1.2.5 Drawbacks 
-		- 8.1.3 Impact 
-	- 8.2 Represent relationshipMetadata via RDF-star and JSON-LD-star 
-		- 8.2.1 Background 
-		- 8.2.2 Proposal 
-		- 8.2.3 Impact 
-- 9 Role changes 
-	- 9.1 Simplified Roles 
-		- 9.1.1 Background 
-			- 9.1.1.1 Requirements 
-		- 9.1.2 Proposal 
-			- 9.1.2.1 Updated role schema example 
-			- 9.1.2.2 Updated role message example 1, without repeating data 
-			- 9.1.2.3 Updated role message example 2, with duplicated data 
-			- 9.1.2.4 Benefits 
-			- 9.1.2.5 Drawbacks 
-- 10 Utility schema changes 
-	- 10.1 Attribute wildcards 
-		- 10.1.1 Background 
-			- 10.1.1.1 Message example using metadata 
-			- 10.1.1.2 Current NIEM attribute wildcards for security markup 
-				- 10.1.1.3 Schema example: Attribute wildcards via xs:anyAttribute 
-		- 10.1.2 Proposal 
-			- 10.1.2.1 Updated message example with attribute wildcards 
-			- 10.1.2.2 Preventing unexpected or unwanted attributes in messages 
-	- 10.2 Drop attributes from structures:SimpleObjectAttributeGroup 
-	- 10.3 Drop attributes from structures:AugmentationType 
-		- 10.3.1 Background 
-		- 10.3.2 Proposal 
-		- 10.3.3 Impact 
-	- 10.4 Remove structures:sequenceID 
-- TODO 
-	- XSD Conformance Targets 
-	- Utility Namespace Changes 
-	- Other 
-- Appendix A. Informative References 
-	- [JSON-LD-star] 
-	- [RDF-star] 
-- Appendix B. Acknowledgments 
-	- B.1 Participants 
-- Appendix C. Revision History 
-- Appendix D. Notices 
-
+- [1 Introduction](#1-introduction)
+	- [1.2 Glossary](#12-glossary)
+		- [1.2.1 Definitions of terms](#121-definitions-of-terms)
+		- [1.2.2 Acronyms and abbreviations](#122-acronyms-and-abbreviations)
+- [2. Overview of major changes](#2-overview-of-major-changes)
+	- [2.1 Relaxed conformance rules for message schemas](#21-relaxed-conformance-rules-for-message-schemas)
+	- [2.2 Common Model Format (CMF) and the NIEM metamodel](#22-common-model-format-cmf-and-the-niem-metamodel)
+	- [2.3 Object properties and data properties](#23-object-properties-and-data-properties)
+	- [2.4 No identifiers for data properties](#24-no-identifiers-for-data-properties)
+	- [2.5 Optional identifiers for object properties](#25-optional-identifiers-for-object-properties)
+	- [2.6 Augmentation enhancements](#26-augmentation-enhancements)
+	- [2.7 No wildcards for ISM and NTK](#27-no-wildcards-for-ism-and-ntk)
+	- [2.8 New base types in NIEM Core](#28-new-base-types-in-niem-core)
+	- [2.9 No metadata types or attributes in structures namespace](#29-no-metadata-types-or-attributes-in-structures-namespace)
+	- [2.10 No `sequenceID` attribute in structures namespace](#210-no-sequenceid-attribute-in-structures-namespace)
+	- [2.11 No `RoleOf` properties in models](#211-no-roleof-properties-in-models)
+	- [2.12 Additional RDF entailments](#212-additional-rdf-entailments)
+	- [2.13 Relationship properties and RDF-star](#213-relationship-properties-and-rdf-star)
+- [3 General changes](#3-general-changes)
+	- [3.1 Common Model Format (CMF)](#31-common-model-format-cmf)
+	- [3.2 Assign NIEM subset schemas a new conformance target](#32-assign-niem-subset-schemas-a-new-conformance-target)
+		- [3.2.1 Background](#321-background)
+		- [3.2.2 Proposal](#322-proposal)
+- [4 Property changes](#4-property-changes)
+	- [4.1 Do not allow elements and attributes with the same uncased name](#41-do-not-allow-elements-and-attributes-with-the-same-uncased-name)
+		- [4.1.1 Background](#411-background)
+		- [4.1.2 Impact](#412-impact)
+	- [4.2 Disallow direct use of structures typing for property types](#42-disallow-direct-use-of-structures-typing-for-property-types)
+		- [4.2.1 Background](#421-background)
+		- [4.2.2 Proposal](#422-proposal)
+		- [4.2.3 Impact](#423-impact)
+- [5 Type changes](#5-type-changes)
+	- [5.1 Allow facets on EXT complex value types](#51-allow-facets-on-ext-complex-value-types)
+		- [5.1.1 Background](#511-background)
+			- [5.1.1.1 Example: XML Schema simple and complex code types](#5111-example-xml-schema-simple-and-complex-code-types)
+			- [5.1.1.2 Benefits of the current approach](#5112-benefits-of-the-current-approach)
+			- [5.1.1.3 Drawbacks of the current approach](#5113-drawbacks-of-the-current-approach)
+		- [5.1.2 Proposal](#512-proposal)
+			- [5.1.2.1 Example: XML Schema single complex code type](#5121-example-xml-schema-single-complex-code-type)
+		- [5.1.3 Impact](#513-impact)
+	- [5.2 Require unique enumerations](#52-require-unique-enumerations)
+		- [5.2.1 NIEM 5.2 Example](#521-niem-52-example)
+		- [5.2.2 NIEM 6.0 Proposal](#522-niem-60-proposal)
+		- [5.2.3 Impact](#523-impact)
+		- [5.2.4 Special considerations](#524-special-considerations)
+	- [5.3 Require definitions for patterns](#53-require-definitions-for-patterns)
+		- [5.3.1 Background](#531-background)
+		- [5.3.2 Impact](#532-impact)
+	- [5.4 nc:ObjectType](#54-ncobjecttype)
+- [6 Adapter changes](#6-adapter-changes)
+	- [6.1 Add representation term "Adapter"](#61-add-representation-term-adapter)
+		- [6.1.1 Background](#611-background)
+		- [6.1.2 Impact](#612-impact)
+	- [6.2 Create new type `structures:AdapterType`](#62-create-new-type-structuresadaptertype)
+		- [6.2.1 Background](#621-background)
+		- [6.2.2 Proposal](#622-proposal)
+			- [6.2.2.1 Example declaration of an adapter type](#6221-example-declaration-of-an-adapter-type)
+		- [6.2.3 Impact](#623-impact)
+- [7 Augmentation Changes](#7-augmentation-changes)
+	- [7.1 Do not allow multiple augmentations from the same namespace on the same object](#71-do-not-allow-multiple-augmentations-from-the-same-namespace-on-the-same-object)
+		- [7.1.1 Background](#711-background)
+		- [7.1.2 Proposal](#712-proposal)
+			- [7.1.2.1 Valid example](#7121-valid-example)
+			- [7.1.2.2 Invalid example](#7122-invalid-example)
+		- [7.1.3 Impact](#713-impact)
+- [8 Metadata Changes](#8-metadata-changes)
+	- [8.1 Simplify metadata](#81-simplify-metadata)
+		- [8.1.1 Background](#811-background)
+			- [8.1.1.1 Current metadata example](#8111-current-metadata-example)
+		- [8.1.2 Proposal](#812-proposal)
+			- [8.1.2.1 Inline metadata](#8121-inline-metadata)
+			- [8.1.2.2 Reference metadata](#8122-reference-metadata)
+			- [8.1.2.3 Data property metadata](#8123-data-property-metadata)
+			- [8.1.2.4 Benefits](#8124-benefits)
+			- [8.1.2.5 Drawbacks](#8125-drawbacks)
+		- [8.1.3 Impact](#813-impact)
+	- [8.2 Represent relationshipMetadata via RDF-star and JSON-LD-star](#82-represent-relationshipmetadata-via-rdf-star-and-json-ld-star)
+		- [8.2.1 Background](#821-background)
+		- [8.2.2 Proposal](#822-proposal)
+		- [8.2.3 Impact](#823-impact)
+- [9 Role changes](#9-role-changes)
+	- [9.1 Simplified Roles](#91-simplified-roles)
+		- [9.1.1 Background](#911-background)
+			- [9.1.1.1 Requirements](#9111-requirements)
+		- [9.1.2 Proposal](#912-proposal)
+			- [9.1.2.1 Updated role schema example](#9121-updated-role-schema-example)
+			- [9.1.2.2 Updated role message example 1, without repeating data](#9122-updated-role-message-example-1-without-repeating-data)
+			- [9.1.2.3 Updated role message example 2, with duplicated data](#9123-updated-role-message-example-2-with-duplicated-data)
+			- [9.1.2.4 Benefits](#9124-benefits)
+			- [9.1.2.5 Drawbacks](#9125-drawbacks)
+- [10 Utility schema changes](#10-utility-schema-changes)
+	- [10.1 Attribute wildcards](#101-attribute-wildcards)
+		- [10.1.1 Background](#1011-background)
+			- [10.1.1.1 Message example using metadata](#10111-message-example-using-metadata)
+			- [10.1.1.2 Current NIEM attribute wildcards for security markup](#10112-current-niem-attribute-wildcards-for-security-markup)
+				- [10.1.1.3 Schema example: Attribute wildcards via xs:anyAttribute](#10113-schema-example-attribute-wildcards-via-xsanyattribute)
+		- [10.1.2 Proposal](#1012-proposal)
+			- [10.1.2.1 Updated message example with attribute wildcards](#10121-updated-message-example-with-attribute-wildcards)
+			- [10.1.2.2 Preventing unexpected or unwanted attributes in messages](#10122-preventing-unexpected-or-unwanted-attributes-in-messages)
+	- [10.2 Drop attributes from structures:SimpleObjectAttributeGroup](#102-drop-attributes-from-structuressimpleobjectattributegroup)
+	- [10.3 Drop attributes from structures:AugmentationType](#103-drop-attributes-from-structuresaugmentationtype)
+		- [10.3.1 Background](#1031-background)
+		- [10.3.2 Proposal](#1032-proposal)
+		- [10.3.3 Impact](#1033-impact)
+	- [10.4 Remove structures:sequenceID](#104-remove-structuressequenceid)
+- [TODO](#todo)
+	- [XSD Conformance Targets](#xsd-conformance-targets)
+	- [Utility Namespace Changes](#utility-namespace-changes)
+	- [Other](#other)
+- [Appendix A. Informative References](#appendix-a-informative-references)
+	- [JSON-LD-star](#json-ld-star)
+	- [RDF-star](#rdf-star)
+- [Appendix B. Acknowledgments](#appendix-b-acknowledgments)
+	- [B.1 Participants](#b1-participants)
+- [Appendix C. Revision History](#appendix-c-revision-history)
+- [Appendix D. Notices](#appendix-d-notices)
 
 -------
 
