@@ -73,7 +73,124 @@ For complete copyright information please see the full Notices section in an App
 -------
 
 # Table of Contents
-[[TOC will be inserted here]]
+
+- 1 Introduction 
+	- 1.2 Glossary 
+		- 1.2.1 Definitions of terms 
+		- 1.2.2 Acronyms and abbreviations 
+- 2. Overview of major changes 
+	- 2.1 Relaxed conformance rules for message schemas 
+	- 2.2 Common Model Format (CMF) and the NIEM metamodel 
+	- 2.3 Object properties and data properties 
+	- 2.4 No identifiers for data properties 
+	- 2.5 Optional identifiers for object properties 
+	- 2.6 Augmentation enhancements 
+	- 2.7 No wildcards for ISM and NTK 
+	- 2.8 New base types in NIEM Core 
+	- 2.9 No metadata types or attributes in structures namespace 
+	- 2.10 No `sequenceID` attribute in structures namespace 
+	- 2.11 No `RoleOf` properties in models 
+	- 2.12 Additional RDF entailments 
+	- 2.13 Relationship properties and RDF-star 
+- 3 General changes 
+	- 3.1 Common Model Format (CMF) 
+	- 3.2 Assign NIEM subset schemas a new conformance target 
+		- 3.2.1 Background 
+		- 3.2.2 Proposal 
+- 4 Property changes 
+	- 4.1 Do not allow elements and attributes with the same uncased name 
+		- 4.1.1 Background 
+		- 4.1.2 Impact 
+	- 4.2 Disallow direct use of structures typing for property types 
+		- 4.2.1 Background 
+		- 4.2.2 Proposal 
+		- 4.2.3 Impact 
+- 5 Type changes 
+	- 5.1 Allow facets on EXT complex value types 
+		- 5.1.1 Background 
+			- 5.1.1.1 Example: XML Schema simple and complex code types 
+			- 5.1.1.2 Benefits of the current approach 
+			- 5.1.1.3 Drawbacks of the current approach 
+		- 5.1.2 Proposal 
+			- 5.1.2.1 Example: XML Schema single complex code type 
+		- 5.1.3 Impact 
+	- 5.2 Require unique enumerations 
+		- 5.2.1 NIEM 5.2 Example 
+		- 5.2.2 NIEM 6.0 Proposal 
+		- 5.2.3 Impact 
+		- 5.2.4 Special considerations 
+	- 5.3 Require definitions for patterns 
+		- 5.3.1 Background 
+		- 5.3.2 Impact 
+	- 5.4 nc:ObjectType 
+- 6 Adapter changes 
+	- 6.1 Add representation term "Adapter" 
+		- 6.1.1 Background 
+		- 6.1.2 Impact 
+	- 6.2 Create new type `structures:AdapterType` 
+		- 6.2.1 Background 
+		- 6.2.2 Proposal 
+			- 6.2.2.1 Example declaration of an adapter type 
+		- 6.2.3 Impact 
+- 7 Augmentation Changes 
+	- 7.1 Do not allow multiple augmentations from the same namespace on the same object 
+		- 7.1.1 Background 
+		- 7.1.2 Proposal 
+			- 7.1.2.1 Valid example 
+			- 7.1.2.2 Invalid example 
+		- 7.1.3 Impact 
+- 8 Metadata Changes 
+	- 8.1 Simplify metadata 
+		- 8.1.1 Background 
+			- 8.1.1.1 Current metadata example 
+		- 8.1.2 Proposal 
+			- 8.1.2.1 Inline metadata 
+			- 8.1.2.2 Reference metadata 
+			- 8.1.2.3 Data property metadata 
+			- 8.1.2.4 Benefits 
+			- 8.1.2.5 Drawbacks 
+		- 8.1.3 Impact 
+	- 8.2 Represent relationshipMetadata via RDF-star and JSON-LD-star 
+		- 8.2.1 Background 
+		- 8.2.2 Proposal 
+		- 8.2.3 Impact 
+- 9 Role changes 
+	- 9.1 Simplified Roles 
+		- 9.1.1 Background 
+			- 9.1.1.1 Requirements 
+		- 9.1.2 Proposal 
+			- 9.1.2.1 Updated role schema example 
+			- 9.1.2.2 Updated role message example 1, without repeating data 
+			- 9.1.2.3 Updated role message example 2, with duplicated data 
+			- 9.1.2.4 Benefits 
+			- 9.1.2.5 Drawbacks 
+- 10 Utility schema changes 
+	- 10.1 Attribute wildcards 
+		- 10.1.1 Background 
+			- 10.1.1.1 Message example using metadata 
+			- 10.1.1.2 Current NIEM attribute wildcards for security markup 
+				- 10.1.1.3 Schema example: Attribute wildcards via xs:anyAttribute 
+		- 10.1.2 Proposal 
+			- 10.1.2.1 Updated message example with attribute wildcards 
+			- 10.1.2.2 Preventing unexpected or unwanted attributes in messages 
+	- 10.2 Drop attributes from structures:SimpleObjectAttributeGroup 
+	- 10.3 Drop attributes from structures:AugmentationType 
+		- 10.3.1 Background 
+		- 10.3.2 Proposal 
+		- 10.3.3 Impact 
+	- 10.4 Remove structures:sequenceID 
+- TODO 
+	- XSD Conformance Targets 
+	- Utility Namespace Changes 
+	- Other 
+- Appendix A. Informative References 
+	- [JSON-LD-star] 
+	- [RDF-star] 
+- Appendix B. Acknowledgments 
+	- B.1 Participants 
+- Appendix C. Revision History 
+- Appendix D. Notices 
+
 
 -------
 
