@@ -61,7 +61,7 @@ When referencing this document the following citation format should be used:
 
 **[NIEM-6-Arch-Changes-v1.0]**
 
-_NIEM 6.0 Architectural Changes Version 1.0_. Edited by Thomas Carlson, Christina Medlin, and Scott Renner. 05 June 2023. OASIS Project Note 01. https://docs.oasis-open.org/niem/niem-6.0-arch-changes/v1.0/pn01/niem-6.0-arch-changes-v1.0-pn01.html. Latest stage: https://docs.oasis-open.org/niem/niem-6.0-arch-changes/v1.0/niem-6.0-arch-changes-v1.0.html.
+*NIEM 6.0 Architectural Changes Version 1.0*. Edited by Thomas Carlson, Christina Medlin, and Scott Renner. 05 June 2023. OASIS Project Note 01. https://docs.oasis-open.org/niem/niem-6.0-arch-changes/v1.0/pn01/niem-6.0-arch-changes-v1.0-pn01.html. Latest stage: https://docs.oasis-open.org/niem/niem-6.0-arch-changes/v1.0/niem-6.0-arch-changes-v1.0.html.
 
 #### Notices
 Copyright &copy; OASIS Open 2023. All Rights Reserved.
@@ -129,13 +129,13 @@ The following architecture changes are briefly described here; details appear in
 
 ## 2.1 Relaxed conformance rules for message schemas
 
-There are two kinds of data model in NIEM:  *reference models* and *message models*.  These models are represented in XSD as *reference schemas* and *message schemas*. 
+There are two kinds of data model in NIEM:  *reference models* and *message models*.  These models are represented in XSD as *reference schemas* and *message schemas*.
 
-The NIEM core and domain models are reference models.  These models express semantics, providing names and definitions for concepts, and relationships among concepts.  They are characterized by "optionality and over-inclusiveness". That is, they define more concepts than needed for any particular data exchange specification, without cardinalty constraints, so it is easy to select the concepts that are needed and omit the rest.
+The NIEM core and domain models are reference models.  These models express semantics, providing names and definitions for concepts, and relationships among concepts.  They are characterized by "optionality and over-inclusiveness". That is, they define more concepts than needed for any particular data exchange specification, without cardinality constraints, so it is easy to select the concepts that are needed and omit the rest.
 
 The data model in a message specification (or IEPD) is a message model.  These models include cardinality constraints and datatype restrictions to define the mandatory and optional content of a particular message format in a data exchange. They are formed by assembling subsets of the reference schema documents that define the NIEM model, plus one or more extension schema documents that contain any exchange-specific definitions.
 
-NIEM 6 introduces a new conformance target for *message schema documents* that omits many of the conformance rules for *reference schema documents* and *extension schema documents*.  For example, a message schema may use `xs:choice` instead of element subsitution.  In NIEM 6, a message schema is focused on validation and code binding, and need not follow all the rules that promote reuse and impose semantics on XSD constructs.  As a result, software which produces and consumes NIEM data will be easier to implement.  (Semantics and reuse are still available and supported through the reference model.)
+NIEM 6 introduces a new conformance target for *message schema documents* that omits many of the conformance rules for *reference schema documents* and *extension schema documents*.  For example, a message schema may use `xs:choice` instead of element substitution.  In NIEM 6, a message schema is focused on validation and code binding, and need not follow all the rules that promote reuse and impose semantics on XSD constructs.  As a result, software which produces and consumes NIEM data will be easier to implement.  (Semantics and reuse are still available and supported through the reference model.)
 
 The *subset schema rule* continues to apply in NIEM 6.  Any XML that is valid when assessed against a message schema must also be valid against the reference schema.
 
@@ -155,7 +155,7 @@ A CMF model may be transformed into developer artifacts for many technologies.  
 
 <img src="figures/toolpath.png" alt="toolpath" style="zoom:80%;" />
 
-The NIEMOpen project includes [CMFTool](https://github.com/niemopen/cmftool), which is free and open-source software capable of translating a CMF model to the equivalent NIEM XSD schema, and vice versa.  Developers can therefore work with either formalism and still take advantage of the tooling for both.    
+The NIEMOpen project includes [CMFTool](https://github.com/niemopen/cmftool), which is free and open-source software capable of translating a CMF model to the equivalent NIEM XSD schema, and vice versa.  Developers can therefore work with either formalism and still take advantage of the tooling for both.
 
 ## 2.3 Object properties and data properties
 
@@ -163,7 +163,7 @@ NIEM XML elements with simple content and attributes are not easily represented 
 
 In NIEM 6, an XML element of complex content is an object property and has a class.  Here is an example of the `PersonName` object property in NIEM XML and NIEM JSON:
 
-```
+```text
 <nc:PersonName>                                      | "nc:PersonName": {
   <nc:PersonGivenName>Tommy</nc:PersonGivenName>     |   "nc:PersonGivenName": "Tommy",
   <nc:PersonSurName>Atkins</nc:PersonSurName>        |   "nc:PersonSurName": "Atkins"
@@ -172,13 +172,13 @@ In NIEM 6, an XML element of complex content is an object property and has a cla
 
 A simple content element with no attributes is a data property and has a datatype.
 
-```
+```text
 <nc:PersonGivenName>Tommy</nc:PersonGivenName>       | "nc:PersonGivenName": "Tommy"
 ```
 
 But what to do for a simple content element with attributes?   There is no good JSON key for the simple content value.
 
-```
+```text
 <nc:PersonMiddleName @nc:partialIndicator="true">    | "nc:PersonMiddleName": {
   Bartholomew                                        |   "nc:partialIndicator": true,
 </nc:PersonMiddleName>                               |   ????? : "Bartholmew"
@@ -187,7 +187,7 @@ But what to do for a simple content element with attributes?   There is no good 
 
 In NIEM 6, a simple content element with attributes is an object property.  When translating from XSD to CMF, a new data property is created for the CMF model – `nc:PersonMiddleNameLiteral` – which appears in the JSON serialization, like this:
 
-```
+```text
 <nc:PersonMiddleName @nc:partialIndicator="true">    | "nc:PersonMiddleName": {
   Bartholomew                                        |   "nc:partialIndicator": true,
 </nc:PersonMiddleName>                               |   "nc:PersonMiddleNameLiteral" : "Bartholmew"
@@ -198,24 +198,24 @@ Most simple content elements do not have attributes from the NIEM model or exten
 
 ## 2.4 No identifiers for data properties
 
-NIEM has always defined semantics in terms of RDF equivalents.  This means an element that can have a referencing attribute (`id`, `ref`,  or `uri` in the structures namespace) must be an object property, because literal values do not have identifiers in RDF.  
+NIEM has always defined semantics in terms of RDF equivalents.  This means an element that can have a referencing attribute (`id`, `ref`,  or `uri` in the structures namespace) must be an object property, because literal values do not have identifiers in RDF.
 
 Referencing simple content is rare in NIEM XML  It is unusual to see something like
 
-```
+```xml
 <nc:PersonName s:id="link">Tommy</nc:PersonName>
 <nc:PersonName s:ref="link"/>
 ```
 
 NIEM 6 therefore assumes that an element declaration of simple content without attributes is a data property and cannot have any of the referencing attributes.  This keeps the common case simple.  NIEM 6 provides new appinfo for the unusual case.  For an XML message to include something like
 
-```
+```xml
 <my:SimpleContent s:id="link">FOO</my:SimpleContent>
 ```
 
 the corresponding model in XSD must include that appinfo, like this:
 
-```
+```xml
 <xs:element name="SimpleContent" type="xs:token" appinfo:isObjectProperty="true" ...
 ```
 
@@ -233,7 +233,7 @@ In NIEM 6, augmentation is enhanced in two ways:  The component that is added ca
 
 ## 2.7 No wildcards for ISM and NTK
 
-NIEM 3 added support for the US Intelligence Community's *Information Security Marking* and *Need To Know* standards, by adding `xs:anyAttribute` elements to several types in the structures namespace.  That was a hack, but it satisfied a large user community and,  since a message specifcation could always remove the attribute wildcards, didn't offend anyone very much.  We can achieve the same result in NIEM 6 with attribute augmentations, so we have removed the hack.
+NIEM 3 added support for the US Intelligence Community's *Information Security Marking* and *Need To Know* standards, by adding `xs:anyAttribute` elements to several types in the structures namespace.  That was a hack, but it satisfied a large user community and,  since a message specification could always remove the attribute wildcards, didn't offend anyone very much.  We can achieve the same result in NIEM 6 with attribute augmentations, so we have removed the hack.
 
 ## 2.8 New base types in NIEM Core
 
@@ -247,8 +247,8 @@ The metadata mechanism in NIEM allows a message designer to add elements to any 
 
 By default there is no meaning ascribed to the order of a repeated element in NIEM XSD.  In NIEM 5 a message could use `structures:sequenceID` to indicate a meaningful order.  For example, a Track comprised of a sequence of Positions might look like this:
 
-```
-<my;Track>
+```xml
+<my:Track>
   <my:Position structures:sequenceID="01"> ...
   <my:Position structures:sequenceID="02"> ...
 </my:Track>
@@ -256,7 +256,7 @@ By default there is no meaning ascribed to the order of a repeated element in NI
 
 In NIEM 6, meaningful order is asserted in the model, not the message.  NIEM 6 removes `sequenceID` from the structures namespace, and adds a new `appinfo:orderedPropertyIndicator` for use in NIEM XSD.  The message model for the example above would look like
 
-```
+```xml
 <xs:complexType name="TrackType">
   <xs:complexContent>
     <xs:extension base="nc:ObjectType">
@@ -266,13 +266,13 @@ In NIEM 6, meaningful order is asserted in the model, not the message.  NIEM 6 r
 
 ## 2.11 No `RoleOf` properties in models
 
-Existing versions of NIEM include a number of *role properties* and *role types*.  
+Existing versions of NIEM include a number of *role properties* and *role types*.
 
-> Role types were introduced into NIEM after XML Schema extension proved to be insufficient in certain situations. An object may have multiple functions in the same instance document, each with associated data. For example, a person might be both a j:CrashDriver and a j:ArrestSubject. Without roles, information about the person would be duplicated in extensions, or would be left ambiguously blank in some places. [NDR 10.2.2]
+> Role types were introduced into NIEM after XML Schema extension proved to be insufficient in certain situations. An object may have multiple functions in the same instance document, each with associated data. For example, a person might be both a j:CrashDriver and a j:ArrestSubject. Without roles, information about the person would be duplicated in extensions, or would be left ambiguously blank in some places. [NDR 10.2.2](https://reference.niem.gov/niem/specification/naming-and-design-rules/5.0/niem-ndr-5.0.html#section_10.2.2)
 
 For example, a NIEM 5 message might look like this:
 
-```
+```xml
  1 <my:Message>
  2   <j:Crash>
  3     <j:CrashVehicle>
@@ -299,7 +299,7 @@ For example, a NIEM 5 message might look like this:
 
 In this example the `CrashDriver` element on line 4 and the `CrashPerson` element on line 15 are describing the same real-world entity:  one person, named Peter Wimsey, with license A1234567 and a broken arm.  Role properties allow different elements to describe the same entity without duplicating data in the message.  We can simplify NIEM 6 by removing role properties and using the `structures:uri` attribute instead, like this:
 
-```
+```xml
  1 <my:Message>
  2   <j:Crash>
  3     <j:CrashVehicle>
@@ -323,13 +323,13 @@ In this example the `CrashDriver` element on line 4 and the `CrashPerson` elemen
 
 ## 2.12 Additional RDF entailments
 
-NIEM has always defined the semantics of NIEM in terms of the RDF conceptual model.  In NIEM 4 and NIEM 5 that definition was enhanced by defining the RDF triples that are entailed by NIEM XSD and XML.  NIEM 6 improves its formal semantics with additional RDF entailments, making use of OWL, SHACL, and other ontology vocabularies.  It may then be possible to represent all aspects of a NIEM model in RDF.  It will be possible to convert NIEM data to RDF, for use as a a knowlede graph.
+NIEM has always defined the semantics of NIEM in terms of the RDF conceptual model.  In NIEM 4 and NIEM 5 that definition was enhanced by defining the RDF triples that are entailed by NIEM XSD and XML.  NIEM 6 improves its formal semantics with additional RDF entailments, making use of OWL, SHACL, and other ontology vocabularies.  It may then be possible to represent all aspects of a NIEM model in RDF.  It will be possible to convert NIEM data to RDF, for use as a a knowledge graph.
 
 ## 2.13 Relationship properties and RDF-star
 
 Sometimes a NIEM XML element needs to modify the relationship expressed by its parent instead of the parent object itself.  For example:
 
-```
+```xml
 <nc:Person>
   <nc:PersonName>
     <nc:PersonFullName>Clark Kent</nc:PersonFullName>
@@ -347,7 +347,7 @@ The author of this message does not mean to say that the name `Superman` is itse
 
 NIEM 6 uses RDF-star, an extension of RDF, to represent relationship properties.  For example, the NIEM XML above is equivalent to this RDF:
 
-```
+```text
 _:n0 a nc:PersonType .
 _:n0 nc:PersonName _:n1 .
 _:n0 nc:PersonName _:n2 {| my:Classification "Secret" |} .
@@ -359,13 +359,11 @@ _:n2 nc:PersonFullName "Superman" .
 
 NIEM 6 has new appinfo to mark relationship properties in NIEM XSD.  The message schema for the above message would include
 
-```
+```xml
 <xs:element name="Classification" appinfo:relationshipPropertyIndicator="true" ...
 ```
 
-<!--No changes beyond this point-->
-
----
+-------
 
 # 3 General changes
 
@@ -996,7 +994,7 @@ Notes:
 
 #### 8.1.2.3 Data property metadata
 
-While metadata objects can be added to class types (types that contain properties), the same is not true for datatypes (types that contain a value and attributes).  While the [Attribute Wildcards](#attribute-wildcards) proposal in this document enables adding new attributes to existing object and data properties, attaching metadata consisting of object properties (elements) still requires special handling.  NIEM datatypes will continue to carry the `structures:metadata` and `structures:relationshipMetadata` attributes so that data properties can link to applicable metadata.
+While metadata objects can be added to class types (types that contain properties), the same is not true for datatypes (types that contain a value and attributes).  While the [Attribute Wildcards](#91-attribute-wildcards) proposal in this document enables adding new attributes to existing object and data properties, attaching metadata consisting of object properties (elements) still requires special handling.  NIEM datatypes will continue to carry the `structures:metadata` and `structures:relationshipMetadata` attributes so that data properties can link to applicable metadata.
 
 The example below shows how to use references to apply metadata to a mix of object and data properties.
 
@@ -1602,26 +1600,7 @@ The proposal with the attribute wildcard permits any attribute from any namespac
 
 [niemopen/niem-naming-design-rules#33](https://github.com/niemopen/niem-naming-design-rules/issues/33)
 
-The NTAC has proposed to drop the following attributes from `structure:SimpleObjectAttributeGroup` as they are typically used on objects, not literals:
-
-| Attribute | Reason |
-|:--------- |:------ |
-| `structures:id`                   | IDs and references are typically used for objects, not literals
-| `structures:ref`                  | (see above)
-| `structures:uri`                  | Linked data is for object resources, not literals
-| `structures:relationshipMetadata` | Use `structures:metadata` or attribute wildcards instead
-
-### 10.2.1 Background
-
-Attribute group `structures:SimpleObjectAttributeGroup` is required to be define on or inherited by every NIEM-conformant complex value type in NIEM.  This ensures that NIEM data properties have available the mechanisms used by NIEM to support such things as metadata and security markup.
-
-### 10.2.2 Proposal
-
-The NTAC proposes to drop attributes that are meant to be used for objects rather than for data values, such as strings and numbers.  IDs and references, linked data, and relationship metadata are intended for object data rather than literal values.
-
-### 10.2.3 Impact
-
-These changes will have low impact on the model itself, but may affect message designers if they currently use these attributes.
+The NTAC has proposed to drop the `structures:relationshipMetadata` from `structure:SimpleObjectAttributeGroup`.
 
 ## 10.3 Drop attributes from structures:AugmentationType
 
@@ -1710,11 +1689,11 @@ While any hyperlinks included in this appendix were valid at the time of publica
 
 ###### [JSON-LD-star]
 
-_JSON-LD-star, 12 April 2023_. Edited by Gregg Kellogg and Pierre-Antoine Champin.  Latest editor's draft: https://json-ld.github.io/json-ld-star/.  Latest published version: https://json-ld.github.io/json-ld-star/publications/2021-02-18.html
+*JSON-LD-star, 12 April 2023*. Edited by Gregg Kellogg and Pierre-Antoine Champin.  Latest editor's draft: https://json-ld.github.io/json-ld-star/.  Latest published version: https://json-ld.github.io/json-ld-star/publications/2021-02-18.html
 
 ###### [RDF-star]
 
-_RDF-star and SPARQL-star_.  Dörthe Arndt, Jeen Broekstra, Bob DuCharme, Ora Lassila, Peter F. Patel-Schneider, Eric Prud'hommeaux, Ted Thibodeau, Jr., and Bryan Thompson (Amazon), Authors.  Olaf Hartig, Pierre-Antoine Champin, Gregg Kellogg, and Andy Seaborne, Editors.  Draft Community GroupReport, 08 December 2022, Latest editor's draft available at https://w3c.github.io/rdf-star/cg-spec/editors_draft.html.
+*RDF-star and SPARQL-star*.  Dörthe Arndt, Jeen Broekstra, Bob DuCharme, Ora Lassila, Peter F. Patel-Schneider, Eric Prud'hommeaux, Ted Thibodeau, Jr., and Bryan Thompson (Amazon), Authors.  Olaf Hartig, Pierre-Antoine Champin, Gregg Kellogg, and Andy Seaborne, Editors.  Draft Community GroupReport, 08 December 2022, Latest editor's draft available at https://w3c.github.io/rdf-star/cg-spec/editors_draft.html.
 
 -------
 
