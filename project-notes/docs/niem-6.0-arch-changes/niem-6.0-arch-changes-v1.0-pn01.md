@@ -351,9 +351,9 @@ In NIEM 6, augmentation is enhanced in two ways:  The component that is added ca
 
 NIEM 3 added support for the US Intelligence Community's *Information Security Marking* and *Need To Know* standards, by adding `xs:anyAttribute` elements to several types in the structures namespace.  That was a hack, but it satisfied a large user community and,  since a message specification could always remove the attribute wildcards, didn't offend anyone very much.  We can achieve the same result in NIEM 6 with attribute augmentations, so we have removed the hack.
 
-## 2.8 New base types in NIEM Core
+## 2.8 New base type in NIEM Core
 
-In order to apply an augmentation to every element in a model (for instance, to support ISM and NTK), the model must have a base type from which all types are derived.  In NIEM 5 those base types are defined in the structures namespace.  In NIEM 6, the structures namespace applies only to NIEM XML – it has nothing to do with models in CMF, or messages in JSON – and so it is not properly part of any NIEM model.  The base types for a NIEM model belong in the NIEM Core, and so NIEM 6 adds `nc:ObjectType` and `nc:AssociationType` to the core, and derives all other types from those base types.  NIEMOpen has FOSS tools to assist migration by modifying existing NIEM XSD to use these new base types.
+In order to apply an augmentation to every element in a model (for instance, to support ISM and NTK), the model must have a base type from which all types are derived.  In NIEM 5 those base types are defined in the structures namespace.  In NIEM 6, the structures namespace applies only to NIEM XML – it has nothing to do with models in CMF, or messages in JSON – and so it is not properly part of any NIEM model.  The base types for a NIEM model belong in the NIEM Core, and so NIEM 6 adds `nc:ObjectType` to the core, and derives all other types from those base types.  NIEMOpen has FOSS tools to assist migration by modifying existing NIEM XSD to use these new base types.
 
 ## 2.9 No metadata types or attributes in structures namespace
 
