@@ -8,7 +8,7 @@
 
 ## Project Note 01
 
-## 05 June 2023
+## 27 June 2023
 
 &nbsp;
 
@@ -39,12 +39,6 @@ Scott Renner (sar@mitre.org), [MITRE](https://www.mitre.org/)
 Thomas Carlson (thomas.carlson@gtri.gatech.edu), [GTRI](https://gtri.gatech.edu/) \
 Christina Medlin (christina.medlin@gtri.gatech.edu), [GTRI](https://gtri.gatech.edu/) \
 Scott Renner (sar@mitre.org), [MITRE](https://www.mitre.org/)
-
-#### Related work:
-This document is related to:
-* Related specifications (include hyperlink, preferably to HTML format) \
-`(remove "Related work" section if no entries)`
-<!-- TODO: Remove related work?  NDR not yet an OASIS product. -->
 
 #### Abstract:
 This document describes the major architectural changes planned for the NIEM Naming and Design Rules specification for version 6.0.
@@ -87,11 +81,10 @@ For complete copyright information please see the full Notices section in an App
 	- [2.6 Augmentation enhancements](#26-augmentation-enhancements)
 	- [2.7 No wildcards for ISM and NTK](#27-no-wildcards-for-ism-and-ntk)
 	- [2.8 New base types in NIEM Core](#28-new-base-types-in-niem-core)
-	- [2.9 No metadata types or attributes in structures namespace](#29-no-metadata-types-or-attributes-in-structures-namespace)
-	- [2.10 No `sequenceID` attribute in structures namespace](#210-no-sequenceid-attribute-in-structures-namespace)
-	- [2.11 No `RoleOf` properties in models](#211-no-roleof-properties-in-models)
-	- [2.12 Additional RDF entailments](#212-additional-rdf-entailments)
-	- [2.13 Relationship properties and RDF-star](#213-relationship-properties-and-rdf-star)
+	- [2.9 No `sequenceID` attribute in structures namespace](#29-no-sequenceid-attribute-in-structures-namespace)
+	- [2.10 No `RoleOf` properties in models](#210-no-roleof-properties-in-models)
+	- [2.11 Additional RDF entailments](#211-additional-rdf-entailments)
+	- [2.12 Relationship properties and RDF-star](#212-relationship-properties-and-rdf-star)
 - [3 General changes](#3-general-changes)
 	- [3.1 Common Model Format (CMF)](#31-common-model-format-cmf)
 	- [3.2 Assign NIEM subset schemas a new conformance target](#32-assign-niem-subset-schemas-a-new-conformance-target)
@@ -193,9 +186,7 @@ For complete copyright information please see the full Notices section in an App
 
 -------
 
-<!-- Insert a "line rule" (three or more hyphens alone on a new line, following a blank line) before each major section. This is used to generate a page break in the PDF format. -->
-
-# 1 Introduction
+# 1. Introduction
 
 This document describes the major architectural changes planned for the NIEM Naming and Design Rules specification for version 6.0.  It is a working document, and may change several times before the NIEM 6 publication is complete.  The document contains phrases such as "NIEM 6 will… " and "NIEM 6 does not…", but in this draft these describe current intentions, not final decisions.  Comments, criticism, and questions are welcome.
 
@@ -355,11 +346,7 @@ NIEM 3 added support for the US Intelligence Community's *Information Security M
 
 In order to apply an augmentation to every element in a model (for instance, to support ISM and NTK), the model must have a base type from which all types are derived.  In NIEM 5 those base types are defined in the structures namespace.  In NIEM 6, the structures namespace applies only to NIEM XML – it has nothing to do with models in CMF, or messages in JSON – and so it is not properly part of any NIEM model.  The base types for a NIEM model belong in the NIEM Core, and so NIEM 6 adds `nc:ObjectType` to the core, and derives all other types from those base types.  NIEMOpen has FOSS tools to assist migration by modifying existing NIEM XSD to use these new base types.
 
-## 2.9 No metadata types or attributes in structures namespace
-
-The metadata mechanism in NIEM allows a message designer to add elements to any simple or complex content in a message.  (Those added elements may or may not represent "data about data".)  Message designers can accomplish the same thing with the enhanced augmentation in NIEM 6.  The metadata mechanism is therefore no longer required, and is removed from NIEM 6 for simplicity.
-
-## 2.10 No `sequenceID` attribute in structures namespace
+## 2.9 No `sequenceID` attribute in structures namespace
 
 By default there is no meaning ascribed to the order of a repeated element in NIEM XSD.  In NIEM 5 a message could use `structures:sequenceID` to indicate a meaningful order.  For example, a Track comprised of a sequence of Positions might look like this:
 
@@ -380,7 +367,7 @@ In NIEM 6, meaningful order is asserted in the model, not the message.  NIEM 6 r
         <xs:element ref="my:Position" maxOccurs="unbounded" appinfo:orderedPropertyIndicator="true"/>
 ```
 
-## 2.11 No `RoleOf` properties in models
+## 2.10 No `RoleOf` properties in models
 
 Existing versions of NIEM include a number of *role properties* and *role types*.
 
@@ -437,11 +424,11 @@ In this example the `CrashDriver` element on line 4 and the `CrashPerson` elemen
 19 </my:Message>
 ```
 
-## 2.12 Additional RDF entailments
+## 2.11 Additional RDF entailments
 
 NIEM has always defined the semantics of NIEM in terms of the RDF conceptual model.  In NIEM 4 and NIEM 5 that definition was enhanced by defining the RDF triples that are entailed by NIEM XSD and XML.  NIEM 6 improves its formal semantics with additional RDF entailments, making use of OWL, SHACL, and other ontology vocabularies.  It may then be possible to represent all aspects of a NIEM model in RDF.  It will be possible to convert NIEM data to RDF, for use as a a knowledge graph.
 
-## 2.13 Relationship properties and RDF-star
+## 2.12 Relationship properties and RDF-star
 
 Sometimes a NIEM XML element needs to modify the relationship expressed by its parent instead of the parent object itself.  For example:
 
