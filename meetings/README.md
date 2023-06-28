@@ -4,8 +4,12 @@
 
 ## Meeting minutes
 
-* [2023-05-23 agenda](docs/2023-05-23-agenda.md)
-* [2023-05-16 (draft)](docs/2023-05-16-minutes.md)
+* [2023-06-27 (draft)](docs/2023-06-27-minutes.md)
+* [2023-06-20](docs/2023-06-20-minutes.md) – N6 arch changes, external standards, Zoom meetings
+* [2023-06-13](docs/2023-06-13-minutes.md) – NDR overhaul, external standards, nc:ObjectType, @sequenceID
+* [2023-06-06](docs/2023-06-06-minutes.md) – NDR changes, external standards
+* [2023-05-30](docs/2023-05-30-minutes.md)
+* [2023-05-23](docs/2023-05-23-minutes.md)
 * [2023-05-09](docs/2023-05-09-minutes.md) – Role properties
 * [2023-05-02](docs/2023-05-02-minutes.md) – CMFTool, 5.2 OASIS release, role properties
 * [2023-04-25](docs/2023-04-25-minutes.md) – Publication process PN approved, NDR overhaul, CMFTool, NIEM 5.2 release
