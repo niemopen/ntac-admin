@@ -4,6 +4,7 @@
 
 ## Meeting minutes
 
+* [2023-07-18 agenda](docs/2023-07-18-agenda.md)
 * [2023-07-11 (draft)](docs/2023-07-11-minutes.md)
 * [2023-06-27](docs/2023-06-27-minutes.md) – N6 arch changes, external standards
 * [2023-06-20](docs/2023-06-20-minutes.md) – N6 arch changes, external standards, Zoom meetings
