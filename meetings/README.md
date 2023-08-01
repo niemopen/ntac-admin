@@ -4,8 +4,10 @@
 
 ## Meeting minutes
 
-* [2023-07-18 agenda](docs/2023-07-18-agenda.md)
-* [2023-07-11 (draft)](docs/2023-07-11-minutes.md)
+* [2023-08-01 agenda](docs/2023-08-01-agenda.md)
+* [2023-07-25 (draft)](docs/2023-07-25-minutes.md) – PGB m
+* [2023-07-18 (draft)](docs/2023-07-18-minutes.md) – NDR overhaul
+* [2023-07-11](docs/2023-07-11-minutes.md) – URIs and IDs and REFs, Oh My!
 * [2023-06-27](docs/2023-06-27-minutes.md) – N6 arch changes, external standards
 * [2023-06-20](docs/2023-06-20-minutes.md) – N6 arch changes, external standards, Zoom meetings
 * [2023-06-13](docs/2023-06-13-minutes.md) – NDR overhaul, external standards, nc:ObjectType, @sequenceID
