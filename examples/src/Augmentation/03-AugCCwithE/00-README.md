@@ -16,5 +16,3 @@
   * This time we get a catalog file!
   * This time `message-model.xsd` imports `jxdm.xsd`!
 
-  
-
