@@ -4,8 +4,9 @@
 
 ## Meeting minutes
 
-* [2023-08-22 agenda](docs/2023-08-22-agenda.md)
-* [2023-08-15 (draft)](docs/2023-08-15-minutes.md)
+* [2023-08-29 agenda](docs/2023-08-29-agenda.md)
+* [2023-08-22 (draft)](docs/2023-08-22-minutes.md)
+* [2023-08-15](docs/2023-08-15-minutes.md)
 * [2023-08-08](docs/2023-08-08-minutes.md) – RoleOf resolved
 * [2023-08-01](docs/2023-08-01-minutes.md) – Namspace URIs resolved
 * [2023-07-25](docs/2023-07-25-minutes.md) – PGB meeting prep, NDR overhaul
