@@ -4,9 +4,10 @@
 
 ## Meeting minutes
 
-* [2023-08-29 agenda](docs/2023-08-29-agenda.md)
-* [2023-08-22 (draft)](docs/2023-08-22-minutes.md)
-* [2023-08-15](docs/2023-08-15-minutes.md)
+* [2023-09-05 agenda](docs/2023-09-05-agenda.md)
+* [2023-08-29 (draft) ](docs/2023-08-29-minutes.md)– Documentation elements, structures:metadata, default & fixed values
+* [2023-08-22](docs/2023-08-22-minutes.md) – Establish plan for bad GENC character encodings
+* [2023-08-15](docs/2023-08-15-minutes.md) – Leaving structures:AssociationType alone for now
 * [2023-08-08](docs/2023-08-08-minutes.md) – RoleOf resolved
 * [2023-08-01](docs/2023-08-01-minutes.md) – Namspace URIs resolved
 * [2023-07-25](docs/2023-07-25-minutes.md) – PGB meeting prep, NDR overhaul
