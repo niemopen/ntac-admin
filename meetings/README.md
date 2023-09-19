@@ -4,8 +4,9 @@
 
 ## Meeting minutes
 
-* [2023-09-12 agenda](docs/2023-09-12-agenda.md)
-* [2023-09-05 (draft)](docs/2023-09-05-minutes.md) – NDR revision, Justice domain URI
+* [2023-09-19 agenda](docs/2023-09-19-agenda.md)
+* [2023-09-12 (draft)](docs/2023-09-12-minutes.md) – NDR revisions, renumber CTAS URI
+* [2023-09-05](docs/2023-09-05-minutes.md) – NDR revision, renumber Justice domain URI
 * [2023-08-29](docs/2023-08-29-minutes.md)– Documentation elements, structures:metadata, default & fixed values
 * [2023-08-22](docs/2023-08-22-minutes.md) – Establish plan for bad GENC character encodings
 * [2023-08-15](docs/2023-08-15-minutes.md) – Leaving structures:AssociationType alone for now
