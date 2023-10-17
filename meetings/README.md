@@ -4,6 +4,7 @@
 
 ## Meeting minutes
 
+* [2023-10-17 (draft)](docs/2023-10-17-minutes.md)
 * [2023-09-19 agenda](docs/2023-09-19-agenda.md)
 * [2023-09-12 (draft)](docs/2023-09-12-minutes.md) – NDR revisions, renumber CTAS URI
 * [2023-09-05](docs/2023-09-05-minutes.md) – NDR revision, renumber Justice domain URI
