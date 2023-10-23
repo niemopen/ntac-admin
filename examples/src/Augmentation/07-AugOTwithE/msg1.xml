@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<my:Message 
+  xmlns:my="http://example.com/N6AugEx/1.0/"
+  xmlns:nc="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/"
+  xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/">
+  <nc:PersonEducation>
+    <my:ObjectAugmentation>
+      <my:PrivacyAssertion>
+        <nc:Date>2023-08-05</nc:Date>
+        <my:PrivacyText>PUBLIC</my:PrivacyText>
+      </my:PrivacyAssertion>
+    </my:ObjectAugmentation>
+    <nc:EducationDescriptionText>PhD</nc:EducationDescriptionText>
+    <nc:EducationInProgressIndicator>false</nc:EducationInProgressIndicator>
+  </nc:PersonEducation>
+</my:Message>

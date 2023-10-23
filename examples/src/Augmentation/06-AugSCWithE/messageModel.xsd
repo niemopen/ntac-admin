@@ -35,5 +35,5 @@
   <xs:element name="Message" type="my:MessageType"/>
   <xs:element name="PrivacyAssertion" type="my:PrivacyAssertionType"/>
   <xs:element name="PrivacyText" type="xs:string"/>
-  <xs:attribute name="privacyAssertionRef" type="xs:IDREFS" appinfo:relationshipPropertyIndicator="true"/>
+  <xs:attribute name="privacyAssertionRef" type="xs:IDREFS" appinfo:referenceAttributeIndicator="true"/>
 </xs:schema>

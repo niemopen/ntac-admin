@@ -455,12 +455,12 @@ This works even if we decide to keep `structures:AssociationType`,   Just gets a
   <Namespace structures:id="my"> ...
 ```
 
-**08-AugOTwithA – Augmenting every object with an attribute**
+**08-AugOTwithA – Augmenting every type in the model with an attribute**
 
-Let's suppose I want to put my @privacyText attribute on every element.  The message would look like this:
+Let's suppose I want to put my `privacyText` attribute on every element.  The message would look like this:
 
 ```
-<my:Message  my:privacyText="PUBLIC"
+<my:Message my:privacyText="PUBLIC"
   xmlns:my="http://example.com/N6AugEx/1.0/"
   xmlns:nc="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/">
   <nc:PersonEducation my:privacyText="PUBLIC">
@@ -470,7 +470,7 @@ Let's suppose I want to put my @privacyText attribute on every element.  The mes
 </my:Message>
 ```
 
-You can't do this in NIEM 5.  It works in NIEM 6 by writing the attribute augmentation into *structures.xsd*, like this:
+You can't do this in NIEM 5.  It takes two steps in NIEM 6.  To put `privacyText` on complex content, we write the attribute augmentation into *structures.xsd*, like this:
 
 ```
 <xs:complexType name="ObjectType" abstract="true">
@@ -484,6 +484,8 @@ You can't do this in NIEM 5.  It works in NIEM 6 by writing the attribute augmen
   <xs:attribute ref="my:privacyText" appinfo:augmentingNamespace="http://example.com/N6AugEx/1.0/"/>
 </xs:complexType>
 ```
+
+To put `privacyText` on simple content, we put it in `SimpleObjectAttributeGroup`in structures.xsd, and then include that attribute group on every simple content type. Usually the easiest way to do that is to use proxy types.
 
 And the CMF looks like this:
 
@@ -502,7 +504,7 @@ And the CMF looks like this:
   </Namespace> ...
 ```
 
-This approach allows us to support IC-ISM without the horrid attribute wildcard hack.  I'll work up an example someday.  
+This approach allows us to support IC-ISM without the old horrid attribute wildcard hack.  I'll work up an example someday.  
 
 **Conclusion**
 

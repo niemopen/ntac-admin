@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Model
-  xmlns:cmf="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/"
-  xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/">
+<Model xmlns:cmf="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/" xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/">
+  <ObjectAugmentation>
+    <AugmentRecord>
+      <Property structures:ref="my.privacyText" xsi:nil="true"/>
+      <AugmentationIndex>-1</AugmentationIndex>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+    </AugmentRecord>
+  </ObjectAugmentation>
   <Namespace structures:id="my">
     <NamespaceURI>http://example.com/N6AugEx/1.0/</NamespaceURI>
     <NamespacePrefixText>my</NamespacePrefixText>
