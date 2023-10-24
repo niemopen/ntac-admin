@@ -5,7 +5,8 @@
 ## Meeting minutes
 
 * [2023-10-24 agenda](docs/2023-10-24-agenda.md)
-* [2023-10-17 (draft)](docs/2023-10-17-minutes.md)
+* [2023-10-24 (draft)](docs/2023-10-24-minutes.md) – Resolving model 6.0 issues for PSD01 review
+* [2023-10-17](docs/2023-10-17-minutes.md) – Status, PGB meeting prep
 * [2023-09-12 (draft)](docs/2023-09-12-minutes.md) – NDR revisions, renumber CTAS URI
 * [2023-09-05](docs/2023-09-05-minutes.md) – NDR revision, renumber Justice domain URI
 * [2023-08-29](docs/2023-08-29-minutes.md)– Documentation elements, structures:metadata, default & fixed values
