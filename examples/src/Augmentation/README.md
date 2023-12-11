@@ -25,7 +25,7 @@ Here is a summary of the important changes from NIEM 5.  The examples will show 
 
 * There is a new *reference attribute* concept and a new `Ref` representation term.  An attribute named `fooRef` has a list of references to elements of type `FooType` (or a derived type).
 * `appinfo:relationshipPropertyIndicator` describes a property that modifies the relationship between its parent and grandparent object.  It does the same thing as `structures:relationshipMetadata`, but works for any property, not just metadata elements.
-* `structures:onlyRef` is true for an element that is not a property of its parent.
+* `structures:appliesToParent` is false for an element that is not a property of its parent.
 * There is no longer any need for the metadata mechanism.  Everything that can be done with `@metadata` and `@relationshipMetadata` can also be done with augmentations.
 
 **Examples and what they illustrate**
@@ -41,8 +41,8 @@ I put the source code (XSD and CMF) for the examples into the ntac-admin repo.  
 * 04-AugCCwithA – message schema for complex content augmented with an attribute
 * 05-AugSCwith A – message schema for simple content augmented with an attribute
 * 06-AugSCwithE – message schema for simple content augmented with an element
-* 07-AugOTwithE – augmenting every object with an element
-* 08-AugOTwithA – augmenting every object with an attribute
+* 07-AugOTwithE – augmenting every object with an element *(BROKEN at this time)*
+* 08-AugOTwithA – augmenting every object with an attribute *(BROKEN at this time)*
 
 **00-N5-Subset:  A NIEM 5.2 subset schema and model** 
 
@@ -52,13 +52,13 @@ Note that in CMF, augmentations just appear in the model like any other property
 
 **01-N6-Subset:  A NIEM 6 subset schema  and model**
 
-I ran *n5sub.cmf* through `cmftool n5to6`to convert the model to NIEM 6 namespaces.  It's not perfect but it's a lot faster than editing all the namespace URIs by hand.  Then I edited the resulting *n6sub.cmf* to
+I ran *n5sub.cmf* through `cmftool n5to6`to convert the model to NIEM 6 namespaces.  It's not perfect but it's a lot faster than editing all the namespace URIs by hand.  Then I edited the resulting *subset.cmf* to
 
-* Fix the JXDM version number; cmftool isn't smart enough to do that
+* Fix the Justice schema document name and version number; cmftool isn't smart enough to do that
 * Change the conformance targets to `SubsetSchemaDocument` (there are no documentation elements, etc.)
 * Put "subset" into the `SchemaVersionText` properties.
 
-I ran *n6sub.cmf* through `cmftool m2xsrc` to generate the NIEM 6 XSD *subset schema*.  A source schema is composed of reference, extension, and subset schema documents.  The attribute wildcards in *structures.xsd* and *niem-xs.xsd* are what make this a subset schema.  
+I ran *subset.cmf* through `cmftool m2xs` to generate the NIEM 6 XSD *subset schema*.  A source schema is composed of reference, extension, and subset schema documents.  The attribute wildcards in *structures.xsd* and *niem-xs.xsd* are what make this a subset schema.  
 
 **02-NoAug:  A message schema without augmentations **
 
@@ -122,7 +122,10 @@ Schema assembly is a PITA and can be especially tricky with augmentations.  CMFT
 And when you do what everybody does, use *message-model.xsd* to validate *msg1.xml*, it fails.  Ain't nobody ever heard of `j:EducationAugmentation`.  What to do, what to do?
 
 * Xerces does the right thing if you give it an XML Catalog file.  So I added a CMFTool option to generate one.
-* I also added a CMFTool option to designate a "message schema namespace" and then make sure it imports everything needed that isn't imported somewhere else.  Fun piece of code!
+
+* I also added a CMFTool option to designate a "message schema namespace" and then make sure it imports everything needed that isn't imported somewhere else.  Fun piece of code!  The command is
+
+  `ct m2xm -c --msgNS http://example.com/N6AugEx/1.0/ -o xsd augCCwE.cmf`
 
 **04-AugCCwithA – message schema for complex content augmented with an attribute**
 

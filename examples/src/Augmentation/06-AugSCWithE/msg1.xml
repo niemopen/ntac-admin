@@ -7,7 +7,7 @@
     <nc:EducationDescriptionText my:privacyAssertionRef="p01">PhD</nc:EducationDescriptionText>
     <nc:EducationInProgressIndicator>false</nc:EducationInProgressIndicator>
   </nc:PersonEducation>
-  <my:PrivacyAssertion structures:id="p01" structures:onlyRef="true">
+  <my:PrivacyAssertion structures:id="p01" structures:appliesToParent="false">
     <nc:Date>2023-07-01</nc:Date>
     <my:PrivacyText>PUBLIC</my:PrivacyText>
   </my:PrivacyAssertion>

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Model
+<?xml version="1.0" encoding="UTF-8"?>
+<Model 
+  xmlns="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/"
   xmlns:cmf="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/"
   xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Namespace structures:id="j">
-    <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/domains/jxdm/8.2/</NamespaceURI>
+    <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/domains/justice/6.0/</NamespaceURI>
     <NamespacePrefixText>j</NamespacePrefixText>
     <DefinitionText>Justice</DefinitionText>
     <NamespaceKindCode>DOMAIN</NamespaceKindCode>
@@ -142,21 +142,12 @@
     <Namespace structures:ref="xs" xsi:nil="true"/>
   </Datatype>
   <SchemaDocument>
-    <NamespacePrefixText>j</NamespacePrefixText>
-    <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/domains/jxdm/8.2/</NamespaceURI>
-    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/naming-and-design-rules/6.0/#SubsetSchemaDocument</ConformanceTargetURIList>
-    <DocumentFilePathText>domains/jxdm.xsd</DocumentFilePathText>
-    <NIEMVersionText>6</NIEMVersionText>
-    <SchemaVersionText>subset-1</SchemaVersionText>
-    <SchemaLanguageName>en-US</SchemaLanguageName>
-  </SchemaDocument>
-  <SchemaDocument>
     <NamespacePrefixText>my</NamespacePrefixText>
     <NamespaceURI>http://example.com/N6AugEx/1.0/</NamespaceURI>
-    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/naming-and-design-rules/6.0/#MessageSchemaDocument</ConformanceTargetURIList>
+    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/XNDR/6.0/#MessageSchemaDocument</ConformanceTargetURIList>
     <DocumentFilePathText>messageModel.xsd</DocumentFilePathText>
     <NIEMVersionText>6</NIEMVersionText>
-    <SchemaVersionText>subset-1</SchemaVersionText>
+    <SchemaVersionText>message-1</SchemaVersionText>
     <SchemaLanguageName>en-US</SchemaLanguageName>
   </SchemaDocument>
   <SchemaDocument>
@@ -164,16 +155,25 @@
     <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/</NamespaceURI>
     <DocumentFilePathText>utility/structures.xsd</DocumentFilePathText>
     <NIEMVersionText>6</NIEMVersionText>
-    <SchemaVersionText>6.0-message</SchemaVersionText>
+    <SchemaVersionText>psd01-msg</SchemaVersionText>
     <SchemaLanguageName>en-US</SchemaLanguageName>
   </SchemaDocument>
   <SchemaDocument>
     <NamespacePrefixText>nc</NamespacePrefixText>
     <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/</NamespaceURI>
-    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/naming-and-design-rules/6.0/#SubsetSchemaDocument</ConformanceTargetURIList>
+    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/XNDR/6.0/#MessageSchemaDocument</ConformanceTargetURIList>
     <DocumentFilePathText>niem-core.xsd</DocumentFilePathText>
     <NIEMVersionText>6</NIEMVersionText>
-    <SchemaVersionText>subset-1</SchemaVersionText>
+    <SchemaVersionText>message-1</SchemaVersionText>
+    <SchemaLanguageName>en-US</SchemaLanguageName>
+  </SchemaDocument>
+  <SchemaDocument>
+    <NamespacePrefixText>j</NamespacePrefixText>
+    <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/domains/justice/6.0/</NamespaceURI>
+    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/XNDR/6.0/#MessageSchemaDocument</ConformanceTargetURIList>
+    <DocumentFilePathText>domains/justice.xsd</DocumentFilePathText>
+    <NIEMVersionText>6</NIEMVersionText>
+    <SchemaVersionText>message-1</SchemaVersionText>
     <SchemaLanguageName>en-US</SchemaLanguageName>
   </SchemaDocument>
 </Model>

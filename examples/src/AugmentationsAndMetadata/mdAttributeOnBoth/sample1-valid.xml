@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<my:Message
- xmlns:nc="http://release.niem.gov/niem/niem-core/6.0a/"
- xmlns:my="http://example.com/WildcardAug/1.0/">
-  <nc:PersonEducation my:privacyCode="none">
-    <nc:EducationDescriptionText>Ph.D.</nc:EducationDescriptionText>
-    <nc:EducationInProgressIndicator my:privacyCode="protected">false</nc:EducationInProgressIndicator>
-  </nc:PersonEducation>
-</my:Message>

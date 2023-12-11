@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Model
+<?xml version="1.0" encoding="UTF-8"?>
+<Model 
+  xmlns="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/"
   xmlns:cmf="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/"
   xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Namespace structures:id="my">
     <NamespaceURI>http://example.com/N6AugEx/1.0/</NamespaceURI>
     <NamespacePrefixText>my</NamespacePrefixText>
@@ -37,16 +37,17 @@
     <Namespace structures:ref="my" xsi:nil="true"/>
     <Class structures:ref="my.PrivacyAssertionType" xsi:nil="true"/>
   </Property>
+  <Property structures:id="my.privacyAssertionRef">
+    <Name>privacyAssertionRef</Name>
+    <Namespace structures:ref="my" xsi:nil="true"/>
+    <Datatype structures:ref="xs.IDREFS" xsi:nil="true"/>
+    <AttributeIndicator>true</AttributeIndicator>
+    <RefAttributeIndicator>true</RefAttributeIndicator>
+  </Property>
   <Property structures:id="my.PrivacyText">
     <Name>PrivacyText</Name>
     <Namespace structures:ref="my" xsi:nil="true"/>
     <Datatype structures:ref="xs.string" xsi:nil="true"/>
-  </Property>
-  <Property structures:id="my.privacyAssertionRef">
-    <Name>privacyAssertionRef</Name>
-    <Namespace structures:ref="my" xsi:nil="true"/>
-    <Datatype structures:ref="xs.IDREF" xsi:nil="true"/>
-    <AttributeIndicator>true</AttributeIndicator>
   </Property>
   <Property structures:id="nc.Date">
     <Name>Date</Name>
@@ -158,16 +159,16 @@
       <AugmentationNamespace structures:ref="my" xsi:nil="true"/>
     </HasProperty>
   </Class>
-  <Datatype structures:id="xs.IDREF">
-    <Name>IDREF</Name>
-    <Namespace structures:ref="xs" xsi:nil="true"/>
-  </Datatype>
   <Datatype structures:id="xs.boolean">
     <Name>boolean</Name>
     <Namespace structures:ref="xs" xsi:nil="true"/>
   </Datatype>
   <Datatype structures:id="xs.date">
     <Name>date</Name>
+    <Namespace structures:ref="xs" xsi:nil="true"/>
+  </Datatype>
+  <Datatype structures:id="xs.IDREFS">
+    <Name>IDREFS</Name>
     <Namespace structures:ref="xs" xsi:nil="true"/>
   </Datatype>
   <Datatype structures:id="xs.string">
@@ -177,7 +178,7 @@
   <SchemaDocument>
     <NamespacePrefixText>my</NamespacePrefixText>
     <NamespaceURI>http://example.com/N6AugEx/1.0/</NamespaceURI>
-    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/naming-and-design-rules/6.0/#MessageSchemaDocument</ConformanceTargetURIList>
+    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/XNDR/6.0/#MessageSchemaDocument</ConformanceTargetURIList>
     <DocumentFilePathText>messageModel.xsd</DocumentFilePathText>
     <NIEMVersionText>6</NIEMVersionText>
     <SchemaVersionText>message-1</SchemaVersionText>
@@ -188,13 +189,13 @@
     <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/</NamespaceURI>
     <DocumentFilePathText>utility/structures.xsd</DocumentFilePathText>
     <NIEMVersionText>6</NIEMVersionText>
-    <SchemaVersionText>6.0-message</SchemaVersionText>
+    <SchemaVersionText>psd01-msg</SchemaVersionText>
     <SchemaLanguageName>en-US</SchemaLanguageName>
   </SchemaDocument>
   <SchemaDocument>
     <NamespacePrefixText>nc</NamespacePrefixText>
     <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/</NamespaceURI>
-    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/naming-and-design-rules/6.0/#MessageSchemaDocument</ConformanceTargetURIList>
+    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/XNDR/6.0/#MessageSchemaDocument</ConformanceTargetURIList>
     <DocumentFilePathText>niem-core.xsd</DocumentFilePathText>
     <NIEMVersionText>6</NIEMVersionText>
     <SchemaVersionText>message-1</SchemaVersionText>

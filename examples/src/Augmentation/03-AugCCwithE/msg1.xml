@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <my:Message 
-  xmlns:j="https://docs.oasis-open.org/niemopen/ns/model/domains/jxdm/8.2/"
+  xmlns:j="https://docs.oasis-open.org/niemopen/ns/model/domains/justice/6.0/"
   xmlns:my="http://example.com/N6AugEx/1.0/"
   xmlns:nc="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/">
   <nc:PersonEducation>

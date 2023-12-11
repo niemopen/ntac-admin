@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<nc:Date xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
- xmlns:ct="https://docs.oasis-open.org/niemopen/ns/specification/conformanceTargets/3.0/"
- xmlns:my="http://example.com/N6AugEx/1.0/"
- xmlns:nc="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/ file:/C:/Work/NIEM/ntac-admin/examples/src/Augmentation/02-NoAug/messageModel.xsd">2006-05-04</nc:Date>

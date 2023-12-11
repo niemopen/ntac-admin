@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Model
+<?xml version="1.0" encoding="UTF-8"?>
+<Model 
+  xmlns="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/"
   xmlns:cmf="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/"
   xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Namespace structures:id="j">
     <NamespaceURI>http://release.niem.gov/niem/domains/jxdm/7.2/</NamespaceURI>
     <NamespacePrefixText>j</NamespacePrefixText>
@@ -16,12 +16,509 @@
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </AugmentRecord>
+    <LocalTerm>
+      <TermName>AAMVA</TermName>
+      <TermLiteralText>The American Association of Motor Vehicle Administrators</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>ACD</TermName>
+      <TermLiteralText>AAMVA Code Dictionary</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>ADA</TermName>
+      <TermLiteralText>Americans with Disabilities Act</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>AFIS</TermName>
+      <TermLiteralText>Automated Fingerprint Identification System</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Alpha</TermName>
+      <DefinitionText>Letter(s)</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Amber</TermName>
+      <TermLiteralText>America's Missing: Broadcast Emergency Response</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>ANSID20</TermName>
+      <TermLiteralText>The Data Dictionary for Traffic Record Systems, maintained by AAMVA, the American Association of Motor Vehicle Administrators</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>APCO</TermName>
+      <TermLiteralText>Association of Public-Safety Communications Officials (APCO) - International, Inc.</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>BAC</TermName>
+      <TermLiteralText>Blood Alcohol Concentration</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>BOP</TermName>
+      <TermLiteralText>Bureau of Prisons</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>BPH</TermName>
+      <TermLiteralText>Board of Parole Hearings</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Brady</TermName>
+      <TermLiteralText>Brady Law</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>CDL</TermName>
+      <TermLiteralText>Commercial Driver's License</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>CFR</TermName>
+      <DefinitionText>Code of Federal Regulations</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>CHRI</TermName>
+      <TermLiteralText>Criminal History Record Information</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>CJIS</TermName>
+      <TermLiteralText>Criminal Justice Information System</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>CLP</TermName>
+      <TermLiteralText>Commercial Learners Permit</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>CMV</TermName>
+      <TermLiteralText>Commercial Motor Vehicle</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>CODIS</TermName>
+      <TermLiteralText>Combined DNA Index System</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>COMPAS</TermName>
+      <TermLiteralText>Correctional Offender Management Profiling for Alternative Sanctions</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>DEA</TermName>
+      <TermLiteralText>Drug Enforcement Administration</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>DHS</TermName>
+      <TermLiteralText>Department of Homeland Security</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>DMH</TermName>
+      <TermLiteralText>Department of Mental Health</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>DNA</TermName>
+      <TermLiteralText>Deoxyribonucleic acid</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>DOT</TermName>
+      <TermLiteralText>Department of Transportation</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>EMS</TermName>
+      <TermLiteralText>Emergency Medical Service</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Enhanceable</TermName>
+      <DefinitionText>An enhanceable offense means that specific factors can increase the severity level of the offense.</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>FBI</TermName>
+      <TermLiteralText>Federal Bureau of Investigation</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>FCN</TermName>
+      <TermLiteralText>file control number</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>FFL</TermName>
+      <TermLiteralText>federal firearms license</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>FIPS</TermName>
+      <TermLiteralText>Federal Information Processing Standards</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>GDEP</TermName>
+      <TermLiteralText>Geographic-Drug Enforcement Program</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>GVWR</TermName>
+      <TermLiteralText>gross vehicle weight rating</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>HazMat</TermName>
+      <TermLiteralText>Hazardous Materials</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>HME</TermName>
+      <TermLiteralText>Hazardous Material Endorsement</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>HRSO</TermName>
+      <TermLiteralText>high risk sex offender</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>IAFIS</TermName>
+      <TermLiteralText>Integrated Automated Fingerprint Identification System</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>IBIS</TermName>
+      <TermLiteralText>Integrated Ballistic Identification System</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>ICC</TermName>
+      <TermLiteralText>Interstate Commerce Commission</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>ISBN</TermName>
+      <TermLiteralText>International Standard Book Number</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>JABS</TermName>
+      <DefinitionText>Joint Automated Booking System</DefinitionText>
+      <TermLiteralText>JABS</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Keyhea</TermName>
+      <DefinitionText>Under the Keyhea injunction, 'involuntary medication' cannot be administered to a state prisoner for more than three days unless the professional staff of the facility in which the prisoner is incarcerated has analyzed the prisoner's condition and found that the prisoner is, as a result of a mental disorder, 'gravely disabled and incompetent to refuse medication or a danger to others, or a danger to self,' and the prisoner has been 'advised of the need for, but has not been willing to accept medication on a voluntary basis.'</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>LEOKA</TermName>
+      <TermLiteralText>Law Enforcement Officer Killed or Assaulted</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>LIS</TermName>
+      <TermLiteralText>License Plate State</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Livescan</TermName>
+      <DefinitionText>An inkless, electronic means of capturing fingerprints in a digitized format and then transmitting them to a state repository and/or the FBI</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>LSTA</TermName>
+      <DefinitionText>State/Country Index</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>MACR</TermName>
+      <TermLiteralText>Monthly Arrest and Citation Register</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>MCMIS</TermName>
+      <TermLiteralText>Motor Carrier Management Information System</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>MCO</TermName>
+      <TermLiteralText>Manufacturer's certificate of origin</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>MCSIP</TermName>
+      <TermLiteralText>Motor Carrier Safety Improvement Process</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>MDO</TermName>
+      <TermLiteralText>mentally disordered offender</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>MHSDS</TermName>
+      <TermLiteralText>Mental Health Services Delivery System</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>MMUCC</TermName>
+      <TermLiteralText>Model Minimum Uniform Crash Criteria</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>MO</TermName>
+      <TermLiteralText>Modus Operandi</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>ModusOperandi</TermName>
+      <TermLiteralText>Mode of operating</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Multi</TermName>
+      <TermLiteralText>Multiple</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>NCIC</TermName>
+      <TermLiteralText>National Crime Information Center</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>NCMEC</TermName>
+      <TermLiteralText>National Center for Missing &amp; Exploited Children</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>NDEX</TermName>
+      <TermLiteralText>National Data Exchange</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>NDEx</TermName>
+      <TermLiteralText>National Data Exchange</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>NIBRS</TermName>
+      <TermLiteralText>National Incident Based Reporting System</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>NICB</TermName>
+      <TermLiteralText>National Insurance Crime Bureau</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>NICS</TermName>
+      <TermLiteralText>National Instant Criminal Background Check System</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>NLETS</TermName>
+      <TermLiteralText>National Law Enforcement Telecommunication Systems</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>OCA</TermName>
+      <TermLiteralText>Originating Case Agency</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>ORI</TermName>
+      <DefinitionText>A nine-character identifier assigned by the FBI Criminal Justice Information Systems (CJIS) staff to an organization, which must have met the established qualifying criteria for ORI assignment to identify the agency in transactions on CJIS Systems.</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>POST</TermName>
+      <TermLiteralText>Peace Official Standards and Training</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Postdirectional</TermName>
+      <DefinitionText>A word following a street name that indicates the directional taken by the thoroughfare from an arbitrary starting point or line, or the sector where it is located.</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Predirectional</TermName>
+      <DefinitionText>A word preceding a street name that indicates the directional taken by the thoroughfare from an arbitrary starting point or line, or the sector where it is located.</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>PRISM</TermName>
+      <TermLiteralText>Performance and Registration Information Systems Management</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>REALID</TermName>
+      <DefinitionText>Public Law 109–13, 119 Statute 302, enacted May 11, 2005, was an Act of Congress that modified U.S. federal law pertaining to security, authentication, and issuance procedures standards for the state driver's licenses and identification (ID) cards, as well as various immigration issues pertaining to terrorism.</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>RES</TermName>
+      <TermLiteralText>Registration State</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>RH</TermName>
+      <DefinitionText>Rhesus (Rh) factor is an inherited protein found on the surface of red blood cells.</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>RICO</TermName>
+      <TermLiteralText>Racketeer Influenced and Corrupt Organizations</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>SAFESTAT</TermName>
+      <TermLiteralText>Safety Status Measurement System</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Separatee</TermName>
+      <TermLiteralText>A person who must be kept separate from another person.</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>SMT</TermName>
+      <TermLiteralText>Scars, Marks, Tattoos, and Other Characteristics</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>SSN</TermName>
+      <TermLiteralText>Social Security Number</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>TCD</TermName>
+      <TermLiteralText>traffic control device</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>TCN</TermName>
+      <TermLiteralText>Transaction Control Number</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>TripleI</TermName>
+      <TermLiteralText>III - Interstate Identification Index system</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>TSA</TermName>
+      <DefinitionText>Transportation Security Administration</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>TYP</TermName>
+      <TermLiteralText>(Firearm) Type</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>TYPA</TermName>
+      <TermLiteralText>(Article) Type</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>TYPO</TermName>
+      <TermLiteralText>(ORI) Type</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>UCR</TermName>
+      <TermLiteralText>Uniform Crime Reporting</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>USDOT</TermName>
+      <TermLiteralText>United States Department of Transportation</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>USMS</TermName>
+      <TermLiteralText>United States Marshal Service</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>VICAP</TermName>
+      <TermLiteralText>Violent Criminal Apprehension Program</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>VIN</TermName>
+      <TermLiteralText>Vehicle Identification Number</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>VINA</TermName>
+      <TermLiteralText>Vehicle Identification Number Analysis</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>WHTI</TermName>
+      <TermLiteralText>Western Hemisphere Travel Initiative</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>XRay</TermName>
+      <TermLiteralText>X-Ray</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>XRays</TermName>
+      <TermLiteralText>X-Rays</TermLiteralText>
+    </LocalTerm>
   </Namespace>
   <Namespace structures:id="nc">
     <NamespaceURI>http://release.niem.gov/niem/niem-core/5.0/</NamespaceURI>
     <NamespacePrefixText>nc</NamespacePrefixText>
     <DefinitionText>NIEM Core.</DefinitionText>
     <NamespaceKindCode>CORE</NamespaceKindCode>
+    <LocalTerm>
+      <TermName>2D</TermName>
+      <TermLiteralText>Two-dimensional</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>3D</TermName>
+      <TermLiteralText>Three-dimensional</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Alpha2</TermName>
+      <DefinitionText>Two-letter</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Alpha3</TermName>
+      <DefinitionText>Three-letter</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>CMV</TermName>
+      <TermLiteralText>Commercial Motor Vehicle</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>DEA</TermName>
+      <TermLiteralText>Drug Enforcement Administration</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>ESN</TermName>
+      <TermLiteralText>electronic serial number</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>FATCA</TermName>
+      <TermLiteralText>Foreign Account Tax Compliance Act</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>FIPS</TermName>
+      <TermLiteralText>Federal Information Processing Standards</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>GENC</TermName>
+      <TermLiteralText>Geopolitical Entities, Names, and Codes</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>GSM</TermName>
+      <TermLiteralText>Global System for Mobile communication</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>IMEI</TermName>
+      <TermLiteralText>International Mobile Equipment Identity</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>IPv4</TermName>
+      <TermLiteralText>Internet Protocol version 4</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>IPv6</TermName>
+      <TermLiteralText>Internet Protocol version 6</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>ISO</TermName>
+      <TermLiteralText>International Organization for Standardization</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>ISO3166</TermName>
+      <DefinitionText>ISO 3166 is a standard published by the International Organization for Standardization (ISO) that defines codes for the names of countries, dependent territories, special areas of geographical interest, and their principal subdivisions (e.g., provinces or states). The official name of the standard is Codes for the representation of names of countries and their subdivisions.</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>ISSN</TermName>
+      <TermLiteralText>International Standard Serial Number</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>MAC</TermName>
+      <TermLiteralText>media access control address</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>MIME</TermName>
+      <TermLiteralText>Multipurpose Internet Mail Extensions</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>MSRP</TermName>
+      <TermLiteralText>Manufacturer's suggested retail price</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>NANP</TermName>
+      <TermLiteralText>North American Numbering Plan</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Postdirectional</TermName>
+      <DefinitionText>A word following a street name that indicates the directional taken by the thoroughfare from an arbitrary starting point or line, or the sector where it is located.</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Predirectional</TermName>
+      <DefinitionText>A word preceding a street name that indicates the directional taken by the thoroughfare from an arbitrary starting point or line, or the sector where it is located.</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>RFID</TermName>
+      <TermLiteralText>Radio-frequency identification</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>RH</TermName>
+      <DefinitionText>Rhesus (Rh) factor is an inherited protein found on the surface of red blood cells.</DefinitionText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>SSN</TermName>
+      <TermLiteralText>Social Security Number</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>TCP</TermName>
+      <TermLiteralText>Transmission Control Protocol</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>UMTS</TermName>
+      <TermLiteralText>Universal Mobile Telecommunications Service</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>UTC</TermName>
+      <TermLiteralText>Coordinated Universal Time</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>UTM</TermName>
+      <TermLiteralText>Universal Transverse Mercator</TermLiteralText>
+    </LocalTerm>
   </Namespace>
   <Namespace structures:id="xs">
     <NamespaceURI>http://www.w3.org/2001/XMLSchema</NamespaceURI>
@@ -85,7 +582,7 @@
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </HasProperty>
-    <HasProperty structures:sequenceID="3">
+    <HasProperty>
       <Property structures:ref="j.EducationTotalYearsText" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
@@ -106,6 +603,7 @@
   <Datatype structures:id="nc.TextType">
     <Name>TextType</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
+    <DefinitionText>A data type for a character string.</DefinitionText>
     <RestrictionOf>
       <Datatype structures:ref="xs.string" xsi:nil="true"/>
     </RestrictionOf>
