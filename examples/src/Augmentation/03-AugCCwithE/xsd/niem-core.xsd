@@ -39,13 +39,9 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="TextType">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
+  <xs:simpleType name="TextType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
   <xs:element name="Date" type="xs:date" substitutionGroup="nc:DateRepresentation" nillable="true">
     <xs:annotation>
       <xs:documentation>A full date.</xs:documentation>
