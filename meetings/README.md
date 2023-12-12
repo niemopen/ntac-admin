@@ -4,7 +4,8 @@
 
 ## Meeting minutes
 
-* [2023-11-28 (draft)](docs/2023-11-28-minutes.md) – No agenda, no new business
+* [2023-12-12 (draft)](docs/2023-12-12-minutes.md) – Errata for *structures.xsd*, implementation cookbook, OASIS standard
+* [2023-11-28](docs/2023-11-28-minutes.md) – No agenda, no new business
 * [2023-11-14](docs/2023-11-14-minutes.md) – No agenda, no new business
 * [2023-11-07](docs/2023-11-07-minutes.md) – No agenda, no new business
 * [2023-10-31](docs/2023-10-31-minutes.md) – Happy Halloween!  No agenda, no new business
