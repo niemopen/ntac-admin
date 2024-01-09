@@ -20,9 +20,10 @@ Here is a summary of the important changes from NIEM 5.  The examples will show 
   * Message schemas do not need proxy types and so do not need *niem-xs.xsd*
 
 * Attribute augmentations are defined in the model
-  * By `appinfo:augmentingNamespace` in XSD
+  * By `appinfo:AttributeAugmentation` in the augmenting XSD
+  * By `appinfo:augmentingNamespace` in the augmented XSD
   * By an `AugmentationRecord` in CMF
-
+  
 * There is a new *reference attribute* concept and a new `Ref` representation term.  An attribute named `fooRef` has a list of references to elements of type `FooType` (or a derived type).
 * `appinfo:relationshipPropertyIndicator` describes a property that modifies the relationship between its parent and grandparent object.  It does the same thing as `structures:relationshipMetadata`, but works for any property, not just metadata elements.
 * `structures:appliesToParent` is false for an element that is not a property of its parent.
@@ -148,7 +149,17 @@ You can't do this in NIEM 5.  You can do it in NIEM 6 because the base types in 
 <xs:attribute name="privacyText" type="xs:token"/>
 ```
 
-Nothing special there.  The augmentation actually occurs in *niem-core.xsd*:
+It turns out we need some new appinfo in *messageModel.xsd* to record this augmentation.
+
+```
+<xs:annotation>
+  <xs:appinfo>
+    <appinfo:AttributeAugmentation augmented="nc:EducationType" attribute="my:privacyText"/>
+  </xs:appinfo>
+</xs:annotation>
+```
+
+The augmentation is actually given effect in *niem-core.xsd*:
 
 ```
 <xs:complexType name="EducationType">
@@ -403,6 +414,8 @@ You get the same RDF either way.  So everything that can be done with metadata o
 
 **07-AugOTwithE – Augmenting every type in the model with an element**
 
+> This section and the corresponding example are still broken as of 2024-01-08
+
 You do this in NIEM 5 and NIEM 6 by writing an augmentation for `structures:ObjectType`.  Messages look like this:
 
 ```
@@ -459,6 +472,8 @@ This works even if we decide to keep `structures:AssociationType`,   Just gets a
 ```
 
 **08-AugOTwithA – Augmenting every type in the model with an attribute**
+
+> This section and the corresponding example are still broken as of 2024-01-08
 
 Let's suppose I want to put my `privacyText` attribute on every element.  The message would look like this:
 
@@ -527,4 +542,4 @@ Augmentation in NIEM 6 an do everything the metadata mechanism does in NIEM 5.  
 
 
 Author:  Scott Renner
-Revised:  2023-08-11
+Revised:  2024-01-08

@@ -7,6 +7,17 @@ Copied the subset XSD from 01-N6-subset
 
 Added *message-model.xsd*
 * Has new `privacyText` attribute; we're going to augment `nc:EducationType` with it
+* Observe the `appinfo:AttributeAugmentation` element
+
+```
+<xs:annotation>
+  <xs:appinfo>
+    <appinfo:AttributeAugmentation augmented="nc:EducationType" attribute="my:privacyText"/>
+  </xs:appinfo>
+</xs:annotation>
+```
+
+
 
 Edited *niem-core.xsd* to effect the augmentation
 

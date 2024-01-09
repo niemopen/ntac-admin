@@ -4,7 +4,7 @@
 
 ## NTAC discussion papers
 
-These documents are for NTAC discussion.  They are not expected to become project specifications.  Documents intended to become NTAC discussions are also conducted on the [discussion tab](https://github.com/niemopen/ntac-admin/discussions).
+These documents are for NTAC discussion.  They are not expected to become project specifications.  Discussion of documents intended to become project specifications are also conducted on the [discussion tab](https://github.com/niemopen/ntac-admin/discussions).
 
 * [Wildcard augmentations in NIEM 6 (2023-02-03)](docs/WildcardAugmentations-230203.md)
 
