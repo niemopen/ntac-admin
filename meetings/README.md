@@ -4,7 +4,9 @@
 
 ## Meeting minutes
 
-* [2023-12-12 (draft)](docs/2023-12-12-minutes.md) – Errata for *structures.xsd*, implementation cookbook, OASIS standard
+* [2024-01-09 (draft)](docs/2024-01-09-minutes.md) – New appinfo for attribute augmentations
+* [2024-01-02](docs/2024-01-02-minutes.md) – First look at metamodel UML diagram
+* [2023-12-12](docs/2023-12-12-minutes.md) – Errata for *structures.xsd*, implementation cookbook, OASIS standard
 * [2023-11-28](docs/2023-11-28-minutes.md) – No agenda, no new business
 * [2023-11-14](docs/2023-11-14-minutes.md) – No agenda, no new business
 * [2023-11-07](docs/2023-11-07-minutes.md) – No agenda, no new business
