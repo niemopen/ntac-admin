@@ -4,7 +4,9 @@
 
 ## Meeting minutes
 
-* [2024-01-30 (draft)](docs/2024-01-30-minutes.md) – Data modeling paper; PGB update; tooling; NDR reorg
+* [2024-02-13 agenda](docs/2024-02-13-agenda.md)
+* [2024-02-06 (draft)](docs/2024-02-06-minutes.md) – NDR reorganization
+* [2024-01-30](docs/2024-01-30-minutes.md) – Data modeling paper; PGB update; tooling; NDR reorg
 * [2024-01-23](docs/2024-01-23-minutes.md) – Early draft of data modeling paper
 * [2024-01-16](docs/2024-01-16-minutes.md) – Elected PGB liaison; new sponsor for NMO?
 * [2024-01-09](docs/2024-01-09-minutes.md) – New appinfo for attribute augmentations
