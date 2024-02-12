@@ -141,7 +141,7 @@ The authoritative definition of namespace content, once published, cannot be cha
 
 NIEM models fall into one of three categories:
 
-* A *community agreement model* is the authoritative specification of the components in a set of namespaces *that are intended for reuse*.  A community agreement model is a form of ontology, in that it defines terms and relationships in a domain of discourse. These models are characterized by "optionality and over-inclusiveness". That is, they define more concepts than needed for any particular data specification.  Thede models typically:
+* A *community agreement model* is the authoritative specification of the components in a set of namespaces *that are intended for reuse*.  A community agreement model is a form of ontology, in that it defines terms and relationships in a domain of discourse. These models are characterized by "optionality and over-inclusiveness". That is, they define more concepts than needed for any particular data specification.  These models typically:
   * Lack cardinality constraints, making it easy to select the concepts that are needed and omit the others.
   * Omit range or length constraints on property datatypes.
   * Are *incomplete* for any particular message format; it must usually be extended through namespaces defined in the message specification.
