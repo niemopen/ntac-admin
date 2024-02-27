@@ -4,8 +4,8 @@
 
 ## Meeting minutes
 
-* [2024-02-20 agenda](docs/2024-02-20-agenda.md)
-* [2024-02-13 (draft)](docs/2024-02-13-minutes.md) – NDR reorganization
+* [2024-02-20 (draft)](docs/2024-02-20-minutes.md) – NDR reorganization
+* [2024-02-13)](docs/2024-02-13-minutes.md) – NDR reorganization
 * [2024-02-06](docs/2024-02-06-minutes.md) – NDR reorganization
 * [2024-01-30](docs/2024-01-30-minutes.md) – Data modeling paper; PGB update; tooling; NDR reorg
 * [2024-01-23](docs/2024-01-23-minutes.md) – Early draft of data modeling paper
