@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Model 
-  xmlns="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/"
-  xmlns:cmf="https://docs.oasis-open.org/niemopen/ns/specification/cmf/0.8/"
+  xmlns="https://docs.oasis-open.org/niemopen/ns/specification/cmf/1.0/"
+  xmlns:cmf="https://docs.oasis-open.org/niemopen/ns/specification/cmf/1.0/"
   xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Namespace structures:id="j">
     <NamespaceURI>http://release.niem.gov/niem/domains/jxdm/7.2/</NamespaceURI>
     <NamespacePrefixText>j</NamespacePrefixText>
-    <DefinitionText>Justice</DefinitionText>
+    <DocumentationText>Justice</DocumentationText>
     <NamespaceKindCode>DOMAIN</NamespaceKindCode>
+    <ConformanceTargetURIList>http://reference.niem.gov/niem/specification/naming-and-design-rules/5.0/#ReferenceSchemaDocument</ConformanceTargetURIList>
+    <DocumentFilePathText>domains/jxdm.xsd</DocumentFilePathText>
+    <NIEMVersionText>5.0</NIEMVersionText>
+    <SchemaVersionText>1</SchemaVersionText>
+    <SchemaLanguageName>en-US</SchemaLanguageName>
     <AugmentRecord>
       <Class structures:ref="nc.EducationType" xsi:nil="true"/>
-      <Property structures:ref="j.EducationTotalYearsText" xsi:nil="true"/>
+      <DataProperty structures:ref="j.EducationTotalYearsText" xsi:nil="true"/>
       <AugmentationIndex>0</AugmentationIndex>
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
@@ -34,7 +39,7 @@
     </LocalTerm>
     <LocalTerm>
       <TermName>Alpha</TermName>
-      <DefinitionText>Letter(s)</DefinitionText>
+      <DocumentationText>Letter(s)</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>Amber</TermName>
@@ -70,7 +75,7 @@
     </LocalTerm>
     <LocalTerm>
       <TermName>CFR</TermName>
-      <DefinitionText>Code of Federal Regulations</DefinitionText>
+      <DocumentationText>Code of Federal Regulations</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>CHRI</TermName>
@@ -122,7 +127,7 @@
     </LocalTerm>
     <LocalTerm>
       <TermName>Enhanceable</TermName>
-      <DefinitionText>An enhanceable offense means that specific factors can increase the severity level of the offense.</DefinitionText>
+      <DocumentationText>An enhanceable offense means that specific factors can increase the severity level of the offense.</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>FBI</TermName>
@@ -178,12 +183,12 @@
     </LocalTerm>
     <LocalTerm>
       <TermName>JABS</TermName>
-      <DefinitionText>Joint Automated Booking System</DefinitionText>
+      <DocumentationText>Joint Automated Booking System</DocumentationText>
       <TermLiteralText>JABS</TermLiteralText>
     </LocalTerm>
     <LocalTerm>
       <TermName>Keyhea</TermName>
-      <DefinitionText>Under the Keyhea injunction, 'involuntary medication' cannot be administered to a state prisoner for more than three days unless the professional staff of the facility in which the prisoner is incarcerated has analyzed the prisoner's condition and found that the prisoner is, as a result of a mental disorder, 'gravely disabled and incompetent to refuse medication or a danger to others, or a danger to self,' and the prisoner has been 'advised of the need for, but has not been willing to accept medication on a voluntary basis.'</DefinitionText>
+      <DocumentationText>Under the Keyhea injunction, 'involuntary medication' cannot be administered to a state prisoner for more than three days unless the professional staff of the facility in which the prisoner is incarcerated has analyzed the prisoner's condition and found that the prisoner is, as a result of a mental disorder, 'gravely disabled and incompetent to refuse medication or a danger to others, or a danger to self,' and the prisoner has been 'advised of the need for, but has not been willing to accept medication on a voluntary basis.'</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>LEOKA</TermName>
@@ -195,11 +200,11 @@
     </LocalTerm>
     <LocalTerm>
       <TermName>Livescan</TermName>
-      <DefinitionText>An inkless, electronic means of capturing fingerprints in a digitized format and then transmitting them to a state repository and/or the FBI</DefinitionText>
+      <DocumentationText>An inkless, electronic means of capturing fingerprints in a digitized format and then transmitting them to a state repository and/or the FBI</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>LSTA</TermName>
-      <DefinitionText>State/Country Index</DefinitionText>
+      <DocumentationText>State/Country Index</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>MACR</TermName>
@@ -279,7 +284,7 @@
     </LocalTerm>
     <LocalTerm>
       <TermName>ORI</TermName>
-      <DefinitionText>A nine-character identifier assigned by the FBI Criminal Justice Information Systems (CJIS) staff to an organization, which must have met the established qualifying criteria for ORI assignment to identify the agency in transactions on CJIS Systems.</DefinitionText>
+      <DocumentationText>A nine-character identifier assigned by the FBI Criminal Justice Information Systems (CJIS) staff to an organization, which must have met the established qualifying criteria for ORI assignment to identify the agency in transactions on CJIS Systems.</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>POST</TermName>
@@ -287,11 +292,11 @@
     </LocalTerm>
     <LocalTerm>
       <TermName>Postdirectional</TermName>
-      <DefinitionText>A word following a street name that indicates the directional taken by the thoroughfare from an arbitrary starting point or line, or the sector where it is located.</DefinitionText>
+      <DocumentationText>A word following a street name that indicates the directional taken by the thoroughfare from an arbitrary starting point or line, or the sector where it is located.</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>Predirectional</TermName>
-      <DefinitionText>A word preceding a street name that indicates the directional taken by the thoroughfare from an arbitrary starting point or line, or the sector where it is located.</DefinitionText>
+      <DocumentationText>A word preceding a street name that indicates the directional taken by the thoroughfare from an arbitrary starting point or line, or the sector where it is located.</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>PRISM</TermName>
@@ -299,7 +304,7 @@
     </LocalTerm>
     <LocalTerm>
       <TermName>REALID</TermName>
-      <DefinitionText>Public Law 109–13, 119 Statute 302, enacted May 11, 2005, was an Act of Congress that modified U.S. federal law pertaining to security, authentication, and issuance procedures standards for the state driver's licenses and identification (ID) cards, as well as various immigration issues pertaining to terrorism.</DefinitionText>
+      <DocumentationText>Public Law 109–13, 119 Statute 302, enacted May 11, 2005, was an Act of Congress that modified U.S. federal law pertaining to security, authentication, and issuance procedures standards for the state driver's licenses and identification (ID) cards, as well as various immigration issues pertaining to terrorism.</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>RES</TermName>
@@ -307,7 +312,7 @@
     </LocalTerm>
     <LocalTerm>
       <TermName>RH</TermName>
-      <DefinitionText>Rhesus (Rh) factor is an inherited protein found on the surface of red blood cells.</DefinitionText>
+      <DocumentationText>Rhesus (Rh) factor is an inherited protein found on the surface of red blood cells.</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>RICO</TermName>
@@ -343,7 +348,7 @@
     </LocalTerm>
     <LocalTerm>
       <TermName>TSA</TermName>
-      <DefinitionText>Transportation Security Administration</DefinitionText>
+      <DocumentationText>Transportation Security Administration</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>TYP</TermName>
@@ -397,8 +402,13 @@
   <Namespace structures:id="nc">
     <NamespaceURI>http://release.niem.gov/niem/niem-core/5.0/</NamespaceURI>
     <NamespacePrefixText>nc</NamespacePrefixText>
-    <DefinitionText>NIEM Core.</DefinitionText>
+    <DocumentationText>NIEM Core.</DocumentationText>
     <NamespaceKindCode>CORE</NamespaceKindCode>
+    <ConformanceTargetURIList>http://reference.niem.gov/niem/specification/naming-and-design-rules/5.0/#ReferenceSchemaDocument</ConformanceTargetURIList>
+    <DocumentFilePathText>niem-core.xsd</DocumentFilePathText>
+    <NIEMVersionText>5.0</NIEMVersionText>
+    <SchemaVersionText>1</SchemaVersionText>
+    <SchemaLanguageName>en-US</SchemaLanguageName>
     <LocalTerm>
       <TermName>2D</TermName>
       <TermLiteralText>Two-dimensional</TermLiteralText>
@@ -409,11 +419,11 @@
     </LocalTerm>
     <LocalTerm>
       <TermName>Alpha2</TermName>
-      <DefinitionText>Two-letter</DefinitionText>
+      <DocumentationText>Two-letter</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>Alpha3</TermName>
-      <DefinitionText>Three-letter</DefinitionText>
+      <DocumentationText>Three-letter</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>CMV</TermName>
@@ -461,7 +471,7 @@
     </LocalTerm>
     <LocalTerm>
       <TermName>ISO3166</TermName>
-      <DefinitionText>ISO 3166 is a standard published by the International Organization for Standardization (ISO) that defines codes for the names of countries, dependent territories, special areas of geographical interest, and their principal subdivisions (e.g., provinces or states). The official name of the standard is Codes for the representation of names of countries and their subdivisions.</DefinitionText>
+      <DocumentationText>ISO 3166 is a standard published by the International Organization for Standardization (ISO) that defines codes for the names of countries, dependent territories, special areas of geographical interest, and their principal subdivisions (e.g., provinces or states). The official name of the standard is Codes for the representation of names of countries and their subdivisions.</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>ISSN</TermName>
@@ -485,11 +495,11 @@
     </LocalTerm>
     <LocalTerm>
       <TermName>Postdirectional</TermName>
-      <DefinitionText>A word following a street name that indicates the directional taken by the thoroughfare from an arbitrary starting point or line, or the sector where it is located.</DefinitionText>
+      <DocumentationText>A word following a street name that indicates the directional taken by the thoroughfare from an arbitrary starting point or line, or the sector where it is located.</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>Predirectional</TermName>
-      <DefinitionText>A word preceding a street name that indicates the directional taken by the thoroughfare from an arbitrary starting point or line, or the sector where it is located.</DefinitionText>
+      <DocumentationText>A word preceding a street name that indicates the directional taken by the thoroughfare from an arbitrary starting point or line, or the sector where it is located.</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>RFID</TermName>
@@ -497,7 +507,7 @@
     </LocalTerm>
     <LocalTerm>
       <TermName>RH</TermName>
-      <DefinitionText>Rhesus (Rh) factor is an inherited protein found on the surface of red blood cells.</DefinitionText>
+      <DocumentationText>Rhesus (Rh) factor is an inherited protein found on the surface of red blood cells.</DocumentationText>
     </LocalTerm>
     <LocalTerm>
       <TermName>SSN</TermName>
@@ -520,90 +530,113 @@
       <TermLiteralText>Universal Transverse Mercator</TermLiteralText>
     </LocalTerm>
   </Namespace>
+  <Namespace structures:id="niem-xs">
+    <NamespaceURI>http://release.niem.gov/niem/proxy/niem-xs/5.0/</NamespaceURI>
+    <NamespacePrefixText>niem-xs</NamespacePrefixText>
+    <DocumentationText>Proxy types that carry dictionary metadata and have XML data type simple contents.</DocumentationText>
+    <NamespaceKindCode>BUILTIN</NamespaceKindCode>
+    <ConformanceTargetURIList>http://reference.niem.gov/niem/specification/naming-and-design-rules/5.0/#ReferenceSchemaDocument</ConformanceTargetURIList>
+    <DocumentFilePathText>adapters/niem-xs.xsd</DocumentFilePathText>
+    <NIEMVersionText>5</NIEMVersionText>
+    <SchemaVersionText>1</SchemaVersionText>
+    <SchemaLanguageName>en-US</SchemaLanguageName>
+    <LocalTerm>
+      <TermName>maxInclusive</TermName>
+      <DocumentationText>An inclusive maximum value. To be valid, a value must be less than or equal to the value of xs:maxInclusive.</DocumentationText>
+    </LocalTerm>
+  </Namespace>
+  <Namespace structures:id="structures">
+    <NamespaceURI>http://release.niem.gov/niem/structures/5.0/</NamespaceURI>
+    <NamespacePrefixText>structures</NamespacePrefixText>
+    <DocumentationText>The structures namespace provides base types and other components for definition of NIEM-conformant XML schemas.</DocumentationText>
+    <NamespaceKindCode>BUILTIN</NamespaceKindCode>
+    <DocumentFilePathText>utility/structures.xsd</DocumentFilePathText>
+    <NIEMVersionText>5</NIEMVersionText>
+    <SchemaVersionText>5.0</SchemaVersionText>
+    <SchemaLanguageName>en-US</SchemaLanguageName>
+  </Namespace>
   <Namespace structures:id="xs">
     <NamespaceURI>http://www.w3.org/2001/XMLSchema</NamespaceURI>
     <NamespacePrefixText>xs</NamespacePrefixText>
     <NamespaceKindCode>XSD</NamespaceKindCode>
   </Namespace>
-  <Property structures:id="j.EducationTotalYearsText">
+  <DataProperty structures:id="j.EducationTotalYearsText">
     <Name>EducationTotalYearsText</Name>
     <Namespace structures:ref="j" xsi:nil="true"/>
-    <DefinitionText>A total number of years a person has been involved in attaining their education.</DefinitionText>
+    <DocumentationText>A total number of years a person has been involved in attaining their education.</DocumentationText>
     <Datatype structures:ref="nc.TextType" xsi:nil="true"/>
-    <ReferenceableIndicator>true</ReferenceableIndicator>
-  </Property>
-  <Property structures:id="nc.Date">
+  </DataProperty>
+  <DataProperty structures:id="nc.Date">
     <Name>Date</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
-    <DefinitionText>A full date.</DefinitionText>
+    <DocumentationText>A full date.</DocumentationText>
     <SubPropertyOf structures:ref="nc.DateRepresentation" xsi:nil="true"/>
     <Datatype structures:ref="xs.date" xsi:nil="true"/>
-    <ReferenceableIndicator>true</ReferenceableIndicator>
-  </Property>
-  <Property structures:id="nc.DateRepresentation">
+  </DataProperty>
+  <DataProperty structures:id="nc.DateRepresentation">
     <Name>DateRepresentation</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
-    <DefinitionText>A data concept for a representation of a date.</DefinitionText>
+    <DocumentationText>A data concept for a representation of a date.</DocumentationText>
     <AbstractIndicator>true</AbstractIndicator>
-  </Property>
-  <Property structures:id="nc.EducationDescriptionText">
+  </DataProperty>
+  <DataProperty structures:id="nc.EducationDescriptionText">
     <Name>EducationDescriptionText</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
-    <DefinitionText>A description of a person's educational background.</DefinitionText>
+    <DocumentationText>A description of a person's educational background.</DocumentationText>
     <Datatype structures:ref="nc.TextType" xsi:nil="true"/>
-    <ReferenceableIndicator>true</ReferenceableIndicator>
-  </Property>
-  <Property structures:id="nc.EducationInProgressIndicator">
+  </DataProperty>
+  <DataProperty structures:id="nc.EducationInProgressIndicator">
     <Name>EducationInProgressIndicator</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
-    <DefinitionText>True if a person's formal education is still in progress; false otherwise.</DefinitionText>
+    <DocumentationText>True if a person's formal education is still in progress; false otherwise.</DocumentationText>
     <Datatype structures:ref="xs.boolean" xsi:nil="true"/>
-    <ReferenceableIndicator>true</ReferenceableIndicator>
-  </Property>
-  <Property structures:id="nc.PersonEducation">
+  </DataProperty>
+  <ObjectProperty structures:id="nc.PersonEducation">
     <Name>PersonEducation</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
-    <DefinitionText>A person's educational background.</DefinitionText>
+    <DocumentationText>A person's educational background.</DocumentationText>
     <Class structures:ref="nc.EducationType" xsi:nil="true"/>
-    <ReferenceableIndicator>true</ReferenceableIndicator>
-  </Property>
+    <ReferenceCode>ANY</ReferenceCode>
+  </ObjectProperty>
   <Class structures:id="nc.EducationType">
     <Name>EducationType</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
-    <DefinitionText>A data type for a person's educational background.</DefinitionText>
+    <DocumentationText>A data type for a person's educational background.</DocumentationText>
     <AugmentableIndicator>true</AugmentableIndicator>
     <HasProperty>
-      <Property structures:ref="nc.EducationDescriptionText" xsi:nil="true"/>
+      <DataProperty structures:ref="nc.EducationDescriptionText" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </HasProperty>
     <HasProperty>
-      <Property structures:ref="nc.EducationInProgressIndicator" xsi:nil="true"/>
+      <DataProperty structures:ref="nc.EducationInProgressIndicator" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </HasProperty>
     <HasProperty>
-      <Property structures:ref="j.EducationTotalYearsText" xsi:nil="true"/>
+      <DataProperty structures:ref="j.EducationTotalYearsText" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
       <AugmentationNamespace structures:ref="j" xsi:nil="true"/>
     </HasProperty>
+    <ReferenceCode>ANY</ReferenceCode>
   </Class>
   <Class structures:id="nc.PersonType">
     <Name>PersonType</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
-    <DefinitionText>A data type for a human being.</DefinitionText>
+    <DocumentationText>A data type for a human being.</DocumentationText>
     <AugmentableIndicator>true</AugmentableIndicator>
     <HasProperty>
-      <Property structures:ref="nc.PersonEducation" xsi:nil="true"/>
+      <ObjectProperty structures:ref="nc.PersonEducation" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </HasProperty>
+    <ReferenceCode>ANY</ReferenceCode>
   </Class>
   <Datatype structures:id="nc.TextType">
     <Name>TextType</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
-    <DefinitionText>A data type for a character string.</DefinitionText>
+    <DocumentationText>A data type for a character string.</DocumentationText>
     <RestrictionOf>
       <Datatype structures:ref="xs.string" xsi:nil="true"/>
     </RestrictionOf>
@@ -620,39 +653,4 @@
     <Name>string</Name>
     <Namespace structures:ref="xs" xsi:nil="true"/>
   </Datatype>
-  <SchemaDocument>
-    <NamespacePrefixText>j</NamespacePrefixText>
-    <NamespaceURI>http://release.niem.gov/niem/domains/jxdm/7.2/</NamespaceURI>
-    <ConformanceTargetURIList>http://reference.niem.gov/niem/specification/naming-and-design-rules/5.0/#ReferenceSchemaDocument</ConformanceTargetURIList>
-    <DocumentFilePathText>domains/jxdm.xsd</DocumentFilePathText>
-    <NIEMVersionText>5</NIEMVersionText>
-    <SchemaVersionText>1</SchemaVersionText>
-    <SchemaLanguageName>en-US</SchemaLanguageName>
-  </SchemaDocument>
-  <SchemaDocument>
-    <NamespacePrefixText>niem-xs</NamespacePrefixText>
-    <NamespaceURI>http://release.niem.gov/niem/proxy/niem-xs/5.0/</NamespaceURI>
-    <ConformanceTargetURIList>http://reference.niem.gov/niem/specification/naming-and-design-rules/5.0/#ReferenceSchemaDocument</ConformanceTargetURIList>
-    <DocumentFilePathText>adapters/niem-xs.xsd</DocumentFilePathText>
-    <NIEMVersionText>5</NIEMVersionText>
-    <SchemaVersionText>1</SchemaVersionText>
-    <SchemaLanguageName>en-US</SchemaLanguageName>
-  </SchemaDocument>
-  <SchemaDocument>
-    <NamespacePrefixText>structures</NamespacePrefixText>
-    <NamespaceURI>http://release.niem.gov/niem/structures/5.0/</NamespaceURI>
-    <DocumentFilePathText>utility/structures.xsd</DocumentFilePathText>
-    <NIEMVersionText>5</NIEMVersionText>
-    <SchemaVersionText>5.0</SchemaVersionText>
-    <SchemaLanguageName>en-US</SchemaLanguageName>
-  </SchemaDocument>
-  <SchemaDocument>
-    <NamespacePrefixText>nc</NamespacePrefixText>
-    <NamespaceURI>http://release.niem.gov/niem/niem-core/5.0/</NamespaceURI>
-    <ConformanceTargetURIList>http://reference.niem.gov/niem/specification/naming-and-design-rules/5.0/#ReferenceSchemaDocument</ConformanceTargetURIList>
-    <DocumentFilePathText>niem-core.xsd</DocumentFilePathText>
-    <NIEMVersionText>5</NIEMVersionText>
-    <SchemaVersionText>1</SchemaVersionText>
-    <SchemaLanguageName>en-US</SchemaLanguageName>
-  </SchemaDocument>
 </Model>

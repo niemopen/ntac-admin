@@ -4,49 +4,26 @@
   xmlns:cmf="https://docs.oasis-open.org/niemopen/ns/specification/cmf/1.0/"
   xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Namespace structures:id="j">
-    <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/domains/justice/6.0/</NamespaceURI>
-    <NamespacePrefixText>j</NamespacePrefixText>
-    <DocumentationText>Justice</DocumentationText>
-    <NamespaceKindCode>DOMAIN</NamespaceKindCode>
-    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/XNDR/6.0/#SubsetSchemaDocument</ConformanceTargetURIList>
-    <DocumentFilePathText>domains/justice.xsd</DocumentFilePathText>
+  <Namespace structures:id="my">
+    <NamespaceURI>http://example.com/N6AugEx/1.0/</NamespaceURI>
+    <NamespacePrefixText>my</NamespacePrefixText>
+    <NamespaceKindCode>EXTENSION</NamespaceKindCode>
+    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/XNDR/6.0/#MessageSchemaDocument</ConformanceTargetURIList>
+    <DocumentFilePathText>messageModel.xsd</DocumentFilePathText>
     <NIEMVersionText>6.0</NIEMVersionText>
-    <SchemaVersionText>subset-1</SchemaVersionText>
+    <SchemaVersionText>message-1</SchemaVersionText>
     <SchemaLanguageName>en-US</SchemaLanguageName>
-    <AugmentRecord>
-      <Class structures:ref="nc.EducationType" xsi:nil="true"/>
-      <DataProperty structures:ref="j.EducationTotalYearsText" xsi:nil="true"/>
-      <AugmentationIndex>0</AugmentationIndex>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
-    </AugmentRecord>
   </Namespace>
   <Namespace structures:id="nc">
     <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/</NamespaceURI>
     <NamespacePrefixText>nc</NamespacePrefixText>
     <DocumentationText>NIEM Core.</DocumentationText>
     <NamespaceKindCode>CORE</NamespaceKindCode>
-    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/XNDR/6.0/#SubsetSchemaDocument</ConformanceTargetURIList>
+    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/XNDR/6.0/#MessageSchemaDocument</ConformanceTargetURIList>
     <DocumentFilePathText>niem-core.xsd</DocumentFilePathText>
     <NIEMVersionText>6.0</NIEMVersionText>
-    <SchemaVersionText>subset-1</SchemaVersionText>
+    <SchemaVersionText>message-1</SchemaVersionText>
     <SchemaLanguageName>en-US</SchemaLanguageName>
-  </Namespace>
-  <Namespace structures:id="niem-xs">
-    <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/adapters/niem-xs/6.0/</NamespaceURI>
-    <NamespacePrefixText>niem-xs</NamespacePrefixText>
-    <DocumentationText>Proxy types that carry dictionary metadata and have XML data type simple contents.</DocumentationText>
-    <NamespaceKindCode>BUILTIN</NamespaceKindCode>
-    <ConformanceTargetURIList>https://docs.oasis-open.org/niemopen/ns/specification/XNDR/6.0/#ReferenceSchemaDocument</ConformanceTargetURIList>
-    <DocumentFilePathText>adapters/niem-xs.xsd</DocumentFilePathText>
-    <NIEMVersionText>6</NIEMVersionText>
-    <SchemaVersionText>ps01</SchemaVersionText>
-    <SchemaLanguageName>en-US</SchemaLanguageName>
-    <LocalTerm>
-      <TermName>maxInclusive</TermName>
-      <DocumentationText>An inclusive maximum value. To be valid, a value must be less than or equal to the value of xs:maxInclusive.</DocumentationText>
-    </LocalTerm>
   </Namespace>
   <Namespace structures:id="structures">
     <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/</NamespaceURI>
@@ -55,7 +32,7 @@
     <NamespaceKindCode>BUILTIN</NamespaceKindCode>
     <DocumentFilePathText>utility/structures.xsd</DocumentFilePathText>
     <NIEMVersionText>6</NIEMVersionText>
-    <SchemaVersionText>ps02</SchemaVersionText>
+    <SchemaVersionText>ps01.1</SchemaVersionText>
     <SchemaLanguageName>en-US</SchemaLanguageName>
   </Namespace>
   <Namespace structures:id="xs">
@@ -63,12 +40,12 @@
     <NamespacePrefixText>xs</NamespacePrefixText>
     <NamespaceKindCode>XSD</NamespaceKindCode>
   </Namespace>
-  <DataProperty structures:id="j.EducationTotalYearsText">
-    <Name>EducationTotalYearsText</Name>
-    <Namespace structures:ref="j" xsi:nil="true"/>
-    <DocumentationText>A total number of years a person has been involved in attaining their education.</DocumentationText>
-    <Datatype structures:ref="nc.TextType" xsi:nil="true"/>
-  </DataProperty>
+  <ObjectProperty structures:id="my.Message">
+    <Name>Message</Name>
+    <Namespace structures:ref="my" xsi:nil="true"/>
+    <Class structures:ref="my.MessageType" xsi:nil="true"/>
+    <ReferenceCode>NONE</ReferenceCode>
+  </ObjectProperty>
   <DataProperty structures:id="nc.Date">
     <Name>Date</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
@@ -101,6 +78,16 @@
     <Class structures:ref="nc.EducationType" xsi:nil="true"/>
     <ReferenceCode>ANY</ReferenceCode>
   </ObjectProperty>
+  <Class structures:id="my.MessageType">
+    <Name>MessageType</Name>
+    <Namespace structures:ref="my" xsi:nil="true"/>
+    <HasProperty>
+      <ObjectProperty structures:ref="nc.PersonEducation" xsi:nil="true"/>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+    </HasProperty>
+    <ReferenceCode>ANY</ReferenceCode>
+  </Class>
   <Class structures:id="nc.EducationType">
     <Name>EducationType</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
@@ -115,12 +102,6 @@
       <DataProperty structures:ref="nc.EducationInProgressIndicator" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
-    </HasProperty>
-    <HasProperty>
-      <DataProperty structures:ref="j.EducationTotalYearsText" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
-      <AugmentationNamespace structures:ref="j" xsi:nil="true"/>
     </HasProperty>
     <ReferenceCode>ANY</ReferenceCode>
   </Class>

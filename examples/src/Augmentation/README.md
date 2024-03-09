@@ -16,8 +16,8 @@ Here is a summary of the important changes from NIEM 5.  The examples will show 
   * The IC-ISM hack is removed
 
 * A message schema has no wildcards in *structures.xsd*
-  * Types in *structures.xsd* include individual attributes as needed.  There is no `SimpleObjectAttributeGroup`
-  * Message schemas do not need proxy types and so do not need *niem-xs.xsd*
+  * Types in *structures.xsd* include individual attributes as needed.  `SimpleObjectAttributeGroup` is empty.
+  * Message schemas do not need proxy types and so do not need the *niem-xs.xsd* adapter schema document.
 
 * Attribute augmentations are defined in the model
   * By `appinfo:AttributeAugmentation` in the augmenting XSD
