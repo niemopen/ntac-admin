@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p0:Message xmlns:p0="http://example.com/S-QName/1.0/">
+    <p0:Shooter p1:qname="uu:x015" xmlns:p1="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/">
+        <p0:Name>FIREFLY1</p0:Name>
+        <p0:ShootAt xsi:nil="true" p1:qname="uu:x099" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </p0:Shooter>
+    <p0:Target p1:qname="uu:x099" xmlns:p1="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/">
+        <p0:Name>BOGIE1</p0:Name>
+    </p0:Target>
+    <p0:Target p1:qname="uu:x008" xmlns:p1="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/">
+        <p0:Name>BOGIE2</p0:Name>
+    </p0:Target>
+</p0:Message>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+  targetNamespace="http://example.com/S-QName/1.0/"
+  xmlns:appinfo="https://docs.oasis-open.org/niemopen/ns/model/appinfo/6.0/"
+  xmlns:ct="https://docs.oasis-open.org/niemopen/ns/specification/conformanceTargets/6.0/"
+  xmlns:my="http://example.com/S-QName/1.0/"
+  xmlns:nc="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/"
+  xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
+  xmlns:uu="https://example.com/some/URI/string/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  ct:conformanceTargets="https://docs.oasis-open.org/niemopen/ns/specification/XNDR/6.0/#MessageSchemaDocument"
+  version="message-1"
+  xml:lang="en-US">
+  <xs:import namespace="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/" schemaLocation="structures.xsd"/>
+
+  <xs:complexType name="MessageType">
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="my:Shooter" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="my:Target" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>        
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>  
+  
+  <xs:complexType name="ShooterType">
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="my:Name"/>
+          <xs:element ref="my:ShootAt" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>        
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>  
+
+  <xs:complexType name="TargetType">
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="my:Name"/>
+        </xs:sequence>        
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:element name="Message" type="my:MessageType"/>
+  <xs:element name="Shooter" type="my:ShooterType" nillable="true"/>
+  <xs:element name="ShootAt" type="my:ShooterType" nillable="true"/>
+  <xs:element name="Target" type="my:TargetType" nillable="true"/>
+  <xs:element name="Name" type="xs:token"/>
+  
+</xs:schema>

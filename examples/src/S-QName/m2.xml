@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<my:Message 
+   xmlns:my="http://example.com/S-QName/1.0/"
+   xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
+   xmlns:uu="https://example.com/some/URI/string/"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <my:Shooter structures:qname="uu:x015">
+    <my:Name>FIREFLY1</my:Name>
+    <my:ShootAt structures:qname="uu:x099" xsi:nil="true"/>
+  </my:Shooter>
+  <my:Target structures:qname="uu:x099">
+    <my:Name>BOGIE1</my:Name>
+  </my:Target>
+  <my:Target structures:qname="uu:x008">
+    <my:Name>BOGIE2</my:Name>
+  </my:Target>
+</my:Message>
