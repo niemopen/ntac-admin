@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<j:ArrestInvolvedWeaponAssociation
+ xmlns:my="https://example.com/AssocType/1.0/"
+ xmlns:nc="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/"
+ xmlns:j="https://docs.oasis-open.org/niemopen/ns/model/domains/justice/6.0/">
+  <nc:AssociationDescriptionText>A sample association</nc:AssociationDescriptionText>
+  <my:AssociationAugmentation>
+    <my:PrivacyText>Secret</my:PrivacyText>
+  </my:AssociationAugmentation>
+  <nc:Activity>
+    <nc:ActivityName>Beating on a printer that doesn't work</nc:ActivityName>
+  </nc:Activity>
+  <nc:Item>
+    <nc:ItemName>Monkey wrench</nc:ItemName>
+  </nc:Item>
+</j:ArrestInvolvedWeaponAssociation>
