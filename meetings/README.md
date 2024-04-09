@@ -4,7 +4,9 @@
 
 ## Meeting minutes
 
-* [2024-03-26 (draft)](docs/2024-03-26-minutes.md) – NDR rewrite; never mind about structures:AugmentationType :-)
+* [2024-04-09 agenda](docs/2024-04-09-agenda.md)
+* [2024-04-02 (draft)](docs/2024-04-02-minutes.md) – NDR rewrite; PGB meeting
+* [2024-03-26](docs/2024-03-26-minutes.md) – NDR rewrite; never mind about structures:AugmentationType :-)
 * [2024-03-19](docs/2024-03-19-minutes.md) – NDR rewrite; remove structures:AugmentationType?
 * [2024-03-12](docs/2024-03-12-minutes.md) – NDR rewrite
 * [2024-02-27](docs/2024-02-27-minutes.md) – NDR revision
