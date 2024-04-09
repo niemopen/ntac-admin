@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+  targetNamespace="http://example.com/N6AugEx/1.0/"
+  xmlns:appinfo="https://docs.oasis-open.org/niemopen/ns/model/appinfo/6.0/"
+  xmlns:ct="https://docs.oasis-open.org/niemopen/ns/specification/conformanceTargets/6.0/"
+  xmlns:my="http://example.com/N6AugEx/1.0/"
+  xmlns:nc="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/"
+  xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  ct:conformanceTargets="https://docs.oasis-open.org/niemopen/ns/specification/XNDR/6.0/#MessageSchemaDocument"
+  version="message-1"
+  xml:lang="en-US">
+  <xs:import namespace="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/" schemaLocation="niem-core.xsd"/>
+  <xs:import namespace="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/" schemaLocation="utility/structures.xsd"/>
+  <xs:complexType name="MessageType">
+    <xs:sequence>
+      <xs:element ref="nc:PersonEducation"/>
+      <xs:element ref="my:PrivacyAssertion" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute ref="structures:appliesToParent"/>
+    <xs:attribute ref="structures:id"/>
+    <xs:attribute ref="structures:ref"/>
+    <xs:attribute ref="structures:uri"/>
+  </xs:complexType>
+  <xs:complexType name="PrivacyAssertionType">
+    <xs:sequence>
+      <xs:element ref="nc:Date"/>
+      <xs:element ref="my:PrivacyText"/>
+    </xs:sequence>
+    <xs:attribute ref="structures:appliesToParent"/>
+    <xs:attribute ref="structures:id"/>
+    <xs:attribute ref="structures:ref"/>
+    <xs:attribute ref="structures:uri"/>
+  </xs:complexType>
+  <xs:attribute name="privacyAssertionRef" type="xs:IDREFS" appinfo:referenceAttributeIndicator="true"/>
+  <xs:element name="Message" type="my:MessageType"/>
+  <xs:element name="PrivacyAssertion" type="my:PrivacyAssertionType"/>
+  <xs:element name="PrivacyText" type="xs:string"/>
+</xs:schema>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<my:Message 
+  xmlns:j="https://docs.oasis-open.org/niemopen/ns/model/domains/justice/6.0/"
+  xmlns:my="http://example.com/N6AugEx/1.0/"
+  xmlns:nc="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/">
+  <nc:PersonEducation my:privacy="PUBLIC">
+    <nc:EducationDescriptionText>PhD</nc:EducationDescriptionText>
+    <nc:EducationInProgressIndicator>false</nc:EducationInProgressIndicator>
+    <j:EducationAugmentation>
+      <j:EducationTotalYearsText>5</j:EducationTotalYearsText>
+    </j:EducationAugmentation>
+  </nc:PersonEducation>
+</my:Message>

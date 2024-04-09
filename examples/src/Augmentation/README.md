@@ -10,20 +10,14 @@ Here is a summary of the important changes from NIEM 5.  The examples will show 
   * A subset schema is a collection of model components intended for extension and reuse
   * A message schema defines the content of a message format; not intended for extension
   * There is no difference in the corresponding CMF
-
 * A subset schema has attribute wildcards in *structures.xsd* and *niem-xs.xsd*
   * `<xs:anyAttribute processContents="strict"/>` says that any type may be augmented with an attribute; we promise to define that attribute in the message schema
   * The IC-ISM hack is removed
-
 * A message schema has no wildcards in *structures.xsd*
-  * Types in *structures.xsd* include individual attributes as needed.  `SimpleObjectAttributeGroup` is empty.
-  * Message schemas do not need proxy types and so do not need the *niem-xs.xsd* adapter schema document.
-
+  * Types in *structures.xsd* include individual attributes as needed. 
 * Attribute augmentations are defined in the model
-  * By `appinfo:AttributeAugmentation` in the augmenting XSD
   * By `appinfo:augmentingNamespace` in the augmented XSD
   * By an `AugmentationRecord` in CMF
-  
 * There is a new *reference attribute* concept and a new `Ref` representation term.  An attribute named `fooRef` has a list of references to elements of type `FooType` (or a derived type).
 * `appinfo:relationshipPropertyIndicator` describes a property that modifies the relationship between its parent and grandparent object.  It does the same thing as `structures:relationshipMetadata`, but works for any property, not just metadata elements.
 * `structures:appliesToParent` is false for an element that is not a property of its parent.
@@ -78,7 +72,7 @@ Contains a NIEM 6 message schema.  Messages in this format look like this:
 
 As simple as it can be.  There are no augmentations in this message specification, so the augmentation elements do not appear in the CMF or XSD.  We don't even need the JXDM schema document.
 
-The *absence* of attribute wildcards in *structures.xsd* and *niem-xs.xsd* is part of what makes this a message schema.  A message schema has a different `structures.xsd` with no attribute wildcards.  In this message specification the reference attributes (`id`, `ref`, `uri`, and `qname`) are part of `structures:ObjectType`.  A message schema doesn't need `niem-xs.xsd` and doesn't have proxy types at all.
+The *absence* of attribute wildcards in *structures.xsd* and *niem-xs.xsd* is part of what makes this a message schema.  A message schema has a different `structures.xsd` with no attribute wildcards.  In this message specification the reference attributes (`id`, `ref`, `uri`, and `qname`) are part of the model types.  There is no inheritance.
 
 **03-AugCCwithE:  A message schema with element augmentation on complex content**
 
@@ -118,7 +112,7 @@ Schema assembly is a PITA and can be especially tricky with augmentations.  CMFT
 
 * *messageModel.xsd*, which imports *niem-core.xsd*
 * *niem-core.xsd*, which imports nothing
-* *jxdm.xsd*, which isn't imported by anything
+* *justice.xsd*, which isn't imported by anything
 
 And when you do what everybody does, use *message-model.xsd* to validate *msg1.xml*, it fails.  Ain't nobody ever heard of `j:EducationAugmentation`.  What to do, what to do?
 
@@ -126,7 +120,7 @@ And when you do what everybody does, use *message-model.xsd* to validate *msg1.x
 
 * I also added a CMFTool option to designate a "message schema namespace" and then make sure it imports everything needed that isn't imported somewhere else.  Fun piece of code!  The command is
 
-  `ct m2xm -c --msgNS http://example.com/N6AugEx/1.0/ -o xsd augCCwE.cmf`
+  `ct m2xm -c --msgNS my -o xsd augCCwE.cmf`
 
 **04-AugCCwithA – message schema for complex content augmented with an attribute**
 
@@ -149,7 +143,7 @@ You can't do this in NIEM 5.  You can do it in NIEM 6 because the base types in 
 <xs:attribute name="privacyText" type="xs:token"/>
 ```
 
-It turns out we need some new appinfo in *messageModel.xsd* to record this augmentation.
+Someday we may want new appinfo in *messageModel.xsd* to record this augmentation.
 
 ```
 <xs:annotation>
@@ -186,7 +180,7 @@ Observe the new appinfo that is documenting the augmentation.  In CMF, that docu
       <Property structures:ref="my.privacyText" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>1</MaxOccursQuantity>
-      <AugmentationNamespace structures:ref="my"/>
+      <AugmentationNamespace structures:ref="my" xsi:nil="true"/>
     </HasProperty>
   </Class>
 ```
@@ -284,7 +278,7 @@ This message augments the simple content `nc:TextType` with the element `my:Priv
     <nc:EducationDescriptionText my:privacyAssertionRef="p01">PhD</nc:EducationDescriptionText>
     <nc:EducationInProgressIndicator>false</nc:EducationInProgressIndicator>
   </nc:PersonEducation>
-  <my:PrivacyAssertion structures:id="p01" structures:onlyRef="true">
+  <my:PrivacyAssertion structures:id="p01" structures:appliesToParent="false">
     <nc:Date>2023-07-01</nc:Date>
     <my:PrivacyText>PUBLIC</my:PrivacyText>
   </my:PrivacyAssertion>
@@ -414,8 +408,6 @@ You get the same RDF either way.  So everything that can be done with metadata o
 
 **07-AugOTwithE – Augmenting every type in the model with an element**
 
-> This section and the corresponding example are still broken as of 2024-01-08
-
 You do this in NIEM 5 and NIEM 6 by writing an augmentation for `structures:ObjectType`.  Messages look like this:
 
 ```
@@ -445,6 +437,7 @@ The XSD for this is the same in NIEM 5 and NIEM 6.  The CMF looks like this:
     <AugmentationIndex>0</AugmentationIndex>
     <MinOccursQuantity>0</MinOccursQuantity>
     <MaxOccursQuantity>1</MaxOccursQuantity>
+    <GlobalAugmented>structures:ObjectAugmentationPoint</GlobalAugmented>
   </AugmentRecord>
   <Namespace structures:id="my">
     <NamespaceURI>http://example.com/N6AugEx/1.0/</NamespaceURI>
@@ -455,25 +448,7 @@ The XSD for this is the same in NIEM 5 and NIEM 6.  The CMF looks like this:
 
 The trick is to treat an element augmentation of every type as a property of the entire model.  With this approach I don't need to have everything derived from a new `nc:ObjectType`, and I don't have to write the structures namespace into the CMF file, so I pass GO and collect $200.
 
-This works even if we decide to keep `structures:AssociationType`,   Just gets a bit more complicated.  The CMF would then look like:
-
-```
-<Model ...>
-  <ObjectAugmentation>
-    <AugmentRecord>
-      <Property structures:ref="my.PrivacyAssertion" xsi:nil="true"/>
-      <AugmentationIndex>0</AugmentationIndex>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>1</MaxOccursQuantity>
-    </AugmentRecord>
-  </ObjectAugmentation>
-  <AssociationAugmentation> ...
-  <Namespace structures:id="my"> ...
-```
-
 **08-AugOTwithA – Augmenting every type in the model with an attribute**
-
-> This section and the corresponding example are still broken as of 2024-01-08
 
 Let's suppose I want to put my `privacyText` attribute on every element.  The message would look like this:
 
@@ -542,4 +517,4 @@ Augmentation in NIEM 6 an do everything the metadata mechanism does in NIEM 5.  
 
 
 Author:  Scott Renner
-Revised:  2024-01-08
+Revised:  2024-04-04

@@ -11,7 +11,7 @@
     <NamespaceKindCode>DOMAIN</NamespaceKindCode>
     <ConformanceTargetURIList>http://reference.niem.gov/niem/specification/naming-and-design-rules/5.0/#ReferenceSchemaDocument</ConformanceTargetURIList>
     <DocumentFilePathText>domains/jxdm.xsd</DocumentFilePathText>
-    <NIEMVersionText>5.0</NIEMVersionText>
+    <NIEMVersionText>5</NIEMVersionText>
     <SchemaVersionText>1</SchemaVersionText>
     <SchemaLanguageName>en-US</SchemaLanguageName>
     <AugmentRecord>
@@ -406,7 +406,7 @@
     <NamespaceKindCode>CORE</NamespaceKindCode>
     <ConformanceTargetURIList>http://reference.niem.gov/niem/specification/naming-and-design-rules/5.0/#ReferenceSchemaDocument</ConformanceTargetURIList>
     <DocumentFilePathText>niem-core.xsd</DocumentFilePathText>
-    <NIEMVersionText>5.0</NIEMVersionText>
+    <NIEMVersionText>5</NIEMVersionText>
     <SchemaVersionText>1</SchemaVersionText>
     <SchemaLanguageName>en-US</SchemaLanguageName>
     <LocalTerm>
@@ -619,7 +619,6 @@
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
       <AugmentationNamespace structures:ref="j" xsi:nil="true"/>
     </HasProperty>
-    <ReferenceCode>ANY</ReferenceCode>
   </Class>
   <Class structures:id="nc.PersonType">
     <Name>PersonType</Name>
@@ -631,7 +630,6 @@
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </HasProperty>
-    <ReferenceCode>ANY</ReferenceCode>
   </Class>
   <Datatype structures:id="nc.TextType">
     <Name>TextType</Name>
