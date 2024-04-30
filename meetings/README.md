@@ -4,8 +4,9 @@
 
 ## Meeting minutes
 
-* [2024-04-23 agenda](docs/2024-04-23-agenda.md)
-* [2024-04-16 (draft)](docs/2024-04-16-minutes.md) – NDR rewrite
+* [2024-04-30 agenda](docs/2024-04-30-agenda.md)
+* [2024-04-23 (draft)](docs/2024-04-23-minutes.md) – NDR rewrite
+* [2024-04-16](docs/2024-04-16-minutes.md) – NDR rewrite
 * [2024-04-09](docs/2024-04-09-minutes.md) – PS02; PGB meeting; NDR rewrite; CMFTool status
 * [2024-04-02](docs/2024-04-02-minutes.md) – NDR rewrite; PGB meeting
 * [2024-03-26](docs/2024-03-26-minutes.md) – NDR rewrite; never mind about structures:AugmentationType :-)
