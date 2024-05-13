@@ -4,8 +4,9 @@
 
 ## Meeting minutes
 
-* [2024-05-07 agenda](docs/2024-05-07-agenda.md)
-* [2024-04-30 (draft)](docs/2024-04-30-minutes.md) – NDR rewrite
+* [2024-05-14 agenda](docs/2024-05-14-agenda.md)
+* [2024-05-07 (draft)](docs/2024-05-07-minutes.md) – NDR rewrite; sample section 5
+* [2024-04-30](docs/2024-04-30-minutes.md) – NDR rewrite; section 3 and 4 comments
 * [2024-04-23](docs/2024-04-23-minutes.md) – NDR rewrite
 * [2024-04-16](docs/2024-04-16-minutes.md) – NDR rewrite
 * [2024-04-09](docs/2024-04-09-minutes.md) – PS02; PGB meeting; NDR rewrite; CMFTool status
