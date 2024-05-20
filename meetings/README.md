@@ -4,8 +4,9 @@
 
 ## Meeting minutes
 
-* [2024-05-14 agenda](docs/2024-05-14-agenda.md)
-* [2024-05-07 (draft)](docs/2024-05-07-minutes.md) – NDR rewrite; sample section 5
+* [2024-05-21 agenda](docs/2024-05-21-agenda.md)
+* [2024-05-14 (draft)](docs/2024-05-14-minutes.md) – NDR rewrite; partial section 5 review
+* [2024-05-07](docs/2024-05-07-minutes.md) – NDR rewrite; sample section 5
 * [2024-04-30](docs/2024-04-30-minutes.md) – NDR rewrite; section 3 and 4 comments
 * [2024-04-23](docs/2024-04-23-minutes.md) – NDR rewrite
 * [2024-04-16](docs/2024-04-16-minutes.md) – NDR rewrite
