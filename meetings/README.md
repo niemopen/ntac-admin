@@ -4,8 +4,9 @@
 
 ## Meeting minutes
 
-* [2024-05-28 agenda](docs/2024-05-28-agenda.md)
-* [2024-05-21 (draft)](docs/2024-05-21-minutes.md) – Knowledge graph presentation; NDR rewrite
+* [2024-06-04 agenda](docs/2024-06-04-agenda.md)
+* [2024-05-28 (draft)](docs/2024-05-28-minutes.md) – NDR rewrite
+* [2024-05-21](docs/2024-05-21-minutes.md) – Knowledge graph presentation; NDR rewrite
 * [2024-05-14](docs/2024-05-14-minutes.md) – NDR rewrite; partial section 5 review
 * [2024-05-07](docs/2024-05-07-minutes.md) – NDR rewrite; sample section 5
 * [2024-04-30](docs/2024-04-30-minutes.md) – NDR rewrite; section 3 and 4 comments
