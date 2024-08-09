@@ -4,10 +4,11 @@
 
 ## Meeting minutes
 
-* [2024-08-06](docs/2024-08-06-agenda.md) – NDR rewrite
-* [2024-07-30 (draft)](docs/2024-07-30-minutes.md) – NDR rewrite
-* [2024-07-23 (draft)](docs/2024-07-23-minutes.md) – NDR rewrite
-* [2024-07-16 (draft)](docs/2024-07-16-minutes.md) – NDR rewrite
+* [2024-08-13](docs/2024-08-13-agenda.md) – NDR rewrite
+* [2024-08-06 (draft)](docs/2024-08-06-minutes.md) – NDR rewrite
+* [2024-07-30](docs/2024-07-30-minutes.md) – NDR rewrite
+* [2024-07-23](docs/2024-07-23-minutes.md) – NDR rewrite
+* [2024-07-16](docs/2024-07-16-minutes.md) – NDR rewrite
 * [2024-07-09](docs/2024-07-09-minutes.md) – NDR rewrite
 * [2024-07-02](docs/2024-07-02-minutes.md) – NDR rewrite
 * [2024-06-25](docs/2024-06-25-minutes.md) - NDR rewrite
