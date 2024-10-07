@@ -1,0 +1,9 @@
+{
+  "@context": "http://example.com/ReqRes/Response/simpleJSON/1.0/",  
+  "request": {
+  "id" : "RQ001",
+  "item": {
+    "name": Socks"
+  },
+  "supplied": 5  
+}

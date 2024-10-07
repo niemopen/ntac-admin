@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response xmlns="http://example.com/ReqRes/Response/simpleXML/1.0/">
+  <id>RQ001</id>
+  <item>
+    <name>Socks</name>
+  </item>
+  <supplied>5</supplied>
+</response>

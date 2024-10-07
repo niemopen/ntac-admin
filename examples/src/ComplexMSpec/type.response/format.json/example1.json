@@ -1,0 +1,10 @@
+{
+  "@context": "http://example.com/ReqRes/Response/JSON/1.0/",  
+	"req:Response": {
+	  "req:RequestID" : "RQ001",
+	  "req:RequestedItem": {
+	    "nc:ItemName": Socks"
+	  },
+	  "req"SuppliedQuantityNumeric:", 10 
+	}
+}
