@@ -3,9 +3,9 @@
   targetNamespace="http://example.com/ReqRes/1.0/"
   xmlns:appinfo="https://docs.oasis-open.org/niemopen/ns/model/appinfo/6.0/"
   xmlns:ct="https://docs.oasis-open.org/niemopen/ns/specification/conformanceTargets/6.0/"
+  xmlns:msg="http://example.com/ReqRes/1.0/"
   xmlns:nc="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/"
   xmlns:niem-xs="https://docs.oasis-open.org/niemopen/ns/model/adapters/niem-xs/6.0/"
-  xmlns:req="http://example.com/ReqRes/1.0/"
   xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -22,15 +22,15 @@
     <xs:complexContent>
       <xs:extension base="structures:ObjectType">
         <xs:sequence>
-          <xs:element ref="req:RequestID"/>
-          <xs:element ref="req:RequestedItem"/>
-          <xs:element ref="req:SuppliedQuantity"/>
+          <xs:element ref="msg:RequestID"/>
+          <xs:element ref="msg:RequestedItem"/>
+          <xs:element ref="msg:SuppliedQuantity"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="RequestID" type="niem-xs:token"/>
   <xs:element name="RequestedItem" type="nc:ItemType"/>
-  <xs:element name="Response" type="req:ResponseType"/>
+  <xs:element name="Response" type="msg:ResponseType"/>
   <xs:element name="SuppliedQuantity" type="niem-xs:integer"/>
 </xs:schema>
