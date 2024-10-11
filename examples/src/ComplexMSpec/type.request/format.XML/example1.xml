@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msg:Request
+ xmlns:nc="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/"
+ xmlns:msg="http://example.com/ReqRes/1.0/">
+  <msg:RequestID>RQ001</msg:RequestID>
+  <msg:RequestedItem>
+    <nc:ItemName>Socks</nc:ItemName>
+    <nc:ItemQuantity>10</nc:ItemQuantity>
+  </msg:RequestedItem>
+</msg:Request>

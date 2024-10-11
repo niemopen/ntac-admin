@@ -1,0 +1,11 @@
+{
+  "@context": {
+    "nc":  "https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/",
+    "msg": "http://example.com/ReqRes/1.0/",
+    "response": "req;Response",
+    "id": "msg:RequestID",
+    "item": "msg:RequestedItem",
+    "name": "nc:ItemName",
+    "supplied": "msg:SuppliedQuantity"     
+  }
+}

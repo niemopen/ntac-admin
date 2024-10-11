@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+  targetNamespace="http://example.com/ReqRes/Response/simpleXML/1.0/"
+  xmlns="http://example.com/ReqRes/Response/simpleXML/1.0/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation>
+      Simple XSD for the Response.SimpleXML format.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="ResponseType">
+    <xs:sequence>
+      <xs:element ref="id"/>
+      <xs:element ref="item"/>
+      <xs:element ref="supplied"/>
+    </xs:sequence>
+  </xs:complexType> 
+  <xs:complexType name="ItemType">
+    <xs:annotation>
+      <xs:documentation>A data type for an article or thing.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="name"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="response" type="ResponseType"/>
+  <xs:element name="item" type="ItemType"/>
+  <xs:element name="id" type="xs:token"/>
+  <xs:element name="name" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>A name of an item.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="supplied" type="xs:decimal"/>
+</xs:schema>
