@@ -1,10 +1,10 @@
 {
   "@context": "http://example.com/ReqRes/Request/JSON/1.0/",  
-	"msg:Request": {
-	  "msg:RequestID" : "RQ001",
-	  "msg:RequestedItem": {
-	    "nc:ItemName": Socks",
-	    "nc:ItemQuantity": 10
-	  }	    
-	}
+  "msg:Request": {
+    "msg:RequestID" : "RQ001",
+    "msg:RequestedItem": {
+      "nc:ItemName": Socks",
+      "nc:ItemQuantity": 10
+    }   
+  }
 }

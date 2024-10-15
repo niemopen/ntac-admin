@@ -62,18 +62,21 @@
   <ObjectProperty structures:id="msg.Request">
     <Name>Request</Name>
     <Namespace structures:ref="msg" xsi:nil="true"/>
+    <DocumentationText>A request for a quantity of an item.</DocumentationText>
     <Class structures:ref="msg.RequestType" xsi:nil="true"/>
     <ReferenceCode>NONE</ReferenceCode>
   </ObjectProperty>
   <ObjectProperty structures:id="msg.RequestedItem">
     <Name>RequestedItem</Name>
     <Namespace structures:ref="msg" xsi:nil="true"/>
+    <DocumentationText>A specification of an item request.</DocumentationText>
     <Class structures:ref="nc.ItemType" xsi:nil="true"/>
     <ReferenceCode>NONE</ReferenceCode>
   </ObjectProperty>
   <DataProperty structures:id="msg.RequestID">
     <Name>RequestID</Name>
     <Namespace structures:ref="msg" xsi:nil="true"/>
+    <DocumentationText>An identifier for a request.</DocumentationText>
     <Datatype structures:ref="xs.token" xsi:nil="true"/>
   </DataProperty>
   <DataProperty structures:id="nc.ItemName">
@@ -91,6 +94,7 @@
   <Class structures:id="msg.RequestType">
     <Name>RequestType</Name>
     <Namespace structures:ref="msg" xsi:nil="true"/>
+    <DocumentationText>A data type for a request.</DocumentationText>
     <ReferenceCode>NONE</ReferenceCode>
     <HasProperty>
       <DataProperty structures:ref="msg.RequestID" xsi:nil="true"/>
