@@ -4,8 +4,9 @@
 
 ## Meeting minutes
 
-* [2024-10-15 (draft)](docs/2024-10-15-agenda.md)
-* [2024-10-08 (draft)](docs/2024-10-08-minutes.md)
+* [2024-10-22 (draft)](docs/2024-10-15-agenda.md)
+* [2024-10-15 (draft)](docs/2024-10-15-minutes.md)
+* [2024-10-08](docs/2024-10-08-minutes.md)
 * [2024-10-01](docs/2024-10-01-minutes.md)
 * [2024-09-24](docs/2024-09-24-minutes.md) - NDR rewrite
 * [2024-09-17](docs/2024-09-17-minutes.md) - NDR rewrite
