@@ -12,7 +12,7 @@ The NTAC is a Technical Steering Committee within the OASIS Open Project known a
 
 ## Co-Chairs
 
-* Jim Cabral
+* Brad Bollinger
 * Scott Renner
 
 ## Active Members
