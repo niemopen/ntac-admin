@@ -4,7 +4,8 @@
 
 ## Meeting minutes
 
-* [2024-10-29 (draft)](docs/2024-10-29-minutes.md) - NDR rewrite, new NTAC co-chair elected
+* [2024-11-05 (draft)](docs/2024-11-05-minutes.md) – xs:restriction, copyright notice
+* [2024-10-29](docs/2024-10-29-minutes.md) - NDR rewrite, new NTAC co-chair elected
 * [2024-10-22](docs/2024-10-22-minutes.md) - NDR rewrite, new NTAC co-chair needed
 * [2024-10-15](docs/2024-10-15-minutes.md) - NDR rewrite
 * [2024-10-08](docs/2024-10-08-minutes.md) - Standards timeline (done by 15 December), NDR rewrite
