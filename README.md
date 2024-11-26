@@ -17,28 +17,30 @@ The NTAC is a Technical Steering Committee within the OASIS Open Project known a
 
 ## Active Members
 
-  - Aubrey Beach
   - Tom Carlson
-  - Mike Douklias
+  - Chuck Chipman
   - Katherine Escobar
   - Mike Hulme
-  - Eric Jahn
-  - Dave Kemp
+  - David Kemp
   - Vamsi Kondannagari
-  - Peter Madruga
   - Christina Medlin
+  - April Mitchell
   - Joe Mierwa
   - Beth Smalley
-  - Duncan Sparrell
   - Jennifer Stathakis
   - Stephen Sullivan
+  - Josh Wilson
 
 ## Inactive Members
 
-  - Chuck Chipman
+  - Aubrey Beach
+  - Mike Douklias
   - Lavdjola Farrington
   - Dave Hardy
+  - Eric Jahn
+  - Peter Madruga
   - Carl Nelson
+  - Duncan Sparrell
 
 ## Meetings
 
