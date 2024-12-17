@@ -4,7 +4,8 @@
 
 ## Meeting minutes
 
-* [2024-12-03 (draft)](docs/2024-12-03-minutes.md)- Plan for NDR PSD01 release
+* [2024-12-10 (draft)](docs/2024-12-10-minutes.md)- Plan for NDR PSD01 release
+* [2024-12-03](docs/2024-12-03-minutes.md)- Plan for NDR PSD01 release
 * [2024-11-26](docs/2024-11-26-minutes.md) - NDR rewrite; literal properties; conformance target URIs
 * [2024-11-19](docs/2024-11-19-minutes.md) - Punchlist, atomic classes & literal properties
 * [2024-11-12](docs/2024-11-12-minutes.md) - xs:restriction, comments, punchlist
