@@ -4,7 +4,8 @@
 
 ## Meeting minutes
 
-* [2024-12-17 (draft)](docs/2024-12-17-minutes.md) - Set date for NTAC vote on final PSD01 draft
+* [2024-12-31 (draft)](docs/2024-12-31-minutes.md) - Final touches to PSD01. Off to the PGB reviewers!
+* [2024-12-17](docs/2024-12-17-minutes.md) - Set date for NTAC vote on final PSD01 draft
 * [2024-12-10](docs/2024-12-10-minutes.md) - Plan for NDR PSD01 release
 * [2024-12-03](docs/2024-12-03-minutes.md) - Plan for NDR PSD01 release
 * [2024-11-26](docs/2024-11-26-minutes.md) - NDR rewrite; literal properties; conformance target URIs
