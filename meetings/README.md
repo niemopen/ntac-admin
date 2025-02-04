@@ -4,6 +4,10 @@
 
 ## Meeting minutes
 
+* [2025-01-28 (draft)](docs/2025-01-28-minutes.md) - Remaining TODOs in NDR
+* [2025-01-21 (draft)](docs/2025-01-21-minutes.md) - Schematron rules for NDR6
+* [2025-01-14 (draft)](docs/2025-01-14-minutes.md) - Future specification for message specifications
+* [2025-01-07 (draft)](docs/2025-01-07-minutes.md) - Future specification for message specifications
 * [2024-12-31 (draft)](docs/2024-12-31-minutes.md) - Final touches to PSD01. Off to the PGB reviewers!
 * [2024-12-17](docs/2024-12-17-minutes.md) - Set date for NTAC vote on final PSD01 draft
 * [2024-12-10](docs/2024-12-10-minutes.md) - Plan for NDR PSD01 release
