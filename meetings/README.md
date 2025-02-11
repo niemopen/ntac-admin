@@ -4,7 +4,8 @@
 
 ## Meeting minutes
 
-* [2025-02-04 (draft)](docs/2025-02-04-minutes.md) - Justice, USMTF codes in NDR6
+* [2025-02-11 (draft)](docs/2025-02-11-minutes.md) - Hackathon, gender codes in NIEM 6, proposed face-to-face
+* [2025-02-04](docs/2025-02-04-minutes.md) - Justice, USMTF codes in NDR6
 * [2025-01-28](docs/2025-01-28-minutes.md) - Remaining TODOs in NDR
 * [2025-01-21](docs/2025-01-21-minutes.md) - Schematron rules for NDR6
 * [2025-01-14](docs/2025-01-14-minutes.md) - Future specification for message specifications
