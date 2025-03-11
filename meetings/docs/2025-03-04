@@ -1,0 +1,48 @@
+# NTAC minutes, 04 March 2025 (draft)
+
+No agenda available in advance
+
+## Attending
+
+- [x] Brad Bolliger
+- [x] Jim Cabral
+- [x] Tom Carlson
+- [x] Chuck Chipman
+- [ ] Katherine Escobar
+- [ ] Mike Hulme
+- [ ] Eric Jahn
+- [x] David Kemp
+- [x] Vamsi Kondannagari
+- [ ] Shunda Louis
+- [ ] Peter Madruga
+- [x] Christina Medlin
+- [x] April Mitchell
+- [x] Joe Mierwa
+- [ ] Carl Nelson
+- [ ] Scott Renner
+- [ ] James Shafer
+- [ ] Beth Smalley
+- [ ] Darcy Staley 
+- [x] Jennifer Stathakis
+- [x] Stephen Sullivan
+- [x] Josh Wilson
+- [ ] Paul Wormeli
+
+## Previous minutes
+
+Minutes from the [2025-02-25 meeting](2025-02-25-minutes.md) were approved without change.
+
+## New business
+
+*	New dates pending for NBAC-NTAC meeting
+*	Final discussion of OASIS license language; OASIS general counsel recommended acceptance of the language Nov 25th. Matter considered closed.
+*	Mr. Sullivan asking about generating table of contents programmatically. 
+  *	VS Code has plugins to generate TOC automatically from markdown
+  *	Jim to confirm with Kelly; Christina to generate with vs code.
+*	Christina has made updates to model and NDR, including Dr Scott’s changes to Utility schemas. Christina to share.
+  *	Schematron rules are not fully compiling 
+  *	David Kemp – OASIS publishes standards in markdown, html, and pdf. 
+  *	Others are generated from markdown. 
+  *	David has generated using Pandoc to reformat, OASIS trying to move away from this tool. 
+  *	OASIS exploring github actions to automate
+*	Suggesting NTAC planning face-to-face, perhaps after NBAC-NTAC meeting
