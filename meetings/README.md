@@ -4,7 +4,8 @@
 
 ## Meeting minutes
 
-* [2025-03-11 (draft)](docs/2025-03-11-minutes.md) - NDR PSD01, MilOps CR
+* [2025-03-18 (draft)](docs/2025-03-18-minutes.md) - Model PS02 conformance
+* [2025-03-11](docs/2025-03-11-minutes.md) - NDR PSD01, MilOps CR
 * [2025-03-04](docs/2025-03-04-minutes.md) - NDR table of contents, Schematron rules
 * [2025-02-25)](docs/2025-02-25-minutes.md) - PS02 fixes, NBAC/NTAC co-chair meeting
 * [2025-02-18](docs/2025-02-18-minutes.md) - Bugs in PS02, projects wanting to use NIEM 6
