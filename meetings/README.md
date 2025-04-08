@@ -4,7 +4,8 @@
 
 ## Meeting minutes
 
-* [2025-03-25 (draft)](docs/2025-03-25-minutes.md)
+* [2025-04-01 (draft)](docs/2025-04-01-minutes.md) - Final final revision to model PS02
+* [2025-03-25](docs/2025-03-25-minutes.md) - Final revisions to mod
 * [2025-03-18](docs/2025-03-18-minutes.md) - Model PS02 conformance
 * [2025-03-11](docs/2025-03-11-minutes.md) - NDR PSD01, MilOps CR
 * [2025-03-04](docs/2025-03-04-minutes.md) - NDR table of contents, Schematron rules
