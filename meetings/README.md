@@ -4,7 +4,8 @@
 
 ## Meeting minutes
 
-* [2025-04-22 (draft)](docs/2025-04-22)
+* [2025-04-29 (draft)](docs/2025-04-29-minutes.md)
+* [2025-04-22](docs/2025-04-22)
 * [2025-04-15](docs/2025-04-15-minutes.md)
 * [2025-04-08](docs/2025-04-08-minutes.md)
 * [2025-04-01](docs/2025-04-01-minutes.md) - Final final revision to model PS02
