@@ -8,6 +8,12 @@ These documents are for NTAC discussion.  They are not expected to become projec
 
 Discussion of documents intended to become project specifications are also conducted on the [discussion tab](https://github.com/niemopen/ntac-admin/discussions).
 
+* [Cardinality constraints for properties (2025-05-26)](docs/PropertyConstraints-250526.md)
+  Probably need these since we replaced RoleOf with structures:uri
+
+* [Revisiting URIs and IDs and REFs (oh my!) (2025-05-26)](docs/References-250526.md)
+  Constraints on object references
+
 * [Literal properties or structured datatypes (2024-11-25)](docs/StructuredDatatype-241125.md)
   An argument giving six reasons why literal properties are better
 
