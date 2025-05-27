@@ -4,11 +4,13 @@
 
 ## Meeting minutes
 
-* [2025-05-06 (draft)](docs/2025-05-06-minutes.md)
-* [2025-04-29](docs/2025-04-29-minutes.md)
-* [2025-04-22](docs/2025-04-22)
-* [2025-04-15](docs/2025-04-15-minutes.md)
-* [2025-04-08](docs/2025-04-08-minutes.md)
+* [2025-05-20 (draft)](docs/2025-05-20-minutes.md) - Beta test of NIEM training
+* [2025-05-13 (draft) ](docs/2025-05-13-minutes.md)- Measures for Justice on data quality
+* [2025-05-06](docs/2025-05-06-minutes.md) - CMFTool 1.0-alpha.3
+* [2025-04-29](docs/2025-04-29-minutes.md) - Governance WG meeting
+* [2025-04-22](docs/2025-04-22-minutes.md) - New working group for governance
+* [2025-04-15](docs/2025-04-15-minutes.md) - Upcoming NBAC/NTAC co-chair meeting
+* [2025-04-08](docs/2025-04-08-minutes.md) - Hackathon
 * [2025-04-01](docs/2025-04-01-minutes.md) - Final final revision to model PS02
 * [2025-03-25](docs/2025-03-25-minutes.md) - Final revisions to mod
 * [2025-03-18](docs/2025-03-18-minutes.md) - Model PS02 conformance
