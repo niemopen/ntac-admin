@@ -4,8 +4,9 @@
 
 ## Meeting minutes
 
-* [2025-05-20 (draft)](docs/2025-05-20-minutes.md) - Beta test of NIEM training
-* [2025-05-13 (draft) ](docs/2025-05-13-minutes.md)- Measures for Justice on data quality
+* [2025-05-27 (draft)](docs/2025-05-27-minutes.md) - Reference restrictions, cardinality on properties
+* [2025-05-20 ](docs/2025-05-20-minutes.md) - Beta test of NIEM training
+* [2025-05-13](docs/2025-05-13-minutes.md)- Measures for Justice on data quality
 * [2025-05-06](docs/2025-05-06-minutes.md) - CMFTool 1.0-alpha.3
 * [2025-04-29](docs/2025-04-29-minutes.md) - Governance WG meeting
 * [2025-04-22](docs/2025-04-22-minutes.md) - New working group for governance
