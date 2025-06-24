@@ -4,7 +4,9 @@
 
 ## Meeting minutes
 
-* [2025-06-03 (draft)](docs/2025-06-03-minutes.md)
+* [2025-06-17 (draft)](docs/2025-06-17-minutes.md)
+* [2025-06-10 (draft)](docs/2025-06-10-minutes.md)
+* [2025-06-03](docs/2025-06-03-minutes.md)
 * [2025-05-27](docs/2025-05-27-minutes.md) - Reference restrictions, cardinality on properties
 * [2025-05-20 ](docs/2025-05-20-minutes.md) - Beta test of NIEM training
 * [2025-05-13](docs/2025-05-13-minutes.md)- Measures for Justice on data quality
