@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-     NIEM Model Version 6.0
-     Project Specification 02
-     11 April 2024
-     Copyright (c) OASIS Open 2024. All Rights Reserved.
-     Source: https://docs.oasis-open.org/niemopen/niem-model/v6.0/ps01/xsd/
-     Latest stage of narrative specification: https://docs.oasis-open.org/niemopen/niem-model/v6.0/niem-model-v6.0.html
-     NIEMOpen IPR Statement: https://github.com/niemopen/oasis-open-project/blob/main/IPR-STATEMENT.md
--->
 <xs:schema
   targetNamespace="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
-  xmlns:appinfo="https://docs.oasis-open.org/niemopen/ns/model/appinfo/6.0/"
   xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   version="ps02"
   xml:lang="en-US">
   <xs:annotation>
     <xs:documentation>The structures namespace provides base types and other components for definition of NIEM-conformant XML schemas.</xs:documentation>
+    <xs:documentation>
+      NIEM Model Version 6.0
+      Project Specification 02
+      1 January 2025
+      Copyright (c) OASIS Open 2025. All Rights Reserved.
+      Source: https://docs.oasis-open.org/niemopen/niem-model/v6.0/ps02/xsd/
+      Latest stage of narrative specification:https://docs.oasis-open.org/niemopen/niem-model/v6.0/niem-model-v6.0.html
+      NIEMOpen IPR Statement:https://github.com/niemopen/oasis-open-project/blob/main/IPR-STATEMENT.md
+      License: https://github.com/niemopen/niem-model/blob/main/LICENSE.md.
+ 
+      This work is licensed under a Creative Commons Attribution 4.0 International License:
+      CC BY 4.0: Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/.
+      In addition to the above license, each Contributor also agrees in the CLA to provide the
+      additional Specification Non-Assertion Covenants to support finally-approved for any Project
+      Specifications, as explained in Section 15.3 of the OASIS Open Project Rules.    
+    </xs:documentation>
   </xs:annotation>
   <xs:attributeGroup name="SimpleObjectAttributeGroup">
     <xs:attribute ref="structures:id"/>
     <xs:attribute ref="structures:ref"/>
     <xs:attribute ref="structures:uri"/>
-    <xs:anyAttribute namespace="##other" processContents="strict"/>
+    <xs:anyAttribute processContents="strict" namespace="##other"/>
   </xs:attributeGroup>
   <xs:complexType name="AdapterType" abstract="true">
     <xs:annotation>
@@ -35,7 +41,7 @@
     <xs:attribute ref="structures:id"/>
     <xs:attribute ref="structures:ref"/>
     <xs:attribute ref="structures:uri"/>
-    <xs:anyAttribute namespace="##other" processContents="strict"/>
+    <xs:anyAttribute processContents="strict" namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="AssociationType" abstract="true">
     <xs:annotation>
@@ -48,7 +54,7 @@
     <xs:attribute ref="structures:id"/>
     <xs:attribute ref="structures:ref"/>
     <xs:attribute ref="structures:uri"/>
-    <xs:anyAttribute namespace="##other" processContents="strict"/>
+    <xs:anyAttribute processContents="strict" namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="AugmentationType" abstract="true">
     <xs:annotation>
@@ -66,7 +72,7 @@
     <xs:attribute ref="structures:id"/>
     <xs:attribute ref="structures:ref"/>
     <xs:attribute ref="structures:uri"/>
-    <xs:anyAttribute namespace="##other" processContents="strict"/>
+    <xs:anyAttribute processContents="strict" namespace="##other"/>
   </xs:complexType>
   <xs:element name="AssociationAugmentationPoint" abstract="true">
     <xs:annotation>

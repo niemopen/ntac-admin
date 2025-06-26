@@ -6,6 +6,6 @@
 
 These are artifacts intended as examples in NTAC discussions.  Usually they are too large or complex to be inserted into a [discussion paper](../documents/README.md) or a note in the [discussions tab](https://github.com/niemopen/ntac-admin/discussions).
 
-* [Complex Message Specification](src/ComplexMSpec) [2024-10-07]
-* [Augmentation](src/Augmentation) – start with the [README](src/Augmentation/README.md).  [Revised 2023-12-11]
+* [Augmentation](src/Augmentation) – start with the [README](src/Augmentation/README.md).  [Revised 2025-06-26]
+* [[Complex Message Specification](src/ComplexMSpec) [2024-10-07]
 * [RoleOf (2023-05-16)](src/RoleOf)

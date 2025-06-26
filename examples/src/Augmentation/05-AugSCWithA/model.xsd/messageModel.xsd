@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema
   targetNamespace="http://example.com/N6AugEx/1.0/"
+  xmlns:appinfo="https://docs.oasis-open.org/niemopen/ns/model/appinfo/6.0/"
   xmlns:ct="https://docs.oasis-open.org/niemopen/ns/specification/conformanceTargets/6.0/"
   xmlns:my="http://example.com/N6AugEx/1.0/"
   xmlns:nc="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/"
   xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  ct:conformanceTargets="https://docs.oasis-open.org/niemopen/ns/specification/XNDR/6.0/#SubsetSchemaDocument"
-  version="message-1"
+  ct:conformanceTargets="https://docs.oasis-open.org/niemopen/ns/specification/NDR/6.0/#SubsetSchemaDocument"
+  version="1"
   xml:lang="en-US">
+  <xs:annotation>
+    <xs:appinfo>
+      <appinfo:Augmentation class="nc:TextType" property="my:privacyText" use="required"/>
+    </xs:appinfo>
+  </xs:annotation>
   <xs:import namespace="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/" schemaLocation="niem-core.xsd"/>
   <xs:import namespace="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/" schemaLocation="utility/structures.xsd"/>
   <xs:complexType name="MessageType">
