@@ -13,7 +13,7 @@ The Interpretation section is introduced as:
 > For example, consider the documentation of the nc:PersonName **object** property shown below:
 
 In natural language "object" means "thing", any discrete item that can be counted.
-A ball or a person are objects, as opposed to water which (above the molecular level) is a substance, not an item.
+Baseballs and people are objects, as opposed to water which (above the molecular level) is a substance, not an item.
 
 In computing, object has a more specific meaning: an item with associated behavior.
 In natural language the number 5 is an object, but in computing the number 5 is an object with associated
@@ -24,30 +24,41 @@ The literal value of a message has no behavior, it just exists.
 NIEM uses a third meaning of object that conflicts with the first two:
 some "things" are objects while other "things" are not.  In "the nc:PersonName object property" quoted
 above a Person is a thing that has a Name which is also a thing, but NIEM categorizes Person as an
-"object" but Name as "not an object".  "the nc:PersonName property" communicates the identical idea
+"object" but Name as "not an object".  "The nc:PersonName property" (without the object) communicates the identical idea
 to developers without implying an artificial distinction between "object" and "non-object" properties.
 
 The first example is:  
 `<ObjectProperty structures:id="nc.PersonName"> | <xs:element name="PersonName" type="nc:PersonNameType">`
-categorizing PersonName as an "ObjectProperty" for XML but an instance of PersonNameType" for JSON.
+categorizing the same PersonName as an "ObjectProperty" for XML but an instance of PersonNameType" for JSON.
 
 The word "object" appears 554 times in NDR6, but it appears only 10 times total over XSD volumes 1 and 2,
-all of them in the natural language sense, not specific to computing.  Scrubbing "object" from all of NDR
-would be a massive undertaking, but eliminating the 100+ instances in the "Interpretation of NIEM Data"
-section, removing it when used as an adjective and replacing it with "value" when used as a noun, would
-demonstrate feasibility.
+all of them in a natural language sense not specific to computing.  Scrubbing "object" from all of NDR
+where it refers to message data would be a massive undertaking, but eliminating the 100+ instances in the
+"Interpretation of NIEM Data" section, removing it when used as an adjective and replacing it with "value"
+when used as a noun, would demonstrate feasibility.
 
-The bottom line is that all messages, regardless of content, are literals (instances of types),
-and types define the mapping between literal messages outside a program and objects (instances of classes)
-inside a program.
+The bottom line is that all messages, regardless of content, are literals (instances of types).
+Each Type defines:
+* a lexical space,
+* a value space, and
+* the mapping between literal messages outside a program and values from a value space,
+perhaps implemented as objects (instances of classes), inside a program.
 
+**Example**:
+```
+Coordinate (1 dimension - latitude, or hwy mile marker) -- Value or Object?  "38.8895"
+Coordinate (2 dimensions - lat, long)                   -- Value or Object?  "38.8895,-77.0352"
+Coordinate (3 dimensions - lat, long, altitude)         -- Value or Object?  "38.8895,-77.0352, 429.5"
+```
 
 ## RDF
 
-## References
 
-###### [XSD11-1]
-###### [XSD11-2]
+## Appendix: Objects and Programming Environments
+
+Common usage indicates that Object vs. non-Object designates the distinction between external literal values
+and internal operations on those values, not a distinction between simple and complex content.  The same
+value, both simple and complex, can be both a literal value and the internal state of an object.
 
 **XML Objects**
 >
@@ -106,13 +117,20 @@ inside a program.
 >
 > `{"name":"John", "age":30, "car":null}`
 >
-> JSON object literals are surrounded by curly braces {}.
-> JSON object literals contains key/value pairs.
-> Keys and values are separated by a colon.
-> Each key/value pair is separated by a comma.
+> JSON object literals are surrounded by curly braces {}.  
+> JSON object literals contains key/value pairs.  
+> Keys and values are separated by a colon.  
+> Each key/value pair is separated by a comma.  
 >
-> It is a common mistake to call a JSON object literal "a JSON object".
-> JSON cannot be an object. JSON is a string format.
-> The data is only JSON when it is in a string format.
-> When it is converted to a JavaScript variable, it becomes a JavaScript object.
+> ==========  
+> It is a common mistake to call a JSON object literal "a JSON object".  
+> JSON cannot be an object. JSON is a string format.  
+> The data is only JSON when it is in a string format.  
+> When it is converted to a JavaScript variable, it becomes a JavaScript object.  
+> ==========  
 
+
+## References
+
+###### [XSD1.1 Part 1 - Structures](https://www.w3.org/TR/xmlschema11-1/)
+###### [XSD1.1 Part 2 - Datatypes](https://www.w3.org/TR/xmlschema11-2/)
