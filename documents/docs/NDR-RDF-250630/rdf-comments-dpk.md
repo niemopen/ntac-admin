@@ -5,7 +5,7 @@ Section 14 of [NDR Version 6](https://github.com/niemopen/niem-naming-design-rul
 
 ## Terminology
 
-The Interpretation section is introduced as:
+The Interpretation section begins:
 
 > The primary purpose of a NIEM-based data specification is to establish a common understanding
 > among developers, so that they can write software that correctly handles the shared data.
@@ -18,31 +18,23 @@ Baseballs and people are objects, as opposed to water which (above the molecular
 In computing, object has a more specific meaning: an item with associated behavior.
 In natural language the number 5 is an object, but in computing the number 5 is an object with associated
 operations (addition, coercion, mutability, etc.) as defined by a programming language while being processed,
-but the same number 5 is a literal value (a sequence of bits) while being stored or transmitted.
-The literal value of a message has no behavior, it just exists.
+along with a literal value (e.g., ASCII "5" or binary 0101) when stored or transmitted.
+The literal value of a message or document has no operations or behavior, it just exists as static data.
 
 NIEM uses a third meaning of object that conflicts with the first two:
-some "things" are objects while other "things" are not.  In "the nc:PersonName object property" quoted
-above a Person is a thing that has a Name which is also a thing, but NIEM categorizes Person as an
-"object" but Name as "not an object".  "The nc:PersonName property" (without the object) communicates the identical idea
-to developers without implying an artificial distinction between "object" and "non-object" properties.
+some items are objects while other items are not.  In "the nc:PersonName object property" quoted above a
+Person is a thing that has a Name which is also a thing, but NIEM categorizes Person as an "object" but
+Name as "not an object".  "The nc:PersonName property" (without the object) communicates the identical
+idea to developers without implying an artificial distinction between "object" and "non-object" properties.
 
 The first example is:  
 `<ObjectProperty structures:id="nc.PersonName"> | <xs:element name="PersonName" type="nc:PersonNameType">`
 categorizing the same PersonName as an "ObjectProperty" for XML but an instance of PersonNameType" for JSON.
 
 The word "object" appears 554 times in NDR6, but it appears only 10 times total over XSD volumes 1 and 2,
-all of them in a natural language sense not specific to computing.  Scrubbing "object" from all of NDR
-where it refers to message data would be a massive undertaking, but eliminating the 100+ instances in the
-"Interpretation of NIEM Data" section, removing it when used as an adjective and replacing it with "value"
-when used as a noun, would demonstrate feasibility.
-
-The bottom line is that all messages, regardless of content, are literals (instances of types).
-Each Type defines:
-* a lexical space,
-* a value space, and
-* the mapping between literal messages outside a program and values from a value space,
-perhaps implemented as objects (instances of classes), inside a program.
+all of them in a natural language sense.  Eliminating the 100+ instances in section 14, removing it
+when used as an adjective and replacing it with type or value as appropriate when used as a noun,
+would demonstrate feasibility of resolving these conflicting meanings.
 
 **Example**:
 ```
@@ -56,9 +48,18 @@ Coordinate (3 dimensions - lat, long, altitude)         -- Value or Object?  "38
 
 ## Appendix: Objects and Programming Environments
 
-Common usage indicates that Object vs. non-Object designates the distinction between external literal values
-and internal operations on those values, not a distinction between simple and complex content.  The same
-value, both simple and complex, can be both a literal value and the internal state of an object.
+All messages and documents, regardless of content, are literals -- immutable sequences of bytes or characters.
+
+[XSD](https://www.w3.org/TR/xmlschema11-2/#datatype) defines datatype as having three properties:
+* A value space, which is a set of values.
+* A lexical space, which is a set of literals used to denote the values.
+* A mapping from the lexical space into the value space, along with a few 
+functions, relations, and procedures associated with the datatype.
+
+Common usage across computing environments indicates that object vs. non-object reflects XSD's distinction
+between internal logical values and external message/document literals, not a distinction between simple
+and complex content.
+Any value, either simple and complex, has both a lexical representation and internal program state.
 
 **XML Objects**
 >
@@ -75,7 +76,7 @@ value, both simple and complex, can be both a literal value and the internal sta
 **[JavaScript Objects](https://www.w3schools.com/js/js_objects.asp)**
 >
 > **Objects** are containers for **Properties** and **Methods**.  
-> **Properties** are named **Values**.
+> **Properties** are named **Values**.  
 > **Methods** are **Functions** stored as **Properties**.  
 > **Properties** can be primitive values, functions, or even other objects.
 >
@@ -109,13 +110,9 @@ value, both simple and complex, can be both a literal value and the internal sta
 
 **[JSON Object Literals](https://www.w3schools.com/js/js_json_objects.asp)**
 >
-> This is a JSON string:
+> This is a JSON string: `'{"name":"John", "age":30, "car":null}'`
 >
-> `'{"name":"John", "age":30, "car":null}'`
->
-> Inside the JSON string there is a JSON object literal:
->
-> `{"name":"John", "age":30, "car":null}`
+> Inside the JSON string there is a JSON object literal: `{"name":"John", "age":30, "car":null}`
 >
 > JSON object literals are surrounded by curly braces {}.  
 > JSON object literals contains key/value pairs.  
@@ -124,8 +121,7 @@ value, both simple and complex, can be both a literal value and the internal sta
 >
 > ==========  
 > It is a common mistake to call a JSON object literal "a JSON object".  
-> JSON cannot be an object. JSON is a string format.  
-> The data is only JSON when it is in a string format.  
+> JSON cannot be an object. JSON is a string format. The data is only JSON when it is in a string format.  
 > When it is converted to a JavaScript variable, it becomes a JavaScript object.  
 > ==========  
 
