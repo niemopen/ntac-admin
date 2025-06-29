@@ -34,7 +34,8 @@ categorizing the same PersonName as an "ObjectProperty" for XML but an instance 
 The word "object" appears 554 times in NDR6, but it appears only 10 times total over XSD volumes 1 and 2,
 all in the natural language sense.  Eliminating the 100+ instances in section 14, removing it
 when used as an adjective and replacing it with "map" type, value, or literal as appropriate when used as a noun,
-would demonstrate feasibility of resolving these conflicting meanings.
+would demonstrate feasibility of resolving these conflicting meanings.  The exception is JSON "object literals",
+not objects, which the standard specifies.
 
 **Example**:
 ```
@@ -59,36 +60,115 @@ But in RDF "object" has its natural language meaning:
 This could be replaced with:
 ```
 The information in NIEM is defined as typed values and expressed in messages as literals in a data format.
- * A NIEM type with multiple values can be expressed in XML as an element with attributes, contained elements,
+ * A NIEM type containing multiple values can be expressed in XML as an element with attributes, contained elements,
    and/or compound text.
- * A NIEM type with multiple values can be expressed in JSON as an object (map) literal, an array literal,
+ * A NIEM type containing multiple values can be expressed in JSON as an object (map) literal, an array literal,
    and/or a compound string.
 ```
+Section 14.2.1 bullet 3 says:
+```
+A value in NIEM XML can be a literal, the value of an attribute or the simple content of an element.
+A value in NIEM XML can also be an object, a child element with attributes and/or complex content.
+A value in NIEM JSON can be an object, or a literal; that is, a string, number, or boolean.
+(A value in NIEM JSON can also be an array of values for a repeatable property; see section TODO.)
+```
+which could be replaced with:
+```
+A NIEM value may be represented by an XML literal. The XML literal may represent the value as an element
+with attributes, an element with simple content, or an element with child elements with attributes,
+simple content, or complex content.
 
-**Example:**
+A NIEM value may be represented by a JSON literal. JSON literals are null, boolean, string, number, array
+and object. An array or object may represent repeatable values of the same type or values with individually
+defined types.
+```
 
-The information in a NIEM geographic coordinate value can be expressed in a message in various data formats as:
+The information in a specific NIEM geographic coordinate can be expressed as a message in various data formats:
 ```
 XML:
-
-  <Coordinate latitude="38.8895" longitude="-77.0352"></Coordinate>
-  
-  <Coordinate>
-    <Latitude>38.8895</Latitude>
-    <Longitude>-77.0352</Longitude>
-  </Coordinate
-  
-  <Coordinate>38.8895, -77.0352</Coordinate>
+    <Coordinate latitude="38.8895" longitude="-77.0352"></Coordinate>
+    
+    <Coordinate>
+      <Latitude>38.8895</Latitude>
+      <Longitude>-77.0352</Longitude>
+    </Coordinate
+    
+    <Coordinate>38.8895, -77.0352</Coordinate>
 
 JSON:
-
-  {"latitude": 38.8895, "longitude": -77.0352}
-  
-  [38.8895, -77.0352]
-  
-  "38.8895, -77.0352"
+    {"latitude": 38.8895, "longitude": -77.0352}
+    
+    [38.8895, -77.0352]
+    
+    "38.8895, -77.0352"
 ```
+**Example: Coordinate message in XML and JSON syntaxes**
 
+As illustrated in the Coordinate example, XML elements normally use type QNames as tags but in JSON type QNames
+are carried in the JSON Schema, not in message data. Validating a message against its schema associates the type with
+each value in a message, making it unnecessary to repeatedly transmit type names in each instance of that type.
+
+In NDR Example 3-2, while the XML syntax is familiar to developers the JSON syntax would be a foreign language.
+The following message example would be typical JSON, validated using JSON Schema with no JSON-LD processing.
+* The "schema" keyword could be anything, including "@context" or "foo", it is just a normal property that
+identifies the message schema. Calling it @context does not make the message JSON-LD, but adopting the convention
+makes the JSON message compatible with applications that ingest JSON-LD.
+* Only the message schema needs to be included in the message; the message schema identifies all other schema
+namespaces for types used in the message, and can include metadata such as schema
+description, software license, message specification and format identifiers, etc.
+* JSON Schema does not support namespace prefixes; an information preprocessor can convert all QNames
+to absolute URIs for JSON message syntax.
+* A more complete use case might define Message as having Request, Response, EventNotification,
+and perhaps other message types, identified as types in XML syntax but properties in JSON syntax.
+* [Google's perspective](https://www.seobility.net/en/wiki/JSON-LD) is that "The main difference between
+JSON and JSON-LD is JSON-LD’s implementation of [Schema.org](https://schema.org/)." This is simply a
+convention of using a set of shared schemas, analogous to agreeing to use NIEM core and domain schemas.
+This limited use does not require applications to perform any ontology or knowledge graph operations,
+just adopt "@context" as the property name that identifies the root schema of NIEM messages in JSON syntax
+for search engine compatibility.
+
+JSON Schema:
+```
+{
+  "$id": "http://example.com/ReqRes/1.0/",
+  "$ref": "#/$defs/Message",
+  "$defs": {
+    "Message": {
+      "type": "object",
+      "properties": {
+        "schema": {"type": "string"},
+        "req": {"$ref": "#/$defs/Request"}
+      },
+      "additionalProperties": false
+    },
+    "Request": {
+      "type": "object",
+      "properties": {
+        "request_id": {"type": "string"},
+        "item": {"$ref": "https://docs.oasis-open.org/niemopen/ns/model/niem-core/$defs/ItemName"},
+        "quantity": {"$ref": "https://docs.oasis-open.org/niemopen/ns/model/niem-core/$defs/ItemQuantity"}
+      },
+      "additionalProperties": false
+    }
+  }
+}
+```
+JSON Message:
+```
+{
+  "schema": "http://example.com/ReqRes/1.0/",
+  "req": {
+    "request_id": "RQ001",
+    "item": "Wrench",
+    "quantity": 10
+  }
+}
+```
+**NDR Example 3-2: Schema and Message in JSON syntax**
+
+**Model terminology:**
+Table 14-3 compares terminology for CMF, XSD, and RDF.  In XSD the word "Class" appears only 10 times,
+all in the natural language context: "class of XML documents", "classes of conforming processors", etc.
 
 ## Appendix: Objects and Programming Environments
 
