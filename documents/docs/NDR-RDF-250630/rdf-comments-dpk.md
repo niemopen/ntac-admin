@@ -32,8 +32,8 @@ The first example is:
 categorizing the same PersonName as an "ObjectProperty" for XML but an instance of PersonNameType" for JSON.
 
 The word "object" appears 554 times in NDR6, but it appears only 10 times total over XSD volumes 1 and 2,
-all of them in a natural language sense.  Eliminating the 100+ instances in section 14, removing it
-when used as an adjective and replacing it with type or value as appropriate when used as a noun,
+all in the natural language sense.  Eliminating the 100+ instances in section 14, removing it
+when used as an adjective and replacing it with "map" type, value, or literal as appropriate when used as a noun,
 would demonstrate feasibility of resolving these conflicting meanings.
 
 **Example**:
@@ -44,22 +44,66 @@ Coordinate (3 dimensions - lat, long, altitude)         -- Value or Object?  "38
 ```
 
 ## RDF
+In the RDF section NDR says:
+> The information in a NIEM message is expressed as values of properties of objects.
+> * An object in NIEM XML is an element that has attributes, or complex content, or both.
+> * An object in NIEM JSON is a JSON object that is the value of a key/value pair.
+
+But in RDF "object" has its natural language meaning:
+* In a natural language sentence, an object is typically a noun or pronoun that receives the action of the verb,
+  or is the target of a preposition.
+* In an RDF subject-predicate-object triple, the object is related to the subject by the predicate, but
+  is not restricted to having attributes or complex content other than those created by other triples.
+  Objects can be IRIs, blank nodes, or datatyped literals, none of which are complex.
+
+This could be replaced with:
+```
+The information in NIEM is defined as typed values and expressed in messages as literals in a data format.
+ * A NIEM type with multiple values can be expressed in XML as an element with attributes, contained elements,
+   and/or compound text.
+ * A NIEM type with multiple values can be expressed in JSON as an object (map) literal, an array literal,
+   and/or a compound string.
+```
+
+**Example:**
+
+The information in a NIEM geographic coordinate value can be expressed in a message in various data formats as:
+```
+XML:
+
+  <Coordinate latitude="38.8895" longitude="-77.0352"></Coordinate>
+  
+  <Coordinate>
+    <Latitude>38.8895</Latitude>
+    <Longitude>-77.0352</Longitude>
+  </Coordinate
+  
+  <Coordinate>38.8895, -77.0352</Coordinate>
+
+JSON:
+
+  {"latitude": 38.8895, "longitude": -77.0352}
+  
+  [38.8895, -77.0352]
+  
+  "38.8895, -77.0352"
+```
 
 
 ## Appendix: Objects and Programming Environments
 
-All messages and documents, regardless of content, are literals -- immutable sequences of bytes or characters.
+All messages and documents, regardless of content, are **literals** -- immutable sequences of bytes or characters.
 
 [XSD](https://www.w3.org/TR/xmlschema11-2/#datatype) defines datatype as having three properties:
 * A value space, which is a set of values.
 * A lexical space, which is a set of literals used to denote the values.
-* A mapping from the lexical space into the value space, along with a few 
-functions, relations, and procedures associated with the datatype.
+* A mapping from the lexical space into the value space, along with a few associated
+functions, relations, and procedures.
 
 Common usage across computing environments indicates that object vs. non-object reflects XSD's distinction
 between internal logical values and external message/document literals, not a distinction between simple
 and complex content.
-Any value, either simple and complex, has both a lexical representation and internal program state.
+Every value, either simple and complex, has both a lexical representation and internal program state.
 
 **XML Objects**
 >
@@ -71,7 +115,17 @@ Any value, either simple and complex, has both a lexical representation and inte
 > **XML Object as a Node**:  
 > The XML object represents a specific node in this tree.
 > It provides access to the node's properties (like its name, value, and attributes)
-> and methods for interacting with it (like adding, removing, or modifying child nodes). 
+> and methods for interacting with it (like adding, removing, or modifying child nodes).
+
+**[RDF Objects](https://www.w3.org/TR/rdf12-concepts/)**
+> The Resource Description Framework (RDF) is a framework for representing information on the Web.
+> This document defines an abstract syntax (a data model) which serves to link all RDF-based
+> languages and specifications. The abstract syntax has two key data structures:
+> * RDF graphs are sets of subject-predicate-**object** triples, where the elements may be **IRIs,
+> blank nodes, datatyped literals**, or triple terms. They are used to express descriptions of resources.
+> * RDF datasets are used to organize collections of RDF graphs, and consist of a default graph
+> and zero or more named graphs.
+
 
 **[JavaScript Objects](https://www.w3schools.com/js/js_objects.asp)**
 >
@@ -125,6 +179,22 @@ Any value, either simple and complex, has both a lexical representation and inte
 > When it is converted to a JavaScript variable, it becomes a JavaScript object.  
 > ==========  
 
+**[ECMAScript](https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values) Objects**
+>
+> **6 ECMAScript Data Types and Values**
+> 
+> Algorithms within this specification manipulate values each of which has an associated type.
+>  
+>  ...  
+> **6.1.4 The String Type**   
+> **6.1.6 Numeric Types**   
+> **6.1.7 The Object Type**  
+
+This confusingly uses the term "object" as one of its "Data Types and Values".
+It conflates the "objects" of all types that are manipulated by algorithms in the language with the specific
+"object" key/value type that in other programming languages is called "associative array", "hash", "dictionary",
+or simply "map".  But it does confirm that the "object" key/value type in JavaScript/ECMAScript is a data type
+that has both an algorithmic internal value and a literal representation.
 
 ## References
 
