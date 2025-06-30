@@ -35,13 +35,26 @@ The word "object" appears 554 times in NDR6, but it appears only 10 times total 
 all in the natural language sense.  Eliminating the 100+ instances in section 14, removing it
 when used as an adjective and replacing it with "map" type, value, or literal as appropriate when used as a noun,
 would demonstrate feasibility of resolving these conflicting meanings.  The exception is JSON "object literals",
-not objects, which the standard specifies.
+not objects, as defined by the Javascript and JSON specifications.
+
+Given that there are two popular yet incompatible meanings of "object" it is probably unrealistic to eliminate
+one meaning or another. But given that incompatible usages of object:
+* **thing** - natural language term for any discrete physical or data entity
+* **value** - logical and literal instance of Type, including all content
+* **map** - logical and literal key:value instance of Class, excluding simple and list content (instance of Type)
+* **object** - logical value of any data entity while being processed
+* **literal** - lexical value of any data entity represented in a document, message, or string
+
+are concepts that NIEM must express clearly, a Venn diagram and some approach to disambiguation
+should be agreed.
+* Is value always an instance of Type and never an instance of Class?
+* Is object always an instance of Class and never an instance of Type?
 
 **Example**:
 ```
-Coordinate (1 dimension - latitude, or hwy mile marker) -- Value or Object?  "38.8895"
-Coordinate (2 dimensions - lat, long)                   -- Value or Object?  "38.8895,-77.0352"
-Coordinate (3 dimensions - lat, long, altitude)         -- Value or Object?  "38.8895,-77.0352, 429.5"
+Coordinate (1 dimension - latitude)               -- value or object?  "38.8895"
+Coordinate (2 dimensions - lat, long)             -- value or object?  "38.8895,-77.0352"
+Coordinate (3 dimensions - lat, long, altitude)   -- value or object?  "38.8895,-77.0352, 429.5"
 ```
 
 ## RDF
@@ -83,7 +96,9 @@ and object. An array or object may represent repeatable values of the same type 
 defined types.
 ```
 
-The information in a specific NIEM geographic coordinate can be expressed as a message in various data formats:
+**Example:**  
+Repeating the coordinate example, the information in a specific NIEM geographic coordinate can be expressed
+as a message in various data formats:
 ```
 XML:
     <Coordinate latitude="38.8895" longitude="-77.0352"></Coordinate>
@@ -104,15 +119,12 @@ JSON:
 ```
 **Example: Coordinate message in XML and JSON syntaxes**
 
-As illustrated in the Coordinate example, XML elements normally use type QNames as tags but in JSON type QNames
+As illustrated in the Coordinate example, XML elements normally use type QNames as tags but in JSON, type QNames
 are carried in the JSON Schema, not in message data. Validating a message against its schema associates the type with
 each value in a message, making it unnecessary to repeatedly transmit type names in each instance of that type.
 
 In NDR Example 3-2, while the XML syntax is familiar to developers the JSON syntax would be a foreign language.
 The following message example would be typical JSON, validated using JSON Schema with no JSON-LD processing.
-* The "schema" keyword could be anything, including "@context" or "foo", it is just a normal property that
-identifies the message schema. Calling it @context does not make the message JSON-LD, but adopting the convention
-makes the JSON message compatible with applications that ingest JSON-LD.
 * Only the message schema needs to be included in the message; the message schema identifies all other schema
 namespaces for types used in the message, and can include metadata such as schema
 description, software license, message specification and format identifiers, etc.
@@ -275,6 +287,7 @@ It conflates the "objects" of all types that are manipulated by algorithms in th
 "object" key/value type that in other programming languages is called "associative array", "hash", "dictionary",
 or simply "map".  But it does confirm that the "object" key/value type in JavaScript/ECMAScript is a data type
 that has both an algorithmic internal value and a literal representation.
+
 
 ## References
 
