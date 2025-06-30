@@ -66,7 +66,7 @@ In the RDF section NDR says:
 But in RDF "object" has its natural language meaning:
 * In a natural language sentence, an object is typically a noun or pronoun that receives the action of the verb,
   or is the target of a preposition.
-* In an RDF subject-predicate-object triple, the object is related to the subject by the predicate, but
+* In an RDF triple, the object is related to the subject by the predicate, but
   is not restricted to having attributes or complex content other than those created by other triples.
   Objects can be IRIs, blank nodes, or datatyped literals, none of which are complex.
 
@@ -127,17 +127,23 @@ In NDR Example 3-2, while the XML syntax is familiar to developers the JSON synt
 The following message example would be typical JSON, validated using JSON Schema with no JSON-LD processing.
 * Only the message schema needs to be included in the message; the message schema identifies all other schema
 namespaces for types used in the message, and can include metadata such as schema
-description, software license, message specification and format identifiers, etc.
-* JSON Schema does not support namespace prefixes; an information preprocessor can convert all QNames
-to absolute URIs for JSON message syntax.
+description, software license, message specification, format identifiers, etc.
+* JSON Schema does not support namespace prefixes because types do not appear in messages.
+An information preprocessor can convert all QNames used in JSON Schema to absolute URIs.
 * A more complete use case might define Message as having Request, Response, EventNotification,
-and perhaps other message types, identified as types in XML syntax but properties in JSON syntax.
+and perhaps other message types, using QNames to identify types in both XML and JSON and locally-unique
+properties within a type as shown in
+[Self-Describing Messages](https://github.com/niemopen/ntac-admin/blob/main/documents/docs/SelfDescribing-250616.md).
 * [Google's perspective](https://www.seobility.net/en/wiki/JSON-LD) is that "The main difference between
-JSON and JSON-LD is JSON-LD’s implementation of [Schema.org](https://schema.org/)." This is simply a
-convention of using a set of shared schemas, analogous to agreeing to use NIEM core and domain schemas.
-This limited use does not require applications to perform any ontology or knowledge graph operations,
-just adopt "@context" as the property name that identifies the root schema of NIEM messages in JSON syntax
-for search engine compatibility.
+JSON and JSON-LD is JSON-LD’s implementation of [Schema.org](https://schema.org/)." This has nothing to do with
+ontology definition or knowledge graph processing, it simply borrows a JSON-LD keyword
+["@context"](https://github.com/schemaorg/schemaorg/blob/main/data/releases/29.2/schemaorg-all-https.jsonld)
+to hold a list of namespace prefixes and "@type" to reference definitions from the schema into message data,
+and suggests referencing types defined in a community schema, analogous to referencing types defined in the
+NIEM core and domain schemas. This reuse of two loanwords does not require applications to perform any ontology
+or knowledge graph (@graph) operations or use any RDF libraries to process messages, so the semantics of RDF
+do not apply to NIEM messaging. The NIEM community, through NBAC, should have an opinion on whether to expand
+the NIEM charter from reusable message design to ontology predicate and graph definition.
 
 JSON Schema:
 ```
@@ -285,7 +291,7 @@ Every value, either simple and complex, has both a lexical representation and in
 This confusingly uses the term "object" as one of its "Data Types and Values".
 It conflates the "objects" of all types that are manipulated by algorithms in the language with the specific
 "object" key/value type that in other programming languages is called "associative array", "hash", "dictionary",
-or simply "map".  But it does confirm that the "object" key/value type in JavaScript/ECMAScript is a data type
+or "map".  But it does confirm that the "object" key/value type in JavaScript/ECMAScript is a data type
 that has both an algorithmic internal value and a literal representation.
 
 
