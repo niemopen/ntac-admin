@@ -4,9 +4,10 @@
 
 ## Meeting minutes
 
-* [2025-06-17 (draft)](docs/2025-06-17-minutes.md)
-* [2025-06-10 (draft)](docs/2025-06-10-minutes.md)
-* [2025-06-03](docs/2025-06-03-minutes.md)
+* [2025-06-24 (draft)](docs/2025-06-24-minutes.md) - NDR section on interpretation of NIEM data
+* [2025-06-17](docs/2025-06-17-minutes.md) - Technical questions at MilOps domain meetings
+* [2025-06-10](docs/2025-06-10-minutes.md) - Discussion papers for review
+* [2025-06-03](docs/2025-06-03-minutes.md) - CMFTool does JSON Schema
 * [2025-05-27](docs/2025-05-27-minutes.md) - Reference restrictions, cardinality on properties
 * [2025-05-20 ](docs/2025-05-20-minutes.md) - Beta test of NIEM training
 * [2025-05-13](docs/2025-05-13-minutes.md)- Measures for Justice on data quality
