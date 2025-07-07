@@ -8,13 +8,20 @@
   <Namespace structures:id="my">
     <NamespaceURI>http://example.com/N6AugEx/1.0/</NamespaceURI>
     <NamespacePrefixText>my</NamespacePrefixText>
-    <DocumentationText>No augmentations.</DocumentationText>
+    <DocumentationText>Augment all complex content with element.</DocumentationText>
     <ConformanceTargetURI>https://docs.oasis-open.org/niemopen/ns/specification/NDR/6.0/#SubsetSchemaDocument</ConformanceTargetURI>
     <DocumentFilePathText>msg.xsd</DocumentFilePathText>
     <NamespaceCategoryCode>EXTENSION</NamespaceCategoryCode>
-    <NamespaceVersionText>1</NamespaceVersionText>
+    <NamespaceVersionText>message-1</NamespaceVersionText>
     <NIEMVersionName>NIEM6.0</NIEMVersionName>
     <NamespaceLanguageName>en-US</NamespaceLanguageName>
+    <AugmentationRecord>
+      <ObjectProperty structures:ref="my.PrivacyAssertion" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+      <AugmentationIndex>0</AugmentationIndex>
+      <GlobalClassCode>OBJECT</GlobalClassCode>
+    </AugmentationRecord>
   </Namespace>
   <Namespace structures:id="nc">
     <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/</NamespaceURI>
@@ -23,7 +30,7 @@
     <ConformanceTargetURI>https://docs.oasis-open.org/niemopen/ns/specification/NDR/6.0/#SubsetSchemaDocument</ConformanceTargetURI>
     <DocumentFilePathText>niem/niem-core.xsd</DocumentFilePathText>
     <NamespaceCategoryCode>CORE</NamespaceCategoryCode>
-    <NamespaceVersionText>ps02</NamespaceVersionText>
+    <NamespaceVersionText>subset-1</NamespaceVersionText>
     <NIEMVersionName>NIEM6.0</NIEMVersionName>
     <NamespaceLanguageName>en-US</NamespaceLanguageName>
   </Namespace>
@@ -37,6 +44,16 @@
     <Namespace structures:ref="my" xsi:nil="true"/>
     <Class structures:ref="my.MessageType" xsi:nil="true"/>
   </ObjectProperty>
+  <ObjectProperty structures:id="my.PrivacyAssertion">
+    <Name>PrivacyAssertion</Name>
+    <Namespace structures:ref="my" xsi:nil="true"/>
+    <Class structures:ref="my.PrivacyAssertionType" xsi:nil="true"/>
+  </ObjectProperty>
+  <DataProperty structures:id="my.PrivacyText">
+    <Name>PrivacyText</Name>
+    <Namespace structures:ref="my" xsi:nil="true"/>
+    <Datatype structures:ref="xs.string" xsi:nil="true"/>
+  </DataProperty>
   <DataProperty structures:id="nc.Date">
     <Name>Date</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
@@ -73,6 +90,20 @@
     <Namespace structures:ref="my" xsi:nil="true"/>
     <ChildPropertyAssociation>
       <ObjectProperty structures:ref="nc.PersonEducation" xsi:nil="true"/>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+    </ChildPropertyAssociation>
+  </Class>
+  <Class structures:id="my.PrivacyAssertionType">
+    <Name>PrivacyAssertionType</Name>
+    <Namespace structures:ref="my" xsi:nil="true"/>
+    <ChildPropertyAssociation>
+      <ObjectProperty structures:ref="nc.DateRepresentation" xsi:nil="true"/>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+    </ChildPropertyAssociation>
+    <ChildPropertyAssociation>
+      <DataProperty structures:ref="my.PrivacyText" xsi:nil="true"/>
       <MinOccursQuantity>1</MinOccursQuantity>
       <MaxOccursQuantity>1</MaxOccursQuantity>
     </ChildPropertyAssociation>

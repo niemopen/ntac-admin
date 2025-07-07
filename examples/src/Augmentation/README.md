@@ -6,14 +6,13 @@ This paper collects everything I've written about wildcards for attribute augmen
 
 Here is a summary of the important changes from NIEM 5.  The examples will show why these changes will work and are good and/or necessary.
 
-* Subset schemas and message schemas are different kinds of NIEM model, represented in XSD
+* Subset schemas and message schemas are different.
   * A subset schema is a collection of model components intended for extension and reuse
-  * A message schema defines the content of a message format; not intended for extension
-  * There is no difference in the corresponding CMF
+  * A message schema is for validation and code binding.  It is not a model representation.  It does not conform to the NDR.
 * A subset schema has attribute wildcards in *structures.xsd* and *niem-xs.xsd*
   * `<xs:anyAttribute processContents="strict"/>` says that any type may be augmented with an attribute; we promise to define that attribute in the message schema
   * The IC-ISM hack is removed
-* A message schema does not inherit from *structures.xsd*
+* Types in a message schema do not inherit from *structures.xsd*
   * Types in the message schema include individual attributes from the structures namespace, as needed. 
 * Attribute augmentations are defined in the model
   * By `appinfo:Augmentation` elements in XSD
@@ -30,12 +29,14 @@ The examples are message specifications that illustrate augmentations to `nc:Edu
 I put the source code (XSD and CMF) for the examples into the ntac-admin repo.  You will find:
 
 * 02-NoAug – message schema for the base case, no augmentations in this message spec
-* 03-AugCCwithE – message schema for complex content augmented with an element
-* 04-AugCCwithA – message schema for complex content augmented with an attribute
-* 05-AugSCwith A – message schema for simple content augmented with an attribute
-* 06-AugSCwithE – message schema for simple content augmented with an element
-* 07-AugOTwithE – augmenting every object with an element *(BROKEN at this time)*
-* 08-AugOTwithA – augmenting every object with an attribute *(BROKEN at this time)*
+* 03-CCwE– message schema for complex content augmented with an element
+* 04-CCwA – message schema for complex content augmented with an attribute
+* 05-SCwA – message schema for simple content augmented with an attribute
+* 06-SCwE– message schema for simple content augmented with an element
+* 07-ACCwE– augmenting all complex content with an element
+* 08-ACCwA– augmenting all complex content with an attribute
+* 09-ASCwA – augmenting all simple content with an attribute.  *Doesn't work for XSD types.*
+* 10-ASCwE – augmenting all simple content with an element.  *Doesn't work for XSD types.*
 
 **Conclusion**
 

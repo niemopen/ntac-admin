@@ -8,13 +8,19 @@
   <Namespace structures:id="my">
     <NamespaceURI>http://example.com/N6AugEx/1.0/</NamespaceURI>
     <NamespacePrefixText>my</NamespacePrefixText>
-    <DocumentationText>No augmentations.</DocumentationText>
+    <DocumentationText>Augment all simple content with an attribute.</DocumentationText>
     <ConformanceTargetURI>https://docs.oasis-open.org/niemopen/ns/specification/NDR/6.0/#SubsetSchemaDocument</ConformanceTargetURI>
     <DocumentFilePathText>msg.xsd</DocumentFilePathText>
     <NamespaceCategoryCode>EXTENSION</NamespaceCategoryCode>
-    <NamespaceVersionText>1</NamespaceVersionText>
+    <NamespaceVersionText>message-1</NamespaceVersionText>
     <NIEMVersionName>NIEM6.0</NIEMVersionName>
     <NamespaceLanguageName>en-US</NamespaceLanguageName>
+    <AugmentationRecord>
+      <DataProperty structures:ref="my.privacyText" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+      <GlobalClassCode>LITERAL</GlobalClassCode>
+    </AugmentationRecord>
   </Namespace>
   <Namespace structures:id="nc">
     <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/</NamespaceURI>
@@ -23,7 +29,7 @@
     <ConformanceTargetURI>https://docs.oasis-open.org/niemopen/ns/specification/NDR/6.0/#SubsetSchemaDocument</ConformanceTargetURI>
     <DocumentFilePathText>niem/niem-core.xsd</DocumentFilePathText>
     <NamespaceCategoryCode>CORE</NamespaceCategoryCode>
-    <NamespaceVersionText>ps02</NamespaceVersionText>
+    <NamespaceVersionText>message-1</NamespaceVersionText>
     <NIEMVersionName>NIEM6.0</NIEMVersionName>
     <NamespaceLanguageName>en-US</NamespaceLanguageName>
   </Namespace>
@@ -32,11 +38,23 @@
     <NamespacePrefixText>xs</NamespacePrefixText>
     <NamespaceCategoryCode>XSD</NamespaceCategoryCode>
   </Namespace>
+  <DataProperty structures:id="my.aProp">
+    <Name>aProp</Name>
+    <Namespace structures:ref="my" xsi:nil="true"/>
+    <Datatype structures:ref="xs.string" xsi:nil="true"/>
+    <AttributeIndicator>true</AttributeIndicator>
+  </DataProperty>
   <ObjectProperty structures:id="my.Message">
     <Name>Message</Name>
     <Namespace structures:ref="my" xsi:nil="true"/>
     <Class structures:ref="my.MessageType" xsi:nil="true"/>
   </ObjectProperty>
+  <DataProperty structures:id="my.privacyText">
+    <Name>privacyText</Name>
+    <Namespace structures:ref="my" xsi:nil="true"/>
+    <Datatype structures:ref="xs.token" xsi:nil="true"/>
+    <AttributeIndicator>true</AttributeIndicator>
+  </DataProperty>
   <DataProperty structures:id="nc.Date">
     <Name>Date</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
@@ -50,12 +68,12 @@
     <DocumentationText>A data concept for a representation of a date.</DocumentationText>
     <AbstractIndicator>true</AbstractIndicator>
   </ObjectProperty>
-  <DataProperty structures:id="nc.EducationDescriptionText">
+  <ObjectProperty structures:id="nc.EducationDescriptionText">
     <Name>EducationDescriptionText</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
     <DocumentationText>A description of a person's educational background.</DocumentationText>
-    <Datatype structures:ref="nc.TextType" xsi:nil="true"/>
-  </DataProperty>
+    <Class structures:ref="nc.TextType" xsi:nil="true"/>
+  </ObjectProperty>
   <DataProperty structures:id="nc.EducationInProgressIndicator">
     <Name>EducationInProgressIndicator</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
@@ -68,6 +86,11 @@
     <DocumentationText>A person's educational background.</DocumentationText>
     <Class structures:ref="nc.EducationType" xsi:nil="true"/>
   </ObjectProperty>
+  <DataProperty structures:id="nc.TextLiteral">
+    <Name>TextLiteral</Name>
+    <Namespace structures:ref="nc" xsi:nil="true"/>
+    <Datatype structures:ref="xs.string" xsi:nil="true"/>
+  </DataProperty>
   <Class structures:id="my.MessageType">
     <Name>MessageType</Name>
     <Namespace structures:ref="my" xsi:nil="true"/>
@@ -82,7 +105,7 @@
     <Namespace structures:ref="nc" xsi:nil="true"/>
     <DocumentationText>A data type for a person's educational background.</DocumentationText>
     <ChildPropertyAssociation>
-      <DataProperty structures:ref="nc.EducationDescriptionText" xsi:nil="true"/>
+      <ObjectProperty structures:ref="nc.EducationDescriptionText" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </ChildPropertyAssociation>
@@ -102,11 +125,15 @@
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </ChildPropertyAssociation>
   </Class>
-  <Restriction structures:id="nc.TextType">
+  <Class structures:id="nc.TextType">
     <Name>TextType</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
-    <RestrictionBase structures:ref="xs.string" xsi:nil="true"/>
-  </Restriction>
+    <ChildPropertyAssociation>
+      <DataProperty structures:ref="nc.TextLiteral" xsi:nil="true"/>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+    </ChildPropertyAssociation>
+  </Class>
   <Datatype structures:id="xs.boolean">
     <Name>boolean</Name>
     <Namespace structures:ref="xs" xsi:nil="true"/>
@@ -117,6 +144,10 @@
   </Datatype>
   <Datatype structures:id="xs.string">
     <Name>string</Name>
+    <Namespace structures:ref="xs" xsi:nil="true"/>
+  </Datatype>
+  <Datatype structures:id="xs.token">
+    <Name>token</Name>
     <Namespace structures:ref="xs" xsi:nil="true"/>
   </Datatype>
 </Model>

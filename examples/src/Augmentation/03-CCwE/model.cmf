@@ -5,10 +5,28 @@
   xmlns:structures="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xml:lang="en-US">
+  <Namespace structures:id="j">
+    <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/domains/justice/6.0/</NamespaceURI>
+    <NamespacePrefixText>j</NamespacePrefixText>
+    <DocumentationText>Justice</DocumentationText>
+    <ConformanceTargetURI>https://docs.oasis-open.org/niemopen/ns/specification/NDR/6.0/#SubsetSchemaDocument</ConformanceTargetURI>
+    <DocumentFilePathText>niem/domains/justice.xsd</DocumentFilePathText>
+    <NamespaceCategoryCode>DOMAIN</NamespaceCategoryCode>
+    <NamespaceVersionText>ps02</NamespaceVersionText>
+    <NIEMVersionName>NIEM6.0</NIEMVersionName>
+    <NamespaceLanguageName>en-US</NamespaceLanguageName>
+    <AugmentationRecord>
+      <Class structures:ref="nc.EducationType" xsi:nil="true"/>
+      <DataProperty structures:ref="j.EducationTotalYearsText" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <AugmentationIndex>0</AugmentationIndex>
+    </AugmentationRecord>
+  </Namespace>
   <Namespace structures:id="my">
     <NamespaceURI>http://example.com/N6AugEx/1.0/</NamespaceURI>
     <NamespacePrefixText>my</NamespacePrefixText>
-    <DocumentationText>No augmentations.</DocumentationText>
+    <DocumentationText>Augment complex content with an element.</DocumentationText>
     <ConformanceTargetURI>https://docs.oasis-open.org/niemopen/ns/specification/NDR/6.0/#SubsetSchemaDocument</ConformanceTargetURI>
     <DocumentFilePathText>msg.xsd</DocumentFilePathText>
     <NamespaceCategoryCode>EXTENSION</NamespaceCategoryCode>
@@ -32,6 +50,12 @@
     <NamespacePrefixText>xs</NamespacePrefixText>
     <NamespaceCategoryCode>XSD</NamespaceCategoryCode>
   </Namespace>
+  <DataProperty structures:id="j.EducationTotalYearsText">
+    <Name>EducationTotalYearsText</Name>
+    <Namespace structures:ref="j" xsi:nil="true"/>
+    <DocumentationText>A total number of years a person has been involved in attaining their education.</DocumentationText>
+    <Datatype structures:ref="nc.TextType" xsi:nil="true"/>
+  </DataProperty>
   <ObjectProperty structures:id="my.Message">
     <Name>Message</Name>
     <Namespace structures:ref="my" xsi:nil="true"/>

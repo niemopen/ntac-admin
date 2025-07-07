@@ -8,4 +8,4 @@ These are artifacts intended as examples in NTAC discussions.  Usually they are 
 
 * [Augmentation](src/Augmentation) – start with the [README](src/Augmentation/README.md).  [Revised 2025-06-26]
 * [[Complex Message Specification](src/ComplexMSpec) [2024-10-07]
-* [RoleOf (2023-05-16)](src/RoleOf)
+* [RoleOf](src/RoleOf) [2023-05-16]
