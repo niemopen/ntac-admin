@@ -4,6 +4,8 @@
 
 ## Meeting minutes
 
+* [2025-07-08 (draft)](docs/2025-07-08-minutes.md)
+* [2025-07-01](docs/2025-07-01-minutes.md)
 * [2025-06-24 (draft)](docs/2025-06-24-minutes.md) - NDR section on interpretation of NIEM data
 * [2025-06-17](docs/2025-06-17-minutes.md) - Technical questions at MilOps domain meetings
 * [2025-06-10](docs/2025-06-10-minutes.md) - Discussion papers for review
