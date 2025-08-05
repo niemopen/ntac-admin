@@ -4,7 +4,9 @@
 
 ## Meeting minutes
 
-* [2025-07-15 (draft)](docs/2025-07-15-minutes.md) - Standing down niem.gov 
+* [2025-07-29 (draft)](docs/2025-07-29-minutes.md) - NDR ready for PGB
+* [2025-07-22](docs/2025-07-22-minutes.md) - Reviewing NDR and CMFTool
+* [2025-07-15](docs/2025-07-15-minutes.md) - Standing down niem.gov 
 * [2025-07-08](docs/2025-07-08-minutes.md) - New augmentation examples and CMFTool support
 * [2025-07-01](docs/2025-07-01-minutes.md) - NDR6 review
 * [2025-06-24](docs/2025-06-24-minutes.md) - NDR section on interpretation of NIEM data
