@@ -4,7 +4,8 @@
 
 ## Meeting minutes
 
-* [2025-07-29 (draft)](docs/2025-07-29-minutes.md) - NDR ready for PGB
+* [2025-08-05 (draft)](docs/2025-08-05-minutes.md) - Joint Staff leaving NMO as of 1 October
+* [2025-07-29](docs/2025-07-29-minutes.md) - NDR ready for PGB
 * [2025-07-22](docs/2025-07-22-minutes.md) - Reviewing NDR and CMFTool
 * [2025-07-15](docs/2025-07-15-minutes.md) - Standing down niem.gov 
 * [2025-07-08](docs/2025-07-08-minutes.md) - New augmentation examples and CMFTool support
