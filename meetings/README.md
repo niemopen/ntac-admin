@@ -4,7 +4,8 @@
 
 ## Meeting minutes
 
-* [2025-08-12 (draft)](docs/2025-08-12-minutes.md)
+* [2025-08-19 (draft)](docs/2025-08-19-minutes.md) - BoUML to CMF (niem-tools) published
+* [2025-08-12](docs/2025-08-12-minutes.md) - Future NTAC meetings will be on Zoom
 * [2025-08-05](docs/2025-08-05-minutes.md) - Joint Staff leaving NMO as of 1 October
 * [2025-07-29](docs/2025-07-29-minutes.md) - NDR ready for PGB
 * [2025-07-22](docs/2025-07-22-minutes.md) - Reviewing NDR and CMFTool
