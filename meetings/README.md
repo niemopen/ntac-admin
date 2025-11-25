@@ -3,7 +3,8 @@
 # NIEM Technical Architecture Committee (NTAC)
 
 ## Meeting minutes
-* [2025-10-28 (draft)](docs/2025-10-28-minutes.md)
+* [2025-11-11 (draft)](docs/2025-11-11-minutes.md)
+* [2025-10-28](docs/2025-10-28-minutes.md)
 * [2025-10-14](docs/2025-10-14-minutes.md)
 * [2025-10-07](docs/2025-10-07-minutes.md) 
 * [2025-09-30](docs/2025-09-30-minutes.md)
