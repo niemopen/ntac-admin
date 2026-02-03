@@ -3,7 +3,8 @@
 # NIEM Technical Architecture Committee (NTAC)
 
 ## Meeting minutes
-* [2026-01-06 (draft)](docs/2026-01-06-minutes.md) - Work plan for 2026
+* [2026-01-20 (draft)](docs/2026-01-20-minutes.md) - NTAC priorities
+* [2026-01-06](docs/2026-01-06-minutes.md) - Work plan for 2026
 * [2025-12-09](docs/2025-12-09-minutes.md) - BFO/NIEM collaboration
 * [2025-11-18](docs/2025-11-25-minutes.md) - NIEM release schedule
 * [2025-11-11](docs/2025-11-11-minutes.md) - Release tempo, version control
