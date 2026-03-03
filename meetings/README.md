@@ -3,7 +3,8 @@
 # NIEM Technical Architecture Committee (NTAC)
 
 ## Meeting minutes
-* [2026-02-03 (draft)](docs/2026-02-03-minutes.md) - NTAC recommends ISO standardization for model and NDR
+* [2026-02-17 (draft)](docs/2026-02-17-minutes.md) - Tool strategy team
+* [2026-02-03](docs/2026-02-03-minutes.md) - NTAC recommends ISO standardization for model and NDR
 * [2026-01-20](docs/2026-01-20-minutes.md) - NTAC priorities
 * [2026-01-06](docs/2026-01-06-minutes.md) - Work plan for 2026
 * [2025-12-09](docs/2025-12-09-minutes.md) - BFO/NIEM collaboration
