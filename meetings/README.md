@@ -4,7 +4,10 @@
 
 
 ## Meeting minutes
-* [2026-06-23 (draft)](docs/2026-06-23-minutes.md)
+* [2026-08-04 (draft)](docs/2026-08-04-minutes.md) - NLETS; W3C Holon CG; GTRI, API 2.0, Toolbox
+* [2026-07-21](docs/2026-07-21-minutes.md) - Ontology mapper; NLETS paper
+* [2026-07-07](docs/2026-07-07-minutes.md) - Ontology mapper repo; NLETS paper?
+* [2026-06-23](docs/2026-06-23-minutes.md)
 * [2026-06-09](docs/2026-06-09-minutes.md)
 * [2026-05-26](docs/2026-05-26-minutes.md)
 * [2026-05-12](docs/2026-05-12-minutes.md)
