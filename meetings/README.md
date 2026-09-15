@@ -4,7 +4,9 @@
 
 
 ## Meeting minutes
-* [2026-08-04 (draft)](docs/2026-08-04-minutes.md) - NLETS; W3C Holon CG; GTRI, API 2.0, Toolbox
+* [2026-09-01 (draft)](docs/2026-09-01-minutes.md) - CMFTool status, PGB update
+* [2026-08-18](docs/2026-08-18-minutes.md) - User survey; ontology mapper
+* [2026-08-04](docs/2026-08-04-minutes.md) - NLETS; W3C Holon CG; GTRI, API 2.0, Toolbox
 * [2026-07-21](docs/2026-07-21-minutes.md) - Ontology mapper; NLETS paper
 * [2026-07-07](docs/2026-07-07-minutes.md) - Ontology mapper repo; NLETS paper?
 * [2026-06-23](docs/2026-06-23-minutes.md)
