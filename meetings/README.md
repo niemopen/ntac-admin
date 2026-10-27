@@ -4,7 +4,10 @@
 
 
 ## Meeting minutes
-* [2026-09-01 (draft)](docs/2026-09-01-minutes.md) - CMFTool status, PGB update
+* [2026-10-13 (draft)](docs/2026-10-13-minutes.md) - tokens, RDF 1.2
+* [2026-09-29 (draft)](docs/2026-09-29-minutes.md) - tools, priorities
+* [2026-09-15 (draft)](docs/2026-09-15-minutes.md) - ontology mapper, token funding, HUD collab
+* [2026-09-01](docs/2026-09-01-minutes.md) - CMFTool status, PGB update
 * [2026-08-18](docs/2026-08-18-minutes.md) - User survey; ontology mapper
 * [2026-08-04](docs/2026-08-04-minutes.md) - NLETS; W3C Holon CG; GTRI, API 2.0, Toolbox
 * [2026-07-21](docs/2026-07-21-minutes.md) - Ontology mapper; NLETS paper
