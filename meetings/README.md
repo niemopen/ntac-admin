@@ -4,7 +4,8 @@
 
 
 ## Meeting minutes
-* [2026-10-13 (draft)](docs/2026-10-13-minutes.md) - tokens, RDF 1.2
+* [2026-10-27 (draft)](docs/2026-10-27-minutes.md) - SSGT migration
+* [2026-10-13](docs/2026-10-13-minutes.md) - tokens, RDF 1.2
 * [2026-09-29 (draft)](docs/2026-09-29-minutes.md) - tools, priorities
 * [2026-09-15 (draft)](docs/2026-09-15-minutes.md) - ontology mapper, token funding, HUD collab
 * [2026-09-01](docs/2026-09-01-minutes.md) - CMFTool status, PGB update
