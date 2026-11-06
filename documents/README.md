@@ -8,6 +8,9 @@ These documents are for NTAC discussion.  They are not expected to become projec
 
 Discussion of documents intended to become project specifications are also conducted on the [discussion tab](https://github.com/niemopen/ntac-admin/discussions).
 
+* [Token Use Policy discussion draft (2026-11-06)](docs/ntac-token-use-policy-revised-draft.md)
+  Proposed token allocation, responsibilities, work procedures and records; all provisions
+  remain open for discussion.
 * [Self-describing messages (2025-06-16)](docs/SelfDescribing-250616.md)
   Conventions to make NIEM messages contain URIs for their message format, type, a
 * [Cardinality constraints for properties (2025-05-26)](docs/PropertyConstraints-250526.md)
