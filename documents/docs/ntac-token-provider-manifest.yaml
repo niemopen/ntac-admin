@@ -1,0 +1,29 @@
+# Appendix 2 — Provider Manifest
+# Token Use Policy: ntac-token-use-policy-revised-draft.md, section 10.
+# Supporting Guidance: policy Appendix 1.
+# Discussion draft. No provider selection or configuration is recorded here yet.
+# Keep only the current state; Git commits preserve earlier versions.
+# No passwords, keys or credential values belong in this file.
+
+policy_version: "0.1"
+as_of: "2026-11-11"
+status: "discussion-draft"
+selection_status: "pending"
+configuration_status: "not-recorded"
+supporting_guidance: "ntac-token-use-policy-revised-draft.md#appendix-1-supporting-guidance"
+decision_reference: null
+effective_date: null
+steward: null
+
+# Populate selected providers using Template E after the decision is recorded.
+# An empty list indicates that this draft records no selection.
+providers: []
+
+# Operational values remain unset while provider selection is pending.
+credential_replacement_days: null
+
+vendor_review:
+  cadence: "monthly"
+  timing: "before the provider billing period"
+  next_review: null
+  last_decision: null
