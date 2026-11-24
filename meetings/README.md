@@ -4,10 +4,11 @@
 
 
 ## Meeting minutes
-* [2026-10-27 (draft)](docs/2026-10-27-minutes.md) - SSGT migration
+* [2026-11-10 (draft)](docs/2026-11-10-minutes.md) - tokens, NDR 6.1
+* [2026-10-27](docs/2026-10-27-minutes.md) - SSGT migration
 * [2026-10-13](docs/2026-10-13-minutes.md) - tokens, RDF 1.2
-* [2026-09-29 (draft)](docs/2026-09-29-minutes.md) - tools, priorities
-* [2026-09-15 (draft)](docs/2026-09-15-minutes.md) - ontology mapper, token funding, HUD collab
+* [2026-09-29](docs/2026-09-29-minutes.md) - tools, priorities
+* [2026-09-15](docs/2026-09-15-minutes.md) - ontology mapper, token funding, HUD collab
 * [2026-09-01](docs/2026-09-01-minutes.md) - CMFTool status, PGB update
 * [2026-08-18](docs/2026-08-18-minutes.md) - User survey; ontology mapper
 * [2026-08-04](docs/2026-08-04-minutes.md) - NLETS; W3C Holon CG; GTRI, API 2.0, Toolbox
@@ -34,7 +35,7 @@
 * [2025-10-07](docs/2025-10-07-minutes.md) 
 * [2025-09-30](docs/2025-09-30-minutes.md)
 * [2025-09-02](docs/2025-09-02-minutes.md) 
-* [2025-08-26 (draft)](docs/2025-08-26-minutes.md) 
+* [2025-08-26 (docs/2025-08-26-minutes.md) 
 * [2025-08-19](docs/2025-08-19-minutes.md) - BoUML to CMF (niem-tools) published
 * [2025-08-12](docs/2025-08-12-minutes.md) - Future NTAC meetings will be on Zoom
 * [2025-08-05](docs/2025-08-05-minutes.md) - Joint Staff leaving NMO as of 1 October
@@ -48,7 +49,7 @@
 * [2025-06-10](docs/2025-06-10-minutes.md) - Discussion papers for review
 * [2025-06-03](docs/2025-06-03-minutes.md) - CMFTool does JSON Schema
 * [2025-05-27](docs/2025-05-27-minutes.md) - Reference restrictions, cardinality on properties
-* [2025-05-20 ](docs/2025-05-20-minutes.md) - Beta test of NIEM training
+* [2025-05-20](docs/2025-05-20-minutes.md) - Beta test of NIEM training
 * [2025-05-13](docs/2025-05-13-minutes.md)- Measures for Justice on data quality
 * [2025-05-06](docs/2025-05-06-minutes.md) - CMFTool 1.0-alpha.3
 * [2025-04-29](docs/2025-04-29-minutes.md) - Governance WG meeting
